@@ -89,29 +89,29 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   .report-header{flex-direction:column}
   .report-header .meta{text-align:left}
 }
-</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-08 11:09:38</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card">
+</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-08 11:10:38</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card">
   <h2>A. 账户实时快照</h2>
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">账户净值 NAV</div><div class="value">$68,735.33</div></div>
+    <div class="kpi"><div class="label">账户净值 NAV</div><div class="value">$68,789.77</div></div>
     <div class="kpi"><div class="label">现金（含融资）</div><div class="value neg">$-46,935.61</div></div>
-    <div class="kpi"><div class="label">股票市值</div><div class="value">$119,477.76</div></div>
+    <div class="kpi"><div class="label">股票市值</div><div class="value">$119,532.20</div></div>
     <div class="kpi"><div class="label">期权市值（净）</div><div class="value neg">$-3,806.83</div></div>
-    <div class="kpi"><div class="label">当日盈亏</div><div class="value pos">+$229.34 (+0.33%)</div></div>
-    <div class="kpi"><div class="label">累计盈亏</div><div class="value neg">-$20,372.33</div></div>
-    <div class="kpi"><div class="label">风险等级</div><div class="value">LEVEL6</div></div>
-    <div class="kpi"><div class="label">数据时间</div><div class="value" style="font-size:14px">2026-05-08 10:39:26</div></div>
+    <div class="kpi"><div class="label">当日盈亏</div><div class="value pos">+$283.78 (+0.41%)</div></div>
+    <div class="kpi"><div class="label">累计盈亏</div><div class="value neg">-$20,317.89</div></div>
+    <div class="kpi"><div class="label">风险等级</div><div class="value">LEVEL5</div></div>
+    <div class="kpi"><div class="label">数据时间</div><div class="value" style="font-size:14px">2026-05-08 11:00:57</div></div>
   </div>
   <div class="callout warn" style="margin-top:14px">
-    <b>数据缺口提示：</b> 本次 <code>evening_context</code> 子流程超时（120s TIMEOUT），SEC 事件、组合风险归因、止盈止损分级、长期 NAV 序列均未拉到。下方 B/C/D 模块基于 macro + 实时持仓做手工合成，分级阈值参考 SOUL 规则。
+    <b>数据缺口提示：</b> 本次 <code>evening_context</code> 子流程超时（120s TIMEOUT），SEC 事件、组合风险归因、止盈止损分级、长期 NAV 序列均未完整拉到。下方 B/C/D 模块基于 macro + 实时持仓做手工合成，分级阈值参考 SOUL 规则。
   </div>
   <div style="margin-top:12px;height:140px"><canvas id="navChart"></canvas></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>(function(){
-  var labels=["2026-05-08"]; var values=[68735.33];
+  var labels=["2026-05-08"]; var values=[68789.77];
   if(labels.length<2){
     var c=document.getElementById('navChart');
-    if(c){c.parentNode.innerHTML='<div style=\"color:#64748B;font-size:13px;padding:8px 4px\">NAV 历史序列只有 1 个点（["2026-05-08"]），趋势图需累积 ≥2 个交易日才会渲染。</div>';}
+    if(c){c.parentNode.innerHTML='<div style=\"color:#64748B;font-size:13px;padding:8px 4px\">NAV 历史序列只有 '+labels.length+' 个点，趋势图需累积 ≥2 个交易日才会渲染。</div>';}
     return;
   }
   var ctx=document.getElementById('navChart').getContext('2d');

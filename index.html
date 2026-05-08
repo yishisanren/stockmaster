@@ -89,7 +89,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   .report-header{flex-direction:column}
   .report-header .meta{text-align:left}
 }
-</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-08 11:10:38</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card">
+</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-08 11:49:51</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card">
   <h2>A. 账户实时快照</h2>
   <div class="kpi-grid">
     <div class="kpi"><div class="label">账户净值 NAV</div><div class="value">$68,789.77</div></div>
@@ -164,50 +164,92 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   </div>
 </div><div class="card">
   <h2>D. 市场级止盈/止损总警报</h2>
+
   <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
     <div class="kpi"><div class="label">^VIX</div><div class="value">17.08</div></div>
     <div class="kpi"><div class="label">QQQ trailing P/E</div><div class="value">33.90</div></div>
-    <div class="kpi"><div class="label">DXY</div><div class="value">98.24</div></div>
+    <div class="kpi"><div class="label">DXY</div><div class="value">98.25</div></div>
     <div class="kpi"><div class="label">US10Y</div><div class="value">0.44%</div></div>
   </div>
+
   <div class="callout info" style="margin-top:14px">
-    <b>组合总灯号：<span class="badge pri">正常 — 接近观察级阈值</span></b><br>
+    <b>组合总灯号：<span class="badge neu">正常</span></b><br>
     阈值依据（SOUL 规则）：观察级 VIX&lt;17 或 QQQ PE&gt;34；一级 VIX≤15 或 QQQ PE≥36；二级 VIX 13-14 或 QQQ PE≥38。<br>
-    当前 VIX <b>17.08</b>（高于 17 阈值）+ QQQ PE <b>33.90</b>（低于 34 阈值），双指标均未触发组合级止盈敏感窗口。但 PE 距 34 仅差 0.10，VIX 距 17 也只差 0.08，<b>属于"双触发预警临界带"</b>，本周如有强势上涨需立即提级到观察级。
+    <span style="font-size:12.5px;color:#475569">VIX 17.08 距观察阈值 +0.08，QQQ PE 33.90 距阈值 +0.10，均未触发。</span>
   </div>
-  <h3 style="margin:18px 0 8px;font-size:15px;color:#0F172A">🎭 风控辩论（保守 / 激进 / 最终倾向）</h3>
-  <div class="debate-grid">
-    <div class="col con">
-      <h3>🛡️ 保守方</h3>
-      <ul style="margin:6px 0 0 18px;padding:0;font-size:13px">
-        <li>VIX 17.08 历史偏低区间，进一步下行空间有限，反弹风险大于继续下行收益。</li>
-        <li>QQQ PE 33.9 已至 5 年中高位，盈利消化估值需要时间。</li>
-        <li>Weiwei 累计 -$20,372 浮亏（NIO -$23,798 主导），单只占大额拖累，集中度风险显著。</li>
-        <li>TMDX 90P 已被深度刺穿，期权账面 -226%，是即时风险点。</li>
-      </ul>
-    </div>
-    <div class="col agg">
-      <h3>⚔️ 激进方</h3>
-      <ul style="margin:6px 0 0 18px;padding:0;font-size:13px">
-        <li>NVDA +15%、TSLA +4%、AEHR +5% 多核心仓表现仍强，趋势未破。</li>
-        <li>VIX/QQQ PE 均未真正触发观察级，没必要提前避险。</li>
-        <li>NIO 今日 +$393、COIN 短 put 即将作废 +$450，单日盈亏转正。</li>
-        <li>10Y 仅 0.44%（数据可能有误），如属实则流动性环境极宽松，risk-on 持续。</li>
-      </ul>
-    </div>
-    <div class="col fin">
-      <h3>⚖️ 最终倾向</h3>
-      <ul style="margin:6px 0 0 18px;padding:0;font-size:13px">
-        <li><b>偏中性偏防守。</b></li>
-        <li>核心仓不动，但应优先解决 <b>TMDX 90P</b> 这一硬伤；</li>
-        <li>NVDA 临阻力位，可考虑分批 trim 或等补 100 股再卖 cc；</li>
-        <li>NIO 反弹分批减仓，不再加仓抄底；</li>
-        <li>本周 VIX/QQQ PE 任一触发观察级 → 提级至"组合级止盈敏感窗口"。</li>
-      </ul>
-    </div>
+
+  <h3 style="margin:18px 0 8px;font-size:15px">📌 个股止损分级（来自 stop_loss_monitor）</h3>
+  <div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Ticker</th><th>现价</th><th>浮盈亏%</th><th>分级</th><th>触发理由</th><th>倾向</th></tr></thead>
+    <tbody>
+<tr><td><b>NIO</b></td><td class="num">5.90</td><td class="num neg">-38.27%</td><td><span class="badge neg">执行级</span></td><td style="font-size:12.5px">浮亏 -38.27% 已进入观察区<br>浮亏 -38.27% 触发一级止损提醒<br>浮亏 -38.27% 触发二级止损提醒</td><td>更偏向执行止损/显著降风险</td></tr>
+<tr><td><b>NFLX</b></td><td class="num">88.40</td><td class="num neg">-2.23%</td><td><span class="badge warn">一级提醒</span></td><td style="font-size:12.5px">现价距离 60 日支撑仅剩 1.14%<br>价格已跌破 SMA50，中期趋势开始转弱</td><td>等待确认，必要时收缩仓位</td></tr>
+<tr><td><b>LITE</b></td><td class="num">884.98</td><td class="num neg">-3.36%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+<tr><td><b>ARKK</b></td><td class="num">77.77</td><td class="num neg">-0.04%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+<tr><td><b>S</b></td><td class="num">15.95</td><td class="num pos">+1.59%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+<tr><td><b>CDNS</b></td><td class="num">357.18</td><td class="num pos">+3.49%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+<tr><td><b>TSLA</b></td><td class="num">411.30</td><td class="num pos">+4.45%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+<tr><td><b>AEHR</b></td><td class="num">91.23</td><td class="num pos">+5.69%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+<tr><td><b>NVDA</b></td><td class="num">212.12</td><td class="num pos">+15.64%</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续持有观察</td></tr>
+    </tbody>
+  </table>
   </div>
-  <div class="callout neg" style="margin-top:12px">
-    <b>注意：</b>US10Y 数据 0.44% 与 US2Y_proxy 3.6% 差距异常，疑为数据源 quirk（10Y 字段可能记录的是其他口径），仅作参考。可监控变量：本周 CPI、FOMC 会议口径、英伟达后续财报路演表态。
+
+  <h3 style="margin:18px 0 8px;font-size:15px">📌 期权止损分级（来自 stop_loss_monitor）</h3>
+  <div class="table-wrap">
+  <table class="t">
+    <thead><tr>
+      <th>合约</th><th>Spot</th><th>Strike</th><th>DTE</th><th>状态</th><th>权利金倍数</th><th>分级</th><th>触发理由</th><th>倾向</th>
+    </tr></thead>
+    <tbody>
+<tr><td><b>TMDX</b> <code style="font-size:11px">PUT90</code></td><td class="num">72.90</td><td class="num">90</td><td class="num">41d</td><td><span class="badge neg">ITM</span> <span class="num">-19.0%</span></td><td class="num">×3.26</td><td><span class="badge neg">二级提醒</span></td><td style="font-size:12.5px">期权价格已放大至开仓成本的 3.26 倍<br>距离行权价仅剩 -19.00%<br>期权价格已达到开仓成本 2 倍，浮亏放大明显</td><td>更偏向主动降风险/考虑止损</td></tr>
+<tr><td><b>COIN</b> <code style="font-size:11px">PUT140</code></td><td class="num">192.96</td><td class="num">140</td><td class="num">0d</td><td><span class="badge neu">OTM</span> <span class="num">+37.8%</span></td><td class="num">×0.01</td><td><span class="badge pri">观察级</span></td><td style="font-size:12.5px">DTE 0，时间风险开始抬升</td><td>继续观察</td></tr>
+<tr><td><b>TSLA</b> <code style="font-size:11px">CALL450</code></td><td class="num">411.79</td><td class="num">450</td><td class="num">41d</td><td><span class="badge neu">OTM</span> <span class="num">+8.5%</span></td><td class="num">×0.95</td><td><span class="badge pri">观察级</span></td><td style="font-size:12.5px">距离行权价仅剩 8.49%</td><td>继续观察</td></tr>
+<tr><td><b>ORCL</b> <code style="font-size:11px">PUT175</code></td><td class="num">194.59</td><td class="num">175</td><td class="num">28d</td><td><span class="badge neu">OTM</span> <span class="num">+11.2%</span></td><td class="num">×1.11</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续观察</td></tr>
+<tr><td><b>NIO</b> <code style="font-size:11px">CALL7</code></td><td class="num">5.87</td><td class="num">7</td><td class="num">28d</td><td><span class="badge neu">OTM</span> <span class="num">+16.1%</span></td><td class="num">×0.45</td><td><span class="badge neu">正常</span></td><td style="font-size:12.5px"><span style='color:#94A3B8'>—</span></td><td>继续观察</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  
+<h3 style="margin:18px 0 8px;font-size:15px;color:#0F172A">🎭 风控辩论（保守 / 激进 / 最终倾向）</h3>
+<div class="debate-grid">
+  <div class="col con">
+    <h3>🛡️ 保守方</h3>
+    <ul style="margin:6px 0 0 18px;padding:0;font-size:13px">
+      <li>NIO 浮亏 -38.27% 已进入 <b>执行级</b>，按规则需显著降风险</li>
+      <li>TMDX 90P 已 ITM（spot $72.9 vs strike $90），premium ×3.26、ITM 距离 -19%，进入 <b>二级提醒</b>，需主动降风险</li>
+      <li>NFLX 已跌破 SMA50 且距 60 日支撑仅 1.14%，已升 <b>一级提醒</b></li>
+      <li>VIX 17.08 距观察阈值仅 0.08，QQQ PE 33.90 距阈值 0.10，处于双触发临界带</li>
+      <li>账户 LEVEL5 + 融资余额 -$46,936，没有再加仓的容错空间</li>
+    </ul>
+  </div>
+  <div class="col agg">
+    <h3>⚔️ 激进方</h3>
+    <ul style="margin:6px 0 0 18px;padding:0;font-size:13px">
+      <li>组合层面止盈灯号仍为 <b>正常</b>，未触发任何强制锁利窗口</li>
+      <li>NVDA +15.65%、TSLA +4.45%、AEHR +5.69%、CDNS +3.49% 多核心仓盈利稳定</li>
+      <li>NIO 当日 +$328、+5.5% 强反弹；COIN 140P 当日已基本作废 +$450 锁定</li>
+      <li>TMDX 90P DTE 还有 41 天，仍有时间靠 spot 反弹或 roll 化解</li>
+      <li>TSLA 6/18 450C 距离 strike 仍有 8.49% 缓冲，未升级</li>
+    </ul>
+  </div>
+  <div class="col fin">
+    <h3>⚖️ 最终倾向</h3>
+    <ul style="margin:6px 0 0 18px;padding:0;font-size:13px">
+      <li><b>组合层面：偏中性偏防守，但不是组合级止盈窗口</b></li>
+      <li><b>个股层面：</b>NIO 反弹 $6.3+ 分批 trim、NFLX 跌破 $87.4 支撑确认离场</li>
+      <li><b>期权层面：</b>TMDX 90P 视为最高优先处置项（buy back / roll 6/18→9/18）</li>
+      <li>本周如 VIX 跌破 17 或 QQQ PE 站上 34 → 提级到组合级止盈敏感窗口</li>
+      <li>核心仓（NVDA / TSLA / AEHR / CDNS / S）继续持有，不主动减仓</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="callout warn" style="margin-top:14px">
+    <b>注意：</b>US10Y 数据 0.44% 与 US2Y_proxy 3.60% 差距异常，疑为数据源 quirk（10Y 字段口径可能不一致），仅作参考。
+    可监控变量：本周 CPI、FOMC 会议口径、TMDX 是否反弹至 $80+（决定 90P 是否能 roll）。
   </div>
 </div><div class="card">
   <h2>E. 个股 / 期权执行价位卡</h2>
@@ -817,68 +859,138 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   </div>
 </div><div class="card">
   <h2>C. 组合风险归因</h2>
-  <div class="callout warn" style="margin:0 0 12px">
-    <b>数据缺口：</b><code>portfolio_risk_attribution</code> 子流程未拉到（evening_context 超时）。下方为基于实时持仓快照的合成版本，仅做轻量归因。
+  <div style="color:#64748B;font-size:12px;margin:0 0 10px">
+    快照时间：2026-05-08 11:03:57｜来源：portfolio_risk_attribution
   </div>
 
-  <h3 style="margin:12px 0 6px;font-size:15px">📊 Top 3 权重持仓（占股票市值）</h3>
+  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
+    <div class="kpi"><div class="label">Gross Long MV</div><div class="value">$119,421</div></div>
+    <div class="kpi"><div class="label">Top 3 权重</div><div class="value">79.28%</div></div>
+    <div class="kpi"><div class="label">HHI 集中度</div><div class="value">2,465</div></div>
+    <div class="kpi"><div class="label">集中度评级</div><div class="value"><span class="badge warn">中等</span></div></div>
+  </div>
+
+  <h3 style="margin:14px 0 6px;font-size:15px">📊 持仓权重 & 当日/累计盈亏</h3>
   <div class="table-wrap">
   <table class="t">
-    <thead><tr><th>持仓</th><th>市值</th><th>占比</th><th>累计盈亏</th></tr></thead>
-    <tbody><tr><td><b>TSLA</b> 特斯拉</td><td class="num">$41,106</td><td class="num">34.4%</td><td class="num pos">+4.39%</td></tr>
-<tr><td><b>NIO</b> 蔚来</td><td class="num">$38,835</td><td class="num">32.5%</td><td class="num neg">-38.06%</td></tr>
-<tr><td><b>NVDA</b> 英伟达</td><td class="num">$14,849</td><td class="num">12.4%</td><td class="num pos">+15.65%</td></tr></tbody>
+    <thead><tr><th>Ticker</th><th>市值</th><th>权重</th><th>当日盈亏</th><th>累计盈亏</th></tr></thead>
+    <tbody>
+<tr><td><b>TSLA</b></td><td class="num">$41,130</td><td class="num">34.44%</td><td class="num neg">-49.0</td><td class="num pos">+1,752</td></tr>
+<tr><td><b>NIO</b></td><td class="num">$38,704</td><td class="num">32.41%</td><td class="num pos">+196.8</td><td class="num neg">-23,995</td></tr>
+<tr><td><b>NVDA</b></td><td class="num">$14,848</td><td class="num">12.43%</td><td class="num pos">+43.4</td><td class="num pos">+2,008</td></tr>
+<tr><td><b>NFLX</b></td><td class="num">$5,304</td><td class="num">4.44%</td><td class="num pos">+9.0</td><td class="num neg">-121</td></tr>
+<tr><td><b>S</b></td><td class="num">$4,785</td><td class="num">4.01%</td><td class="num pos">+9.0</td><td class="num pos">+75</td></tr>
+<tr><td><b>ARKK</b></td><td class="num">$3,888</td><td class="num">3.26%</td><td class="num neg">-8.0</td><td class="num neg">-2</td></tr>
+<tr><td><b>AEHR</b></td><td class="num">$3,649</td><td class="num">3.06%</td><td class="num neg">-1.2</td><td class="num pos">+196</td></tr>
+<tr><td><b>CDNS</b></td><td class="num">$3,572</td><td class="num">2.99%</td><td class="num pos">+2.8</td><td class="num pos">+120</td></tr>
+<tr><td><b>LITE</b></td><td class="num">$3,540</td><td class="num">2.96%</td><td class="num neg">-30.4</td><td class="num neg">-123</td></tr>
+    </tbody>
   </table>
   </div>
+
+  <h3 style="margin:18px 0 6px;font-size:15px">💰 当日 P&L 贡献</h3>
+  <div class="kpi-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="kpi">
+      <div class="label">最大正贡献</div>
+      <div class="value pos">NIO +196.8</div>
+    </div>
+    <div class="kpi">
+      <div class="label">最大拖累</div>
+      <div class="value neg">TSLA -49.0</div>
+    </div>
+  </div>
+  <p style="color:#64748B;font-size:12.5px;margin:8px 0 0">
+    当日组合合计：<b class="pos">+172.4</b>｜累计未实现盈亏：<b class="neg">-20,088</b>
+  </p>
 
   <h3 style="margin:18px 0 6px;font-size:15px">🎨 风格暴露</h3>
   <div class="table-wrap">
   <table class="t">
-    <thead><tr><th>风格</th><th>市值</th><th>占比</th></tr></thead>
-    <tbody><tr><td>科技/AI 主线</td><td class="num">$71,505</td><td class="num">59.8%</td></tr>
-<tr><td>中概/新能源车</td><td class="num">$38,835</td><td class="num">32.5%</td></tr>
-<tr><td>美股大盘成长</td><td class="num">$5,303</td><td class="num">4.4%</td></tr>
-<tr><td>创新成长 ETF</td><td class="num">$3,888</td><td class="num">3.3%</td></tr></tbody>
-  </table>
-  </div>
-
-  <h3 style="margin:18px 0 6px;font-size:15px">⚠️ 集中度与风险贡献</h3>
-  <ul style="margin:0;font-size:14px;line-height:1.8">
-    <li><b>HHI 集中度指数：</b>2466（0-10,000 范围；&gt;2,500 视为高集中）— <span class="neu">中等集中</span></li>
-    <li><b>NIO 单只占股票市值 32.5%</b>，浮亏 -$23,798，是组合累计 -$20,372 亏损的主导来源。<span class="badge neg">最大风险源</span></li>
-    <li><b>TSLA 占 34.3%</b>，但已建立 cc 结构，上行被锁；即时风险中等。</li>
-    <li><b>NVDA 浮盈 +$1,981，占 12.4%</b>，是当前组合主要正贡献来源。</li>
-    <li><b>期权空头敞口：</b>5 张短仓中 TMDX 90P 已 -226%（-$1,267），是最大期权风险点；其余 4 张整体仍贡献 +$926。</li>
-  </ul>
-
-  <div class="callout info" style="margin-top:12px">
-    <b>建议风控动作：</b>① 反弹至 $6.30+ 分批 trim NIO，把单仓占比降至 25% 以下；② 优先处置 TMDX 90P；③ NVDA 临阻力可酌情 trim 一部分锁利；④ 现金账户 -$46,936（融资余额），若进一步加仓需评估保证金压力。
-  </div>
-</div><div class="card">
-  <h2>B. SEC / 监管事件依据</h2>
-  <div class="callout warn">
-    <b>本期数据缺口：</b><code>sec_filing_monitor</code> / <code>sec_report_brief</code> 未拉到（evening_context 子流程 120s TIMEOUT）。本期晚报暂不附 SEC/EDGAR 原始披露摘要表。
-  </div>
-  <h3 style="margin:14px 0 6px;font-size:15px">通用监控清单（与持仓相关，下次拉取时优先核验）</h3>
-  <div class="table-wrap">
-  <table class="t">
-    <thead><tr><th>Ticker</th><th>需重点核查的文件类型</th><th>关注要点</th><th>影响方向</th></tr></thead>
+    <thead><tr><th>风格</th><th>占比</th><th>视觉</th></tr></thead>
     <tbody>
-      <tr><td><b>TSLA</b></td><td>8-K / Form 4 / 10-Q</td><td>Cybertruck/Model Y refresh 量产数据；管理层减持节奏</td><td><span class="badge neu">中性</span></td></tr>
-      <tr><td><b>NVDA</b></td><td>8-K / 10-Q / Insider Form 4</td><td>财报后口径、内部人交易；出口管制政策口径</td><td><span class="badge neu">中性偏多</span></td></tr>
-      <tr><td><b>NIO</b></td><td>6-K / 20-F</td><td>月度交付公告、新车型订单、再融资条款</td><td><span class="badge warn">敏感</span></td></tr>
-      <tr><td><b>NFLX</b></td><td>10-Q</td><td>订阅数、ARPU、广告收入</td><td><span class="badge neu">中性</span></td></tr>
-      <tr><td><b>CDNS</b></td><td>10-Q</td><td>backlog 与新签订单</td><td><span class="badge neu">中性</span></td></tr>
-      <tr><td><b>LITE</b></td><td>10-Q / 8-K</td><td>800G/1.6T 订单、毛利率</td><td><span class="badge neu">中性</span></td></tr>
-      <tr><td><b>S</b></td><td>10-Q</td><td>ARR、NDR、自由现金流转正进度</td><td><span class="badge pos">偏多</span></td></tr>
-      <tr><td><b>AEHR</b></td><td>10-Q / 8-K</td><td>SiC 测试设备订单、AI 测试需求</td><td><span class="badge pos">偏多</span></td></tr>
-      <tr><td><b>TMDX</b></td><td>10-Q / 8-K（期权 underlying）</td><td>器官移植业务量、毛利率、指引；任何指引下调都会进一步压制 90P 处置空间</td><td><span class="badge neg">高敏感</span></td></tr>
-      <tr><td><b>COIN</b></td><td>8-K（期权当日到期）</td><td>当日 BTC/ETH 大幅波动可能触发盘前 8-K</td><td><span class="badge neu">短期 / 当日</span></td></tr>
-      <tr><td><b>ORCL</b></td><td>10-Q / 8-K</td><td>云收入指引、Stargate 进展、大客户合约</td><td><span class="badge neu">中性</span></td></tr>
+<tr><td>AI / 半导体</td><td class="num">12.43%</td><td><div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;height:10px;width:160px;overflow:hidden"><div style="background:#2563EB;height:100%;width:12.4%"></div></div></td></tr>
+<tr><td>电动车（含 TSLA + NIO）</td><td class="num">66.85%</td><td><div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;height:10px;width:160px;overflow:hidden"><div style="background:#2563EB;height:100%;width:66.8%"></div></div></td></tr>
+<tr><td>中概 ADR</td><td class="num">32.41%</td><td><div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;height:10px;width:160px;overflow:hidden"><div style="background:#2563EB;height:100%;width:32.4%"></div></div></td></tr>
+<tr><td>Mega-cap 科技</td><td class="num">12.43%</td><td><div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;height:10px;width:160px;overflow:hidden"><div style="background:#2563EB;height:100%;width:12.4%"></div></div></td></tr>
     </tbody>
   </table>
   </div>
-  <p style="color:#64748B;font-size:12px;margin:8px 0 0">下次 evening_context 正常运行后，本模块将恢复为按持仓自动抓取的近 7 天 SEC 披露摘要表。</p>
+
+  <h3 style="margin:18px 0 6px;font-size:15px">⚠️ 压力测试</h3>
+  <div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>情景</th><th>组合损益</th><th>占 NAV</th></tr></thead>
+    <tbody>
+<tr><td>All long equities down 5%</td><td class="num neg">-5,971</td><td class="num">-8.68% NAV</td></tr>
+<tr><td>TSLA/NVDA down 8%</td><td class="num neg">-4,478</td><td class="num">-6.51% NAV</td></tr>
+<tr><td>China ADR bucket down 10%</td><td class="num neg">-3,870</td><td class="num">-5.63% NAV</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout warn" style="margin-top:14px">
+    <b>关键风险结论：</b>
+    <ul style="margin:6px 0 0 18px;padding:0;font-size:13.5px">
+      <li><b>EV 因子暴露 66.8%</b>（TSLA + NIO 合计），单一因子占 Gross 接近 2/3，组合方向性极强</li>
+      <li><b>NIO 单仓 32.4%</b>，浮亏 $-23,995 是累计亏损主导来源（占 119%）</li>
+      <li><b>TSLA 单仓 34.4%</b>，已通过 6/18 450C 锁定上行</li>
+      <li><b>账户处于 LEVEL5 风控状态</b>（融资余额 -$46,936，purchasing power 已耗尽），加仓需评估 margin call 边界</li>
+      <li><b>压测：</b>核心持仓全线 -5% → NAV 减 $5,971（约 8.7% NAV）</li>
+    </ul>
+  </div>
+</div><div class="card">
+  <h2>B. SEC / 监管事件依据</h2>
+  <div style="color:#64748B;font-size:12px;margin:0 0 10px">
+    数据源：SEC EDGAR（sec_edgar_mvp）｜近 45 天 ｜ 持仓 + 期权 underlying 共 11 个 ticker 命中
+  </div>
+  <div class="chips" style="margin:0 0 12px"><span class="chip">AEHR: 55</span> <span class="chip">NFLX: 36</span> <span class="chip">S: 17</span> <span class="chip">CDNS: 8</span> <span class="chip">ORCL: 8</span> <span class="chip">TSLA: 8</span> <span class="chip">COIN: 6</span> <span class="chip">NVDA: 5</span> <span class="chip">LITE: 4</span> <span class="chip">TMDX: 3</span> <span class="chip">NIO: 2</span></div>
+  <h3 style="margin:14px 0 8px;font-size:15px">🎯 关键事件高亮</h3><ul style="margin:0 0 8px 18px;padding:0;font-size:13.5px;line-height:1.75"><li><b>AEHR</b>：近 45 天内部人持续大额卖出（buys=1 / sells=24），偏空信号</li>
+<li><b>TSLA</b>：近 45 天内部人持续大额卖出（buys=3 / sells=35），偏空信号</li>
+<li><b>COIN</b>：5/7 同日发布 8-K（业绩公告）+ 10-Q，期权 140P 当日到期，已基本作废 +$450</li>
+<li><b>TMDX</b>：5/5 已发布 10-Q + 8-K，财报已落地。期权 90P 已深 ITM（spot $72.9 vs strike $90），为最大期权风险点</li>
+<li><b>NIO</b>：2026-05-04 最新 6-K（月度交付/经营更新），需关注交付趋势是否止跌</li>
+<li><b>ORCL</b>：5/7 + 4/28 内部人连续买入（Form 4 bullish），结构性正面信号</li></ul>
+  <h3 style="margin:14px 0 6px;font-size:15px">📂 近期重要披露（按时间倒序，最多 30 条）</h3>
+  <div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Ticker</th><th>类型</th><th>日期</th><th>影响方向 / 强度</th><th>关键变化 / 摘录</th></tr></thead>
+    <tbody>
+<tr><td><b>CDNS</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-05-07</td><td><span class="badge neg">偏空</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 0 笔 / 卖出 9 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>COIN</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1679788/000167978826000053/coin-20260507.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-07</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">h any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02 Results of Operation…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+<tr><td><b>COIN</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/1679788/000167978826000054/coin-20260331.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-07</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">2026-03-31 0001679788 coin:BankServicingAndSubscriptionAndCirculationMember 2025-01-01 2025-03-31 0001679788 coin:OtherRevenueMember 2026-01…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>NFLX</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-05-07</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 36 笔 / 卖出 48 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>ORCL</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-05-07</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 5 笔 / 卖出 4 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>LITE</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/1633978/000162828026030777/lite-20260328.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-06</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">001633978 country:US 2025-12-28 2026-03-28 0001633978 country:US us-gaap:GeographicConcentrationRiskMember us-gaap:SalesRevenueNetMember 202…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>COIN</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1679788/000167978826000049/coin-20260505.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-05</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:low</span></td><td>Item 2.05<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>LITE</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1633978/000162828026030530/lite-20260505.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-05</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02. Results of Operations…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+<tr><td><b>S</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-05-05</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 15 笔 / 卖出 11 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>TMDX</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1756262/000119312526206347/tmdx-20260505.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-05</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">h any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02 Results of Operation…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+<tr><td><b>TMDX</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/1756262/000119312526206453/tmdx-20260331.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-05</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">ermLoanMember 2022-07-01 2022-07-31 0001756262 us-gaap:ServiceMember 2025-01-01 2025-03-31 0001756262 tmdx:OcsTransplantRevenueMember tmdx:H…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>NIO</b></td><td><code style="font-size:12px">6-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1736541/000110465926054503/tm2613469d1_6k.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-04</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>TSLA</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-05-04</td><td><span class="badge neg">偏空</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 3 笔 / 卖出 35 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>AEHR</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-05-01</td><td><span class="badge neg">偏空</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 1 笔 / 卖出 29 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>CDNS</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/813672/000081367226000047/cdns-20260331.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-05-01</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">ther2026AcquisitionsMember 2026-03-31 0000813672 cdns:CoreEDAMember us-gaap:ProductConcentrationRiskMember us-gaap:SalesRevenueNetMember 202…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>CDNS</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/813672/000081367226000044/cdns-20260427.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-27</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02. Results of Operations…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+<tr><td><b>NVDA</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000026/nvda-20260424.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-27</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:low</span></td><td>Item 5.02<div style="color:#64748B;font-size:11px;margin-top:3px">any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 5.02. Departure of Director…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>NFLX</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1065280/000106528026000139/nflx-20260422.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-23</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:low</span></td><td>Item 8.01<div style="color:#64748B;font-size:11px;margin-top:3px">h any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 8.01 Other Events. On Apr…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>TSLA</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/tsla-20260331.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-23</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">ingMember 2026-01-01 2026-03-31 0001318605 tsla:AutomotiveLeasingMember 2025-01-01 2025-03-31 0001318605 tsla:AutomotiveRevenuesMember 2026-…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>TSLA</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026551/tsla-20260422.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-22</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">h any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. o Item 2.02 Results of Operation…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+<tr><td><b>AEHR</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426003746/aehr_8k.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-20</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:low</span></td><td>Item 8.01<div style="color:#64748B;font-size:11px;margin-top:3px">e of each exchange on which registered Common Stock, par value$0.01 per share AEHR The NASDAQ Capital Market Item 8.01. Other Events. On Apr…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>COIN</b></td><td><code style="font-size:12px">Form 4 汇总</code> </td><td>2026-04-20</td><td><span class="badge neg">偏空</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>近 45 天合计 内部人买入 0 笔 / 卖出 1 笔<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>NFLX</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/1065280/000106528026000138/nflx-20260331.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-17</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">65280 us-gaap:ForeignExchangeContractMember 2025-01-01 2025-03-31 0001065280 us-gaap:ForeignExchangeContractMember nflx:RevenuesMember 2026-…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>NFLX</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1065280/000106528026000137/nflx-20260410.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-16</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">h any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐ Item 2.02 Results of Operation…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+<tr><td><b>NIO</b></td><td><code style="font-size:12px">20-F</code> <a href="https://www.sec.gov/Archives/edgar/data/1736541/000110465926041765/nio-20251231x20f.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-10</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">ap:ServiceOtherMember 2025-01-01 2025-12-31 0001736541 us-gaap:ServiceMember 2025-01-01 2025-12-31 0001736541 nio:OthersRevenueMember 2025-0…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>AEHR</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426003355/aehr_8k.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-08</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:low</span></td><td>Item 1.01<div style="color:#64748B;font-size:11px;margin-top:3px">hange on which registered Common Stock, par value $0.01 per share AEHR The NASDAQ Capital Market Item 1.01 Entry into a Material Definitive …</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>AEHR</b></td><td><code style="font-size:12px">10-Q</code> <a href="https://www.sec.gov/Archives/edgar/data/1040470/000165495426003348/aehr_10q.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-08</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Keyword-based excerpt scan completed for revenue / guidance / liquidity / capex / risk factors.<div style="color:#64748B;font-size:11px;margin-top:3px">0001040470 aehr:MoneyMarketFundMember 2026-02-27 0001040470 us-gaap:AccountsReceivableMember 2026-02-27 0001040470 aehr:RevenueMember 2025-0…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>LITE</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1633978/000119312526146256/d13152d8k.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-08</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:low</span></td><td>Item 3.02<div style="margin-top:4px"></div></td></tr>
+<tr><td><b>ORCL</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526142939/d132760d8k.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-06</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:high</span></td><td>Item 5.02<div style="color:#64748B;font-size:11px;margin-top:3px">dards provided pursuant to Section 13(a) of the Exchange Act. ☐ Section 5—Corporate Governance and Management Item 5.02 Departure of Directo…</div><div style="margin-top:4px"></div></td></tr>
+<tr><td><b>TSLA</b></td><td><code style="font-size:12px">8-K</code> <a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026022956/tsla-20260402.htm" target="_blank" style="color:#2563EB;text-decoration:none">↗</a></td><td>2026-04-02</td><td><span class="badge neu">中性</span> <span style="color:#64748B;font-size:11px">影响强度:medium</span></td><td>Item 2.02<div style="color:#64748B;font-size:11px;margin-top:3px">h any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. o Item 2.02 Results of Operation…</div><div style="margin-top:4px"><span class="badge pri">经营/资本动作</span></div></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="color:#64748B;font-size:12px;margin:10px 0 0">
+    口径：8-K / 10-Q / 10-K / 6-K / 20-F 标记真实披露事件；Form 4 已合并为"近 45 天买卖汇总"。bullish / bearish / neutral 由源脚本规则推断，非投资建议。
+  </p>
 </div><div class="card">
   <h2>I. 执行纪律 / 前提 / 仓位约束</h2>
   <div class="kpi-grid" style="grid-template-columns:repeat(2,1fr)">

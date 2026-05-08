@@ -1,15 +1,15 @@
 {
-  "ts": "2026-05-08T10:19:35+0800",
+  "ts": "2026-05-08T10:26:56+0800",
   "account": {
-    "total_assets": 68791.6686,
+    "total_assets": 68697.7686,
     "cash": -46935.61,
-    "risk_status": "LEVEL5",
-    "stock_mv": 119534.1,
+    "risk_status": "LEVEL6",
+    "stock_mv": 119440.2,
     "option_mv": -3806.83,
-    "today_pl": 285.68,
-    "cum_pl": -20315.99,
-    "today_pl_pct": 0.42,
-    "ts_str": "2026-05-08T10:19:36.713995"
+    "today_pl": 191.78,
+    "cum_pl": -20409.89,
+    "today_pl_pct": 0.28,
+    "ts_str": "2026-05-08T10:27:02.615103"
   },
   "stocks": [
     {
@@ -17,72 +17,72 @@
       "name": "特斯拉",
       "qty": 100.0,
       "cost_price": 393.785,
-      "current_price": 411.3,
-      "market_val": 41130.0,
-      "pl_val": 1751.54,
-      "pl_ratio": 4.45,
+      "current_price": 410.8,
+      "market_val": 41080.0,
+      "pl_val": 1701.54,
+      "pl_ratio": 4.32,
       "position_side": "LONG",
-      "today_pl_val": -49.0
+      "today_pl_val": -99.0
     },
     {
       "code": "US.S",
       "name": "SentinelOne",
       "qty": 300.0,
       "cost_price": 15.7,
-      "current_price": 15.87,
-      "market_val": 4761.0,
-      "pl_val": 51.0,
-      "pl_ratio": 1.08,
+      "current_price": 15.95,
+      "market_val": 4785.0,
+      "pl_val": 75.0,
+      "pl_ratio": 1.59,
       "position_side": "LONG",
-      "today_pl_val": -15.0
+      "today_pl_val": 9.0
     },
     {
       "code": "US.NVDA",
       "name": "英伟达",
       "qty": 70.0,
       "cost_price": 183.427,
-      "current_price": 211.88,
-      "market_val": 14831.6,
-      "pl_val": 1991.7,
-      "pl_ratio": 15.509999999999998,
+      "current_price": 211.95,
+      "market_val": 14836.5,
+      "pl_val": 1996.6,
+      "pl_ratio": 15.55,
       "position_side": "LONG",
-      "today_pl_val": 26.6
+      "today_pl_val": 31.5
     },
     {
       "code": "US.NIO",
       "name": "蔚来",
       "qty": 6560.0,
       "cost_price": 9.558,
-      "current_price": 5.92,
-      "market_val": 38835.2,
-      "pl_val": -23863.4214,
-      "pl_ratio": -38.06,
+      "current_price": 5.91,
+      "market_val": 38769.6,
+      "pl_val": -23929.0214,
+      "pl_ratio": -38.17,
       "position_side": "LONG",
-      "today_pl_val": 328.0
+      "today_pl_val": 262.4
     },
     {
       "code": "US.NFLX",
       "name": "奈飞",
       "qty": 60.0,
       "cost_price": 90.417,
-      "current_price": 88.43,
-      "market_val": 5305.8,
-      "pl_val": -119.2,
-      "pl_ratio": -2.1999999999999997,
+      "current_price": 88.4,
+      "market_val": 5304.0,
+      "pl_val": -121.0,
+      "pl_ratio": -2.23,
       "position_side": "LONG",
-      "today_pl_val": 10.8
+      "today_pl_val": 9.0
     },
     {
       "code": "US.LITE",
       "name": "Lumentum",
       "qty": 4.0,
       "cost_price": 915.77,
-      "current_price": 890.05,
-      "market_val": 3560.2,
-      "pl_val": -102.88,
-      "pl_ratio": -2.81,
+      "current_price": 889.0,
+      "market_val": 3556.0,
+      "pl_val": -107.08,
+      "pl_ratio": -2.92,
       "position_side": "LONG",
-      "today_pl_val": -10.12
+      "today_pl_val": -14.32
     },
     {
       "code": "US.CDNS",
@@ -113,12 +113,12 @@
       "name": "Aehr Test Systems",
       "qty": 40.0,
       "cost_price": 86.32,
-      "current_price": 91.24,
-      "market_val": 3649.6,
-      "pl_val": 196.8,
-      "pl_ratio": 5.7,
+      "current_price": 91.21,
+      "market_val": 3648.4,
+      "pl_val": 195.6,
+      "pl_ratio": 5.66,
       "position_side": "LONG",
-      "today_pl_val": -0.8
+      "today_pl_val": -2.0
     }
   ],
   "options": [

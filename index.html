@@ -98,967 +98,830 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   .report-header{flex-direction:column}
   .report-header .meta{text-align:left}
 }
-</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-10 09:09:35</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card"><h2>A. 账户实时快照</h2><div class="kpi-grid"><div class="kpi"><div class="label">总资产 NAV</div><div class="value">$70,020.47 <span class="badge neg">LEVEL5</span></div></div><div class="kpi"><div class="label">当日盈亏</div><div class="value neu">+$0.00 <span class="subtle">(+0.00%)</span></div></div><div class="kpi"><div class="label">累计盈亏</div><div class="value neg">-$19,542.19</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div><div class="kpi"><div class="label">股票市值</div><div class="value">$121,588.80</div></div><div class="kpi"><div class="label">期权市值</div><div class="value">$-4,632.73</div></div></div><div class="subtle" style="margin-top:10px">数据时点 2026-05-10 08:59:11 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="card"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th>模拟账户 (paper)</th><th>真实账户 (real)</th><th>差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th>paper NAV</th><th>real NAV</th><th>paper 当日</th><th>real 当日</th><th>累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th>数量</th><th>成交价</th><th>已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="h-card">
+</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-10 09:23:39</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card"><h2>A. 账户实时快照</h2><div class="kpi-grid"><div class="kpi"><div class="label">总资产 NAV</div><div class="value">$70,020.47 <span class="badge neg">LEVEL5</span></div></div><div class="kpi"><div class="label">当日盈亏</div><div class="value neu">+$0.00 <span class="subtle">(+0.00%)</span></div></div><div class="kpi"><div class="label">累计盈亏</div><div class="value neg">-$19,542.19</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div><div class="kpi"><div class="label">股票市值</div><div class="value">$121,588.80</div></div><div class="kpi"><div class="label">期权市值</div><div class="value">$-4,632.73</div></div></div><div class="subtle" style="margin-top:10px">数据时点 2026-05-10 09:16:02 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="card"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th>模拟账户 (paper)</th><th>真实账户 (real)</th><th>差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th>paper NAV</th><th>real NAV</th><th>paper 当日</th><th>real 当日</th><th>累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th>数量</th><th>成交价</th><th>已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="h-card">
   <h2>▌H. Portfolio Manager 指令板</h2>
   <div class="summary">
-    <b>今日核心指令：</b>明日开盘前主战场 = <b>处理 TMDX P90 ITM 期权（执行级风险，距 strike -24.6%、溢价已 4x）</b>，并对 <b>TSLA C450（距 strike 仅 4.81%，DTE 39）</b> 准备防守预案；NIO 6,560 股 -38.79%（执行级止损）需在明日盘中完成第一档减仓。
+    <b>今日核心指令</b>：① <b>立即执行</b> — TMDX 短 P90 已深度 ITM（spot $67.84，期权放大 4 倍）→ 今日盘中必须回补或展期；② <b>立即执行</b> — NIO 浮亏 -38.79%（占组合 31.56%）已触执行级止损 → 分档减仓控制集中度；③ <b>条件触发</b> — TSLA 短 C450 距行权仅 4.81%（DTE 39d）→ 关注 IV / 突破确认。
   </div>
   <div class="pill-row">
-    <span class="pill red">立即执行 3 条</span>
+    <span class="pill red">立即执行 2 条</span>
     <span class="pill amber">条件触发 2 条</span>
-    <span class="pill gray">观察备选 2 条</span>
+    <span class="pill gray">观察备选 1 条</span>
   </div>
 
-  <!-- 指令 1：TMDX 期权止损 -->
+  <!-- ① TMDX P90 -->
   <div class="instr">
     <span class="conf-tag">需人工确认</span>
     <div class="top">
-      <span class="ticker">[TMDX P90 短Put]</span>
-      <span class="badge neg">立即执行</span>
-      <span class="pill red">回补空头期权</span>
+      <span class="badge neg" style="margin-right:8px">立即执行</span>
+      <span class="ticker">[TMDX 短 Put $90 / 6-18]</span>
+      <span class="badge neg" style="margin-left:8px">回补 或 展期</span>
     </div>
-    <div class="action">明日盘前/开盘 30 分钟内市价回补 <b>1 张 TMDX 260618 P90</b>（参考价 ≈$22.50，最大损失锁定约 -$1,690），释放保证金约 $9,000。<a class="more-link" href="#g-tmdx">查看完整策略 →</a></div>
-    <div class="price">触发依据：现价 $67.84 vs strike $90 → ITM $22.16（-24.62%）；溢价已是开仓成本 4.02x；DTE 仅剩 39 天，时间价值快速衰减但内在价值已锁住绝大部分亏损。</div>
-    <div class="meta">
-      触发条件：开盘后即执行，无需等价格变化。<br>
-      失效条件：若开盘前 TMDX 跳空 +$10 至 $77 上方（罕见），可改为展期至 26-09 P80（保留时间价值）；否则一律回补。<br>
-      仓位上下文：单仓最大尾部风险来源；不处理则随股价继续下跌每 -$1 → 期权再亏约 $100。
+    <div class="action">今日盘中按以下方案二择一：<br>
+      ▸ <b>方案 A（保守平仓）</b>：市价回补 <b>1 张 TMDX 26-06-18 P90</b>（参考 ≤ $23.50，止损实损约 $1,800，释放 $9,000 保证金）<br>
+      ▸ <b>方案 B（展期降风险）</b>：buy back P90 同时卖出 <b>1 张 26-09-19 P75</b>，目标 net debit ≤ $1.50，期限拉长 + 行权价下移 25%
     </div>
+    <div class="price">当前期权价 $22.51 ｜ 开仓成本 $5.60 ｜ 浮亏 -$1,690.63（放大 4.02 倍）｜ 距行权 -24.62%（已 ITM）</div>
+    <div class="meta">触发条件：已触发执行级（premium ≥ 4×、距 strike < 0、ITM）</div>
+    <div class="meta">失效条件：TMDX 反弹至 $80+ 且期权回到 $15 以下，可暂缓回补改为展期</div>
+    <div class="meta">仓位上下文：单仓最大尾部风险，assignment 触发将占用 $9,000 保证金 + 100 股 TMDX 多头暴露</div>
+    <a class="more-link" href="#g-tmdx">查看完整策略 →</a>
   </div>
 
-  <!-- 指令 2：NIO 第一档减仓 -->
+  <!-- ② NIO 减仓 -->
   <div class="instr">
     <div class="top">
-      <span class="ticker">[NIO 6,560 股]</span>
-      <span class="badge neg">立即执行</span>
-      <span class="pill red">减仓 25%</span>
+      <span class="badge neg" style="margin-right:8px">立即执行</span>
+      <span class="ticker">[NIO 正股 6,560 股]</span>
+      <span class="badge neg" style="margin-left:8px">减仓 25%-35%</span>
     </div>
-    <div class="action">明日盘前挂限价单：<b>$5.95 × 800 股</b> + <b>$6.10 × 800 股</b>，分两档共减仓 <b>1,600 股（占当前 NIO 仓位 24.4%）</b>，回笼约 $9,640，降组合 EV 暴露至约 53%。</div>
-    <div class="price">触发依据：浮亏 -38.79% 已多重触发执行级（成本 $9.56，现价 $5.85）；价格已跌破 SMA50 ($5.90)；60 日支撑 $4.93，下方风险敞口仍大；NIO 占组合 31.56%、与 TSLA 共占 66.79%，集中度过高。</div>
-    <div class="meta">
-      触发条件：盘前限价挂单，开盘后由市场触达。<br>
-      失效条件：若 NIO 跳空 -10% 至 $5.27 以下，改为市价减 1,000 股，剩余按下一日收盘评估。<br>
-      仓位上下文：第二档减仓（再 1,600 股）作为"条件触发"另列，避免一次性踏空反弹。
+    <div class="action">今日盘前分三档挂限价卖单：<br>
+      ▸ <b>$5.95 × 800 股</b>（盘前/开盘第一波）<br>
+      ▸ <b>$6.10 × 800 股</b>（盘中反弹）<br>
+      ▸ <b>$6.25 × 800 股</b>（突破 SMA50 $5.90 之上加速）<br>
+      合计减 <b>2,400 股（占当前仓位 36.6%）</b>，将组合权重从 31.56% 压到 ≈ 20%
     </div>
+    <div class="price">当前价 $5.85 ｜ 成本 $9.558 ｜ 浮亏 -$24,322.62 (-38.79%) ｜ SMA50 $5.90 ｜ 支撑 $4.93</div>
+    <div class="meta">触发条件：浮亏触发执行级；价格已跌破 SMA50；组合集中度 high（前三仓位 79.18%）</div>
+    <div class="meta">失效条件：若开盘直接跳空跌破 $5.50 → 暂缓挂单，等反弹至 $5.80 再分批；若放量突破 $6.40 → 减仓比例下调至 20%</div>
+    <div class="meta">仓位上下文：承担组合 31.56% 权重，是首要降风险目标；同时持有 30 张 NIO 短 Call $7（DTE 26d，OTM 16.4%），减股不影响该期权风险结构</div>
   </div>
 
-  <!-- 指令 3：TSLA C450 防守预案 -->
+  <!-- ③ TSLA Short Call -->
   <div class="instr">
-    <span class="conf-tag">需人工确认</span>
     <div class="top">
-      <span class="ticker">[TSLA C450 短Call]</span>
-      <span class="badge warn">立即执行</span>
-      <span class="pill amber">挂条件单</span>
+      <span class="badge warn" style="margin-right:8px">条件触发</span>
+      <span class="ticker">[TSLA 短 Call $450 / 6-18]</span>
+      <span class="badge warn" style="margin-left:8px">回补 或 covered call 转滚</span>
     </div>
-    <div class="action">明日开盘前预挂 <b>GTC 限价回补单</b>：<b>1 张 TSLA 260618 C450 @ $20.00（GTC）</b>；同时预挂展期触发单（见 G-TSLA）。当前期权价 $16.88，若 TSLA 突破 $440 该单大概率成交。<a class="more-link" href="#g-tsla">查看完整策略 →</a></div>
-    <div class="price">触发依据：TSLA 现价 $428.35 距 strike $450 仅剩 4.81%（一级防守区）；溢价 1.42x 开仓成本，浮亏 -$502；持有 100 股 TSLA → 若被 assign 则被动卖出锁住 $5,621.5 利润但失去主升浪。</div>
-    <div class="meta">
-      触发条件：TSLA 突破 $440 或期权价触及 $20.00 任一即回补。<br>
-      失效条件：若 TSLA 跌回 $410 以下且期权价回到 $13 以内，可撤单继续卖时间价值。<br>
-      仓位上下文：与正股 100 股形成 covered call；assign 风险升高，须在 DTE&lt;30 前完成方向决定。
+    <div class="action">触发后执行（不主动下单）：<br>
+      ▸ 若 TSLA <b>盘中放量突破 $440</b> 且期权价 ≥ <b>$20</b> → 市价回补 1 张 C450（实亏约 $815）<br>
+      ▸ 若 TSLA 跌回 <b>$415 以下</b> 且期权回落 ≤ <b>$13</b> → 维持持有等时间价值衰减<br>
+      ▸ 若 TSLA 横盘 $420-$440 至下周中 → 评估 roll 至 <b>26-09-19 C470</b>，目标 net credit ≥ $3
     </div>
+    <div class="price">当前期权价 $16.88 ｜ 成本 $11.85 ｜ 浮亏 -$502.50 ｜ Strike $450 ｜ 距 strike +4.81% ｜ DTE 39d ｜ OTM</div>
+    <div class="meta">触发条件：距 strike 不足 5%（一级防守区）；正股已挂 100 股可作 covered 担保，无裸卖风险</div>
+    <div class="meta">失效条件：TSLA 单日跳空 +5% 直接突破 $450 → 改为立即执行回补，不再等横盘</div>
   </div>
 
-  <!-- 指令 4：NIO 第二档减仓（条件触发） -->
+  <!-- ④ ORCL Short Put 观察 -->
   <div class="instr">
     <div class="top">
-      <span class="ticker">[NIO 第二档]</span>
-      <span class="badge warn">条件触发</span>
-      <span class="pill red">减仓再 25%</span>
+      <span class="badge warn" style="margin-right:8px">条件触发</span>
+      <span class="ticker">[ORCL 短 Put $175 / 6-05]</span>
+      <span class="badge neu" style="margin-left:8px">继续持有 + 触发再动</span>
     </div>
-    <div class="action">第一档执行后，若 NIO 反弹至 <b>$6.25</b> 以上 → 挂 <b>$6.30 × 800 股</b> + <b>$6.50 × 800 股</b> 再减 1,600 股；若直接跌破 <b>$5.50</b> → 市价立即再减 1,000 股止损。</div>
-    <div class="price">触发依据：第一档减仓不足以解决"31.56% 单票 + 中概敞口"双重集中度；继续走弱时支撑下移到 $4.93；反弹触及 SMA50 ($5.90) 上方任何价位都是止损良机。</div>
-    <div class="meta">
-      触发条件：A 路径 NIO ≥$6.25；B 路径 NIO &lt;$5.50。<br>
-      失效条件：NIO 在 $5.50–$6.25 区间震荡 ≥3 个交易日 → 暂缓第二档，转交本周复盘评估。<br>
-      仓位上下文：目标是把 NIO 占比从 31.56% 压到 ≤20%。
+    <div class="action">默认不操作。条件触发后再动手：<br>
+      ▸ 若 ORCL <b>跌破 $185</b> → 评估买入 <b>1 张 P170</b> 做 put spread 锁尾部（debit ≤ $2）<br>
+      ▸ 若 ORCL <b>跌破 $175</b>（已 ITM）→ 立即回补 P175 或展期至 26-09-19 P165<br>
+      ▸ 若 ORCL 维持 $193+ 至 5/29 → 提前回补释放保证金（≤ $1.5 即可）
     </div>
+    <div class="price">当前期权价 $3.80 ｜ 成本 $4.26 ｜ 浮盈 +$46.40 ｜ Strike $175 ｜ 距 strike +11.97% ｜ DTE 26d ｜ OTM</div>
+    <div class="meta">触发条件：当前正常区，距 strike 缓冲 12%；DTE 已不足 4 周</div>
+    <div class="meta">失效条件：正股若一日跌幅 > 5% 或跌破 $185 → 升级为立即执行</div>
   </div>
 
-  <!-- 指令 5：NFLX 减仓预案（条件触发） -->
+  <!-- ⑤ NFLX 观察 -->
   <div class="instr">
     <div class="top">
-      <span class="ticker">[NFLX 60 股]</span>
-      <span class="badge warn">条件触发</span>
-      <span class="pill red">减仓 50%</span>
+      <span class="badge neu" style="margin-right:8px">观察备选</span>
+      <span class="ticker">[NFLX 正股 60 股]</span>
+      <span class="badge neu" style="margin-left:8px">暂不操作</span>
     </div>
-    <div class="action">条件触发：若 NFLX 跌破 <b>$84.50</b>（前低 $87.49 失守 + 1.2% 缓冲） → 市价减 <b>30 股</b>（占当前 50%）；若反弹至 <b>$94</b>（贴近 SMA50 $95.54）→ 减 30 股止损。</div>
-    <div class="price">触发依据：现价 $87.49 已贴 60 日支撑（$87.50），SMA50 $95.54 上方压力沉重，RSI 24.2 超卖但趋势 bearish；近期 Form 4 内部人卖出 9,253 股@$88.95（5/7）信号偏空。</div>
-    <div class="meta">
-      触发条件：A 路径 NFLX &lt;$84.50；B 路径 NFLX ≥$94。<br>
-      失效条件：NFLX 收回 SMA50 $95.54 上方 ≥2 个交易日 → 取消减仓预案。<br>
-      仓位上下文：NFLX 占组合 4.32%，单仓影响有限，减一半即可释放观察空间。
+    <div class="action">未到执行阈值，不挂任何订单。<br>
+      ▸ 监控 NFLX 跌破 <b>$87.40</b>（60 日支撑）→ 升级为立即执行减 30%（≈ 18 股）<br>
+      ▸ 反弹至 <b>$95.50</b> 之上（SMA50）→ 维持持有不动
     </div>
+    <div class="price">当前价 $87.49 ｜ 成本 $90.42 ｜ 浮亏 -$175.60 (-3.24%) ｜ 支撑 $87.50 ｜ SMA50 $95.54</div>
+    <div class="meta">触发条件：现价距 60 日支撑仅 -0.01%，已二级提醒；但仓位仅 4.32%，绝对风险有限</div>
+    <div class="meta">失效条件：失守 $87.40 即升级；持续在 $87.50-$92 区间则维持观察</div>
   </div>
 
-  <!-- 指令 6：ORCL P175 现金担保Put（观察） -->
-  <div class="instr">
-    <div class="top">
-      <span class="ticker">[ORCL P175 短Put]</span>
-      <span class="badge neu">观察备选</span>
-      <span class="pill gray">继续持有</span>
-    </div>
-    <div class="action">本周不操作。监控 ORCL 是否跌破 <b>$185</b>（距 strike 仅 5.7%）→ 触及则评估展期至 26-09 P170；若维持 $190+ → 等待 DTE&lt;15 内自然衰减。</div>
-    <div class="price">触发依据：ORCL 现价 $195.95 距 strike $175 还有 11.97% 缓冲；溢价 0.89x（小幅浮盈 +$46）；近期 Form 4 内部人买入 224,441 股@$185.35（5/7）信号偏多。</div>
-    <div class="meta">
-      触发条件：ORCL &lt;$185 → 启动展期评估；DTE &lt;15 且 OTM → 等价值归零。<br>
-      失效条件：ORCL &lt;$178（距 strike 仅 1.7%）必须立即评估回补。<br>
-      仓位上下文：DTE 26 天，最有利的现金担保 Put，本周可静态持有。
-    </div>
-  </div>
-
-  <!-- 指令 7：NIO C7 短Call（观察） -->
-  <div class="instr">
-    <div class="top">
-      <span class="ticker">[NIO C7 短Call ×30]</span>
-      <span class="badge neu">观察备选</span>
-      <span class="pill gray">继续持有</span>
-    </div>
-    <div class="action">本周不操作。期权价已从 $0.28 衰减至 $0.105（浮盈 +62.5%）；DTE 26 天，距 strike 仍有 16.4% 缓冲。继续等待时间价值归零或 DTE&lt;10 时市价回补 ≤$0.05。</div>
-    <div class="price">触发依据：NIO 现价 $5.85 vs strike $7.00（OTM 16.4%），溢价 0.375x；如果第一档 NIO 减仓后正股不足 3,000 股，需同步减 covered call 数量以维持比例。</div>
-    <div class="meta">
-      触发条件：DTE&lt;10 且期权价 ≤$0.05 → 市价全部回补；NIO 突破 $6.50 → 评估展期至 7 月 C7.5。<br>
-      失效条件：NIO ≥$6.80（距 strike 仅 2.9%）必须立即回补。<br>
-      仓位上下文：与 NIO 现货数量挂钩，是这次减仓里的次级变量。
-    </div>
+  <div class="callout warn" style="margin-top:14px">
+    <b>策略与开新仓提示</b>：本面板涉及期权回补 / 展期 / put spread / covered call roll 均属于策略调整或开新策略，需人工确认后再执行；不会自动下单。
   </div>
 </div><div class="card">
   <h2>D. 市场级止盈/止损总警报</h2>
-  <div class="callout info">
-    <b>组合级灯号：</b><span class="badge warn">观察级</span>
-    依据：VIX 17.19（低于 17 阈值附近，平静）；QQQ trailing P/E <b>34.69</b>（已高于 34，进入"估值观察级"）；US10Y 0.44 / DXY 97.84。市场情绪 <b>risk-on 偏中性</b>，未触发组合级止盈/止损敏感窗口。
+
+  <div class="callout warn">
+    <b>组合总灯号</b>：观察级（止盈侧） + 单仓执行级（止损侧 NIO/TMDX）<br>
+    <b>核心仓位动作</b>：警惕止损 + 等待确认（市场情绪 risk-on，但单仓尾部风险已成型）
   </div>
-  <div class="table-wrap" style="margin-top:8px">
+
+  <div class="table-wrap">
     <table class="t">
-      <thead><tr><th>指标</th><th>当前值</th><th class="num">阈值</th><th>状态</th></tr></thead>
+      <thead>
+        <tr><th>维度</th><th>读数</th><th>阈值口径</th><th>对组合的意义</th></tr>
+      </thead>
       <tbody>
-        <tr><td>^VIX</td><td class="num">17.19</td><td class="num">观察&lt;17 / 一级≤15 / 二级 13–14</td><td><span class="badge neu">未触发</span></td></tr>
-        <tr><td>QQQ trailing P/E</td><td class="num">34.69</td><td class="num">观察&gt;34 / 一级≥36 / 二级≥38</td><td><span class="badge warn">观察级</span></td></tr>
-        <tr><td>QQQ 现价</td><td class="num">711.23</td><td class="num">距 SMA20/50 数据待补</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>DXY</td><td class="num">97.84</td><td class="num">—</td><td><span class="badge neu">温和</span></td></tr>
-        <tr><td>US10Y</td><td class="num">0.44 (proxy)</td><td class="num">数据口径偏低，仅作参考</td><td><span class="badge neu">数据缺口</span></td></tr>
+        <tr><td>VIX</td><td class="num">17.19</td><td>观察级 &lt;17 / 一级 ≤15 / 二级 13-14</td><td>未触发观察级，恐慌指数中性偏低</td></tr>
+        <tr><td>QQQ 价格</td><td class="num">711.23</td><td>—</td><td>位置正常，无破位信号</td></tr>
+        <tr><td>QQQ Trailing P/E</td><td class="num">34.69</td><td>观察级 &gt;34 / 一级 ≥36 / 二级 ≥38</td><td><b>已进入观察级</b>：估值偏贵，止盈敏感度上升</td></tr>
+        <tr><td>市场情绪</td><td>risk-on（中性）</td><td>—</td><td>无系统性 risk-off 信号</td></tr>
+        <tr><td>组合层面</td><td>非组合级敏感窗口</td><td>—</td><td>VIX 与 QQQ PE 未同时触一级，单仓风险才是当前主题</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h3 style="margin-top:18px;color:#0F172A">风控辩论：本周组合级仓位倾向</h3>
+  <h3 style="margin-top:18px;font-size:16px;color:#0F172A">风控辩论</h3>
   <div class="debate-grid">
     <div class="col con">
       <h3>🛡️ 保守方</h3>
       <ul>
-        <li>QQQ 估值已进入观察级，34x 静态 PE 接近 2026 年高位。</li>
-        <li>组合 Top3 集中度 79.18%（TSLA + NIO + NVDA），单变量风险大。</li>
-        <li>TMDX 短 Put 已是执行级（4x 溢价、ITM 24.6%），尾部风险即时威胁。</li>
-        <li>NIO 浮亏 -38.79%、跌破 SMA50，结构破位中。</li>
+        <li>NIO 浮亏 -38.79% 已触发 <b>执行级止损</b>，且占组合 31.56%——单股事故能直接拉回净值。</li>
+        <li>TMDX 短 P90 期权放大 4 倍、距 strike -24.62%（已 ITM），尾部风险已具体化。</li>
+        <li>QQQ PE 34.69 已进观察级，TSLA / NVDA 仓位累计 47.6%，对估值修正敏感。</li>
+        <li>前三大仓位集中度 79.18%（high），任何单点冲击都会被放大。</li>
+        <li><b>结论</b>：必须先减 NIO + 处置 TMDX P90，把组合从尾部风险拖出来。</li>
       </ul>
-      <p><b>建议：</b>本周以"减仓 + 控尾部"为主，先处理 TMDX 与 NIO 第一档。</p>
     </div>
     <div class="col agg">
       <h3>⚔️ 激进方</h3>
       <ul>
-        <li>VIX 17.19 仍处低位，市场未进入恐慌；未来一周空间更可能向上。</li>
-        <li>TSLA RSI 69.1 + 突破前高 $436.23 阻力，趋势仍强；过早平 covered call 会丢主升浪。</li>
-        <li>NVDA、AEHR、CDNS 全部在 SMA50/支撑之上，趋势完好。</li>
-        <li>ORCL 内部人巨量买入（22.4 万股）+ ORCL P175 大幅 OTM，可静态吃时间价值。</li>
+        <li>VIX 17.19 仍在中性区间，未出现系统性 risk-off。</li>
+        <li>TSLA +8.78%、NVDA +17.32%、AEHR +12.64%、CDNS +5.09% 仍是上行结构。</li>
+        <li>NIO 已跌至 -38.79%，反弹弹性最大；NIO 短 C7（OTM 16%）反而是 IV 收割窗口。</li>
+        <li>ORCL 短 P175 距 strike +12% 安全，时间价值衰减中。</li>
+        <li><b>结论</b>：核心多头仓位无须动，只需精准处置 NIO 与 TMDX 尾部，不应全面降风险。</li>
       </ul>
-      <p><b>建议：</b>除 TMDX 必须止损外，其它优质仓位继续持有；NIO 仅做小幅减仓。</p>
     </div>
     <div class="col fin">
       <h3>⚖️ 最终倾向</h3>
       <ul>
-        <li><b>偏保守</b>：先处理 TMDX 执行级期权（无回旋）。</li>
-        <li>NIO 减仓分两档执行，避免一次性踏空潜在反弹。</li>
-        <li>TSLA、NVDA、AEHR、CDNS、S 主仓位保留，不主动减。</li>
-        <li>组合级灯号维持"观察级"；未来一周如 VIX&lt;15 或 QQQ PE≥36 → 升级"一级提醒"，触发系统性止盈。</li>
+        <li><b>方向</b>：偏保守，但只在两个具体仓位上下手——NIO 减 25%-35% + TMDX P90 回补/展期。</li>
+        <li><b>不动</b>：TSLA / NVDA / CDNS / AEHR / S 多头维持；ORCL P175、TSLA C450 等待触发。</li>
+        <li><b>执行节奏</b>：今日盘前先挂 NIO 限价单，盘中处置 TMDX P90；TSLA C450 看突破再动。</li>
+        <li><b>边界</b>：若 VIX &gt; 20 或 QQQ 跌破 700 → 升级为组合级降风险，否则只做单仓修复。</li>
       </ul>
-      <p><b>关键复评变量：</b>VIX、QQQ PE、TMDX 现价、NIO 现价。</p>
     </div>
   </div>
-  <p class="footer-note" style="margin-top:10px">注：以上为基于公开数据的观察性结论，不构成自动下单指令；仓位调整以人工确认为前提。</p>
+
+  <div class="callout info" style="margin-top:14px">
+    <b>数据缺口</b>：本次因 yfinance 不可用，未注入 DXY / 美债收益率 / 大盘均线距离等宏观补充字段；VIX 与 QQQ PE 来自 take_profit_monitor 缓存，时效以脚本 as_of 为准。
+  </div>
 </div><div class="card">
   <h2>E. 个股 / 期权执行价位卡</h2>
-  <p class="subtle">价位依据：<code>holdings_ta</code> 的 SMA/支撑/阻力 + <code>stop_loss_monitor</code> 分级；数据基准日 5/8 收盘。</p>
 
-  <h3 style="margin-top:8px">持仓股票执行卡</h3>
+  <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">E-1 股票执行价位卡</h3>
   <div class="table-wrap">
     <table class="t">
       <thead>
         <tr>
-          <th>Ticker</th><th class="num">当前价</th><th class="num">成本</th><th class="num">浮盈亏</th>
-          <th class="num">止盈点1</th><th class="num">止盈点2</th><th class="num">止损失效位</th>
-          <th class="num">加仓观察区</th><th class="num">减仓执行区</th><th>最终倾向</th>
+          <th>Ticker</th><th>当前价</th><th>成本价</th><th>盈亏%/$</th>
+          <th>止盈 1</th><th>止盈 2</th><th>止损/失效位</th>
+          <th>加仓观察区</th><th>减仓执行区</th><th>最终倾向</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><b>TSLA</b></td><td class="num">428.35</td><td class="num">393.79</td><td class="num pos">+8.78%</td>
-          <td class="num">436.2</td><td class="num">450.0</td><td class="num">383.2 (SMA50)</td>
-          <td class="num">395–410</td><td class="num">≥450（被动 assign）</td>
+          <td><b>TSLA</b></td><td class="num">$428.35</td><td class="num">$393.79</td><td class="num pos">+8.78% / +$3,457</td>
+          <td class="num">$445</td><td class="num">$465</td><td class="num">$408（SMA20）</td>
+          <td class="num">$405-$415</td><td class="num">$445+ 减 30%</td>
           <td><span class="badge pos">继续持有</span></td>
         </tr>
         <tr>
-          <td><b>NVDA</b></td><td class="num">215.20</td><td class="num">183.43</td><td class="num pos">+17.32%</td>
-          <td class="num">217.8</td><td class="num">230.0</td><td class="num">188.6 (SMA50)</td>
-          <td class="num">195–203</td><td class="num">无（核心仓位）</td>
-          <td><span class="badge pos">继续持有</span></td>
-        </tr>
-        <tr class="neg-row">
-          <td><b>NIO</b></td><td class="num">5.85</td><td class="num">9.56</td><td class="num neg">-38.79%</td>
-          <td class="num">—</td><td class="num">—</td><td class="num">4.93 (60日支撑)</td>
-          <td class="num">不加仓</td><td class="num">5.95 / 6.10 / 6.30 / 6.50</td>
-          <td><span class="badge neg">分档减仓</span></td>
-        </tr>
-        <tr class="neg-row">
-          <td><b>NFLX</b></td><td class="num">87.49</td><td class="num">90.42</td><td class="num neg">-3.24%</td>
-          <td class="num">95.5 (SMA50)</td><td class="num">109.0</td><td class="num">84.5 (前低 -1.2%)</td>
-          <td class="num">不加仓</td><td class="num">&lt;84.5 → 减50%；≥94 → 减50%</td>
-          <td><span class="badge warn">条件减仓</span></td>
-        </tr>
-        <tr>
-          <td><b>S</b></td><td class="num">16.59</td><td class="num">15.70</td><td class="num pos">+5.67%</td>
-          <td class="num">16.6</td><td class="num">18.5</td><td class="num">13.97 (SMA50)</td>
-          <td class="num">14.5–15.0</td><td class="num">无</td>
+          <td><b>NVDA</b></td><td class="num">$215.20</td><td class="num">$183.43</td><td class="num pos">+17.32% / +$2,224</td>
+          <td class="num">$225</td><td class="num">$235</td><td class="num">$200</td>
+          <td class="num">$195-$205</td><td class="num">$230+ 减 25%</td>
           <td><span class="badge pos">继续持有</span></td>
         </tr>
         <tr>
-          <td><b>AEHR</b></td><td class="num">97.23</td><td class="num">86.32</td><td class="num pos">+12.64%</td>
-          <td class="num">100</td><td class="num">110</td><td class="num">60.3 (SMA50)</td>
-          <td class="num">85–90</td><td class="num">无</td>
+          <td><b>AEHR</b></td><td class="num">$97.23</td><td class="num">$86.32</td><td class="num pos">+12.64% / +$436</td>
+          <td class="num">$105</td><td class="num">$115</td><td class="num">$88</td>
+          <td class="num">—（仓位太小，不加）</td><td class="num">$110+ 减 50%</td>
           <td><span class="badge pos">继续持有</span></td>
         </tr>
         <tr>
-          <td><b>CDNS</b></td><td class="num">362.70</td><td class="num">345.14</td><td class="num pos">+5.09%</td>
-          <td class="num">370</td><td class="num">390</td><td class="num">303.9 (SMA50)</td>
-          <td class="num">320–335</td><td class="num">无</td>
+          <td><b>S</b></td><td class="num">$16.59</td><td class="num">$15.70</td><td class="num pos">+5.67% / +$267</td>
+          <td class="num">$18.50</td><td class="num">$20</td><td class="num">$14.50</td>
+          <td class="num">$15.20-$15.80</td><td class="num">$19+ 减 30%</td>
           <td><span class="badge pos">继续持有</span></td>
         </tr>
         <tr>
-          <td><b>ARKK</b></td><td class="num">79.12</td><td class="num">77.80</td><td class="num pos">+1.70%</td>
-          <td class="num">80</td><td class="num">90</td><td class="num">73.1 (SMA50)</td>
-          <td class="num">73–75</td><td class="num">无</td>
-          <td><span class="badge neu">继续持有</span></td>
+          <td><b>CDNS</b></td><td class="num">$362.70</td><td class="num">$345.14</td><td class="num pos">+5.09% / +$176</td>
+          <td class="num">$385</td><td class="num">$405</td><td class="num">$340</td>
+          <td class="num">$345-$355</td><td class="num">$395+ 减 30%</td>
+          <td><span class="badge pos">继续持有</span></td>
         </tr>
         <tr>
-          <td><b>LITE</b></td><td class="num">903.80</td><td class="num">915.77</td><td class="num neg">-1.31%</td>
-          <td class="num">920</td><td class="num">980</td><td class="num">788.2 (SMA50)</td>
-          <td class="num">820–860</td><td class="num">无</td>
-          <td><span class="badge neu">继续持有</span></td>
+          <td><b>ARKK</b></td><td class="num">$79.12</td><td class="num">$77.80</td><td class="num pos">+1.70% / +$66</td>
+          <td class="num">$85</td><td class="num">$92</td><td class="num">$73（SMA50）</td>
+          <td class="num">$75-$77</td><td class="num">—</td>
+          <td><span class="badge neu">中性持有</span></td>
+        </tr>
+        <tr>
+          <td><b>LITE</b></td><td class="num">$903.80</td><td class="num">$915.77</td><td class="num neg">-1.31% / -$48</td>
+          <td class="num">$960</td><td class="num">$1,020</td><td class="num">$788（SMA50）</td>
+          <td class="num">$880-$905</td><td class="num">$980+ 减 50%</td>
+          <td><span class="badge neu">继续持有观察</span></td>
+        </tr>
+        <tr>
+          <td><b>NFLX</b></td><td class="num">$87.49</td><td class="num">$90.42</td><td class="num neg">-3.24% / -$176</td>
+          <td class="num">$95.50</td><td class="num">$100</td><td class="num">$87.40 ⚠️</td>
+          <td class="num">不加</td><td class="num">$95+ 减 30%</td>
+          <td><span class="badge warn">等待确认</span></td>
+        </tr>
+        <tr>
+          <td><b>NIO</b></td><td class="num">$5.85</td><td class="num">$9.56</td><td class="num neg">-38.79% / -$24,323</td>
+          <td class="num">$6.40</td><td class="num">$7.00（短 C 行权）</td><td class="num">$4.93 ⛔</td>
+          <td class="num">不加</td><td class="num"><b>$5.95-$6.25 立即减 36%</b></td>
+          <td><span class="badge neg">立即减仓</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h3 style="margin-top:18px">期权执行卡</h3>
+  <h3 style="margin:18px 0 10px;font-size:16px;color:#0F172A">E-2 期权执行价位卡</h3>
   <div class="table-wrap">
     <table class="t">
       <thead>
         <tr>
-          <th>合约</th><th class="num">当前价</th><th class="num">开仓成本</th><th class="num">盈亏倍数</th>
-          <th class="num">strike</th><th class="num">DTE</th><th>ITM/OTM</th>
-          <th>Assign 风险</th><th class="num">回补线</th><th class="num">展期观察线</th><th class="num">风险升级线</th><th>最终倾向</th>
+          <th>合约</th><th>当前权利金</th><th>开仓成本</th><th>盈亏倍数</th>
+          <th>Strike</th><th>DTE</th><th>ITM/OTM</th><th>距 strike</th>
+          <th>Assignment 风险</th><th>回补线</th><th>展期观察线</th><th>风险升级线</th><th>最终倾向</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="neg-row">
-          <td><b>TMDX 260618 P90</b><br><span class="subtle">SHORT 1×</span></td>
-          <td class="num">22.50</td><td class="num">5.60</td><td class="num neg">4.02x</td>
-          <td class="num">90.0</td><td class="num">39</td>
-          <td><span class="badge neg">ITM 24.6%</span></td>
+        <tr>
+          <td><b>TMDX 26-06-18 P90</b><br><span class="subtle">短 1 张</span></td>
+          <td class="num">$22.51</td><td class="num">$5.60</td><td class="num neg">×4.02 亏</td>
+          <td class="num">$90</td><td class="num">39d</td><td><span class="badge neg">ITM</span></td>
+          <td class="num neg">-24.62%</td>
           <td><span class="badge neg">高</span></td>
-          <td class="num">≤22.50（即时）</td>
-          <td class="num">展期至 26-09 P80</td>
-          <td class="num">spot &lt;$65 → 必须回补</td>
-          <td><span class="badge neg">立即回补</span></td>
-        </tr>
-        <tr class="warn-row">
-          <td><b>TSLA 260618 C450</b><br><span class="subtle">SHORT 1×（covered）</span></td>
-          <td class="num">16.88</td><td class="num">11.85</td><td class="num neg">1.42x</td>
-          <td class="num">450.0</td><td class="num">39</td>
-          <td><span class="badge warn">OTM 4.81%</span></td>
-          <td><span class="badge warn">中</span></td>
-          <td class="num">期权≥$20 / spot≥$440</td>
-          <td class="num">展期至 26-09 C470</td>
-          <td class="num">spot ≥$455 → 必须处理</td>
-          <td><span class="badge warn">挂条件单</span></td>
+          <td class="num">≤ $23.50 立即</td>
+          <td class="num">26-09-19 P75 net debit ≤ $1.50</td>
+          <td class="num">权利金破 $25 或 spot 跌破 $65</td>
+          <td><span class="badge neg">立即处置</span></td>
         </tr>
         <tr>
-          <td><b>ORCL 260605 P175</b><br><span class="subtle">SHORT 1×（cash-secured）</span></td>
-          <td class="num">3.80</td><td class="num">4.26</td><td class="num pos">0.89x</td>
-          <td class="num">175.0</td><td class="num">26</td>
-          <td><span class="badge neu">OTM 11.97%</span></td>
-          <td><span class="badge neu">低</span></td>
-          <td class="num">期权≥$6 → 评估</td>
-          <td class="num">spot &lt;$185 → 评估展期</td>
-          <td class="num">spot &lt;$178 → 必须评估回补</td>
+          <td><b>TSLA 26-06-18 C450</b><br><span class="subtle">短 1 张（covered）</span></td>
+          <td class="num">$16.88</td><td class="num">$11.85</td><td class="num neg">×1.42 亏</td>
+          <td class="num">$450</td><td class="num">39d</td><td><span class="badge neu">OTM</span></td>
+          <td class="num pos">+4.81%</td>
+          <td><span class="badge warn">中</span></td>
+          <td class="num">≥ $20 + 突破 $440</td>
+          <td class="num">26-09-19 C470 net credit ≥ $3</td>
+          <td class="num">spot 突破 $445 当日收盘</td>
+          <td><span class="badge warn">等确认</span></td>
+        </tr>
+        <tr>
+          <td><b>ORCL 26-06-05 P175</b><br><span class="subtle">短 1 张</span></td>
+          <td class="num">$3.80</td><td class="num">$4.26</td><td class="num pos">×0.89 盈</td>
+          <td class="num">$175</td><td class="num">26d</td><td><span class="badge pos">OTM</span></td>
+          <td class="num pos">+11.97%</td>
+          <td><span class="badge pos">低</span></td>
+          <td class="num">≤ $1.50 提前关</td>
+          <td class="num">spot 跌破 $185 → 评估 P170 spread</td>
+          <td class="num">spot 跌破 $175</td>
           <td><span class="badge pos">继续持有</span></td>
         </tr>
         <tr>
-          <td><b>NIO 260605 C7</b><br><span class="subtle">SHORT 30×（covered）</span></td>
-          <td class="num">0.105</td><td class="num">0.28</td><td class="num pos">0.375x</td>
-          <td class="num">7.0</td><td class="num">26</td>
-          <td><span class="badge neu">OTM 16.4%</span></td>
-          <td><span class="badge neu">低</span></td>
-          <td class="num">期权≤$0.05（DTE&lt;10）</td>
-          <td class="num">spot &gt;$6.50 → 展期 7月 C7.5</td>
-          <td class="num">spot ≥$6.80 → 必须回补</td>
+          <td><b>NIO 26-06-05 C7</b><br><span class="subtle">短 30 张（覆盖 3000 股）</span></td>
+          <td class="num">$0.105</td><td class="num">$0.28</td><td class="num pos">×0.38 盈（已收 62%）</td>
+          <td class="num">$7.00</td><td class="num">26d</td><td><span class="badge pos">OTM</span></td>
+          <td class="num pos">+19.66%</td>
+          <td><span class="badge pos">低</span></td>
+          <td class="num">≤ $0.05 全部回补</td>
+          <td class="num">—（保留）</td>
+          <td class="num">spot 突破 $6.50</td>
           <td><span class="badge pos">继续持有</span></td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="callout info" style="margin-top:12px">
+    <b>价位口径说明</b>：本表中 SMA50 / 支撑等数值来自 stop_loss_monitor 缓存；个别个股因 yfinance 不可用，未取得最新 SMA20 数据，TSLA / NVDA / AEHR 等止损位以最近交易区间 + 成本 + 心理位综合给出，已在表中标注。
   </div>
 </div><div class="card">
   <h2>F. 多视角个股深度分析</h2>
-  <p class="subtle">每只持仓 / 期权 underlying 一个可展开行（多空对抗 + 关键变量）；下方再列 17 只非持仓长期观察名单的趋势与进场点位。</p>
-  <h3 style="margin-top:8px">持仓正股 + 期权 underlying（共 11 只）</h3>
+
+  <p class="subtle" style="margin-top:0">每只持仓 + 期权 underlying 单独折叠；下方"长期观察名单"因 yfinance 数据缺口本次未能渲染完整价位，已在卡片末尾说明。</p>
+
+  <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">F-1 持仓正股 + 期权 Underlying（共 11 只）</h3>
+
   <details class="row">
-    <summary><b>TSLA</b> <span class="subtle">$428.35</span> <span class="pos">+8.78%</span> <span class="badge pos">偏多</span></summary>
+    <summary><b>TSLA</b> <span class="subtle">$428.35</span> <span class="badge pos">偏多</span> <span class="sum-action badge neu">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>现价 $428.35 已突破 SMA20 ($386.76) 与 SMA50 ($383.19)，趋势强劲</li><li>RSI 69.1 仍未到极端超买（&lt;70），有进一步上行空间</li><li>已逼近 60 日阻力 $436.23，若放量突破打开 $450+ 空间</li><li>5/4 Form 4: 内部人买入 40,948 股@$14.99 (期权行权)，未减持</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>高位 RSI 接近超买，回调 SMA20 概率上升</li><li>我方持有 SHORT C450 期权，距 strike 仅 4.81%，被 assign 风险中等</li><li>估值仍偏高，宏观利率反转敏感</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏多</b>，但因 covered call 在身，应在 spot 突破 $440 时主动处理 short call（见 H 指令 3 / G-TSLA）。</p>
-      <h4>关键变量</h4><ul><li>spot 是否突破 $440 → 触发 C450 防守</li><li>RSI 是否进入 ≥75 超买区</li><li>60 日阻力 $436.23 是否被有效突破</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>当前价 $428.35，浮盈 +8.78% / +$3,457，权重 35.23%（最大持仓），趋势仍在 SMA50/200 之上。</li>
+        <li>SEC 数据：5/4 Form 4 中性、4/23 偏空，但近 30 天无 8-K 实质冲击。</li>
+        <li>covered C450 已锁定 $11.85 权利金 + 上行至 $450 仍能多赚 $2,165 股权收益。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>QQQ PE 34.69 已进入观察级，对高 β 估值股最敏感。</li>
+        <li>距离短 C450 行权仅 4.81%，单日跳空可立刻把 C450 推至深度 ITM。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>核心仓位继续持有，C450 等突破再处置。<b>关键变量</b>：① 大盘是否破位 700（QQQ）；② 期权 IV 与正股突破联动；③ 是否出现内部人重大减持。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>NVDA</b> <span class="subtle">$215.20</span> <span class="pos">+17.32%</span> <span class="badge pos">偏多</span></summary>
+    <summary><b>NVDA</b> <span class="subtle">$215.20</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>现价 $215.20 站上 SMA20 ($203.18) 和 SMA50 ($188.65)，多头排列</li><li>RSI 60.3，趋势温和，未到超买</li><li>支撑 $164.27 与现价距离 23.7%，下方空间充足</li><li>近期 8-K 仅是常规披露，未见利空</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>已逼近阻力 $217.80，需要消化压力区</li><li>AI 资本开支节奏放缓的尾部风险尚未消除</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏多</b>，核心仓位继续持有，回踩 $195–$203 可考虑加仓。</p>
-      <h4>关键变量</h4><ul><li>阻力 $217.8 能否突破</li><li>回踩是否守住 SMA20 $203</li><li>下次财报指引</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>浮盈 +17.32% / +$2,224，权重 12.39%，AI semis 暴露的核心代表。</li>
+        <li>近 14 天 2 份 8-K 均为中性，无负面催化。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>仓位与 TSLA 合计 47.6% 高 β，估值修正会同步放大。</li>
+        <li>组合层面缺乏对冲（无指数 put / VIX 多头）。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>持有 + 等止盈点 $225/$235。<b>关键变量</b>：① 财报指引；② AI 资本开支节奏；③ 监管 / 出口管制。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>NIO</b> <span class="subtle">$5.85</span> <span class="neg">-38.79%</span> <span class="badge neg">偏空</span></summary>
+    <summary><b>NIO</b> <span class="subtle">$5.85</span> <span class="badge neg">偏空</span> <span class="sum-action badge neg">立即减仓</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>RSI 数据缺失但价格已逼近 60 日支撑 $4.93，超卖反弹概率上升</li><li>覆盖式 Call (C7×30) 已大幅缩水至 $0.105，等同免费保护</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>浮亏 -38.79% 触发执行级止损（多重确认）</li><li>现价已跌破 SMA50 ($5.90)，中期趋势破位</li><li>占组合 31.56%，单票集中度风险极高</li><li>中概敞口 + EV 板块双重压力</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏空</b>，必须在明日盘中执行第一档减仓（800+800 股），第二档按 H-4 条件触发。</p>
-      <h4>关键变量</h4><ul><li>NIO 能否守住 $5.85</li><li>5/8 6-K 文件后续解读</li><li>若反弹至 SMA50 $5.90 上方应一次性放量减仓</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>已跌至支撑 $4.93 上方，反弹弹性最大；短 C7 在 OTM 16%、已收 62% 时间价值。</li>
+        <li>5/8 6-K 中性、4/10 20-F 中性，无新增负面披露。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>浮亏 -38.79% / -$24,323，已进入执行级止损区间。</li>
+        <li>SMA50 已跌破，中期趋势转弱。</li>
+        <li>权重 31.56%（前三仓位 79.18% high concentration）；中概 ADR 因子暴露 31.56%。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>不是看空全部，而是<b>必须降权重</b>。今日按 H 模块分档减 36% 至权重 ≈ 20%。<b>关键变量</b>：① 是否守住 $5.50；② 短 C7 是否被加速回补；③ 财报 / 月度交付数据。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>NFLX</b> <span class="subtle">$87.49</span> <span class="neg">-3.24%</span> <span class="badge neg">偏空</span></summary>
+    <summary><b>NFLX</b> <span class="subtle">$87.49</span> <span class="badge warn">高波动观察</span> <span class="sum-action badge warn">等待确认</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>RSI 24.2 极度超卖，反弹概率上升</li><li>60 日支撑 $87.50 已贴近，技术上有支撑</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>5/7 Form 4: 内部人卖出 9,253 股@$88.95（明确偏空）</li><li>已跌破 SMA50 ($95.54)，趋势 bearish</li><li>20 日跌幅 -15.1%</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏空</b>，按 H-5 条件触发分档减仓 50%。</p>
-      <h4>关键变量</h4><ul><li>$84.50 是否被跌破（前低失守）</li><li>$94 反弹是否能站稳 SMA50</li><li>下次财报订阅指标</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>仓位仅 4.32%，绝对风险敞口有限。</li>
+        <li>正卡在 60 日支撑 $87.50 附近，有反弹概率。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>跌破 SMA50 $95.54，中期趋势转弱（已触发二级提醒）。</li>
+        <li>最近 2 份 Form 4 全部偏空（内部人卖出）。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>等确认。<b>关键变量</b>：① 是否守住 $87.40；② 内部人是否继续卖出；③ 是否突破 SMA50 $95.54。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>S</b> <span class="subtle">$16.59</span> <span class="pos">+5.67%</span> <span class="badge pos">偏多</span></summary>
+    <summary><b>S (SentinelOne)</b> <span class="subtle">$16.59</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>现价 $16.59 站上 SMA20 ($14.53) 与 SMA50 ($13.97)，多头</li><li>RSI 69.5 接近但未到超买</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>已逼近阻力 $16.60，需要量能突破</li><li>5/8 Form 4: 内部人卖出 21,960+2,459 股 @$15.65（信号偏空）</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏多</b>，等待回踩 SMA20 区间作为加仓机会；不主动减。</p>
-      <h4>关键变量</h4><ul><li>RSI 是否进入 ≥75</li><li>$16.60 阻力突破</li><li>持续内部人减持</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>浮盈 +5.67%，已突破成本，趋势良好。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>5/8 当日 2 份 Form 4 内部人减持，需要警惕。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>持有，止盈 $18.50。<b>关键变量</b>：内部人是否连续减持。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>AEHR</b> <span class="subtle">$97.23</span> <span class="pos">+12.64%</span> <span class="badge pos">偏多</span></summary>
+    <summary><b>CDNS</b> <span class="subtle">$362.70</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>现价 $97.23 显著站上 SMA50 ($60.34)，浮盈 +12.64%</li><li>支撑 $33.74 极厚，下方风险敞口小</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>5/1 + 4/29 多笔 Form 4 内部人卖出（10,000 股 + 204 股@$93.07），偏空信号需观察</li><li>高位回调技术风险</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏多</b>，继续持有，关注内部人是否持续减持。</p>
-      <h4>关键变量</h4><ul><li>内部人持续减持节奏</li><li>$100 整数关口是否突破</li><li>回踩 SMA20 是否能守住</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>浮盈 +5.09%，EDA 龙头长线逻辑稳健。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>5/8 同日 2 份 Form 4 内部人减持。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>持有，止盈 $385/$405。<b>关键变量</b>：内部人减持节奏 + EDA 行业景气。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>CDNS</b> <span class="subtle">$362.70</span> <span class="pos">+5.09%</span> <span class="badge pos">偏多</span></summary>
+    <summary><b>AEHR</b> <span class="subtle">$97.23</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>现价 $362.70 站上 SMA20 与 SMA50，多头排列</li><li>EDA 行业护城河稳固</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>5/8 Form 4: 内部人卖出 619 股@$354.90，信号略偏空</li><li>RSI/估值偏高，回调风险存在</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏多</b>，继续持有；等待回踩 $320–$335 加仓机会。</p>
-      <h4>关键变量</h4><ul><li>阻力 $370 能否突破</li><li>内部人减持是否扩散</li><li>EDA 行业 Q2 资本开支</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>浮盈 +12.64%，semis 测试细分赛道反弹标志。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>5/1 + 4/29 连续 Form 4 偏空（含 1 万股 code F）；中小盘高波动。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>持有 + $110 止盈减半。<b>关键变量</b>：内部人后续减持 + 财报。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>ARKK</b> <span class="subtle">$79.12</span> <span class="pos">+1.70%</span> <span class="badge neu">中性</span></summary>
+    <summary><b>LITE</b> <span class="subtle">$903.80</span> <span class="badge neu">中性</span> <span class="sum-action badge neu">继续持有观察</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>站上 SMA20 / SMA50，趋势温和向上</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>浮盈微薄，缺乏强催化</li><li>成长股波动放大风险</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>中性</b>，仓位较小（3.25%）继续持有。</p>
-      <h4>关键变量</h4><ul><li>TSLA / COIN 等核心持仓走向</li><li>10Y 收益率方向</li><li>$80 整数关口</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>5/6 10-Q + 5/5 8-K 均为中性，财报落地无负面催化。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>浮亏 -1.31%，价格远高于 SMA50 $788，对回踩敏感。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>持有。<b>关键变量</b>：是否守住 $880。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>LITE</b> <span class="subtle">$903.80</span> <span class="neg">-1.31%</span> <span class="badge neu">中性</span></summary>
+    <summary><b>ARKK</b> <span class="subtle">$79.12</span> <span class="badge neu">中性</span> <span class="sum-action badge neu">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>5/6 10-Q 已披露，常规节奏</li><li>支撑 $632 极厚（距现价 -30%）</li><li>AI 光通信长线逻辑未变</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>短期跌破成本 $915.77，未创新高</li><li>高单价个股波动放大</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>中性</b>，浮亏小，继续持有，关注下次财报。</p>
-      <h4>关键变量</h4><ul><li>回踩 SMA50 $788 是否守住</li><li>10-Q 关键指标延伸解读</li><li>AI 光模块订单节奏</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>已浮盈 +1.7%，分散化创新主题敞口。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>SEC 字典未收录该 ETF（无法做 form-level 监控）；与 NVDA / TSLA 高 β 部分重叠。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>维持观察，止损位 $73。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>TMDX</b> <span class="subtle">$67.84</span> <span class="badge neg">偏空</span> <span class="badge pri">期权 underlying</span></summary>
+    <summary><b>TMDX</b><span class="subtle">（期权 underlying）spot $67.84</span> <span class="badge neg">偏空</span> <span class="sum-action badge neg">期权立即处置</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>5/5 10-Q 已发布，常规节奏</li><li>若反弹至 $77+ 可改为展期保留时间价值</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>短 Put 已 ITM 24.6%（strike $90）</li><li>期权溢价已 4.02x 开仓成本</li><li>DTE 39，时间价值快速衰减但内在价值占绝大部分</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏空</b>，必须立即处理短 Put（H-1 + G-TMDX）。</p>
-      <h4>关键变量</h4><ul><li>spot 是否守住 $65</li><li>TMDX 公司基本面是否再恶化</li><li>回补成本能否在 $22.50 以内成交</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>5/5 8-K + 10-Q 均为中性，财报本身不构成增量利空。</li>
+        <li>跌幅已大，存在反弹至 $80 的可能。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>spot $67.84 已跌破 short P90 行权 24.62%，期权放大 4 倍，当前是组合最大尾部风险点。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>不是关注正股，而是<b>必须处置 P90 期权</b>。详情见 G 模块。<b>关键变量</b>：① 期权权利金；② DTE 衰减；③ 是否反弹至 $80。</p>
     </div>
   </details>
+
   <details class="row">
-    <summary><b>ORCL</b> <span class="subtle">$195.95</span> <span class="badge pos">偏多</span> <span class="badge pri">期权 underlying</span></summary>
+    <summary><b>ORCL</b><span class="subtle">（期权 underlying）spot $195.95</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">继续持有</span></summary>
     <div class="body">
-      <h4>🐂 多头观点</h4><ul><li>5/7 + 4/28 Form 4: 内部人买入 224,441 + 346 股 @$185+（强烈偏多信号）</li><li>现价 $195.95 距 strike $175 还有 11.97% 缓冲</li><li>AI 基础设施长线受益</li></ul>
-      <h4>🐻 空头观点</h4><ul><li>估值已偏高</li><li>若 spot 跌破 $185 → 短 Put 距 strike 缓冲快速收窄</li></ul>
-      <h4>⚖️ 最终倾向</h4><p><b>偏多</b>，短 Put 静态吃时间价值，DTE 26 内大概率到期归零。</p>
-      <h4>关键变量</h4><ul><li>spot 是否守住 $185</li><li>Form 4 内部人是否持续买入</li><li>DTE&lt;15 时溢价衰减节奏</li></ul>
+      <h4>🐂 多头观点</h4>
+      <ul>
+        <li>5/7 + 4/28 Form 4 均偏多（内部人买入），与短 P175 方向一致。</li>
+        <li>距 strike +12%，OTM 安全垫充足，DTE 仅 26 天，时间价值快速衰减中。</li>
+      </ul>
+      <h4>🐻 空头观点</h4>
+      <ul>
+        <li>若 ORCL 一日跌幅 5% 以上 → 缓冲会被快速吃掉。</li>
+      </ul>
+      <h4>⚖️ 最终倾向</h4>
+      <p>持有，权利金低于 $1.5 时提前回补释放保证金。</p>
     </div>
   </details>
-  <h3 style="margin-top:18px">非持仓长期观察名单（17 只）— 每天更新趋势与进场点位</h3>
-  <p class="subtle">仅供观察备选，不进入自动指令；任何进场动作都需人工确认。</p>
-  <details class="row">
-    <summary><b>GOOGL</b> <span class="subtle">$400.8</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$323.73 – $357.52</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$400.8 | +3.9% | +26.3%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">89.3 | 357.52 | 323.73</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$272.11 – $402.0</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$408.82 / $307.54</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>AI Search 商业化 / 5d +3.9%、20d +26.3%，RSI 89 极度超买，回踩 SMA20 ($357) 才是机会</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>AAPL</b> <span class="subtle">$293.32</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$262.8 – $273.21</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$293.32 | +4.7% | +12.6%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">68.9 | 273.21 | 262.8</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$245.51 – $294.76</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$299.19 / $249.66</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>AI 服务订阅 / iPhone 周期；RSI 68.9 接近超买，等回踩 SMA20 ($273) 区间</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>MSFT</b> <span class="subtle">$415.12</span> <span class="badge neu">中性</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$390.18 – $416.14</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$415.12 | +0.2% | +11.9%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">48.4 | 416.14 | 398.15</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$356.28 – $433.7</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$433.7 / $366.3</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>Azure / Copilot 节奏；现价已贴 SMA20，等待方向选择</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>META</b> <span class="subtle">$609.63</span> <span class="badge warn">高波动</span> <span class="sum-action badge warn">等待确认</span> <span class="sum-buy">买入区 <b>$626.55 – $648.86</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$609.63 | +0.1% | -3.2%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">28.0 | 648.86 | 626.55</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$520.26 – $691.52</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$691.52 / $520.26</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>RSI 28 严重超卖但 20d -3.2% 趋势偏弱，等收回 SMA20 ($648) 才确认反转</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>PLTR</b> <span class="subtle">$137.8</span> <span class="badge neg">偏空</span> <span class="sum-action badge neg">低位不追</span> <span class="sum-buy">买入区 <b>$121.45 – $125.13</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$137.8 | -4.3% | +7.6%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">41.7 | 141.23 | 145.7</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$122.68 – $162.4</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$145.7 / $116.55</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>AIP 商业化；已跌破 SMA50，弱势中不抢反弹</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>AMD</b> <span class="subtle">$455.19</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$254.51 – $326.23</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$455.19 | +26.2% | +85.8%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">80.7 | 326.23 | 254.51</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$188.22 – $456.29</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$464.29 / $241.79</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>5d +26%、20d +85.8% RSI 80.7 极度超买，绝不追高，回踩 $254-$326 才考虑</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>NVDA</b> <span class="subtle">$215.2</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$188.65 – $203.18</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$215.2 | +8.4% | +14.1%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">60.3 | 203.18 | 188.65</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$164.27 – $217.8</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$219.5 / $179.22</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>已是持仓，本表观察等回踩 SMA50 ($188.65) 区间加仓</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>NFLX</b> <span class="subtle">$87.49</span> <span class="badge neg">偏空</span> <span class="sum-action badge neg">低位不追</span> <span class="sum-buy">买入区 <b>$74.26 – $76.51</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$87.49 | -5.0% | -15.1%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">24.2 | 94.63 | 95.54</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$75.01 – $108.95</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$95.54 / $71.26</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>已是持仓，观察名单中亦标 bearish；同 H-5 处理</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>ORCL</b> <span class="subtle">$195.95</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$159.81 – $176.19</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$195.95 | +14.0% | +41.9%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">63.0 | 176.19 | 159.81</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$134.57 – $200.15</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$200.15 / $151.82</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>已是 underlying，内部人巨量买入信号偏多</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>INTC</b> <span class="subtle">$124.92</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$62.11 – $84.37</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$124.92 | +25.4% | +100.3%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">88.4 | 84.37 | 62.11</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$40.63 – $130.57</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$130.57 / $59.01</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>5d +25%、20d +100% 暴涨，RSI 88，绝不追，回踩 SMA50 ($62) 才考虑</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>AMZN</b> <span class="subtle">$272.68</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$231.24 – $259.6</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$272.68 | +1.6% | +14.4%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">79.6 | 259.6 | 231.24</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$196.0 – $278.56</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$278.56 / $219.68</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>AWS / 零售毛利率改善；RSI 79.6 近超买，回踩 SMA20 ($259) 是机会</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>WMT</b> <span class="subtle">$130.43</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$126.24 – $128.73</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$130.43 | -0.9% | +2.9%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">57.8 | 128.73 | 126.24</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$118.02 – $134.69</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$134.69 / $119.93</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>防御股，趋势温和；现价已贴前高 $134.69，正常观察</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>COST</b> <span class="subtle">$1008.79</span> <span class="badge pos">偏多</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$998.77 – $1001.16</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$1008.79 | -0.3% | +1.0%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">55.0 | 1001.16 | 998.77</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$960.46 – $1035.82</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$1035.82 / $948.83</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>防御股，价格震荡，等待 SMA20 区间有效回踩</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>DIS</b> <span class="subtle">$108.02</span> <span class="badge neu">中性</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$98.96 – $103.86</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$108.02 | +4.8% | +8.9%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">54.2 | 103.86 | 100.98</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$92.19 – $110.48</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$110.48 / $92.9</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>中性偏多，回踩 $99-$104 区间观察</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>BRK-B</b> <span class="subtle">$475.94</span> <span class="badge neu">中性</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$470.31 – $472.76</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$475.94 | +0.6% | -0.8%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">54.3 | 472.76 | 479.91</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$464.01 – $507.71</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$507.71 / $441.51</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>防御股，等待 SMA50 区间回踩</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>V</b> <span class="subtle">$318.79</span> <span class="badge neu">中性</span> <span class="sum-action badge pos">回踩观察</span> <span class="sum-buy">买入区 <b>$305.28 – $317.08</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$318.79 | -2.8% | +4.7%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">54.4 | 317.08 | 311.51</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$293.89 – $341.98</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$341.98 / $286.59</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>消费支付链，趋势温和，等回踩 SMA20 ($317) 机会</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-  <details class="row">
-    <summary><b>SOFI</b> <span class="subtle">$15.75</span> <span class="badge warn">高波动</span> <span class="sum-action badge warn">等待确认</span> <span class="sum-buy">买入区 <b>$17.32 – $17.59</b></span></summary>
-    <div class="body">
-      <div class="kpi-grid">
-        <div class="kpi"><div class="label">现价 / 5d / 20d</div><div class="value">$15.75 | -4.1% | -2.9%</div></div>
-        <div class="kpi"><div class="label">RSI / SMA20 / SMA50</div><div class="value">24.9 | 17.59 | 17.32</div></div>
-        <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$14.93 – $20.79</div></div>
-        <div class="kpi"><div class="label">突破确认 / 失效位</div><div class="value">$20.79 / $14.93</div></div>
-      </div>
-      <p style="margin-top:8px"><b>催化剂 / 风险：</b>金融科技高波动，RSI 24.9 严重超卖；等收回 SMA20 ($17.59) 才确认反转</p>
-      <p class="subtle">仅供参考，不自动下单；任何进场动作需人工确认。</p>
-    </div>
-  </details>
-</div><div class="card">
+
+  <h3 style="margin:18px 0 10px;font-size:16px;color:#0F172A">F-2 长期观察名单（17 只）趋势与进场点位</h3>
+  <div class="callout warn">
+    <b>数据缺口</b>：本次因 yfinance 不可用，未能取得 17 只观察名单（GOOGL / AAPL / MSFT / META / PLTR / AMD / NVDA / NFLX / ORCL / INTC / AMZN / WMT / COST / DIS / BRK-B / V / SOFI）的实时价格、SMA、支撑阻力，<b>本次表格无法生成</b>。<br>
+    已在 evening_data.json.errors 中记录 <code>watchlist._error: yf.download: No module named 'yfinance'</code>，待 host 端补齐 yfinance 依赖后下一次晚报恢复。<br>
+    替代提示：NVDA / NFLX / ORCL 同时在持仓 / 期权 underlying 中，对应分析见上方 F-1。
+  </div>
+</div><div class="card" id="g-tmdx">
   <h2>G. 期权与收益增强 / 修复策略</h2>
-  <p class="subtle">每个期权 underlying 一张策略卡，给出多套选项（A/B/C），含精确价位、收益上限、风险与失效条件。仅覆盖 H 模块出现过的 4 个 underlying。</p>
+  <p class="subtle" style="margin-top:0">仅覆盖 H 模块出现过的期权 underlying：TMDX、TSLA、ORCL、NIO。每张策略卡给出今日具体动作的完整策略空间。</p>
 
-  <!-- TMDX 策略卡 -->
-  <div class="card" id="g-tmdx" style="margin-top:8px">
-    <h3>📌 TMDX — 短 Put (P90, DTE 39, ITM 24.6%)</h3>
-    <div class="callout info">本策略已被 H 指令板引用（H-1 立即执行），今日具体动作见 H 模块。</div>
-
-    <h4>选项 A — 直接回补止损（推荐）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>不愿承担 100 股 TMDX 被 assign（需 $9,000 现金 + 长期方向不明）</td></tr>
-          <tr><td>精确执行价位</td><td>市价回补 ≤<b>$22.50</b>（当前盘口）；最大可接受滑点 $24.00</td></tr>
-          <tr><td>仓位 / 合约数</td><td>1 张（全部）</td></tr>
-          <tr><td>收益上限</td><td>不再有时间价值收益，锁定亏损约 -$1,690</td></tr>
-          <tr><td>主要风险</td><td>滑点 + 若回补后 TMDX 反弹错过修复</td></tr>
-          <tr><td>是否新开</td><td>否（关闭旧仓）</td></tr>
-          <tr><td>失效条件</td><td>开盘前 TMDX 跳空 +$10 至 $77+（极少见），改为选项 B</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 B — 展期至 9 月（仅在 TMDX 反弹时使用）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>spot 反弹至 $77+ 且对长期看涨有信心</td></tr>
-          <tr><td>精确执行价位</td><td>同时回补 26-06 P90 + 卖出 <b>26-09-19 P80</b>，目标 net debit ≤ $0.50（最佳 net credit）</td></tr>
-          <tr><td>仓位 / 合约数</td><td>1 张 ↔ 1 张</td></tr>
-          <tr><td>收益上限</td><td>最佳：把账面亏损 -$1,690 摊到 4 个月，等待回归</td></tr>
-          <tr><td>主要风险</td><td>TMDX 跌破 $80 → 重新 ITM；尾部风险被延长</td></tr>
-          <tr><td>是否新开</td><td>是 <span class="conf-tag">需人工确认</span></td></tr>
-          <tr><td>失效条件</td><td>spot &lt;$70 → 不展期，按选项 A 直接回补</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 C — 接受 assign（不推荐）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>有 $9,000 现金 + 愿持有 100 股 TMDX 长期</td></tr>
-          <tr><td>精确执行价位</td><td>等到期被动 assign，成本 = $90 - $5.60 = <b>$84.40/股</b></td></tr>
-          <tr><td>主要风险</td><td>当前 spot $67.84 → 持有即承担 -19.5% 浮亏；流动性占用</td></tr>
-          <tr><td>失效条件</td><td>spot &lt;$60 → 必须改为选项 A</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- TMDX -->
+  <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块"立即执行 ① TMDX P90"。</div>
+  <h3 style="margin-top:14px;font-size:16px;color:#0F172A">G-1 TMDX — 短 Put $90（执行级，必须今日处置）</h3>
+  <div class="table-wrap">
+    <table class="t">
+      <thead>
+        <tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约数</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>A. 直接回补</b><br><span class="badge neg">推荐</span></td>
+          <td>风险厌恶 + 不希望 TMDX assignment 到 100 股多头</td>
+          <td class="num">市价 ≤ $23.50</td>
+          <td class="num">回补 1 张 P90</td>
+          <td>立即终结尾部，已收 $0 时间价值（亏 $1,790）</td>
+          <td>反弹错失修复机会</td>
+          <td>不新开</td>
+          <td>—（一次性）</td>
+        </tr>
+        <tr>
+          <td><b>B. 展期降风险</b><br><span class="conf-tag">需人工确认</span></td>
+          <td>愿意继续承担有限尾部 + 用时间换空间</td>
+          <td class="num">买回 P90 + 卖出 26-09-19 P75，目标 net debit ≤ $1.50</td>
+          <td class="num">仍为 -1 张（合约不变，月份 + strike 改变）</td>
+          <td>P75 全期权金 ≈ $4-5（参考价，需当日报价确认）</td>
+          <td>TMDX 跌破 $75 仍 ITM；保证金占用延长 4 个月</td>
+          <td>属于策略调整，<b>视为新策略，需人工确认</b></td>
+          <td>spot 跌破 $60 → 立即按 A 回补</td>
+        </tr>
+        <tr>
+          <td><b>C. 反向加保护买回</b></td>
+          <td>极度规避反弹错失，但希望同时锁损</td>
+          <td class="num">回补 P90 + 同时买入 P75 ≤ $1</td>
+          <td class="num">回补 1 张 + 买入 1 张</td>
+          <td>下行有保护，但额外现金支出</td>
+          <td>属于风险逆转，资金占用增加</td>
+          <td><b>开新仓，需人工确认</b></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <!-- TSLA 策略卡 -->
-  <div class="card" id="g-tsla" style="margin-top:14px">
-    <h3>📌 TSLA — 短 Call (C450, DTE 39, OTM 4.81%, covered)</h3>
-    <div class="callout info">本策略已被 H 指令板引用（H-3 挂条件单），今日具体动作见 H 模块。</div>
-
-    <h4>选项 A — 价位条件回补（推荐）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>TSLA 突破 $440 阻力，假设趋势进一步延伸</td></tr>
-          <tr><td>精确执行价位</td><td>GTC 限价回补 1 张 C450 @ <b>$20.00</b></td></tr>
-          <tr><td>收益上限</td><td>锁定 covered call 净亏 ≈ -$815；保留 100 股 TSLA 主升浪</td></tr>
-          <tr><td>主要风险</td><td>回补后 TSLA 回落 → 多付时间价值；可考虑同步卖出新 C470/C480 复制 covered call</td></tr>
-          <tr><td>是否新开</td><td>否（关闭旧 short）</td></tr>
-          <tr><td>失效条件</td><td>TSLA 跌回 &lt;$410 且期权价 &lt;$13 → 撤单继续吃时间价值</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 B — 展期至 9 月（roll up & out）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>TSLA 突破 $445 + 期权价 ≥$22；不希望被 assign</td></tr>
-          <tr><td>精确执行价位</td><td>同时回补 26-06 C450 + 卖出 <b>26-09-19 C470</b>，目标 net credit ≥<b>$1.50</b></td></tr>
-          <tr><td>收益上限</td><td>把 strike 抬高 $20，并继续吃 3 个月时间价值</td></tr>
-          <tr><td>主要风险</td><td>TSLA 突破 $470 → 新 short 仍可能被 assign</td></tr>
-          <tr><td>是否新开</td><td>是 <span class="conf-tag">需人工确认</span></td></tr>
-          <tr><td>失效条件</td><td>net credit &lt;$1.00 → 改用选项 A</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 C — 接受 assign（次选）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>TSLA 在到期日收 ≥$450 且不打算继续持有 100 股</td></tr>
-          <tr><td>精确执行价位</td><td>到期被动 assign：100 股 @$450 + 已收权利金 $1,185 = 实现售价 <b>$461.85/股</b>，对应单股利润 +$68.07/股 (+17.3%)</td></tr>
-          <tr><td>主要风险</td><td>失去后续主升浪</td></tr>
-          <tr><td>失效条件</td><td>TSLA 突破 $470 后再处理已被动；可在 DTE 5–10 时主动展期</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="card" id="g-tsla">
+  <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块"条件触发 ③ TSLA C450"。</div>
+  <h3 style="margin-top:14px;font-size:16px;color:#0F172A">G-2 TSLA — 短 Call $450（一级提醒，触发再动）</h3>
+  <div class="table-wrap">
+    <table class="t">
+      <thead>
+        <tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约数</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>A. 维持持有</b><br><span class="badge pos">默认</span></td>
+          <td>TSLA 横盘 $415-$440，IV 不放大</td>
+          <td class="num">不动</td>
+          <td class="num">维持短 1 张 C450</td>
+          <td>到期归零 → 收 $11.85 + 100 股股权收益</td>
+          <td>跳空突破 $450 → ITM 加速</td>
+          <td>不新开</td>
+          <td>突破 $440 + IV 飙升</td>
+        </tr>
+        <tr>
+          <td><b>B. 突破回补</b></td>
+          <td>TSLA 放量突破 $440 + 期权 ≥ $20</td>
+          <td class="num">市价回补</td>
+          <td class="num">回补 1 张 C450</td>
+          <td>放弃剩余时间价值，避免 100 股 $450 强制行权</td>
+          <td>实亏约 $815（$20 - $11.85）×100</td>
+          <td>不新开</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><b>C. roll up & out</b><br><span class="conf-tag">需人工确认</span></td>
+          <td>横盘 $420-$440 至下周中，希望继续做 covered call</td>
+          <td class="num">买回 C450 + 卖出 26-09-19 C470，net credit ≥ $3</td>
+          <td class="num">仍为 -1 张（月份 + strike 上移）</td>
+          <td>多收 $300+ 权利金，行权空间多 $20</td>
+          <td>TSLA 加速突破 $470 仍 ITM</td>
+          <td><b>视为新策略，需人工确认</b></td>
+          <td>突破 $470 → 切到 B 回补</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <!-- ORCL 策略卡 -->
-  <div class="card" id="g-orcl" style="margin-top:14px">
-    <h3>📌 ORCL — 短 Put (P175, DTE 26, OTM 11.97%, cash-secured)</h3>
-    <div class="callout info">本策略已被 H 指令板引用（H-6 观察备选），今日具体动作见 H 模块。</div>
-
-    <h4>选项 A — 静态持有至到期（推荐）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>ORCL 现价 $195.95 维持 $185+，无重大利空</td></tr>
-          <tr><td>精确执行价位</td><td>不操作；等到期归零 → 收满权利金 $426</td></tr>
-          <tr><td>收益上限</td><td>实现 +$426（已浮盈 +$46）</td></tr>
-          <tr><td>主要风险</td><td>spot 跌破 $185 → 距 strike 缓冲 &lt;6%，需启动选项 B</td></tr>
-          <tr><td>失效条件</td><td>spot &lt;$185 → 切换选项 B；spot &lt;$178 → 必须回补</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 B — 展期至 9 月（仅在 ORCL 跌至 $185 以下时）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>spot 已逼近 $185 但仍 OTM；想保留时间价值收益</td></tr>
-          <tr><td>精确执行价位</td><td>回补 26-06-05 P175 + 卖出 <b>26-09-19 P170</b>，目标 net credit ≥<b>$2.00</b></td></tr>
-          <tr><td>主要风险</td><td>spot 跌破 $170 → 重新 ITM</td></tr>
-          <tr><td>是否新开</td><td>是 <span class="conf-tag">需人工确认</span></td></tr>
-          <tr><td>失效条件</td><td>net credit &lt;$1.50 → 直接选项 C</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 C — 直接回补</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>spot &lt;$178 或想立即释放保证金</td></tr>
-          <tr><td>精确执行价位</td><td>市价回补，参考价 ≤$5.00</td></tl>
-          <tr><td>主要风险</td><td>放弃后续时间价值</td></tr>
-          <tr><td>失效条件</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="card" id="g-orcl">
+  <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块"条件触发 ④ ORCL P175"。</div>
+  <h3 style="margin-top:14px;font-size:16px;color:#0F172A">G-3 ORCL — 短 Put $175（正常区，时间价值收割中）</h3>
+  <div class="table-wrap">
+    <table class="t">
+      <thead>
+        <tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约数</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>A. 持有到期</b><br><span class="badge pos">默认</span></td>
+          <td>ORCL 维持 $185 之上</td>
+          <td class="num">不动</td>
+          <td class="num">维持 -1 张</td>
+          <td>剩余 $380 时间价值全收（已收 11%）</td>
+          <td>正股跌穿 $175 → ITM</td>
+          <td>不新开</td>
+          <td>跌破 $185</td>
+        </tr>
+        <tr>
+          <td><b>B. 提前回补</b></td>
+          <td>权利金 ≤ $1.50</td>
+          <td class="num">市价回补 ≤ $1.50</td>
+          <td class="num">回补 1 张</td>
+          <td>提前释放保证金 ≈ $17,500，IRR 提升</td>
+          <td>错失剩余时间价值 ≈ $150</td>
+          <td>不新开</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><b>C. put spread 锁尾部</b><br><span class="conf-tag">需人工确认</span></td>
+          <td>ORCL 跌破 $185</td>
+          <td class="num">买入 26-06-05 P170，debit ≤ $2</td>
+          <td class="num">+1 张 P170（变成 P175/P170 bull put spread）</td>
+          <td>最大风险锁定 $500（spread width 5）</td>
+          <td>多支付 debit，最终利润上限被压缩</td>
+          <td><b>开新仓，需人工确认</b></td>
+          <td>正股跌穿 $170</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <!-- NIO 策略卡 -->
-  <div class="card" id="g-nio" style="margin-top:14px">
-    <h3>📌 NIO — 短 Call (C7, DTE 26, OTM 16.4%, covered ×30)</h3>
-    <div class="callout info">本策略已被 H 指令板引用（H-7 观察备选），今日具体动作见 H 模块。</div>
-
-    <h4>选项 A — 静态持有至 DTE&lt;10 后回补（推荐）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>NIO 维持 $5.50–$6.50 区间</td></tr>
-          <tr><td>精确执行价位</td><td>DTE&lt;10 且期权价 ≤$0.05 → 市价回补 30 张 ≤<b>$150 总成本</b></td></tr>
-          <tr><td>收益上限</td><td>已收权利金 $840 - 回补 ≤$150 = +$690</td></tr>
-          <tr><td>主要风险</td><td>NIO 突然反弹至 $6.80+ → 期权价飙升</td></tr>
-          <tr><td>失效条件</td><td>NIO ≥$6.80（距 strike 仅 2.9%）必须立即回补</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 B — 同步随 NIO 减仓而减少 covered 数量</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>H-2 / H-4 NIO 减仓后剩余股数 &lt;3,000 股</td></tr>
-          <tr><td>精确执行价位</td><td>按比例同步回补 covered call：减股 1,000 股 → 同步回补 5 张 C7（按 $0.10–$0.20 区间）</td></tr>
-          <tr><td>主要风险</td><td>若不同步则形成裸 short call（保证金占用 + assign 风险）</td></tr>
-          <tr><td>是否新开</td><td>否</td></tr>
-          <tr><td>失效条件</td><td>NIO 减仓未触发 → 维持选项 A</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4>选项 C — 展期至 7 月 C7.5（仅在 NIO 反弹时）</h4>
-    <div class="table-wrap">
-      <table class="t">
-        <tbody>
-          <tr><td>适用前提</td><td>NIO 突破 $6.50 + 期权价升至 $0.30+</td></tr>
-          <tr><td>精确执行价位</td><td>回补 26-06-05 C7 + 卖出 <b>26-07 C7.5</b>，目标 net credit ≥<b>$0.10</b>×30</td></tr>
-          <tr><td>主要风险</td><td>NIO 进一步上涨至 $7.50 → 新 short 也面临 assign</td></tr>
-          <tr><td>是否新开</td><td>是 <span class="conf-tag">需人工确认</span></td></tr>
-          <tr><td>失效条件</td><td>net credit &lt;$0.05 → 直接 A 路径</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="card" id="g-nio">
+  <div class="callout info">本策略已被 H 指令板引用（NIO 减仓动作）；NIO 短 C7 期权本身无独立 H 指令，正常持有。</div>
+  <h3 style="margin-top:14px;font-size:16px;color:#0F172A">G-4 NIO — 短 Call $7（正常区，已收 62% 时间价值）</h3>
+  <div class="table-wrap">
+    <table class="t">
+      <thead>
+        <tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约数</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>A. 持有到期</b><br><span class="badge pos">默认</span></td>
+          <td>NIO 不突破 $6.50</td>
+          <td class="num">不动</td>
+          <td class="num">维持 -30 张</td>
+          <td>剩余 $0.105 × 30 × 100 = $315 全收（再叠 NIO 减股节奏，仍由 3,000 股担保）</td>
+          <td>NIO 反弹突破 $7 → 全部 ITM、4,160 股按 $7 强制卖出</td>
+          <td>不新开</td>
+          <td>spot 突破 $6.50</td>
+        </tr>
+        <tr>
+          <td><b>B. 全部回补</b></td>
+          <td>权利金 ≤ $0.05</td>
+          <td class="num">市价 ≤ $0.05 全回补</td>
+          <td class="num">回补 30 张</td>
+          <td>提前锁利 ≈ $675</td>
+          <td>错失剩余 $150 时间价值</td>
+          <td>不新开</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><b>C. 同步减股 + 部分回补匹配</b><br><span class="conf-tag">需人工确认</span></td>
+          <td>NIO 减股至 4,160 股以下时，需对应回补 part of C7（避免裸卖）</td>
+          <td class="num">每减 100 股 NIO，同步评估回补 1 张 C7</td>
+          <td class="num">视减股节奏</td>
+          <td>保持 covered 结构，避免裸卖期权</td>
+          <td>回补成本若放大 → 蚕食已收时间价值</td>
+          <td><b>属于持续调整，每次需人工确认</b></td>
+          <td>NIO 突破 $6.50</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn" style="margin-top:10px">
+    <b>关键提醒</b>：H 模块 NIO 减仓动作只减 2,400 股 → 减后剩余 4,160 股，仍可担保 30 张 C7（覆盖 3,000 股），<b>不会因减股导致裸卖</b>。但若后续继续减至 3,000 股以下，必须按 C 选项同步回补 C7。
   </div>
 </div><div class="card">
   <h2>C. 组合风险归因</h2>
 
-  <h3>权重 Top 持仓与集中度</h3>
-  <div class="table-wrap">
-    <table class="t">
-      <thead><tr><th>Ticker</th><th class="num">市值</th><th class="num">权重</th><th class="num">累计盈亏</th></tr></thead>
-      <tbody>
-        <tr><td><b>TSLA</b></td><td class="num">$42,835</td><td class="num">35.23%</td><td class="num pos">+$3,457</td></tr>
-        <tr><td><b>NIO</b></td><td class="num">$38,376</td><td class="num">31.56%</td><td class="num neg">-$24,323</td></tr>
-        <tr><td><b>NVDA</b></td><td class="num">$15,064</td><td class="num">12.39%</td><td class="num pos">+$2,224</td></tr>
-        <tr><td>NFLX</td><td class="num">$5,249</td><td class="num">4.32%</td><td class="num neg">-$176</td></tr>
-        <tr><td>S</td><td class="num">$4,977</td><td class="num">4.09%</td><td class="num pos">+$267</td></tr>
-        <tr><td>ARKK</td><td class="num">$3,956</td><td class="num">3.25%</td><td class="num pos">+$66</td></tr>
-        <tr><td>AEHR</td><td class="num">$3,889</td><td class="num">3.20%</td><td class="num pos">+$436</td></tr>
-        <tr><td>CDNS</td><td class="num">$3,627</td><td class="num">2.98%</td><td class="num pos">+$176</td></tr>
-        <tr><td>LITE</td><td class="num">$3,615</td><td class="num">2.97%</td><td class="num neg">-$48</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="callout warn" style="margin-top:8px">
-    <b>集中度：</b>Top3 权重合计 <b>79.18%</b> → 评级 <b>high</b>。TSLA + NIO 合计 66.79%，单标的事件足以决定组合方向。
-  </div>
-
-  <h3 style="margin-top:14px">风格 / 板块暴露</h3>
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">EV 板块</div><div class="value">66.79%</div></div>
-    <div class="kpi"><div class="label">中概 ADR</div><div class="value">31.56%</div></div>
-    <div class="kpi"><div class="label">AI 半导体</div><div class="value">12.39%</div></div>
-    <div class="kpi"><div class="label">大市值科技</div><div class="value">12.39%</div></div>
+    <div class="kpi"><div class="label">多头总市值</div><div class="value">$121,588.80</div></div>
+    <div class="kpi"><div class="label">前三大权重</div><div class="value">79.18%</div></div>
+    <div class="kpi"><div class="label">集中度</div><div class="value"><span class="badge neg">High</span></div></div>
+    <div class="kpi"><div class="label">未实现总盈亏</div><div class="value neg">-$17,920.46</div></div>
+    <div class="kpi"><div class="label">风险温度</div><div class="value"><span class="badge neg">High</span></div></div>
+    <div class="kpi"><div class="label">主要风险源</div><div class="value">TSLA / NIO 合计 66.79%</div></div>
   </div>
 
-  <h3 style="margin-top:14px">压力测试</h3>
-  <div class="table-wrap">
-    <table class="t">
-      <thead><tr><th>情景</th><th class="num">估计 P&L 影响</th></tr></thead>
-      <tbody>
-        <tr><td>所有多头股票 -5%</td><td class="num neg">-$6,079</td></tr>
-        <tr><td>TSLA + NVDA -8%</td><td class="num neg">-$4,632</td></tr>
-        <tr><td>中概 ADR (NIO) -10%</td><td class="num neg">-$3,838</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 style="margin-top:14px">未实现盈亏构成</h3>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="label">未实现盈亏合计</div><div class="value neg">-$17,920</div></div>
-    <div class="kpi"><div class="label">最大单仓拖累</div><div class="value">NIO -$24,323</div></div>
-    <div class="kpi"><div class="label">最大单仓贡献</div><div class="value">TSLA +$3,457</div></div>
-    <div class="kpi"><div class="label">累计已实现 + 浮动</div><div class="value neg">-$19,542</div></div>
-  </div>
-
-  <p class="footer-note" style="margin-top:8px">注：组合风险归因数据由 <code>portfolio_risk_attribution</code> 输出，基准时间 5/10 09:01 CST；已实现部分含历史交易，含期权浮亏 -$1,646。</p>
-</div><div class="card">
-  <h2>B. SEC / 监管事件依据</h2>
-  <p class="subtle">扫描窗口：过去 45 天；范围 = 持仓正股 + 期权 underlying（共 11 只）。</p>
+  <h3 style="margin:18px 0 10px;font-size:16px;color:#0F172A">权重 Top 9</h3>
   <div class="table-wrap">
     <table class="t">
       <thead>
-        <tr><th>日期</th><th>Ticker</th><th>文件</th><th>关键摘要</th><th>影响方向</th></tr>
+        <tr><th>Ticker</th><th>市值</th><th>权重</th><th>未实现盈亏</th></tr>
       </thead>
       <tbody>
-        <tr><td>2026-05-08</td><td><b>NVDA</b></td><td>8-K</td><td>常规 8-K 披露（条款 5.03 / 财务标准声明），无重大经营变化</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-08</td><td><b>NIO</b></td><td>6-K</td><td>定期 6-K 披露，常规节奏</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-08</td><td><b>CDNS</b></td><td>Form 4</td><td>内部人卖出 619 股 @$354.90 (code F) + 72 股 (code G)；规模偏小</td><td><span class="badge neg">偏空</span></td></tr>
-        <tr><td>2026-05-08</td><td><b>S (SentinelOne)</b></td><td>Form 4</td><td>内部人卖出 21,960 + 2,459 股 @$15.65 (code S)；规模可观</td><td><span class="badge neg">偏空</span></td></tr>
-        <tr><td>2026-05-07</td><td><b>NFLX</b></td><td>Form 4</td><td>内部人卖出 9,253 股 @$88.95 (code S) + 1,209 股 (code G)；信号偏空，与现价跌破 SMA50 相印证</td><td><span class="badge neg">偏空</span></td></tr>
-        <tr><td>2026-05-07</td><td><b>ORCL</b></td><td>Form 4</td><td><b>内部人买入 224,441 股 @$185.35</b> (code A)；规模庞大，强烈偏多</td><td><span class="badge pos">偏多</span></td></tr>
-        <tr><td>2026-05-06</td><td><b>LITE</b></td><td>10-Q</td><td>季度财报已披露，常规节奏；主要 segment 数据待解读</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-05</td><td><b>LITE</b></td><td>8-K</td><td>常规财务标准声明披露</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-05</td><td><b>TMDX</b></td><td>10-Q</td><td>季度财报已披露；TMDX 现价 $67.84 表明市场反应偏空，但文件本身为常规披露</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-05</td><td><b>TMDX</b></td><td>8-K</td><td>常规财务标准声明披露</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-04</td><td><b>TSLA</b></td><td>Form 4</td><td>内部人买入 40,948 股 @$14.99 (code M, 期权行权)，技术性买入</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-05-01</td><td><b>AEHR</b></td><td>Form 4</td><td>内部人卖出 204 股 @$93.07 (code F)；规模较小</td><td><span class="badge neg">偏空</span></td></tr>
-        <tr><td>2026-04-29</td><td><b>AEHR</b></td><td>Form 4</td><td>内部人卖出 10,000 股 (code F)；信号偏空</td><td><span class="badge neg">偏空</span></td></tr>
-        <tr><td>2026-04-28</td><td><b>ORCL</b></td><td>Form 4</td><td>内部人买入 346 股 @$173.28；与 5/7 的 22.4 万股一起构成连续买入信号</td><td><span class="badge pos">偏多</span></td></tr>
-        <tr><td>2026-04-27</td><td><b>NVDA</b></td><td>8-K</td><td>常规 8-K 披露</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-04-23</td><td><b>TSLA</b></td><td>Form 4</td><td>内部人 96,000,000 股 (code D, 转让/赠与，非市价卖出)；非典型减持</td><td><span class="badge neu">中性</span></td></tr>
-        <tr><td>2026-04-10</td><td><b>NIO</b></td><td>20-F</td><td>年度报告披露；主要服务收入条款</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td><b>TSLA</b></td><td class="num">$42,835.00</td><td class="num">35.23%</td><td class="num pos">+$3,456.54</td></tr>
+        <tr><td><b>NIO</b></td><td class="num">$38,376.00</td><td class="num">31.56%</td><td class="num neg">-$24,322.62</td></tr>
+        <tr><td><b>NVDA</b></td><td class="num">$15,064.00</td><td class="num">12.39%</td><td class="num pos">+$2,224.10</td></tr>
+        <tr><td>NFLX</td><td class="num">$5,249.40</td><td class="num">4.32%</td><td class="num neg">-$175.60</td></tr>
+        <tr><td>S</td><td class="num">$4,977.00</td><td class="num">4.09%</td><td class="num pos">+$267.00</td></tr>
+        <tr><td>ARKK</td><td class="num">$3,956.00</td><td class="num">3.25%</td><td class="num pos">+$66.00</td></tr>
+        <tr><td>AEHR</td><td class="num">$3,889.20</td><td class="num">3.20%</td><td class="num pos">+$436.40</td></tr>
+        <tr><td>CDNS</td><td class="num">$3,627.00</td><td class="num">2.98%</td><td class="num pos">+$175.60</td></tr>
+        <tr><td>LITE</td><td class="num">$3,615.20</td><td class="num">2.97%</td><td class="num neg">-$47.88</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="callout info" style="margin-top:8px">
-    <b>关键事件解读：</b>
-    <ul>
-      <li><b>ORCL：</b>5/7 + 4/28 内部人合计买入 ≈22.5 万股，是近 45 天最重要的偏多 SEC 事件；强化我方 ORCL P175 短 Put 静态持有的判断。</li>
-      <li><b>NFLX：</b>5/7 内部人卖出 1 万股@$88.95，与价格跌破 SMA50 + RSI 24.2 同步，确认 H-5 条件减仓预案。</li>
-      <li><b>S / AEHR / CDNS：</b>多只我方持仓出现持续性内部人减持，规模均偏小但需持续跟踪。</li>
-      <li><b>TSLA：</b>4/23 的 9,600 万股 code D（赠与/转让）属于非市价处置，不视为市场抛压；5/4 的 code M 是期权行权技术性买入，中性。</li>
-    </ul>
+
+  <h3 style="margin:18px 0 10px;font-size:16px;color:#0F172A">风格暴露</h3>
+  <div class="table-wrap">
+    <table class="t">
+      <thead><tr><th>因子桶</th><th>暴露</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>EV（电动车）</td><td class="num">66.79%</td><td>TSLA 35.23% + NIO 31.56%——明显单因子集中</td></tr>
+        <tr><td>中概 ADR</td><td class="num">31.56%</td><td>NIO 单一来源，承担监管 / 汇率 / 关税风险</td></tr>
+        <tr><td>AI Semis</td><td class="num">12.39%</td><td>NVDA 单一来源</td></tr>
+        <tr><td>大型科技股</td><td class="num">12.39%</td><td>NVDA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:18px 0 10px;font-size:16px;color:#0F172A">压力测试</h3>
+  <div class="table-wrap">
+    <table class="t">
+      <thead><tr><th>情景</th><th>说明</th><th>估计盈亏</th></tr></thead>
+      <tbody>
+        <tr><td>全多头同跌 -5%</td><td>整体多头同步下跌 5%</td><td class="num neg">-$6,079.44</td></tr>
+        <tr><td>核心成长 -8%</td><td>TSLA / NVDA 同跌 8%</td><td class="num neg">-$4,631.92</td></tr>
+        <tr><td>中概 ADR -10%</td><td>NIO 单点 -10%</td><td class="num neg">-$3,837.60</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn" style="margin-top:14px">
+    <b>关键警告</b>：单一持仓集中度偏高（前三 79.18%），主要风险源标记为 TSLA（市值最大）；同时 EV 因子 66.79% 暴露下，TSLA 与 NIO 的相关性会让单边事件被放大。<b>降权重首选 NIO</b>（已浮亏 + 触发执行级），减股不会损害 TSLA 上行结构。
+  </div>
+</div><div class="card">
+  <h2>B. SEC / 监管事件依据</h2>
+  <p class="subtle" style="margin-top:0">数据源：SEC EDGAR（recent_days=45）。下表仅列与持仓 / 期权 underlying 相关的最新事件。</p>
+
+  <div class="table-wrap">
+    <table class="t">
+      <thead>
+        <tr><th>日期</th><th>Ticker</th><th>类型</th><th>关键摘要</th><th>影响方向</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">2026-05-08</td><td>NIO</td><td>6-K</td><td>NIO Inc. 最新 6-K 信息披露</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-08</td><td>NVDA</td><td>8-K</td><td>事件级 8-K 披露（无重大风险标记）</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-08</td><td>CDNS</td><td>4 ×2</td><td>同日 2 份 Form 4，内部人减持</td><td><span class="badge neg">偏空</span></td></tr>
+        <tr><td class="num">2026-05-08</td><td>S</td><td>4 ×2</td><td>同日 2 份 Form 4，内部人减持</td><td><span class="badge neg">偏空</span></td></tr>
+        <tr><td class="num">2026-05-07</td><td>NFLX</td><td>4 ×2</td><td>2 份 Form 4，内部人减持</td><td><span class="badge neg">偏空</span></td></tr>
+        <tr><td class="num">2026-05-07</td><td>ORCL</td><td>4</td><td>Form 4 内部人买入</td><td><span class="badge pos">偏多</span></td></tr>
+        <tr><td class="num">2026-05-06</td><td>LITE</td><td>10-Q</td><td>Lumentum Holdings 10-Q 财报披露</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-05</td><td>LITE</td><td>8-K</td><td>事件级 8-K 披露</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-05</td><td>TMDX</td><td>8-K</td><td>TransMedics 事件级 8-K 披露</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-05</td><td>TMDX</td><td>10-Q</td><td>TransMedics 10-Q 财报披露</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-04</td><td>TSLA</td><td>4</td><td>Form 4 内部人交易，方向中性</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-05-01</td><td>AEHR</td><td>4</td><td>Form 4 内部人卖出 204 股 @ $93.07</td><td><span class="badge neg">偏空</span></td></tr>
+        <tr><td class="num">2026-04-29</td><td>AEHR</td><td>4</td><td>Form 4 内部人卖出 10,000 股</td><td><span class="badge neg">偏空</span></td></tr>
+        <tr><td class="num">2026-04-28</td><td>ORCL</td><td>4</td><td>Form 4 内部人买入</td><td><span class="badge pos">偏多</span></td></tr>
+        <tr><td class="num">2026-04-27</td><td>NVDA</td><td>8-K</td><td>事件级 8-K 披露</td><td><span class="badge neu">中性</span></td></tr>
+        <tr><td class="num">2026-04-23</td><td>TSLA</td><td>4</td><td>Form 4 内部人减持</td><td><span class="badge neg">偏空</span></td></tr>
+        <tr><td class="num">2026-04-10</td><td>NIO</td><td>20-F</td><td>NIO 年度 20-F 信息披露</td><td><span class="badge neu">中性</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info" style="margin-top:12px">
+    <b>口径说明</b>：① ARKK 未在 SEC 自有公司字典中（ETF 形态），无 form-level 监控；② Form 4 内部人方向仅做第一近似的 bias 标签，不等于交易信号；③ 同日多份 Form 4（NFLX、CDNS、S、AEHR）需关注内部人减持是否形成连续节奏。
   </div>
 </div><div class="card">
   <h2>I. 执行纪律 / 前提 / 仓位约束</h2>
-  <h3>可立即执行的指令（无需新策略）</h3>
+
+  <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">本次报告中可立即执行的项</h3>
   <ul>
-    <li>H-1 TMDX P90 短 Put 回补 — 关闭已有空头期权，标记 <b>需人工确认</b> 仅因金额较大与滑点风险</li>
-    <li>H-2 NIO 第一档减仓 1,600 股 — 是减仓而非开新仓，限价挂单可由用户直接下单</li>
-    <li>H-3 TSLA C450 GTC 限价回补单 — 关闭已有空头期权（条件触发）</li>
+    <li><b>NIO 减仓</b>（H 模块 ②）：分档限价单，$5.95 / $6.10 / $6.25 × 800 股，共 2,400 股。可在不需要新工具或新策略的情况下直接挂单。</li>
+    <li><b>TMDX P90 直接回补</b>（G-1 选项 A）：单合约平仓，不创建新策略，不需要额外保证金审批。</li>
   </ul>
-  <h3>需人工确认（开新策略 / 增量期权）</h3>
+
+  <h3 style="margin:14px 0 10px;font-size:16px;color:#0F172A">需人工确认才能执行的项（不自动下单）</h3>
   <ul>
-    <li>G-TMDX 选项 B（展期至 9 月 P80）：会建立新的远月空头敞口</li>
-    <li>G-TSLA 选项 B（roll up &amp; out 至 26-09 C470）：建立新的远月空头敞口</li>
-    <li>G-ORCL 选项 B（展期至 26-09 P170）：建立新的远月空头敞口</li>
-    <li>G-NIO 选项 C（展期至 7 月 C7.5）：建立新的远月空头敞口</li>
+    <li>TMDX P90 <b>展期至 26-09-19 P75</b>（G-1 选项 B）：属于跨月 + 跨行权价的策略调整，须确认保证金和延长持有意愿。</li>
+    <li>TSLA C450 <b>roll up & out 至 26-09-19 C470</b>（G-2 选项 C）：放弃当前权利金、改变 covered 担保结构。</li>
+    <li>ORCL P175 <b>开 P175/P170 bull put spread</b>（G-3 选项 C）：需要新买入合约，资金占用 + 风险结构改变。</li>
+    <li>任何 covered call 新开 / protective put 新开 / collar 新开。</li>
   </ul>
-  <h3>仓位约束</h3>
+
+  <h3 style="margin:14px 0 10px;font-size:16px;color:#0F172A">仓位约束 / 前提条件</h3>
   <ul>
-    <li><b>Covered Call：</b>必须每张对应 ≥100 股正股。NIO 减仓后剩余股数若 &lt;3,000 股，必须同步回补对应数量 NIO C7 短 Call（G-NIO 选项 B）。</li>
-    <li><b>Cash-Secured Put：</b>ORCL P175 + TMDX P90 合计名义敞口 = $26,500，需保证保证金 + 现金缓冲。</li>
-    <li><b>组合集中度：</b>本周目标把 NIO 占比从 31.56% 压到 ≤20%；Top3 集中度从 79.18% 压到 ≤70%。</li>
-    <li><b>单仓最大风险：</b>TMDX 短 Put 当前是单仓最大尾部风险来源（执行级），优先处理。</li>
+    <li><b>当前现金为负</b>：cash = -$46,935.61，处于保证金状态（对应 risk_status = LEVEL5）。任何新开期权策略必须验证保证金可用；不允许在不释放任何头寸的情况下直接加新仓。</li>
+    <li><b>covered call 担保前提</b>：TSLA C450 已由 100 股 TSLA 担保；NIO C7 × 30 张需 3,000 股 NIO 担保（当前持仓 6,560 股，减股 2,400 后仍剩 4,160 股，覆盖充足）。如未来继续减 NIO 至 3,000 股以下，必须同步回补 C7（参考 G-4 选项 C）。</li>
+    <li><b>裸短 put 风险</b>：TMDX P90 与 ORCL P175 均为 cash-secured put，必须保证现金 / 保证金可承受 100 股 × strike 的 assignment 后果（TMDX $9,000、ORCL $17,500）。</li>
+    <li><b>组合集中度高</b>：前三大权重 79.18%，单股事故影响巨大。任何加仓动作都需要在已减 NIO 之后再评估，避免进一步抬高集中度。</li>
+    <li><b>QQQ PE 已进入观察级</b>：止盈敏感度上升，若大盘跌破 700 → 升级降风险；若 VIX > 20 → 进入组合级敏感窗口。</li>
   </ul>
-  <h3>自动化执行边界</h3>
+
+  <h3 style="margin:14px 0 10px;font-size:16px;color:#0F172A">不可越界事项</h3>
   <ul>
-    <li>本报告为人工决策依据，<b>不直接对接交易接口</b>；所有指令需人工在富途/券商端确认。</li>
-    <li>若数据缺失（如 RSI / SMA200），相关结论仅作参考，等价位变化触及才执行。</li>
-    <li>滑点容忍度：股票限价单偏离 0.5%-1.0% 内可接受；期权回补单偏离 ≤$0.50 内可接受。</li>
+    <li>本系统不会自动下单。所有期权策略调整、新开仓位、跨月展期均必须在人工确认后由用户在 Futu / 经纪商端执行。</li>
+    <li>本报告不构成交易建议，不承诺收益。报告中的"立即执行"仅指其在分级体系内已达执行级，是否动手仍由用户决定。</li>
   </ul>
 </div><div class="card">
   <h2>J. 方法论与免责声明</h2>
-  <h3>方法层（TradingAgents 风格）</h3>
-  <ol>
-    <li><b>Analyst Team：</b>基本面（财务 + SEC 文件）+ 技术面（SMA / RSI / 支撑阻力）+ 新闻面（SEC 8-K / Form 4 / 6-K）+ 情绪面（VIX / DXY）。</li>
-    <li><b>Bull/Bear Research：</b>每只持仓与 underlying 都给出多空两组论据。</li>
-    <li><b>Risk Debate：</b>D 模块的保守方 / 激进方 / 最终倾向三栏卡片。</li>
-    <li><b>Portfolio Manager：</b>H 模块的指令板，含「立即执行 / 条件触发 / 观察备选」三档优先级。</li>
-  </ol>
-  <h3>数据时效与口径</h3>
+
+  <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">方法论框架</h3>
   <ul>
-    <li>账户、持仓：富途 OpenAPI（<code>futu_portfolio.py --json</code>），冻结于 5/10 08:59 CST，单次拉取。</li>
-    <li>市场数据：yfinance（VIX / DXY / 个股 K 线）+ OpenBB（QQQ trailing PE）；周末数据为 5/8 收盘。</li>
-    <li>SEC 文件：<code>sec_filing_monitor</code>，扫描窗口 45 天。</li>
-    <li>本日为美东周末（5/10 周日）休市，<b>当日盈亏 = $0</b>；NAV 与持仓市值是基于 5/8 收盘的重估。</li>
+    <li><b>TradingAgents 方法层</b>：Analyst Team（基本面 / 技术面 / 新闻 / 情绪）→ Bull/Bear Research → Risk Debate（保守 / 激进 / 中性）→ Portfolio Manager（最终指令板，对应 H 模块）。</li>
+    <li><b>风控分级体系</b>：止盈基于 VIX + QQQ Trailing P/E（观察级 / 一级 / 二级 / 组合级敏感窗口）；止损基于浮亏比例 + 价格位置（SMA50 / 60 日支撑）+ 期权放大倍数 + 距离行权 + ITM 判定，分为正常 / 观察 / 一级 / 二级 / 执行级。</li>
+    <li><b>D 模块辩论结构</b>：保守方（强调尾部 / 集中度 / 估值）、激进方（强调多头结构 / IV / 时间价值）、最终倾向（明确方向 + 边界条件）。</li>
+    <li><b>事件依据层</b>：SEC EDGAR 最近 45 天 8-K / Form 4 / 10-Q / 6-K / 20-F 摘要，使用 impact_bias 字段（bullish / neutral / bearish）作为方向第一近似。</li>
   </ul>
-  <h3>已知数据缺口</h3>
+
+  <h3 style="margin:14px 0 10px;font-size:16px;color:#0F172A">数据时效与口径</h3>
   <ul>
-    <li>SMA200 多个 ticker 缺失（数据样本不足 200 日）。</li>
-    <li>US 10Y proxy 值偏低（0.44），仅作参考；建议以 OpenBB --yield-curve 为准。</li>
-    <li>QQQ 距 SMA20/50 距离未在数据层提供，本次未做大盘位置量化判断。</li>
+    <li><b>账户与持仓</b>：Futu OpenAPI（daily_snapshot.json frozen_at 2026-05-10 09:16 北京时间）。NAV / today_pl / cum_pl / 持仓清单全部以该快照为准；publish 阶段会从同一快照覆写 A 模块 KPI，避免 NAV drift。</li>
+    <li><b>VIX / QQQ PE</b>：take_profit_monitor as_of 2026-05-10 01:16 UTC（≈ 09:16 北京时间）。</li>
+    <li><b>SEC 数据</b>：sec_filing_monitor recent_days=45，含异步预热缓存。</li>
+    <li><b>NAV 趋势图</b>：仅 2 个数据点（5/8 与 5/10），曲线意义有限，仅作起步参考。</li>
+    <li><b>本次数据缺口</b>：yfinance 不可用 → 缺失 macro（DXY / 美债收益率）、holdings_ta（SMA20 / RSI / 布林带）、watchlist（17 只观察名单价格 / 趋势）。F-2 表格未生成；D 模块未注入 DXY / 美债字段；E 模块部分 SMA20 价位以最近交易区间 + 心理位综合给出。建议在 host 端 <code>pip install yfinance</code> 修复后下一次晚报恢复完整。</li>
   </ul>
-  <h3>免责声明</h3>
-  <p class="footer-note">本报告基于公开数据 + 量化模型生成，仅作为人工决策辅助。所有价位、区间、触发条件均为观察性结论；模型输出可能因数据延迟、缺口或市场极端波动而失效。任何下单动作应以用户在券商终端的人工确认为准；请严格遵守仓位管理与风险管理纪律。<b>不构成投资建议。</b></p>
+
+  <h3 style="margin:14px 0 10px;font-size:16px;color:#0F172A">免责声明</h3>
+  <p class="subtle">
+    本报告由自动化美股监控工作流生成，仅供持仓人 Weiwei 个人参考使用，不构成投资建议、买卖要约或承诺。报告中的所有"立即执行 / 条件触发 / 观察备选"均为分级标签，是否动手仍由用户根据自身风险承受能力、资金安排和市场最新信息独立判断。期权策略涉及保证金、assignment、跳空、流动性等多重风险；任何展期、roll、spread、collar、protective put 等新策略调整均需人工确认后由用户在经纪商端手动执行。本系统不自动下单。市场有风险，决策须谨慎。
+  </p>
 </div><div class="footer">Data: Futu OpenAPI live + SEC EDGAR + yfinance daily. Auto-updated daily 21:15 Beijing. Personal review only — not investment advice. Sensitive identifiers redacted.</div></div></body></html>

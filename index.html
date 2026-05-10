@@ -13,21 +13,50 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","SF Pro Text","Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   font-size:16px; line-height:1.6;}
 .wrap{max-width:1344px;margin:0 auto;padding:18px;}
-.card{background:var(--card); border:1px solid var(--bd); border-radius:18px;
-  box-shadow:0 8px 24px rgba(15,23,42,.04); padding:18px 20px; margin:0 0 16px;}
-.card h2{font-size:18px; margin:0 0 14px; padding-left:10px; border-left:3px solid var(--primary); color:var(--text);}
+.card{background:var(--card); border:1px solid var(--bd); border-radius:14px;
+  box-shadow:0 4px 14px rgba(15,23,42,.05); padding:20px 22px; margin:0 0 16px; position:relative; overflow:hidden;}
+/* 模块标题：色块 eyebrow + 大标题，替代细线 */
+.card h2{font-size:19px; margin:0 0 16px; padding:0; border:none; color:var(--text); font-weight:700;
+  display:flex; align-items:center; gap:10px;}
+.card h2::before{content:""; display:inline-block; width:6px; height:22px; background:var(--primary); border-radius:3px;}
+/* 模块语义着色：通过 data-mod 属性 */
+.card[data-mod="A"] h2::before, .card[data-mod="K"] h2::before{background:var(--primary)}
+.card[data-mod="B"] h2::before{background:#7C3AED}
+.card[data-mod="C"] h2::before{background:var(--pos)}
+.card[data-mod="D"] h2::before{background:var(--neg)}
+.card[data-mod="E"] h2::before{background:#0891B2}
+.card[data-mod="F"] h2::before{background:#0F766E}
+.card[data-mod="G"] h2::before{background:var(--warn)}
+.card[data-mod="I"] h2::before{background:#475569}
+.card[data-mod="J"] h2::before{background:var(--weak)}
+
+/* 报头：浅蓝色块底替代单薄白底 + 细线 */
 .report-header{display:flex; justify-content:space-between; align-items:flex-start; gap:18px;
-  background:var(--card); border:1px solid var(--bd); border-top:4px solid var(--primary);
-  border-radius:18px; padding:18px 20px; margin-bottom:16px;}
-.report-header .eyebrow{font-size:13px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase}
-.report-header h1{font-size:25px; margin:6px 0 0; color:var(--text); font-weight:700;}
-.report-header .meta{text-align:right; color:var(--muted); font-size:14px; flex-shrink:0; white-space:nowrap;}
-.chips{margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;}
-.chip{font-size:13px; padding:3px 10px; border-radius:999px; background:var(--pri-bg); color:var(--primary); border:1px solid var(--pri-bd);}
+  background:linear-gradient(135deg, #EFF6FF 0%, #E0EAFE 100%);
+  border:1px solid var(--pri-bd); border-left:6px solid var(--primary);
+  border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 6px 20px rgba(37,99,235,.08);}
+.report-header .left{flex:1; min-width:0;}
+.report-header .eyebrow{font-size:12px; color:var(--primary); letter-spacing:.08em; text-transform:uppercase; font-weight:700; opacity:.85;}
+.report-header h1{font-size:28px; margin:6px 0 0; color:#0F172A; font-weight:700; letter-spacing:-.01em;}
+.report-header .meta{text-align:right; color:#1E40AF; font-size:14px; flex-shrink:0; white-space:nowrap; font-weight:500;}
+.report-header .meta .ts{font-size:16px; font-weight:700; color:#1D4ED8; font-variant-numeric:tabular-nums;}
+.report-header .meta .sub{margin-top:4px; color:#64748B; font-size:13px; font-weight:400;}
+.chips{margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;}
+.chip{font-size:12px; padding:4px 11px; border-radius:6px; background:var(--primary); color:#fff; border:none; font-weight:600; letter-spacing:.02em;}
+.chip.alt{background:#fff; color:var(--primary); border:1px solid var(--pri-bd);}
+
+/* KPI：左色块边条替代纯灰底，数字加大 */
 .kpi-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:12px;}
-.kpi{background:var(--card2); border:1px solid var(--bd); border-radius:14px; padding:12px 14px;}
-.kpi .label{color:var(--muted); font-size:13px;}
-.kpi .value{font-size:22px; font-weight:700; margin-top:4px; font-variant-numeric: tabular-nums;}
+.kpi{background:var(--card); border:1px solid var(--bd); border-left:4px solid var(--bd2); border-radius:10px; padding:14px 16px;
+  transition:transform .15s ease;}
+.kpi.k-pos{border-left-color:var(--pos); background:linear-gradient(90deg, #F0FDF4 0%, #FFFFFF 30%);}
+.kpi.k-neg{border-left-color:var(--neg); background:linear-gradient(90deg, #FEF2F2 0%, #FFFFFF 30%);}
+.kpi.k-pri{border-left-color:var(--primary); background:linear-gradient(90deg, #EFF6FF 0%, #FFFFFF 30%);}
+.kpi.k-warn{border-left-color:var(--warn); background:linear-gradient(90deg, #FFFBEB 0%, #FFFFFF 30%);}
+.kpi .label{color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase; font-weight:600;}
+.kpi .value{font-size:26px; font-weight:700; margin-top:6px; font-variant-numeric: tabular-nums; color:var(--text); line-height:1.2;}
+.kpi .sub{font-size:12px; color:var(--muted); margin-top:2px;}
 .pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--body)}
 .badge{display:inline-block; font-size:13px; padding:2px 9px; border-radius:999px; border:1px solid; font-weight:500;}
 .badge.pos{background:var(--pos-bg); color:var(--pos); border-color:var(--pos-bd)}
@@ -40,13 +69,57 @@ table.t, .card table, .h-card table{width:100%; min-width:720px; border-collapse
 table.t th, table.t td, .card table th, .card table td, .h-card table th, .h-card table td{padding:9px 10px; text-align:left; border-bottom:1px solid var(--bd);}
 table.t th, .card table th, .h-card table th{background:var(--card2); color:var(--muted); font-weight:600; font-size:13px;}
 table.t td.num, .card table td.num{font-variant-numeric: tabular-nums; text-align:right;}
-.callout{padding:12px 14px; border-radius:12px; border:1px solid; margin:8px 0;}
-.callout.info{background:var(--pri-bg); border-color:var(--pri-bd); color:var(--primary)}
-.callout.warn{background:var(--warn-bg); border-color:var(--warn-bd); color:var(--warn)}
-.callout.neg{background:var(--neg-bg); border-color:var(--neg-bd); color:var(--neg)}
+.callout{padding:12px 14px 12px 16px; border-radius:8px; border:1px solid; border-left-width:4px; margin:8px 0;}
+.callout.info{background:var(--pri-bg); border-color:var(--pri-bd); border-left-color:var(--primary); color:#1E3A8A}
+.callout.warn{background:var(--warn-bg); border-color:var(--warn-bd); border-left-color:var(--warn); color:#78350F}
+.callout.neg{background:var(--neg-bg); border-color:var(--neg-bd); border-left-color:var(--neg); color:#7F1D1D}
 .footer{color:var(--weak); font-size:13px; padding:8px 4px 24px; text-align:center;}
 .subtle{color:var(--muted); font-size:13px;}
 canvas#navChart{max-width:100%; height:160px;}
+
+/* ===== 可视化组件（零依赖，2026-05-10）===== */
+/* 1. 横向进度条 — 用于权重、距离 strike%、距离止损% */
+.bar{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:13px;}
+.bar .bar-label{flex:0 0 auto; min-width:64px; color:var(--body); font-weight:500;}
+.bar .bar-track{flex:1; height:8px; background:#E2E8F0; border-radius:4px; overflow:hidden; position:relative;}
+.bar .bar-fill{height:100%; border-radius:4px; transition:width .3s;}
+.bar .bar-fill.pri{background:linear-gradient(90deg, #3B82F6, #2563EB);}
+.bar .bar-fill.pos{background:linear-gradient(90deg, #22C55E, #15803D);}
+.bar .bar-fill.neg{background:linear-gradient(90deg, #EF4444, #B42318);}
+.bar .bar-fill.warn{background:linear-gradient(90deg, #F59E0B, #B54708);}
+.bar .bar-fill.gray{background:linear-gradient(90deg, #94A3B8, #64748B);}
+.bar .bar-val{flex:0 0 auto; min-width:56px; text-align:right; color:var(--text); font-weight:600; font-variant-numeric:tabular-nums;}
+
+/* 2. Sparkline 趋势 — 用于 watchlist / 持仓 5-10D 走势 */
+.spark{display:inline-block; vertical-align:middle; width:80px; height:24px;}
+.spark-row{display:flex; align-items:center; gap:8px;}
+.spark-row .tk{font-weight:700; min-width:54px;}
+.spark-row .pct{font-variant-numeric:tabular-nums; min-width:60px; text-align:right; font-weight:600;}
+
+/* 3. Donut / pie — 用于资产配置 */
+.donut-wrap{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+.donut{width:140px; height:140px; flex:0 0 auto;}
+.donut-legend{flex:1; min-width:160px;}
+.donut-legend .leg{display:flex; align-items:center; gap:8px; margin:4px 0; font-size:14px;}
+.donut-legend .swatch{width:12px; height:12px; border-radius:3px; flex:0 0 auto;}
+.donut-legend .leg-val{margin-left:auto; font-variant-numeric:tabular-nums; font-weight:600;}
+
+/* 4. 风险灯条 gauge — 三档：正常/警戒/危险 */
+.gauge{display:flex; align-items:stretch; height:32px; border-radius:8px; overflow:hidden; border:1px solid var(--bd); margin:8px 0;}
+.gauge .seg{flex:1; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:#fff; opacity:.32; transition:opacity .2s;}
+.gauge .seg.s-ok{background:#15803D;}
+.gauge .seg.s-watch{background:#B54708;}
+.gauge .seg.s-warn{background:#DC2626;}
+.gauge .seg.active{opacity:1;}
+
+/* 5. 数字大屏 stat — 用于子模块标题旁的关键数字强调 */
+.stat-row{display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 14px;}
+.stat{flex:1; min-width:140px; padding:10px 14px; background:var(--card2); border-left:3px solid var(--primary); border-radius:8px;}
+.stat .stat-lbl{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
+.stat .stat-num{font-size:22px; font-weight:700; margin-top:2px; font-variant-numeric:tabular-nums; color:var(--text);}
+.stat.s-pos{border-left-color:var(--pos);} .stat.s-pos .stat-num{color:var(--pos);}
+.stat.s-neg{border-left-color:var(--neg);} .stat.s-neg .stat-num{color:var(--neg);}
+.stat.s-warn{border-left-color:var(--warn);} .stat.s-warn .stat-num{color:var(--warn);}
 
 /* H module emphasis */
 .h-card{background:#EFF6FF; border:1.5px solid #BFDBFE; border-left:5px solid #2563EB;
@@ -98,7 +171,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   .report-header{flex-direction:column}
   .report-header .meta{text-align:left}
 }
-</style></head><body><div class="wrap"><div class="report-header"><div><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip">yfinance</span><span class="chip">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div><b>2026-05-10 09:23:39</b> Beijing</div><div>Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card"><h2>A. 账户实时快照</h2><div class="kpi-grid"><div class="kpi"><div class="label">总资产 NAV</div><div class="value">$70,020.47 <span class="badge neg">LEVEL5</span></div></div><div class="kpi"><div class="label">当日盈亏</div><div class="value neu">+$0.00 <span class="subtle">(+0.00%)</span></div></div><div class="kpi"><div class="label">累计盈亏</div><div class="value neg">-$19,542.19</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div><div class="kpi"><div class="label">股票市值</div><div class="value">$121,588.80</div></div><div class="kpi"><div class="label">期权市值</div><div class="value">$-4,632.73</div></div></div><div class="subtle" style="margin-top:10px">数据时点 2026-05-10 09:16:02 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="card"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th>模拟账户 (paper)</th><th>真实账户 (real)</th><th>差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th>paper NAV</th><th>real NAV</th><th>paper 当日</th><th>real 当日</th><th>累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th>数量</th><th>成交价</th><th>已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="h-card">
+</style></head><body><div class="wrap"><div class="report-header"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip alt">yfinance</span><span class="chip alt">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div class="ts">2026-05-10 10:01:43</div><div class="sub">Beijing &middot; Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card" data-mod="A"><h2>A. 账户实时快照</h2><div class="kpi-grid"><div class="kpi k-pri"><div class="label">总资产 NAV</div><div class="value">$70,020.47</div></div><div class="kpi "><div class="label">当日盈亏</div><div class="value neu">+$0.00 <span class="subtle">(+0.00%)</span></div></div><div class="kpi k-neg"><div class="label">累计盈亏</div><div class="value neg">-$19,542.19</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div></div><div style="margin-top:14px; padding-top:14px; border-top:1px dashed var(--bd);"><div class="subtle" style="margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">资产配置</div><div class="donut-wrap"><svg class="donut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#F1F5F9" stroke-width="20"/><circle cx="70" cy="70" r="60" fill="none" stroke="#2563EB" stroke-width="20" stroke-dasharray="654.64 -277.64" stroke-dashoffset="-0.00" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">总资产</text><text x="70" y="82" text-anchor="middle" font-size="14" fill="#0F172A" font-weight="700" font-family="ui-monospace,monospace">$70.0K</text></svg><div class="donut-legend"><div class="leg"><span class="swatch" style="background:#2563EB"></span><span>股票</span><span class="leg-val">$121,588.80 <span class="subtle">(173.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#0891B2"></span><span>期权</span><span class="leg-val">$-4,632.73 <span class="subtle">(-6.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#94A3B8"></span><span>现金</span><span class="leg-val">$-46,935.61 <span class="subtle">(-67.0%)</span></span></div></div></div></div><div style="margin-top:14px;"><div class="subtle" style="margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">组合风险灯号 · 当前: <b style="color:var(--text)">危险</b> <span class="badge neg">LEVEL5</span></div><div class="gauge"><div class="seg s-ok ">正常</div><div class="seg s-watch ">警戒 LEVEL3-4</div><div class="seg s-warn active">危险 LEVEL5-6</div></div></div><div class="subtle" style="margin-top:14px">数据时点 2026-05-10 09:16:02 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="card"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th>模拟账户 (paper)</th><th>真实账户 (real)</th><th>差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th>paper NAV</th><th>real NAV</th><th>paper 当日</th><th>real 当日</th><th>累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th>数量</th><th>成交价</th><th>已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="h-card" data-mod="H">
   <h2>▌H. Portfolio Manager 指令板</h2>
   <div class="summary">
     <b>今日核心指令</b>：① <b>立即执行</b> — TMDX 短 P90 已深度 ITM（spot $67.84，期权放大 4 倍）→ 今日盘中必须回补或展期；② <b>立即执行</b> — NIO 浮亏 -38.79%（占组合 31.56%）已触执行级止损 → 分档减仓控制集中度；③ <b>条件触发</b> — TSLA 短 C450 距行权仅 4.81%（DTE 39d）→ 关注 IV / 突破确认。
@@ -200,7 +273,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <div class="callout warn" style="margin-top:14px">
     <b>策略与开新仓提示</b>：本面板涉及期权回补 / 展期 / put spread / covered call roll 均属于策略调整或开新策略，需人工确认后再执行；不会自动下单。
   </div>
-</div><div class="card">
+</div><div class="card" data-mod="D">
   <h2>D. 市场级止盈/止损总警报</h2>
 
   <div class="callout warn">
@@ -259,7 +332,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <div class="callout info" style="margin-top:14px">
     <b>数据缺口</b>：本次因 yfinance 不可用，未注入 DXY / 美债收益率 / 大盘均线距离等宏观补充字段；VIX 与 QQQ PE 来自 take_profit_monitor 缓存，时效以脚本 as_of 为准。
   </div>
-</div><div class="card">
+</div><div class="card" data-mod="E">
   <h2>E. 个股 / 期权执行价位卡</h2>
 
   <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">E-1 股票执行价位卡</h3>
@@ -393,7 +466,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <div class="callout info" style="margin-top:12px">
     <b>价位口径说明</b>：本表中 SMA50 / 支撑等数值来自 stop_loss_monitor 缓存；个别个股因 yfinance 不可用，未取得最新 SMA20 数据，TSLA / NVDA / AEHR 等止损位以最近交易区间 + 成本 + 心理位综合给出，已在表中标注。
   </div>
-</div><div class="card">
+</div><div class="card" data-mod="F">
   <h2>F. 多视角个股深度分析</h2>
 
   <p class="subtle" style="margin-top:0">每只持仓 + 期权 underlying 单独折叠；下方"长期观察名单"因 yfinance 数据缺口本次未能渲染完整价位，已在卡片末尾说明。</p>
@@ -594,7 +667,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
     已在 evening_data.json.errors 中记录 <code>watchlist._error: yf.download: No module named 'yfinance'</code>，待 host 端补齐 yfinance 依赖后下一次晚报恢复。<br>
     替代提示：NVDA / NFLX / ORCL 同时在持仓 / 期权 underlying 中，对应分析见上方 F-1。
   </div>
-</div><div class="card" id="g-tmdx">
+</div><div class="card" data-mod="G" id="g-tmdx">
   <h2>G. 期权与收益增强 / 修复策略</h2>
   <p class="subtle" style="margin-top:0">仅覆盖 H 模块出现过的期权 underlying：TMDX、TSLA、ORCL、NIO。每张策略卡给出今日具体动作的完整策略空间。</p>
 
@@ -775,7 +848,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <div class="callout warn" style="margin-top:10px">
     <b>关键提醒</b>：H 模块 NIO 减仓动作只减 2,400 股 → 减后剩余 4,160 股，仍可担保 30 张 C7（覆盖 3,000 股），<b>不会因减股导致裸卖</b>。但若后续继续减至 3,000 股以下，必须按 C 选项同步回补 C7。
   </div>
-</div><div class="card">
+</div><div class="card" data-mod="C">
   <h2>C. 组合风险归因</h2>
 
   <div class="kpi-grid">
@@ -835,7 +908,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <div class="callout warn" style="margin-top:14px">
     <b>关键警告</b>：单一持仓集中度偏高（前三 79.18%），主要风险源标记为 TSLA（市值最大）；同时 EV 因子 66.79% 暴露下，TSLA 与 NIO 的相关性会让单边事件被放大。<b>降权重首选 NIO</b>（已浮亏 + 触发执行级），减股不会损害 TSLA 上行结构。
   </div>
-</div><div class="card">
+</div><div class="card" data-mod="B">
   <h2>B. SEC / 监管事件依据</h2>
   <p class="subtle" style="margin-top:0">数据源：SEC EDGAR（recent_days=45）。下表仅列与持仓 / 期权 underlying 相关的最新事件。</p>
 
@@ -869,7 +942,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <div class="callout info" style="margin-top:12px">
     <b>口径说明</b>：① ARKK 未在 SEC 自有公司字典中（ETF 形态），无 form-level 监控；② Form 4 内部人方向仅做第一近似的 bias 标签，不等于交易信号；③ 同日多份 Form 4（NFLX、CDNS、S、AEHR）需关注内部人减持是否形成连续节奏。
   </div>
-</div><div class="card">
+</div><div class="card" data-mod="I">
   <h2>I. 执行纪律 / 前提 / 仓位约束</h2>
 
   <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">本次报告中可立即执行的项</h3>
@@ -900,7 +973,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
     <li>本系统不会自动下单。所有期权策略调整、新开仓位、跨月展期均必须在人工确认后由用户在 Futu / 经纪商端执行。</li>
     <li>本报告不构成交易建议，不承诺收益。报告中的"立即执行"仅指其在分级体系内已达执行级，是否动手仍由用户决定。</li>
   </ul>
-</div><div class="card">
+</div><div class="card" data-mod="J">
   <h2>J. 方法论与免责声明</h2>
 
   <h3 style="margin:6px 0 10px;font-size:16px;color:#0F172A">方法论框架</h3>

@@ -1,169 +1,215 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Stockmaster Evening Dashboard</title><style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@600;700;800&display=swap');
+
 :root{
-  --bg:#F6F8FB; --card:#FFFFFF; --card2:#F8FAFC;
-  --text:#0F172A; --body:#334155; --muted:#64748B; --weak:#94A3B8;
-  --primary:#2563EB; --pri-bg:#EFF6FF; --pri-bd:#BFDBFE;
+  /* === Stockmaster v2 Design System (UI/UX Pro Max + 用户源参考) === */
+  /* 背景层级 */
+  --bg:#F5F5F2;            /* 页面：暖浅灰 */
+  --card:#FFFFFF;          /* 卡片：纯白 */
+  --card2:#F8F8F5;         /* sub-card / 表头 */
+  --banner:#1A2332;        /* 顶部深墨蓝 banner */
+  --banner-2:#2B3A52;      /* banner 渐变深处 */
+  /* 文字层级 */
+  --text:#0C0A09; --body:#1C1917; --muted:#57534E; --weak:#A8A29E;
+  --on-dark:#F5F5F2; --on-dark-muted:#A8B2C5;
+  /* 主色：金 + 深墨蓝 */
+  --primary:#1A2332; --pri-bg:#E8ECF0; --pri-bd:#CBD5DB;
+  --gold:#A16207; --gold-soft:#FEF3C7; --gold-deep:#78350F;
+  /* 语义色 */
   --pos:#15803D; --pos-bg:#ECFDF3; --pos-bd:#BBF7D0;
   --neg:#B42318; --neg-bg:#FEF3F2; --neg-bd:#FECDCA;
-  --warn:#B54708; --warn-bg:#FFFAEB; --warn-bd:#FEDF89;
-  --bd:#E2E8F0; --bd2:#CBD5E1;
+  --warn:#B54708; --warn-bg:#FFFBEB; --warn-bd:#FEDF89;
+  /* 中性 / 分割 */
+  --bd:#E7E5E4; --bd2:#D6D3D1;
+  --shadow-sm:0 1px 2px rgba(15,17,21,.04);
+  --shadow-md:0 4px 14px rgba(15,17,21,.06);
+  --shadow-lg:0 8px 28px rgba(15,17,21,.08);
+  /* 字体 */
+  --font-display:'Inter','IBM Plex Sans',-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  --font-body:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","SF Pro Text","Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  font-size:16px; line-height:1.6;}
-.wrap{max-width:1344px;margin:0 auto;padding:18px;}
-/* 卡片：纯白色块，无边框，靠背景与页面背景的色差区分 */
+  font-family:var(--font-body); font-size:15px; line-height:1.58;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+
+/* ====== Banner（深墨蓝实色，通栏） ====== */
+.banner-wrap{background:var(--banner); margin:0; padding:0;}
+.banner{max-width:1344px; margin:0 auto; padding:24px 32px;
+  display:flex; justify-content:space-between; align-items:center; gap:24px;}
+.banner .left{flex:1; min-width:0;}
+.banner .eyebrow{color:#A8B2C5; font:600 11px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase;}
+.banner h1{font:700 28px/1.2 var(--font-display); margin:6px 0 12px; color:#fff; letter-spacing:-.01em;}
+.banner .chips{display:flex; gap:6px; flex-wrap:wrap; margin:0;}
+.banner .chip{font:600 12px/1 var(--font-mono); padding:5px 11px; border-radius:6px;
+  background:var(--gold-soft); color:var(--gold-deep); border:none; letter-spacing:.02em;}
+.banner .chip.alt{background:transparent; color:#A8B2C5; border:1px solid #2B3A52;}
+.banner .right{text-align:right; flex-shrink:0; white-space:nowrap;}
+.banner .ts{font:700 18px/1 var(--font-mono); color:#fff;}
+.banner .sub{font:400 12px/1.4 var(--font-body); color:#A8B2C5; margin-top:4px;}
+
+/* ====== 主容器 ====== */
+.wrap{max-width:1344px; margin:0 auto; padding:18px 32px 32px;}
+
+/* ====== Card ====== */
 .card{background:var(--card); border:none; border-radius:14px;
-  box-shadow:0 2px 10px rgba(15,23,42,.04); padding:20px 22px; margin:0 0 16px;}
-/* 模块标题：纯加粗大标题 */
-.card h2{font-size:19px; margin:0 0 16px; padding:0; border:none; color:var(--text); font-weight:700;}
-.card h2 .mod-tag{display:inline-block; font-size:11px; padding:3px 8px; border-radius:6px; background:var(--pri-bg); color:var(--primary); font-weight:700; letter-spacing:.05em; margin-right:8px;}
+  box-shadow:var(--shadow-md); padding:22px 24px; margin:0 0 16px;}
+.card h2{font:700 19px/1.3 var(--font-display); margin:0 0 18px; padding:0; border:none; color:var(--text);
+  display:flex; align-items:center; gap:10px;}
+.card h2 .mod-tag{font:600 11px/1 var(--font-mono); padding:4px 8px; border-radius:6px;
+  background:var(--gold-soft); color:var(--gold-deep); letter-spacing:.08em; text-transform:uppercase;}
+.card h3{font:600 14px/1.3 var(--font-display); color:var(--body); margin:16px 0 10px;}
 
-/* 报头：更深的蓝色块底，无边框 */
-.report-header{display:flex; justify-content:space-between; align-items:flex-start; gap:18px;
-  background:linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
-  border:none;
-  border-radius:14px; padding:22px 24px; margin-bottom:18px;
-  box-shadow:0 4px 16px rgba(37,99,235,.10);}
-.report-header .left{flex:1; min-width:0;}
-.report-header .eyebrow{font-size:12px; color:var(--primary); letter-spacing:.08em; text-transform:uppercase; font-weight:700; opacity:.85;}
-.report-header h1{font-size:28px; margin:6px 0 0; color:#0F172A; font-weight:700; letter-spacing:-.01em;}
-.report-header .meta{text-align:right; color:#1E40AF; font-size:14px; flex-shrink:0; white-space:nowrap; font-weight:500;}
-.report-header .meta .ts{font-size:16px; font-weight:700; color:#1D4ED8; font-variant-numeric:tabular-nums;}
-.report-header .meta .sub{margin-top:4px; color:#64748B; font-size:13px; font-weight:400;}
-.chips{margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;}
-.chip{font-size:12px; padding:4px 11px; border-radius:6px; background:var(--primary); color:#fff; border:none; font-weight:600; letter-spacing:.02em;}
-.chip.alt{background:#fff; color:var(--primary); border:none;}
-
-/* KPI：纯整卡背景色块，无边框 */
+/* ====== KPI（金/绿/红/灰差异背景，mono 大字） ====== */
 .kpi-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:12px;}
-.kpi{background:var(--card2); border:none; border-radius:10px; padding:14px 16px;}
-.kpi.k-pos{background:#DCFCE7;}
-.kpi.k-neg{background:#FEE2E2;}
-.kpi.k-pri{background:#DBEAFE;}
-.kpi.k-warn{background:#FEF3C7;}
-.kpi .label{color:var(--muted); font-size:12px; letter-spacing:.04em; text-transform:uppercase; font-weight:600;}
-.kpi .value{font-size:26px; font-weight:700; margin-top:6px; font-variant-numeric: tabular-nums; color:var(--text); line-height:1.2;}
-.kpi .sub{font-size:12px; color:var(--muted); margin-top:2px;}
+.kpi{background:var(--card2); border:none; border-radius:10px; padding:16px 18px;}
+.kpi.k-pos{background:var(--pos-bg);}
+.kpi.k-neg{background:var(--neg-bg);}
+.kpi.k-pri{background:var(--gold-soft);}    /* 关键 KPI（NAV）：金底 */
+.kpi.k-warn{background:var(--warn-bg);}
+.kpi .label{color:var(--muted); font:600 11px/1 var(--font-mono); letter-spacing:.08em; text-transform:uppercase;}
+.kpi .value{font:800 32px/1.1 var(--font-mono); margin-top:8px; color:var(--text); font-variant-numeric:tabular-nums;}
+.kpi.k-pri .value{color:var(--gold-deep);}
+.kpi.k-pos .value{color:var(--pos);}
+.kpi.k-neg .value{color:var(--neg);}
+.kpi .sub{font:400 12px/1.4 var(--font-body); color:var(--muted); margin-top:4px; font-variant-numeric:tabular-nums;}
+
+/* ====== Pos/Neg 文字色 ====== */
 .pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--body)}
-.badge{display:inline-block; font-size:13px; padding:2px 9px; border-radius:999px; border:1px solid; font-weight:500;}
-.badge.pos{background:var(--pos-bg); color:var(--pos); border-color:var(--pos-bd)}
-.badge.neg{background:var(--neg-bg); color:var(--neg); border-color:var(--neg-bd)}
-.badge.warn{background:var(--warn-bg); color:var(--warn); border-color:var(--warn-bd)}
-.badge.neu{background:var(--card2); color:var(--body); border-color:var(--bd2)}
-.badge.pri{background:var(--pri-bg); color:var(--primary); border-color:var(--pri-bd)}
+
+/* ====== Badge ====== */
+.badge{display:inline-block; font:600 12px/1 var(--font-mono); padding:3px 9px; border-radius:6px; letter-spacing:.04em;}
+.badge.pos{background:var(--pos-bg); color:var(--pos);}
+.badge.neg{background:var(--neg-bg); color:var(--neg);}
+.badge.warn{background:var(--warn-bg); color:var(--warn);}
+.badge.neu{background:var(--card2); color:var(--body);}
+.badge.pri{background:var(--gold-soft); color:var(--gold-deep);}
+
+/* ====== Table ====== */
 .table-wrap{overflow-x:auto; margin:0 -4px;}
-table.t, .card table, .h-card table{width:100%; min-width:720px; border-collapse:collapse; font-size:15px; table-layout:auto;}
-table.t th, table.t td, .card table th, .card table td, .h-card table th, .h-card table td{padding:9px 12px; text-align:left; border-bottom:1px solid var(--bd);}
-table.t th, .card table th, .h-card table th{background:var(--card2); color:var(--muted); font-weight:600; font-size:13px;}
+table.t, .card table, .h-card table{width:100%; min-width:720px; border-collapse:collapse; font-size:14px; font-family:var(--font-body);}
+table.t th, table.t td, .card table th, .card table td, .h-card table th, .h-card table td{
+  padding:10px 12px; text-align:left; border-bottom:1px solid var(--bd); vertical-align:middle;}
+table.t th, .card table th, .h-card table th{
+  background:var(--card2); color:var(--muted); font:600 11px/1.2 var(--font-mono); text-transform:uppercase; letter-spacing:.06em;}
 table.t td.num, .card table td.num, .h-card table td.num,
-table.t th.num, .card table th.num, .h-card table th.num{font-variant-numeric: tabular-nums; text-align:right; white-space:nowrap;}
-/* 数字列等宽收紧：让钱数贴右后视觉上对齐成一列 */
-table.t col.num-col, .card table col.num-col{width:1%;}
-.callout{padding:12px 14px; border-radius:8px; border:1px solid; margin:8px 0;}
-.callout.info{background:var(--pri-bg); border-color:var(--pri-bd); color:#1E3A8A}
-.callout.warn{background:var(--warn-bg); border-color:var(--warn-bd); color:#78350F}
-.callout.neg{background:var(--neg-bg); border-color:var(--neg-bd); color:#7F1D1D}
-.footer{color:var(--weak); font-size:13px; padding:8px 4px 24px; text-align:center;}
-.subtle{color:var(--muted); font-size:13px;}
+table.t th.num, .card table th.num, .h-card table th.num{
+  font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; font-family:var(--font-mono);}
+.card table tbody tr:hover{background:var(--card2);}
+
+/* ====== Callout ====== */
+.callout{padding:13px 16px; border-radius:8px; margin:8px 0; font-size:14px; line-height:1.55;}
+.callout.info{background:var(--pri-bg); color:#1E3A5F;}
+.callout.warn{background:var(--warn-bg); color:#78350F;}
+.callout.neg{background:var(--neg-bg); color:#7F1D1D;}
+
+.footer{color:var(--weak); font:400 12px/1.5 var(--font-body); padding:8px 4px 24px; text-align:center;}
+.subtle{color:var(--muted); font-size:12px;}
 canvas#navChart{max-width:100%; height:160px;}
 
-/* ===== 可视化组件（零依赖，2026-05-10）===== */
-/* 1. 横向进度条 — 用于权重、距离 strike%、距离止损% */
+/* ====== 可视化组件 ====== */
+/* 1. 横向进度条 */
 .bar{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:13px;}
 .bar .bar-label{flex:0 0 auto; min-width:64px; color:var(--body); font-weight:500;}
-.bar .bar-track{flex:1; height:8px; background:#E2E8F0; border-radius:4px; overflow:hidden; position:relative;}
-.bar .bar-fill{height:100%; border-radius:4px; transition:width .3s;}
-.bar .bar-fill.pri{background:linear-gradient(90deg, #3B82F6, #2563EB);}
-.bar .bar-fill.pos{background:linear-gradient(90deg, #22C55E, #15803D);}
-.bar .bar-fill.neg{background:linear-gradient(90deg, #EF4444, #B42318);}
-.bar .bar-fill.warn{background:linear-gradient(90deg, #F59E0B, #B54708);}
-.bar .bar-fill.gray{background:linear-gradient(90deg, #94A3B8, #64748B);}
-.bar .bar-val{flex:0 0 auto; min-width:56px; text-align:right; color:var(--text); font-weight:600; font-variant-numeric:tabular-nums;}
+.bar .bar-track{flex:1; height:6px; background:var(--bd); border-radius:3px; overflow:hidden;}
+.bar .bar-fill{height:100%; border-radius:3px;}
+.bar .bar-fill.pri{background:var(--gold);}
+.bar .bar-fill.pos{background:var(--pos);}
+.bar .bar-fill.neg{background:var(--neg);}
+.bar .bar-fill.warn{background:var(--warn);}
+.bar .bar-fill.gray{background:var(--weak);}
+.bar .bar-val{flex:0 0 auto; min-width:60px; text-align:right; font:600 13px/1 var(--font-mono); color:var(--text);}
 
-/* 2. Sparkline 趋势 — 用于 watchlist / 持仓 5-10D 走势 */
+/* 2. Sparkline */
 .spark{display:inline-block; vertical-align:middle; width:80px; height:24px;}
 .spark-row{display:flex; align-items:center; gap:8px;}
-.spark-row .tk{font-weight:700; min-width:54px;}
-.spark-row .pct{font-variant-numeric:tabular-nums; min-width:60px; text-align:right; font-weight:600;}
+.spark-row .tk{font:700 13px/1 var(--font-mono); min-width:54px;}
+.spark-row .pct{font:600 13px/1 var(--font-mono); min-width:60px; text-align:right;}
 
-/* 3. Donut / pie — 用于资产配置 */
-.donut-wrap{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
-.donut{width:140px; height:140px; flex:0 0 auto;}
-.donut-legend{flex:1; min-width:160px;}
-.donut-legend .leg{display:flex; align-items:center; gap:8px; margin:4px 0; font-size:14px;}
+/* 3. Donut */
+.donut-wrap{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+.donut{width:160px; height:160px; flex:0 0 auto;}
+.donut-legend{flex:1; min-width:200px;}
+.donut-legend .leg{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:14px;}
 .donut-legend .swatch{width:12px; height:12px; border-radius:3px; flex:0 0 auto;}
-.donut-legend .leg-val{margin-left:auto; font-variant-numeric:tabular-nums; font-weight:600;}
+.donut-legend .leg-val{margin-left:auto; font:600 13px/1 var(--font-mono);}
 
-/* 4. 风险灯条 gauge — 三档：正常/警戒/危险 */
-.gauge{display:flex; align-items:stretch; height:32px; border-radius:8px; overflow:hidden; margin:8px 0;}
-.gauge .seg{flex:1; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:#fff; opacity:.32; transition:opacity .2s;}
-.gauge .seg.s-ok{background:#15803D;}
-.gauge .seg.s-watch{background:#B54708;}
-.gauge .seg.s-warn{background:#DC2626;}
+/* 4. Gauge */
+.gauge{display:flex; align-items:stretch; height:36px; border-radius:6px; overflow:hidden; margin:8px 0;}
+.gauge .seg{flex:1; display:flex; align-items:center; justify-content:center; font:600 12px/1 var(--font-mono); color:#fff; opacity:.32;}
+.gauge .seg.s-ok{background:var(--pos);}
+.gauge .seg.s-watch{background:var(--warn);}
+.gauge .seg.s-warn{background:var(--neg);}
 .gauge .seg.active{opacity:1;}
 
-/* 5. 数字大屏 stat — 用于子模块标题旁的关键数字强调（去掉左色条，整卡浅色块） */
+/* 5. Stat */
 .stat-row{display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 14px;}
-.stat{flex:1; min-width:140px; padding:10px 14px; background:var(--card2); border:none; border-radius:8px;}
-.stat .stat-lbl{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
-.stat .stat-num{font-size:22px; font-weight:700; margin-top:2px; font-variant-numeric:tabular-nums; color:var(--text);}
-.stat.s-pos{background:#F0FDF4; border-color:var(--pos-bd);} .stat.s-pos .stat-num{color:var(--pos);}
-.stat.s-neg{background:#FEF2F2; border-color:var(--neg-bd);} .stat.s-neg .stat-num{color:var(--neg);}
-.stat.s-warn{background:#FFFBEB; border-color:var(--warn-bd);} .stat.s-warn .stat-num{color:var(--warn);}
+.stat{flex:1; min-width:140px; padding:12px 14px; background:var(--card2); border:none; border-radius:8px;}
+.stat .stat-lbl{font:600 11px/1 var(--font-mono); color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+.stat .stat-num{font:700 22px/1.1 var(--font-mono); margin-top:4px; color:var(--text); font-variant-numeric:tabular-nums;}
+.stat.s-pos{background:var(--pos-bg);} .stat.s-pos .stat-num{color:var(--pos);}
+.stat.s-neg{background:var(--neg-bg);} .stat.s-neg .stat-num{color:var(--neg);}
+.stat.s-warn{background:var(--warn-bg);} .stat.s-warn .stat-num{color:var(--warn);}
+.stat.s-gold{background:var(--gold-soft);} .stat.s-gold .stat-num{color:var(--gold-deep);}
 
-/* H module emphasis — 整卡浅蓝色块，无任何色条 */
-.h-card{background:#EFF6FF; border:none;
-  border-radius:14px; box-shadow:0 10px 28px rgba(37,99,235,.10); padding:20px 22px; margin:0 0 16px;}
-.h-card h2{color:#1D4ED8; font-size:20px; margin:0 0 12px; padding-left:0; border-left:none;}
-.h-card .summary{background:#fff; border:none;
-  padding:10px 14px; border-radius:10px; margin-bottom:10px; font-size:15px; color:#0F172A;}
-.h-card .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;}
-.h-card .pill{font-size:13px; padding:4px 10px; border-radius:999px; font-weight:600;}
-.h-card .pill.red{background:#FEF3F2; color:#B42318; border:1px solid #FECDCA;}
-.h-card .pill.amber{background:#FFFAEB; color:#B54708; border:1px solid #FEDF89;}
-.h-card .pill.gray{background:#F1F5F9; color:#475569; border:1px solid #CBD5E1;}
-.h-card .instr{background:#fff; border:none; border-radius:14px; padding:12px 14px; margin:8px 0;
-  position:relative;}
+/* ====== H module（PM 指令板）— 金色强调 ====== */
+.h-card{background:var(--gold-soft); border:none;
+  border-radius:14px; box-shadow:0 8px 28px rgba(161,98,7,.10); padding:22px 24px; margin:0 0 16px;}
+.h-card h2{color:var(--gold-deep); font:700 20px/1.3 var(--font-display); margin:0 0 14px;}
+.h-card .summary{background:#fff; border:none; padding:12px 16px; border-radius:10px; margin-bottom:12px; font-size:14px; color:var(--text);}
+.h-card .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+.h-card .pill{font:600 12px/1 var(--font-mono); padding:5px 11px; border-radius:6px;}
+.h-card .pill.red{background:var(--neg-bg); color:var(--neg);}
+.h-card .pill.amber{background:#fff; color:var(--warn);}
+.h-card .pill.gray{background:#fff; color:var(--muted);}
+.h-card .instr{background:#fff; border:none; border-radius:10px; padding:14px 16px; margin:8px 0; position:relative;}
 .h-card .instr .top{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
-.h-card .instr .ticker{font-weight:700; color:#0F172A;}
-.h-card .instr .price{font-size:15px; color:#475569; font-variant-numeric:tabular-nums; margin:4px 0 2px;}
-.h-card .instr .action{font-size:16px; font-weight:700; color:#0F172A; font-variant-numeric:tabular-nums; margin:6px 0; line-height:1.45;
-  background:#F8FAFC; border:none; padding:8px 12px; border-radius:6px;}
-.h-card .instr .action b{color:#1D4ED8;}
-.h-card .instr .meta{color:#64748B; font-size:13px; line-height:1.5; margin-top:3px;}
-.h-card .instr .more-link{display:inline-block; margin-top:6px; font-size:13px; color:#2563EB; text-decoration:none; border:1px solid #BFDBFE; padding:3px 8px; border-radius:6px; background:#EFF6FF;}
-.h-card .instr .more-link:hover{background:#DBEAFE;}
-.h-card .instr .conf-tag{position:absolute; top:8px; right:10px; font-size:12px; color:#B42318;}
+.h-card .instr .ticker{font:700 14px/1 var(--font-mono); color:var(--text);}
+.h-card .instr .price{font:500 14px/1.3 var(--font-mono); color:var(--muted); margin:6px 0 4px;}
+.h-card .instr .action{font:700 15px/1.45 var(--font-mono); color:var(--text); margin:8px 0;
+  background:var(--card2); border:none; padding:10px 14px; border-radius:6px;}
+.h-card .instr .action b{color:var(--gold-deep);}
+.h-card .instr .meta{color:var(--muted); font-size:13px; line-height:1.5; margin-top:4px;}
+.h-card .instr .more-link{display:inline-block; margin-top:8px; font:600 12px/1 var(--font-mono); color:var(--gold-deep); text-decoration:none;
+  padding:5px 10px; border-radius:6px; background:var(--gold-soft);}
+.h-card .instr .more-link:hover{background:#FCE7A8;}
+.h-card .instr .conf-tag{position:absolute; top:10px; right:12px; font:600 11px/1 var(--font-mono); color:var(--neg);}
+
 /* watchlist summary inline chips */
-details.row > summary .sum-action{font-size:12px; padding:2px 8px; border-radius:999px; font-weight:600; line-height:1.4;}
-details.row > summary .sum-buy{font-size:13px; color:#334155; font-variant-numeric:tabular-nums; background:#F1F5F9; padding:2px 8px; border-radius:6px; border:1px solid #E2E8F0;}
-details.row > summary .sum-buy b{color:#0F172A;}
+details.row > summary .sum-action{font:600 12px/1.4 var(--font-mono); padding:3px 8px; border-radius:6px;}
+details.row > summary .sum-buy{font:500 13px/1 var(--font-mono); color:var(--body); background:var(--card2); padding:3px 8px; border-radius:6px;}
+details.row > summary .sum-buy b{color:var(--text);}
 
 /* D module debate columns */
 .debate-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
-.debate-grid .col{background:var(--card2); border:none; border-radius:12px; padding:12px;}
-.debate-grid .col h3{font-size:14px; margin:0 0 6px; color:var(--text);}
-.debate-grid .col.con h3{color:var(--neg)}
-.debate-grid .col.agg h3{color:var(--pos)}
-.debate-grid .col.fin h3{color:var(--primary)}
+.debate-grid .col{background:var(--card2); border:none; border-radius:10px; padding:14px;}
+.debate-grid .col h3{font:700 14px/1.3 var(--font-display); margin:0 0 8px;}
+.debate-grid .col.con h3{color:var(--neg);}
+.debate-grid .col.agg h3{color:var(--pos);}
+.debate-grid .col.fin h3{color:var(--gold-deep);}
 
 /* expandable rows */
-details.row{background:var(--card2); border:none; border-radius:10px; margin:6px 0; padding:0;}
+details.row{background:var(--card2); border:none; border-radius:8px; margin:6px 0;}
 details.row > summary{padding:10px 14px; cursor:pointer; list-style:none; display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
 details.row > summary::-webkit-details-marker{display:none}
 details.row > summary::after{content:"展开 ▾"; margin-left:auto; color:var(--muted); font-size:12px;}
 details.row[open] > summary::after{content:"收起 ▴";}
 details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); background:#fff;}
 
+/* ====== 移动端 ====== */
 @media (max-width: 760px){
-  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .banner{padding:16px 20px; flex-direction:column; align-items:flex-start;}
+  .banner h1{font-size:22px;}
+  .banner .right{text-align:left;}
+  .wrap{padding:14px 16px;}
+  .card{padding:18px 16px;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr); gap:10px;}
+  .kpi{padding:12px 14px;}
+  .kpi .value{font-size:22px;}
   .debate-grid{grid-template-columns:1fr;}
-  .report-header{flex-direction:column}
-  .report-header .meta{text-align:left}
 }
-</style></head><body><div class="wrap"><div class="report-header"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip alt">yfinance</span><span class="chip alt">17 watchlist</span></div></div><div class="meta"><div>Updated</div><div class="ts">2026-05-10 10:19:19</div><div class="sub">Beijing &middot; Auto-refresh @ 21:15 (Mon-Fri)</div></div></div><div class="card" data-mod="A"><h2>A. 账户实时快照</h2><div class="kpi-grid"><div class="kpi k-pri"><div class="label">总资产 NAV</div><div class="value">$70,020.47</div></div><div class="kpi "><div class="label">当日盈亏</div><div class="value neu">+$0.00 <span class="subtle">(+0.00%)</span></div></div><div class="kpi k-neg"><div class="label">累计盈亏</div><div class="value neg">-$19,542.19</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div></div><div style="margin-top:14px; padding-top:14px; border-top:1px dashed var(--bd);"><div class="subtle" style="margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">资产配置</div><div class="donut-wrap"><svg class="donut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#F1F5F9" stroke-width="20"/><circle cx="70" cy="70" r="60" fill="none" stroke="#2563EB" stroke-width="20" stroke-dasharray="654.64 -277.64" stroke-dashoffset="-0.00" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">总资产</text><text x="70" y="82" text-anchor="middle" font-size="14" fill="#0F172A" font-weight="700" font-family="ui-monospace,monospace">$70.0K</text></svg><div class="donut-legend"><div class="leg"><span class="swatch" style="background:#2563EB"></span><span>股票</span><span class="leg-val">$121,588.80 <span class="subtle">(173.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#0891B2"></span><span>期权</span><span class="leg-val">$-4,632.73 <span class="subtle">(-6.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#94A3B8"></span><span>现金</span><span class="leg-val">$-46,935.61 <span class="subtle">(-67.0%)</span></span></div></div></div></div><div style="margin-top:14px;"><div class="subtle" style="margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">组合风险灯号 · 当前: <b style="color:var(--text)">危险</b> <span class="badge neg">LEVEL5</span></div><div class="gauge"><div class="seg s-ok ">正常</div><div class="seg s-watch ">警戒 LEVEL3-4</div><div class="seg s-warn active">危险 LEVEL5-6</div></div></div><div class="subtle" style="margin-top:14px">数据时点 2026-05-10 09:16:02 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="card"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th class="num">模拟账户 (paper)</th><th class="num">真实账户 (real)</th><th class="num">差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th class="num">paper NAV</th><th class="num">real NAV</th><th class="num">paper 当日</th><th class="num">real 当日</th><th class="num">累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th class="num">数量</th><th class="num">成交价</th><th class="num">已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="h-card" data-mod="H">
+</style></head><body><div class="banner-wrap"><div class="banner"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip alt">yfinance</span><span class="chip alt">17 watchlist</span></div></div><div class="right"><div class="ts">2026-05-10 10:43:54</div><div class="sub">Beijing &middot; Auto-refresh @ 21:15 (Mon-Fri)</div></div></div></div><div class="wrap"><div class="card" data-mod="A"><h2>A. 账户实时快照</h2><div class="kpi-grid"><div class="kpi k-pri"><div class="label">总资产 NAV</div><div class="value">$70,020.47</div></div><div class="kpi "><div class="label">当日盈亏</div><div class="value neu">+$0.00 <span class="subtle">(+0.00%)</span></div></div><div class="kpi k-neg"><div class="label">累计盈亏</div><div class="value neg">-$19,542.19</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div></div><div style="margin-top:14px; padding-top:14px; border-top:1px dashed var(--bd);"><div class="subtle" style="margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">资产配置</div><div class="donut-wrap"><svg class="donut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#F1F5F9" stroke-width="20"/><circle cx="70" cy="70" r="60" fill="none" stroke="#2563EB" stroke-width="20" stroke-dasharray="654.64 -277.64" stroke-dashoffset="-0.00" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">总资产</text><text x="70" y="82" text-anchor="middle" font-size="14" fill="#0F172A" font-weight="700" font-family="ui-monospace,monospace">$70.0K</text></svg><div class="donut-legend"><div class="leg"><span class="swatch" style="background:#2563EB"></span><span>股票</span><span class="leg-val">$121,588.80 <span class="subtle">(173.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#0891B2"></span><span>期权</span><span class="leg-val">$-4,632.73 <span class="subtle">(-6.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#94A3B8"></span><span>现金</span><span class="leg-val">$-46,935.61 <span class="subtle">(-67.0%)</span></span></div></div></div></div><div style="margin-top:14px;"><div class="subtle" style="margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">组合风险灯号 · 当前: <b style="color:var(--text)">危险</b> <span class="badge neg">LEVEL5</span></div><div class="gauge"><div class="seg s-ok ">正常</div><div class="seg s-watch ">警戒 LEVEL3-4</div><div class="seg s-warn active">危险 LEVEL5-6</div></div></div><div class="subtle" style="margin-top:14px">数据时点 2026-05-10 09:16:02 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="card"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th class="num">模拟账户 (paper)</th><th class="num">真实账户 (real)</th><th class="num">差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th class="num">paper NAV</th><th class="num">real NAV</th><th class="num">paper 当日</th><th class="num">real 当日</th><th class="num">累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th class="num">数量</th><th class="num">成交价</th><th class="num">已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="h-card" data-mod="H">
   <h2>▌H. Portfolio Manager 指令板</h2>
   <div class="summary">
     <b>今日核心指令</b>：① <b>立即执行</b> — TMDX 短 P90 已深度 ITM（spot $67.84，期权放大 4 倍）→ 今日盘中必须回补或展期；② <b>立即执行</b> — NIO 浮亏 -38.79%（占组合 31.56%）已触执行级止损 → 分档减仓控制集中度；③ <b>条件触发</b> — TSLA 短 C450 距行权仅 4.81%（DTE 39d）→ 关注 IV / 突破确认。

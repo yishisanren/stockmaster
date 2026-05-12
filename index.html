@@ -304,374 +304,629 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   .kpi .value{font-size:22px;}
   .debate-grid{grid-template-columns:1fr;}
 }
-</style></head><body><div class="banner-wrap"><div class="banner"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip alt">yfinance</span><span class="chip alt">17 watchlist</span></div></div><div class="right"><div class="ts">2026-05-11 23:58:33</div><div class="sub">Beijing &middot; Auto-refresh @ 21:15 (Mon-Fri)</div></div></div></div><div class="wrap"><div class="card" data-mod="A"><h2><span class="mod-num">01</span>A. 账户实时快照</h2><div class="risk-alert risk-alert--warn"><div class="risk-alert__icon">⚠</div><div class="risk-alert__body"><div class="risk-alert__label">组合风险灯号 · 当前 危险 <span class="badge neg">LEVEL5</span></div><div class="risk-alert__msg">已进入执行级风险窗口；请优先扫读 <a href="#h-card-anchor" style="color:inherit;text-decoration:underline;">H 指令板</a> 中"立即执行"指令，未执行前不宜新增风险敞口。</div></div></div><div class="kpi-grid"><div class="kpi k-pri"><div class="label">总资产 NAV</div><div class="value">$71,150.77</div></div><div class="kpi k-pos"><div class="label">当日盈亏</div><div class="value pos">+$1,130.30 <span class="subtle">(+1.59%)</span></div></div><div class="kpi k-neg"><div class="label">累计盈亏</div><div class="value neg">-$18,411.89</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-46,935.61</div></div></div><div style="margin-top:14px"><div style="display:inline-flex; align-items:center; gap:12px; margin-left:14px; padding:6px 12px; background:var(--card2); border-radius:8px;"><span class="subtle" style="font:600 11px/1 var(--font-mono); text-transform:uppercase;">NAV 轨迹</span><svg width="220" height="40" viewBox="0 0 220 40" style="display:block;"><path d="M 0.0,38.0 L 110.0,18.8 L 220.0,2.0 L 220.0,40 L 0,40 Z" fill="#15803D" fill-opacity="0.08"/><path d="M 0.0,38.0 L 110.0,18.8 L 220.0,2.0" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font:700 13px/1 var(--font-mono); color:#15803D;">+3.53%</span><span class="subtle" style="font:500 11px/1 var(--font-mono);">最近3日</span></div></div><div style="margin-top:14px; padding-top:14px; border-top:1px dashed var(--bd);"><div class="subtle" style="margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">资产配置</div><div class="donut-wrap"><svg class="donut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#F1F5F9" stroke-width="20"/><circle cx="70" cy="70" r="60" fill="none" stroke="#2563EB" stroke-width="20" stroke-dasharray="649.35 -272.36" stroke-dashoffset="-0.00" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">总资产</text><text x="70" y="82" text-anchor="middle" font-size="14" fill="#0F172A" font-weight="700" font-family="ui-monospace,monospace">$71.2K</text></svg><div class="donut-legend"><div class="leg"><span class="swatch" style="background:#2563EB"></span><span>股票</span><span class="leg-val">$122,553.87 <span class="subtle">(172.2%)</span></span></div><div class="leg"><span class="swatch" style="background:#0891B2"></span><span>期权</span><span class="leg-val">$-4,467.50 <span class="subtle">(-6.3%)</span></span></div><div class="leg"><span class="swatch" style="background:#94A3B8"></span><span>现金</span><span class="leg-val">$-46,935.61 <span class="subtle">(-66.0%)</span></span></div></div></div></div><div class="subtle" style="margin-top:14px">数据时点 2026-05-11 22:01:20 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="h-card" data-mod="H">
-  <h2>H. Portfolio Manager 指令板</h2><div style="display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 14px 0;"><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#FEE2E2; color:#B42318; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#B42318; border-radius:50%;"></span>立即执行 · 3</span><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#FEF3C7; color:#B54708; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#B54708; border-radius:50%;"></span>条件触发 · 4</span><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#F1F5F9; color:#475569; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#475569; border-radius:50%;"></span>观察备选 · 2</span></div>
+</style></head><body><div class="banner-wrap"><div class="banner"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip alt">yfinance</span><span class="chip alt">17 watchlist</span></div></div><div class="right"><div class="ts">2026-05-12 21:26:39</div><div class="sub">Beijing &middot; Auto-refresh @ 21:15 (Mon-Fri)</div></div></div></div><div class="wrap"><div class="card" data-mod="A"><h2><span class="mod-num">01</span>A. 账户实时快照</h2><div class="risk-alert risk-alert--warn"><div class="risk-alert__icon">⚠</div><div class="risk-alert__body"><div class="risk-alert__label">组合风险灯号 · 当前 危险 <span class="badge neg">LEVEL5</span></div><div class="risk-alert__msg">已进入执行级风险窗口；请优先扫读 <a href="#h-card-anchor" style="color:inherit;text-decoration:underline;">H 指令板</a> 中"立即执行"指令，未执行前不宜新增风险敞口。</div></div></div><div class="kpi-grid"><div class="kpi k-pri"><div class="label">总资产 NAV</div><div class="value">$71,991.93</div></div><div class="kpi k-neg"><div class="label">当日盈亏</div><div class="value neg">-$974.96 <span class="subtle">(-1.35%)</span></div></div><div class="kpi k-neg"><div class="label">累计盈亏</div><div class="value neg">-$16,567.10</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-42,332.34</div></div></div><div style="margin-top:14px"><div style="display:inline-flex; align-items:center; gap:12px; margin-left:14px; padding:6px 12px; background:var(--card2); border-radius:8px;"><span class="subtle" style="font:600 11px/1 var(--font-mono); text-transform:uppercase;">NAV 轨迹</span><svg width="220" height="40" viewBox="0 0 220 40" style="display:block;"><path d="M 0.0,38.0 L 110.0,18.8 L 220.0,2.0 L 220.0,40 L 0,40 Z" fill="#15803D" fill-opacity="0.08"/><path d="M 0.0,38.0 L 110.0,18.8 L 220.0,2.0" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font:700 13px/1 var(--font-mono); color:#15803D;">+3.53%</span><span class="subtle" style="font:500 11px/1 var(--font-mono);">最近3日</span></div></div><div style="margin-top:14px; padding-top:14px; border-top:1px dashed var(--bd);"><div class="subtle" style="margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">资产配置</div><div class="donut-wrap"><svg class="donut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#F1F5F9" stroke-width="20"/><circle cx="70" cy="70" r="60" fill="none" stroke="#2563EB" stroke-width="20" stroke-dasharray="616.76 -239.77" stroke-dashoffset="-0.00" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">总资产</text><text x="70" y="82" text-anchor="middle" font-size="14" fill="#0F172A" font-weight="700" font-family="ui-monospace,monospace">$72.0K</text></svg><div class="donut-legend"><div class="leg"><span class="swatch" style="background:#2563EB"></span><span>股票</span><span class="leg-val">$117,779.10 <span class="subtle">(163.6%)</span></span></div><div class="leg"><span class="swatch" style="background:#0891B2"></span><span>期权</span><span class="leg-val">$-3,454.84 <span class="subtle">(-4.8%)</span></span></div><div class="leg"><span class="swatch" style="background:#94A3B8"></span><span>现金</span><span class="leg-val">$-42,332.34 <span class="subtle">(-58.8%)</span></span></div></div></div></div><div class="subtle" style="margin-top:14px">数据时点 2026-05-12 21:15:53 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="h-card" data-mod="H">
+  <h2>H. Portfolio Manager 指令板</h2><div style="display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 14px 0;"><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#FEE2E2; color:#B42318; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#B42318; border-radius:50%;"></span>立即执行 · 2</span><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#FEF3C7; color:#B54708; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#B54708; border-radius:50%;"></span>条件触发 · 7</span><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#F1F5F9; color:#475569; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#475569; border-radius:50%;"></span>观察备选 · 3</span></div>
   <div class="summary">
-    <b>今日核心指令：</b>TMDX 短 Put 已深度 ITM（标的 $67.84 vs strike $90，权利金 4 倍）→ <b>立即回补或紧急展期</b>；NIO 浮亏 -38.4%、占组合 31.8%，触发执行级止损 → <b>立即启动分批减仓</b>；TSLA 短 Call $450 距标的仅 4.8% → 条件触发回补；NFLX 距 60 日支撑仅 0.88% → 跌破即减仓。
+    <b>今日最该动的事：</b>TMDX 260618 P90 期权浮亏已达开仓成本 4.11 倍（执行级），距离行权价 -25%、DTE 38 天，<b>立即评估回补或展期</b>，释放约 $14k 保证金风险；NIO 持仓深套 -36.8%（占组合 32.3%），需在反弹至 $6.30 时分批减仓；NFLX 已跌破 SMA50 与 60 日支撑，二级止损警戒。
   </div>
-
   <div class="pill-row">
-    <span class="pill red">立即执行 2 条</span>
-    <span class="pill amber">条件触发 2 条</span>
-    <span class="pill gray">观察备选 1 条</span>
+    <span class="pill red">立即执行 1 条</span>
+    <span class="pill amber">条件触发 3 条</span>
+    <span class="pill gray">观察备选 2 条</span>
   </div>
 
   <div class="instr">
-    <div class="top"><span class="prio red">立即执行</span> <span class="ticker">[TMDX 260618 P90]</span> <span class="pill red">回补空头期权</span></div>
-    <div class="action">今日盘中 <b>市价回补 1 张 TMDX 260618 P90</b>（成交价 ≤ <b>$23.0</b>，对应账面平仓亏损约 <b>$1,740</b>）；释放 <b>~$9,000 保证金</b>占用，并消除被指派接 100 股 TMDX @ $90 的尾部风险（标的现价 $67.84，潜在追加亏损 $2,216）。<a class="more-link" href="#g-tmdx">查看完整策略 →</a></div>
-    <div class="price">当前权利金 ≈ $22.50（开仓 $5.60，浮亏 -301.9%）；strike 90 / 标的 $67.84 / DTE 38</div>
-    <div class="meta">触发条件：已触发——执行级（ITM、权利金 4 倍、距 strike -24.6%）｜ 失效条件：仅当 TMDX 反弹至 $80+ 且权利金回落至 $10 以下，才考虑改用展期方案而非直接回补</div>
+    <div class="top"><span class="ticker">[TMDX 260618 P90]</span> <span class="badge neg">立即执行</span> <span style="margin-left:auto;font-size:12px;color:#B42318">📉 期权风险升级</span></div>
+    <div class="action">今日盘中市价/限价回补 <b>1 张 TMDX 260618 P90</b>（当前权利金 $25.95，预算 ≤$28.00），<b>立即平仓</b>释放约 $9,000 保证金占用，止损约 $2,035</div>
+    <div class="price">参考价位：当前期权价 $25.95，开仓成本 $5.60；正股现价 $67.32，距离 strike $90 仍有 -25%（深度 ITM）</div>
+    <div class="meta">触发条件：已触发——浮亏倍数 4.11×、价格放大至执行级阈值，DTE 仅 38 天，gamma/assignment 风险持续升高</div>
+    <div class="meta">失效条件：若 TMDX 当日跳涨突破 $75 且权利金回落至 $20 以下，可考虑改为展期至 26-09-19 P85 而非直接回补</div>
+    <a class="more-link" href="#g-tmdx">查看完整策略 →</a>
   </div>
 
   <div class="instr">
-    <div class="top"><span class="prio red">立即执行</span> <span class="ticker">[NIO 蔚来 6,560 股]</span> <span class="pill red">减仓 20%-30%</span></div>
-    <div class="action">今日盘前/盘中挂限价单分三档减仓：<b>$5.95 × 700 股</b> / <b>$6.05 × 700 股</b> / <b>$6.20 × 600 股</b>，共 <b>减仓 2,000 股（占当前持仓 30.5%）</b>，释放约 <b>$12,000 资金</b>。剩余 4,560 股将 NIO 仓位占比从 31.8% 降至约 22%，缓解集中度风险。</div>
-    <div class="price">当前价 $5.89 / 成本 $9.56 / 浮亏 -38.4% / SMA50 $5.90（已跌破）/ 支撑 $4.93</div>
-    <div class="meta">触发条件：已触发——执行级止损（浮亏 ≥ -35%、跌破 SMA50、单票占比 > 30%）｜ 失效条件：仅当今日盘前 NIO 跳空 +5% 至 $6.18 以上、且 5 月 11 日 6-K 披露含明确正向催化（销量/资本动作），才暂缓首档减仓</div>
+    <div class="top"><span class="ticker">[NIO 正股]</span> <span class="badge warn">条件触发</span> <span style="margin-left:auto;font-size:12px;color:#B54708">⚠️ 集中度过高</span></div>
+    <div class="action">条件触发减仓：若 NIO 盘中反弹至 <b>$6.30</b> → 卖出 <b>1000 股</b>（占持仓 15.2%）；若进一步反弹至 <b>$6.60</b> → 再卖出 <b>1000 股</b>（累计减仓 30.5%）</div>
+    <div class="price">参考价位：当前 $6.04，成本 $9.558，浮亏 -36.81%，SMA50 = $5.92，支撑 $4.98 / 阻力 $7.00</div>
+    <div class="meta">触发条件：组合集中度 32.3%（高），止损监控为执行级；但深度浮亏 -$23k 直接砍仓代价高，优先在技术反弹时分批降权重</div>
+    <div class="meta">失效条件：若 NIO 跌破 $5.80（SMA50 下方）并 5 个交易日未收复，则放弃等反弹改为直接降至 4000 股以下</div>
   </div>
 
   <div class="instr">
-    <div class="top"><span class="prio amber">条件触发</span> <span class="ticker">[TSLA 260618 C450]</span> <span class="pill blue">展期 / 回补</span></div>
-    <div class="action">触发后执行：若 TSLA <b>突破 $436</b>（前高/阻力）→ 市价回补 1 张 C450（≤ <b>$19.0</b>，最大亏损约 $715）；若 TSLA <b>突破 $445</b> 且 30 分钟未回落 → 展期至 <b>26-09-19 C480</b>，目标 net credit ≥ <b>$2.50</b>。<a class="more-link" href="#g-tsla">查看完整策略 →</a></div>
-    <div class="price">当前权利金 $16.88（开仓 $11.85，浮亏 -42.4%）；strike 450 / 标的 $428.35 / DTE 38 / 距 strike 4.81%</div>
-    <div class="meta">触发条件：TSLA 收盘价站上 $436（阻力位）｜ 失效条件：TSLA 回落至 $410 以下且 RSI < 60，可继续持有等待时间价值衰减</div>
+    <div class="top"><span class="ticker">[NFLX 正股]</span> <span class="badge warn">条件触发</span></div>
+    <div class="action">条件触发减仓：若 NFLX 盘中跌破 <b>$87.40</b>（60 日支撑）→ 市价卖出 <b>30 股</b>（占持仓 50%），保留 30 股观察反弹</div>
+    <div class="price">参考价位：当前 $85.71，成本 $90.42，浮亏 -5.21%；价格已跌破 SMA50 ($95.35) 与 60 日支撑 ($87.50)</div>
+    <div class="meta">触发条件：止损监控为二级提醒，RSI 27.7 已超卖；若 $87.40 失守则中期下跌结构确认</div>
+    <div class="meta">失效条件：若 NFLX 反弹回站上 $90 并伴随放量，则取消减仓，转为继续观察 SMA50 修复</div>
   </div>
 
   <div class="instr">
-    <div class="top"><span class="prio amber">条件触发</span> <span class="ticker">[NFLX 60 股]</span> <span class="pill red">减仓 50%</span></div>
-    <div class="action">触发后执行：若 NFLX <b>跌破 $87.40</b>（60 日支撑 $87.50 失守）→ 市价卖出 <b>30 股</b>（约 $2,610），保留 30 股观察。若反弹至 <b>$92+</b> 且 RSI 回到 35 上方 → 取消减仓动作。</div>
-    <div class="price">当前价 $86.71 / 成本 $90.42 / 浮亏 -4.1% / SMA50 $95.54（已跌破）/ 支撑 $87.50（距 0.88%）</div>
-    <div class="meta">触发条件：跌破 $87.40 且 5 分钟未收回 ｜ 失效条件：日内反弹收复 $90 且成交量同比放大 1.5 倍</div>
+    <div class="top"><span class="ticker">[TSLA covered call]</span> <span class="badge pri">条件触发</span> <span class="conf-tag">需人工确认</span></div>
+    <div class="action">条件触发开新仓：若 TSLA 反弹至 <b>$450+</b> → 卖出 <b>1 张 TSLA 26-06-19 C470</b> covered call（目标权利金 ≥ $14.00），锁定部分浮盈并降低 34% 单票集中度敞口风险</div>
+    <div class="price">参考价位：TSLA 当前 $439.93，成本 $393.79，浮盈 +11.72%；SMA20 $390.16，阻力 $431.20（已突破）</div>
+    <div class="meta">触发条件：组合 TSLA 权重 34.33%（最高），高位写购对冲；100 股满足 covered call 前提</div>
+    <div class="meta">失效条件：若 TSLA 跌回 $410 下方或公司公告新催化剂（FSD/Robotaxi 重大进展），则推迟不写</div>
+    <div class="meta" style="color:#B42318">策略建议，需人工确认，不自动执行</div>
+    <a class="more-link" href="#g-tsla">查看完整策略 →</a>
   </div>
 
   <div class="instr">
-    <div class="top"><span class="prio gray">观察备选</span> <span class="ticker">[TSLA 100 股 + 期权]</span> <span class="pill gray">继续持有</span></div>
-    <div class="action">暂不操作正股。继续持有 TSLA 100 股（占组合 34.9%，浮盈 +7.7%）；仅监控 TSLA 是否突破 $436 触发上方 C450 展期。<b>若 TSLA 单日下跌 &gt; 4%</b>，则启动减仓 20 股以降低集中度。</div>
-    <div class="price">当前价 $424.07 / 成本 $393.79 / 浮盈 +$3,029 / RSI 69.1（接近超买）/ 阻力 $436</div>
-    <div class="meta">触发条件：单日跌幅 &gt; 4% 或周线跌幅 &gt; 8% ｜ 失效条件：TSLA 站稳 $436 上方且 RSI &lt; 70</div>
+    <div class="top"><span class="ticker">[ORCL 260605 P175]</span> <span class="badge neu">观察备选</span></div>
+    <div class="action">未到执行阈值。继续持有空头看跌期权（当前权利金 $3.95，开仓成本 $4.26，浮盈 +7%）；监控 ORCL 跌破 <b>$190</b> 后再评估回补，DTE 25 天</div>
+    <div class="price">参考价位：strike $175，距离行权价 +10.7%（OTM），止损监控为正常级</div>
+    <div class="meta">触发条件：尚未触发；权利金倍数 0.99 仍低于 2×止损阈值</div>
+    <div class="meta">失效条件：若 ORCL 跌破 $185 且权利金涨至 $8.50（2× 成本）→ 评估回补/展期至 26-07 P165</div>
+    <a class="more-link" href="#g-orcl">查看完整策略 →</a>
   </div>
 
-  <div class="callout warn" style="margin-top:14px">
-    <b>执行纪律：</b>以上指令基于今日 21:17 冻结的 Futu 实时持仓与盘后数据。所有期权策略调整、展期、新开仓均属于<b>策略建议，需人工确认，不自动执行</b>。开盘前若标的跳空超过 5%，必须重新评估而非机械执行。
+  <div class="instr">
+    <div class="top"><span class="ticker">[NIO 260605 C7]</span> <span class="badge neu">观察备选</span></div>
+    <div class="action">未到执行阈值。继续持有 30 张 NIO C7 covered call（当前权利金 $0.155，开仓成本 $0.28，浮盈 +44.6%）；若 NIO 反弹突破 $6.80 → 评估提前回补释放上行空间</div>
+    <div class="price">参考价位：strike $7.00，正股 $6.04，距离行权价 +13.7%（OTM），DTE 25 天</div>
+    <div class="meta">触发条件：尚未触发；当前已能锁定大部分权利金收益，等接近到期自然过期或在权利金 &lt;$0.05 时回补</div>
+    <div class="meta">失效条件：若 NIO 突破 $7 并放量站稳，则立即回补避免被指派</div>
+    <a class="more-link" href="#g-nio">查看完整策略 →</a>
   </div>
+
 </div><div class="card" data-mod="K"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>2</b> 天 · 已执行 <b>1</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$100.18</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th class="num">模拟账户 (paper)</th><th class="num">真实账户 (real)</th><th class="num">差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="neg">-$6.44</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$1,041.24</span></td><td class="num"><span class="pos">+$941.06</span></td><td class="num"><span class="pos">+$100.18</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th class="num">paper NAV</th><th class="num">real NAV</th><th class="num">paper 当日</th><th class="num">real 当日</th><th class="num">累计差额</th></tr></thead><tbody><tr><td>2026-05-07</td><td class="num">$69,705.41</td><td class="num">$69,598.79</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="pos">+$106.62</span></td></tr><tr><td>2026-05-08</td><td class="num">$70,655.36</td><td class="num">$70,555.18</td><td class="num"><span class="pos">+$949.95</span></td><td class="num"><span class="pos">+$956.39</span></td><td class="num"><span class="pos">+$100.18</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th class="num">数量</th><th class="num">成交价</th><th class="num">已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="card" data-mod="D">
-  <h2>D. 市场级止盈 / 止损总警报</h2><div style="margin:8px 0 18px 0;"><div style="text-align:center; padding:6px 0 16px 0;"><span style="font:600 12px var(--font-body); color:var(--muted); margin-right:10px;">市场综合灯号</span><span style="display:inline-block; padding:5px 16px; border-radius:14px; background:#CA8A04; color:#fff; font:700 14px var(--font-body);">观察级</span><div class="subtle" style="margin-top:8px; font:500 12px var(--font-body);">QQQ P/E 34.71 已高于 34，估值进入观察级</div></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:8px;"><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#15803D" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#CA8A04" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#B54708" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">15</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">30</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="173.5,182.5 186.5,177.5 145.0,90.6" fill="#0F172A"/><polygon points="173.5,182.5 186.5,177.5 186.6,196.8" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">18.22</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">VIX · 恐慌指数</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">正常偏低</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#15803D" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#CA8A04" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#B54708" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">34</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">36</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">38</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">42</text><polygon points="174.5,184.4 185.5,175.6 120.0,105.1" fill="#0F172A"/><polygon points="174.5,184.4 185.5,175.6 191.2,194.1" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">34.71</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">QQQ · Trailing P/E</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">现价 $711.56</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">观察级</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#B42318" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#CA8A04" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#15803D" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#CA8A04" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">45</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">55</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">75</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">100</text><polygon points="176.2,174.1 183.8,185.9 260.6,127.9" fill="#0F172A"/><polygon points="176.2,174.1 183.8,185.9 164.9,189.8" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">69</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">CNN Fear & Greed</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">一周前 67</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">贪婪</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#B42318" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#CA8A04" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#15803D" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#CA8A04" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-50</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-20</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-10</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">10</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="173.2,178.5 186.8,181.5 201.1,86.4" fill="#0F172A"/><polygon points="173.2,178.5 186.8,181.5 176.0,197.6" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">+5.3</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">AAII · 多空差</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">多 38.3% · 空 33.0%</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#15803D"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">中性</text></svg></div></div></div>
-  <div class="callout info">
-    <b>组合总灯号：观察级（止盈方向）+ 局部执行级（止损方向）</b>
-    <br>VIX 18.28 仍处中性，未触发止盈一级；但 QQQ 估值 P/E 34.69（trailingPE）已突破 34，进入<b>观察级</b>提示，需关注估值进一步上行节奏。组合内 NIO（执行级）+ TMDX 短 Put（执行级）双重触发，已属<b>局部组合级止损敏感窗口</b>。
+  <h2>D. 市场级止盈/止损总警报</h2><div style="margin:8px 0 18px 0;"><div style="text-align:center; padding:6px 0 16px 0;"><span style="font:600 12px var(--font-body); color:var(--muted); margin-right:10px;">市场综合灯号</span><span style="display:inline-block; padding:5px 16px; border-radius:14px; background:#CA8A04; color:#fff; font:700 14px var(--font-body);">观察级</span><div class="subtle" style="margin-top:8px; font:500 12px var(--font-body);">QQQ P/E 34.71 已高于 34，估值进入观察级</div></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:8px;"><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#15803D" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#CA8A04" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#B54708" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">15</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">30</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="173.5,182.5 186.5,177.5 145.0,90.6" fill="#0F172A"/><polygon points="173.5,182.5 186.5,177.5 186.6,196.8" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">18.22</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">VIX · 恐慌指数</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">正常偏低</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#15803D" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#CA8A04" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#B54708" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">34</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">36</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">38</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">42</text><polygon points="174.5,184.4 185.5,175.6 120.0,105.1" fill="#0F172A"/><polygon points="174.5,184.4 185.5,175.6 191.2,194.1" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">34.71</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">QQQ · Trailing P/E</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">现价 $711.56</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">观察级</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#B42318" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#CA8A04" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#15803D" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#CA8A04" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">45</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">55</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">75</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">100</text><polygon points="176.2,174.1 183.8,185.9 260.6,127.9" fill="#0F172A"/><polygon points="176.2,174.1 183.8,185.9 164.9,189.8" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">69</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">CNN Fear & Greed</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">一周前 67</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">贪婪</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#B42318" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#CA8A04" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#15803D" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#CA8A04" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-50</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-20</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-10</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">10</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="173.2,178.5 186.8,181.5 201.1,86.4" fill="#0F172A"/><polygon points="173.2,178.5 186.8,181.5 176.0,197.6" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">+5.3</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">AAII · 多空差</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">多 38.3% · 空 33.0%</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#15803D"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">中性</text></svg></div></div></div>
+  <div class="callout warn">
+    <b>组合总灯号：观察级（止盈维度）+ 一级提醒（止损维度，NIO + TMDX 期权）</b>
+    <br>市场情绪：risk-on 偏极端贪婪 ｜ 大盘位置：QQQ 距阻力近 ｜ 个股层面：组合内已出现 1 个执行级止损 + 1 个二级止损 + 1 张执行级期权
   </div>
 
-  <div class="table-wrap">
+  <div class="table-wrap" style="margin-top:12px">
     <table class="t">
-      <thead><tr><th>指标</th><th class="num">当前值</th><th>触发分级</th><th>口径 / 依据</th></tr></thead>
-      <tbody><tr><td>QQQ trailingPE</td><td class="num">34.69</td><td><span class="badge warn">观察级</span></td><td>观察级 &gt;34 / 一级 ≥36 / 二级 ≥38</td></tr><tr><td>DXY 美元指数</td><td class="num">97.94</td><td><span class="badge neu">中性</span></td><td>低位震荡，对美股流动性偏中性</td></tr><tr><td>美债 10Y 收益率</td><td class="num">0.44%</td><td><span class="badge neu">数据可能异常</span></td><td>口径偏离常态，仅作参考</td></tr><tr><td>NIO 个股止损</td><td class="num">-38.4%</td><td><span class="badge neg">执行级</span></td><td>浮亏跌破观察/一级/二级三档，已跌破 SMA50</td></tr><tr><td>TMDX 短 Put 止损</td><td class="num">权利金 4.02x</td><td><span class="badge neg">执行级</span></td><td>ITM、距 strike -24.6%、DTE 38</td></tr><tr><td>NFLX 个股止损</td><td class="num">-4.1%</td><td><span class="badge warn">二级提醒</span></td><td>距 60 日支撑仅 0.88%，已跌破 SMA50</td></tr><tr><td>TSLA 短 Call 止损</td><td class="num">距 strike 4.81%</td><td><span class="badge warn">一级提醒</span></td><td>权利金 1.42x，需关注突破阻力情形</td></tr></tbody>
+      <thead><tr><th>维度</th><th>当前值</th><th>阈值</th><th>分级</th><th>说明</th></tr></thead>
+      <tbody><tr><td>QQQ 现价</td><td class="num">$711.56</td><td>vs 20D / 50D / 前高</td><td><span class="badge pos">高位</span></td><td>位于近月区间上沿，需警惕回踩</td></tr></tbody>
     </table>
   </div>
 
-  <h3 style="margin-top:18px;font-size:15px;color:#0F172A">风控辩论</h3>
+  <h3 style="margin-top:18px;font-size:15px;color:#0F172A">⚖️ 风控辩论：当前是否应主动降仓？</h3>
   <div class="debate-grid">
     <div class="col con">
       <h3>🛡️ 保守方</h3>
       <ul>
-        <li>QQQ P/E 34.69 已超 34，估值进入历史中高位，叠加 RSI 多只持仓 &gt; 65（TSLA 69.1, S 69.5）显示局部超买。</li>
-        <li>NIO 浮亏 -38%、单票占比 31.8%，是组合最大不对称风险来源。延迟减仓将放大尾部损失，应优先锁住止损纪律。</li>
-        <li>TMDX 短 Put 已 ITM，DTE 38 天内被指派概率显著上升；若不主动平仓，潜在追加亏损 $2,200+。</li>
-        <li>NFLX 跌破 SMA50 + 距支撑仅 0.88%，下破 $87.4 后大概率快速测试 $74-76。</li>
+        <li>QQQ P/E 34.71 已超 34 观察线，估值偏贵</li>
+        <li>CNN F&amp;G = 68.8（Greed），1 月内从 38 反转 ×1.8 倍，情绪过热</li>
+        <li>组合已有 1 个执行级止损（NIO）+ 1 张执行级期权（TMDX P90）</li>
+        <li>EV 暴露 66.65%、China ADR 32.32%，单一风格过度集中</li>
+        <li>结论：应优先回补 TMDX P90 + 反弹时减 NIO</li>
       </ul>
     </div>
     <div class="col agg">
       <h3>⚔️ 激进方</h3>
       <ul>
-        <li>VIX 仅 18.28，无系统性恐慌信号；QQQ 距 20D / 50D 上方，趋势仍偏多。</li>
-        <li>TSLA 浮盈 +7.7%、NVDA 浮盈 +16.4%、AEHR 浮盈 +14.1%——核心成长仓位仍贡献组合 Alpha，无需提前止盈。</li>
-        <li>NIO 单日反弹 +4.8%（+$272 当日盈亏），5 月 11 日 6-K 已披露但市场尚未消化，存在反弹空间。</li>
-        <li>TSLA 短 Call 仍 OTM 4.81%，DTE 38 还有时间价值衰减，过早回补会浪费 theta。</li>
+        <li>VIX 18.25 未触发任何止盈阈值，恐慌不存在</li>
+        <li>QQQ 高位但未破 20D / 50D，趋势仍在</li>
+        <li>NVDA、TSLA、AEHR、LITE 浮盈持续扩大，趋势线未破</li>
+        <li>NFLX 已 RSI 27.7 严重超卖，反而是反弹候选</li>
+        <li>结论：核心持仓继续持有，仅处理执行级风险点</li>
       </ul>
     </div>
     <div class="col fin">
       <h3>⚖️ 最终倾向</h3>
       <ul>
-        <li><b>偏保守</b>：组合层面无系统性止盈压力（VIX 不在一级），但<b>个股 / 期权层面的执行级止损必须优先处理</b>。</li>
-        <li>TMDX 短 Put 立即回补，<b>不再纠结展期</b>——尾部风险已具象化。</li>
-        <li>NIO 启动分批减仓，<b>保留 70% 仓位</b>给 6-K 后续催化，但单票占比必须降至 25% 以下。</li>
-        <li>TSLA / NVDA / AEHR 等盈利仓位<b>继续持有</b>，但若 TSLA 突破 $436，C450 必须主动管理。</li>
+        <li><b>偏保守，但定点降风险，不全面减仓</b></li>
+        <li>优先动作：① TMDX P90 立即回补 ② NIO 反弹分批减仓</li>
+        <li>趋势型多头（TSLA/NVDA/AEHR/LITE）继续持有，<b>仅高位写购对冲</b></li>
+        <li>NFLX 等关键支撑确认后再操作，不抄底</li>
+        <li>风险温度：<b>高（risk_summary.risk_temperature = high）</b></li>
       </ul>
     </div>
   </div>
 </div><div class="card" data-mod="F">
   <h2>F. 多视角个股深度分析</h2>
-  <div class="callout info">
-    本模块采用 Analyst Team → Bull/Bear Research → Risk Debate → Portfolio Manager 的 TradingAgents 方法层组织。
-    共覆盖 9 只持仓股 + 2 个期权 underlying（TMDX、ORCL）+ 17 只长期观察名单。点击展开查看完整分析。
+
+  <h3 style="font-size:15px;color:#0F172A;margin:6px 0 12px 0">📌 持仓正股 + 期权 underlying（10 只，去重）</h3>
+  <div style="display:flex;flex-direction:column;gap:6px">
+
+<div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center; padding:8px 28px 6px 28px; font:600 11px var(--font-body); color:var(--muted); border-bottom:1px solid #E2E8F0; margin-bottom:6px;"><span>代号</span><span>现价</span><span>成本</span><span>盈亏%/$</span><span>偏向</span><span>操作</span></div><details class="row">
+  <summary><b>TSLA 特斯拉</b> <span class="subtle">$439.93 (+1.5%)</span> <span class="badge pos">偏多</span> <span class="badge warn">集中度风险 34.3%</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 67.8 仍处强势区，未到极端超买</li>
+      <li>价格已突破阻力 $431.20，SMA20 ($390) / SMA50 ($383) 多头排列</li>
+      <li>浮盈 +11.72% ($4,614)，中长线趋势完整</li>
+      <li>FSD V13 推进 + Robotaxi 落地是中长期催化</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>组合权重 34.33% 单票集中度过高</li>
+      <li>当日下跌 -$507（拖累组合最大）</li>
+      <li>估值 PE 高位，对宏观利率/AI 叙事敏感</li>
+      <li>QQQ P/E 34.71 已进入观察级，回调 trigger</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>偏多但需对冲 — 继续持有 100 股，<b>反弹至 $450+ 卖出 1 张 26-06 C470 covered call</b> 锁部分利。</p>
+    <h4>关键变量</h4>
+    <ul>
+      <li>① $431（前阻力转支撑）能否守住</li>
+      <li>② Robotaxi 进展 / FSD 订阅数据</li>
+      <li>③ 全球 EV 需求与中国市场份额</li>
+    </ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>NVDA 英伟达</b> <span class="subtle">$218.56 (-0.3%)</span> <span class="badge pos">偏多</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 64.2 强势但未超买，SMA20/50/200 多头排列</li>
+      <li>价格逼近阻力 $220.90，突破即打开 $230+ 空间</li>
+      <li>浮盈 +19.15%，AI 算力需求依然强劲</li>
+      <li>下游超大规模云厂商资本开支持续增长</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>市场对 GB300/Rubin 路线图预期已较高</li>
+      <li>美国对中国出口管制持续，需求弹性受限</li>
+      <li>$220 阻力位多次未突破，失败可回踩 $204</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>继续持有 70 股；突破 $222 加 10 股，跌破 $204 减 20 股。</p>
+    <h4>关键变量</h4>
+    <ul>
+      <li>① 5 月底 NVDA 财报指引</li>
+      <li>② 大客户 capex 信号（Microsoft / Meta / Google）</li>
+      <li>③ HBM 供应链瓶颈缓解节奏</li>
+    </ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>NIO 蔚来</b> <span class="subtle">$6.04 (-0.5%)</span> <span class="badge neg">偏空</span> <span class="badge neg">⚠️ 执行级止损</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 37.6 接近超卖区，技术上有反弹基础</li>
+      <li>支撑 $4.98 较远，SMA50 = $5.92 提供短线支撑</li>
+      <li>已持有 NIO C7 covered call ×30 张，浮盈 +44.6% 回收部分时间价值</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>浮亏 -36.81% 已达执行级（成本 $9.56 vs 现价 $6.04）</li>
+      <li>组合权重 32.32%，China ADR 单一风格暴露过高</li>
+      <li>NIO 月度交付数据增速放缓，资金面紧张</li>
+      <li>5/8 收 $6.78 → 5/12 跌至 $6.04，跌破 SMA50</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>条件减仓 — 不在 $6.04 直接砍仓，等反弹至 $6.30 / $6.60 分批减 30%；若跌破 $5.80 5 个交易日不收复，则强制降至 4000 股以下。</p>
+    <h4>关键变量</h4>
+    <ul>
+      <li>① 5 月交付数据</li>
+      <li>② 中美科技/关税新闻</li>
+      <li>③ 可能的融资稀释公告</li>
+    </ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>NFLX 奈飞</b> <span class="subtle">$85.71 (+0.3%)</span> <span class="badge warn">高波动</span> <span class="badge warn">二级止损</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 27.7 严重超卖，技术反弹概率高</li>
+      <li>支撑 $75.01 较远，距离当前价 -12.5% 缓冲</li>
+      <li>广告业务 + 直播体育内容贡献新增长曲线</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>已跌破 SMA50 ($95.35) 与 60 日支撑 $87.50</li>
+      <li>趋势从中长期多头转为修复期</li>
+      <li>订阅增长见顶担忧 + 内容投入压力</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>等确认 — 跌破 $87.40 → 减 30 股保留观察；反弹站上 $90 → 取消减仓继续持有。</p>
+    <h4>关键变量</h4>
+    <ul>
+      <li>① $87.40 60 日支撑能否守住</li>
+      <li>② 下季度订阅 + 广告 ARM 数据</li>
+      <li>③ Q2 财报指引（约 7 月）</li>
+    </ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>LITE Lumentum</b> <span class="subtle">$1025.97 (-2.6%)</span> <span class="badge pos">偏多</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 61.8 偏强，SMA20 ($892) / SMA50 ($793) 多头排列</li>
+      <li>浮盈 +12.03%，光模块 / AI 数据中心需求催化</li>
+      <li>距阻力 $1021 仅一步之遥</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>仅 4 股持仓，权重低，操作空间有限</li>
+      <li>个股波动性大，单日 -2.6% 体现敏感度</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>继续持有 — 突破 $1080 减 1 股锁利，跌破 $890 SMA20 退出。</p>
+    <h4>关键变量</h4>
+    <ul><li>① 800G/1.6T 光模块订单</li><li>② 客户集中度（思科 / Meta / Microsoft）</li></ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>CDNS 铿腾电子</b> <span class="subtle">$363.51 (-0.2%)</span> <span class="badge pos">偏多</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 67.8 偏强，SMA20/50 多头排列</li>
+      <li>EDA 龙头，Synopsys + Cadence 双寡头格局稳固</li>
+      <li>AI 芯片设计周期带动 EDA 需求</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>中国市场出口限制持续</li>
+      <li>估值偏贵，PE 接近历史高位</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>继续持有 10 股 — 突破 $380 减仓锁利，跌破 SMA20 ($331) 退出。</p>
+    <h4>关键变量</h4>
+    <ul><li>① 季度订单簿</li><li>② AI 芯片设计公司新签合同</li></ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>ARKK 创新 ETF</b> <span class="subtle">$79.27 (-1.0%)</span> <span class="badge neu">中性</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 54.3 中性，SMA20/50 多头排列</li>
+      <li>浮盈 +1.88%，未亏损</li>
+      <li>持仓分散，beta 较高的成长股篮子</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>距前高较远，趋势震荡</li>
+      <li>主动管理费高 (0.75%)</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>观察持有 — 突破 $85 减仓评估。</p>
+    <h4>关键变量</h4>
+    <ul><li>① 成长股相对动能（vs 标普）</li><li>② TSLA / COIN / ROKU 等核心成分股表现</li></ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>AEHR Aehr Test</b> <span class="subtle">$101.00 (-3.4%)</span> <span class="badge pos">偏多</span> <span class="badge warn">⚠️ 高位 + 内部人卖出</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>浮盈 +47.35% ($649)，趋势性回报最高</li>
+      <li>SMA20 ($89.19) / SMA50 ($61.60) 强势多头排列</li>
+      <li>SiC 测试设备需求 + 电动车碳化硅产业链催化</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>SEC Form 4 显示 4/29 + 5/01 内部人均为卖出</li>
+      <li>距阻力 $103.83 已极近，技术超买风险</li>
+      <li>市值小，单日波动可达 5%+</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>滚动锁利 — $105+ 减 10 股锁定一半浮盈，剩余 10 股跟踪 SMA20。</p>
+    <h4>关键变量</h4>
+    <ul><li>① 大客户订单（OnSemi / STMicro）</li><li>② 季度财报指引</li><li>③ 内部人继续卖出节奏</li></ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>TMDX TransMedics</b> <span class="subtle">$67.32 (-)</span> <span class="badge neg">偏空</span> <span class="badge neg">⚠️ Short Put 深度 ITM</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>器官移植 OCS 系统市场地位独占</li>
+      <li>已严重超卖，技术反弹空间存在</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>正股 $67.32 vs 我方 short P90，深度 ITM -25%</li>
+      <li>权利金已放大至 4.11 倍开仓成本</li>
+      <li>到期 6/18，DTE 38，gamma + 被指派风险持续</li>
+      <li>若被指派 = 强制以 $90 接 100 股 ($9,000)，立即浮亏 -25%</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p><b>立即回补 1 张 P90</b>（≤$28），止损约 $2,035；若反弹至 $75+ 可改为展期至 26-09 P85。</p>
+    <h4>关键变量</h4>
+    <ul><li>① 当日正股是否反弹至 $70+</li><li>② Q1 财报指引修复信号</li><li>③ 期权权利金是否回落至 $20</li></ul>
+  </div>
+</details>
+
+<details class="row">
+  <summary><b>ORCL 甲骨文</b> <span class="subtle">$193.69 (持平)</span> <span class="badge pos">偏多</span></summary>
+  <div class="body">
+    <h4>🐂 多头观点</h4>
+    <ul>
+      <li>RSI 59 健康，SMA20 ($178) / SMA50 ($161) 多头排列</li>
+      <li>OCI 云业务 + Stargate 合作驱动估值重估</li>
+      <li>距阻力 $200 仅一步之遥</li>
+    </ul>
+    <h4>🐻 空头观点</h4>
+    <ul>
+      <li>云资本开支节奏可能放缓</li>
+      <li>债务结构压力</li>
+    </ul>
+    <h4>⚖️ 最终倾向</h4>
+    <p>Short P175 继续持有（OTM +10.7%），等自然过期或反弹时滚动；不主动加仓正股。</p>
+    <h4>关键变量</h4>
+    <ul><li>① $200 阻力突破</li><li>② OCI 季度收入增速</li></ul>
+  </div>
+</details>
+
   </div>
 
-  <h3 style="margin-top:16px;font-size:15px;color:#0F172A">一、持仓正股 + 期权 underlying 深度分析（共 11 只）</h3>
-  <div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center; padding:8px 28px 6px 28px; font:600 11px var(--font-body); color:var(--muted); border-bottom:1px solid #E2E8F0; margin-bottom:6px;"><span>代号</span><span>现价</span><span>成本</span><span>盈亏%/$</span><span>偏向</span><span>操作</span></div><details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">TSLA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$420.70</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$393.79</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+6.83% / +$2,692</span><span class="badge pos">偏多</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮盈 +7.7% / +$3,029；RSI 69.1 接近超买但仍未顶背离</li><li>突破 SMA20 $386.76 + SMA50 $383.19，趋势完好</li><li>FSD/Robotaxi 叙事仍是估值锚</li><li>5月4日 Form 4 显示 1 笔买入 vs 17 笔卖出（中性偏空）</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>单票占比 34.91%，集中度过高，单日波动放大组合 P&L</li><li>逼近阻力 $436.23，C450 短 Call 仅剩 4.81% 安全垫</li><li>RSI 69 接近超买，回调风险上升</li><li>内部人交易整体偏卖出</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏多但需主动管理上方期权</b>。继续持有正股，但若突破 $436 必须主动展期 C450 至 9 月或回补。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>$436 阻力突破有效性</li><li>RSI 是否站稳 70 之上</li><li>下次 delivery / FSD 数据点</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NVDA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$218.03</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$183.43</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+18.86% / +$2,422</span><span class="badge pos">偏多</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮盈 +16.4% / +$2,102，组合贡献最高 Alpha</li><li>突破 SMA20 $203 + SMA50 $189，技术形态健康</li><li>5/8 8-K Item 5.02（管理层）中性，无负面催化</li><li>AI 资本开支仍是行业 beta</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>距阻力 $217.8 仅剩 2%，短期上行空间有限</li><li>单票占比 12.32% 仅次于 TSLA/NIO，需控好</li><li>若 AI 资本开支预期回落，估值压力上升</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏多</b>。继续持有，若突破 $220 可考虑卖出 covered call 锁部分波动率溢价。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>Blackwell 出货节奏</li><li>下次财报指引</li><li>超大客户 capex 风向</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NIO</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$6.04</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$9.56</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-36.75% / $-23,043</span><span class="badge neg">偏空</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>当日反弹 +$272，权重 31.82%</li><li>5/11 6-K 披露最新文件，可能含销量/资本动作</li><li>跌至支撑 $4.93 区间附近，技术上短线超跌</li><li>已跌破成本太多，机械止损反而可能错失反弹</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>浮亏 -38.4% / -$24,050，已是组合最大亏损来源</li><li>单票占比 31.82%，集中度纪律已破</li><li>跌破 SMA50 $5.90，中期趋势转弱</li><li>EV 桶占比 66.73% 严重失衡（含 TSLA）</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏空 + 必须降仓</b>。今日分批减仓 ~2,000 股，将占比降至 22% 以下，剩余仓位等 6-K 催化。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>6-K 内容</li><li>SMA50 $5.90 是否快速收复</li><li>支撑 $4.93 是否守住</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NFLX</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$87.05</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$90.42</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-3.72% / $-202</span><span class="badge neg">偏空</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮亏仅 -4.1%，距成本不远</li><li>RSI 24.2 进入超卖区，存在反弹概率</li><li>单票占比仅 4.29%，不构成组合主要风险</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>跌破 SMA20 + SMA50（$94.6 / $95.5）</li><li>5/7 内部人卖出 3 笔，无买入</li><li>距 60 日支撑 $87.50 仅 0.88%，破位即放量下行</li><li>观察名单也显示偏空 + 低位不追</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏空</b>。条件触发减仓：跌破 $87.40 即减 30 股，保留 30 股等超卖反弹。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>$87.40 支撑能否守住</li><li>RSI 24 反弹力度</li><li>下次财报订阅指标</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">S</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$16.36</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$15.70</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+4.20% / +$198</span><span class="badge pos">偏多</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮盈 +4.7%；RSI 69.5 偏强</li><li>突破 SMA20 + SMA50</li><li>网络安全板块仍受 AI 安全叙事支撑</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>5/8 内部人连续卖出 2 笔</li><li>逼近阻力 $16.60，短线动能可能见顶</li><li>市值 4.06%，影响有限</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏多但接近阻力</b>。继续持有，$17+ 可减仓 100 股锁部分利润。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>$16.60 阻力突破</li><li>下次 ARR / NRR 数据</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">LITE</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$967.32</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$915.77</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+5.63% / +$206</span><span class="badge pos">偏多</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮盈 +4.6%，当日贡献 +$218</li><li>5/6 10-Q 中性披露，5/5 8-K 含 Item 2.02 业绩相关</li><li>光通信受益于 AI 数据中心 800G 需求</li><li>突破 SMA50 $788</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>仓位极小（4 股 / 3.15%），单股价格高敏感度</li><li>RSI 暂未给出，需补充验证</li><li>阻力 $1,000 整数关口</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏多</b>。继续持有，$1,000+ 减 1 股锁利。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>10-Q 实质内容（收入/订单）</li><li>AI 数据中心光模块出货节奏</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">CDNS</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$360.19</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$345.14</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+4.36% / +$150</span><span class="badge pos">偏多</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮盈 +3.4%，趋势健康</li><li>突破 SMA50 $303.94 长期均线</li><li>EDA 行业垄断格局未变</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>5/8 内部人 2 笔卖出（含 1 笔 code G 赠与）</li><li>逼近阻力，需观察是否突破 $365</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏多</b>。继续持有，$370+ 减 3 股。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>内部人后续动作</li><li>下次财报订单指标</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">ARKK</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$79.08</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$77.80</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+1.65% / +$64</span><span class="badge neu">中性</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>持平成本 +1%</li><li>是创新成长篮子，与 TSLA/PLTR 等暴露重合</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>SEC 未匹配（ETF，无单独披露）</li><li>与 TSLA 强相关，存在重复暴露</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>中性</b>。继续持有观察。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>持仓 TSLA 占比，避免重复暴露过高</li></ul>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">AEHR</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$100.27</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$86.32</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+16.16% / +$558</span><span class="badge pos">偏多</span><span class="badge neu">—</span></div></summary><div class="body">
-  <h4>🐂 多头观点</h4><ul><li>浮盈 +14.1% / +$489，当日贡献 +$52</li><li>SiC 测试 + AI 半导体测试需求</li><li>突破 SMA50 $60，技术形态强</li></ul>
-  <h4>🐻 空头观点</h4><ul><li>5/1 + 4/29 连续内部人卖出（4/29 量 10,000 股 code=F）</li><li>RSI 数据缺口，需后续补</li><li>整数关口 $100 阻力</li></ul>
-  <h4>⚖️ 最终倾向</h4><p><b>偏多但留意内部人卖出</b>。继续持有，$100+ 减 10 股锁部分利润。</p>
-  <h4>关键变量（接下来 1-2 周）</h4><ul><li>SiC 大客户订单节奏</li><li>内部人后续披露</li></ul>
-</div></details>
-
-
-
-  <h3 style="margin-top:22px;font-size:15px;color:#0F172A">二、非持仓长期观察名单趋势与进场点位（17 只）</h3>
-  <div class="callout warn" style="margin-bottom:10px;font-size:12.5px">
-    数据为日线 SMA/RSI/支撑阻力快照；买入区 = SMA20-50 区间；突破点 = 阻力上沿；失效位 = 跌破即放弃节奏。<b>仅作长期观察，不自动下单。</b>
+  <h3 style="font-size:15px;color:#0F172A;margin:24px 0 12px 0">👀 长期观察名单（17 只非持仓）</h3>
+  <div class="callout info" style="margin-bottom:10px">
+    <b>说明：</b>当前不持有以下标的，但纳入长期观察。每只给出趋势 / 当前价 / 买入区 / 突破确认 / 失效位。所有进场建议<b>仅供参考、不自动下单</b>。
   </div>
+  <div style="display:flex;flex-direction:column;gap:6px">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="row">
+  <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NVDA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$218.56</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$183.43</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+19.15% / +$2,459</span><span class="badge pos">偏多</span><span class="badge warn">回踩观察</span></div></summary>
+  <div class="body">
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);gap:8px">
+      <div class="kpi"><div class="label">现价</div><div class="value">$218.21</div></div>
+      <div class="kpi"><div class="label">RSI</div><div class="value">64.2</div></div>
+      <div class="kpi"><div class="label">SMA50</div><div class="value">$189.47</div></div>
+      <div class="kpi"><div class="label">支撑/阻力</div><div class="value">$164.27 / $220.90</div></div>
+    </div>
+    <ul style="margin-top:10px">
+      <li><b>回踩观察买入区：</b>$189.47 – $204.63</li>
+      <li><b>突破确认进场点：</b>$222.57（放量收盘确认后再进，止损即设破位回封不破）</li>
+      <li><b>失效位：</b>$180.00（跌破即取消看多观察）</li>
+      <li><b>催化剂/风险：</b>GB300 / Rubin / 出口管制</li>
+    </ul>
+    <div class="callout info" style="font-size:12px">仅供参考，不自动下单；当前不持有该标的，纳入长期观察名单。</div>
+  </div>
+</details>
+
+<details class="row">
+  <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NFLX</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$85.71</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$90.42</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-5.21% / $-282</span><span class="badge neg">偏空</span><span class="badge neu">低位不追</span></div></summary>
+  <div class="body">
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);gap:8px">
+      <div class="kpi"><div class="label">现价</div><div class="value">$87.00</div></div>
+      <div class="kpi"><div class="label">RSI</div><div class="value">27.6</div></div>
+      <div class="kpi"><div class="label">SMA50</div><div class="value">$95.35</div></div>
+      <div class="kpi"><div class="label">支撑/阻力</div><div class="value">$75.01 / $108.95</div></div>
+    </div>
+    <ul style="margin-top:10px">
+      <li><b>回踩观察买入区：</b>$74.26 – $76.51</li>
+      <li><b>突破确认进场点：</b>$95.35（放量收盘确认后再进，止损即设破位回封不破）</li>
+      <li><b>失效位：</b>$71.26（跌破即取消看多观察）</li>
+      <li><b>催化剂/风险：</b>广告 ARM / 体育内容 / 订阅顶</li>
+    </ul>
+    <div class="callout info" style="font-size:12px">仅供参考，不自动下单；当前不持有该标的，纳入长期观察名单。</div>
+  </div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div><h2>G. 期权与收益增强 / 修复策略</h2><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center; padding:8px 28px 6px 28px; font:600 11px var(--font-body); color:var(--muted); border-bottom:1px solid #E2E8F0; margin-bottom:6px;"><span>合约</span><span>正股价</span><span>行权价</span><span>盈亏%/$</span><span>推荐操作</span></div><details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">TMDX P90</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $90</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-363.36% / $-2,035</span><span class="badge neg">A. 立即回补</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;"><div class="callout info">
+    <b>本模块定位：</b>对 H 模块出现的每个期权 underlying 给出完整策略空间（A/B/C 选项），H 给出今日具体动作，G 给出全景。每个选项含适用前提、精确执行价位、收益上限、主要风险、是否新开、失效条件。
+  </div>
+
   
+  <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块。当前正股 $67.32 / 期权 $25.95 / DTE 38。</div>
 
+  <div class="table-wrap">
+    <table class="wide t t-strategy">
+      <thead><tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>A. 立即回补</b><br><span class="badge neg">主推</span></td>
+          <td>正股深度 ITM、权利金 4.11×、DTE 38 仍有 gamma 风险</td>
+          <td>市价/限价 ≤$28.00 回补</td>
+          <td>1 张</td>
+          <td>已平仓，无后续收益</td>
+          <td>实现损失约 $2,035；释放保证金 ~$9,000</td>
+          <td>否（平仓）</td>
+          <td>若开盘正股突破 $75 + 权利金 &lt;$20 → 改选项 B</td>
+        </tr>
+        <tr>
+          <td><b>B. 展期 Roll Down &amp; Out</b></td>
+          <td>正股有反弹迹象、不想立即兑现亏损</td>
+          <td>买回 P90 + 卖出 26-09-19 P85<br>目标 net debit ≤$1.00 或 net credit</td>
+          <td>1 张</td>
+          <td>展期权利金 + 时间换空间</td>
+          <td>仍承担 P85 被指派风险；如继续下跌损失放大</td>
+          <td>是（卖新合约）<span class="conf-tag">需人工确认</span></td>
+          <td>若正股跌破 $65 且权利金 &gt;$30 → 改选项 C</td>
+        </tr>
+        <tr>
+          <td><b>C. 接受指派 + 写 Covered Call</b></td>
+          <td>愿意以 $90 接 100 股、长线看好 TMDX</td>
+          <td>被指派后立即卖 26-09 C90 收 $4-5</td>
+          <td>100 股 + 1 张 C90</td>
+          <td>$90 strike 上限，理论盈亏平衡 $85</td>
+          <td>正股若再跌 -20%，浮亏继续放大 $1,800+</td>
+          <td>是（被动建仓正股 + 主动写购）<span class="conf-tag">需人工确认</span></td>
+          <td>当前 Weiwei 不愿被动建股，故 C 暂不优先</td>
+        </tr>
+      </tbody>
+    </table>
+  </div></div></details>
 
+<details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">ORCL P175</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $175</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+7.28% / +$31</span><span class="badge neu">A. 让其自然过期</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
+  <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块。当前正股 $193.69 / 期权 $3.95 / DTE 25。</div>
 
+  <div class="table-wrap">
+    <table class="wide t t-strategy">
+      <thead><tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>A. 让其自然过期</b><br><span class="badge pos">主推</span></td>
+          <td>OTM +10.7%、止损监控正常、DTE 仅 25</td>
+          <td>DTE &lt;7 或权利金 &lt;$0.50 时回补</td>
+          <td>1 张</td>
+          <td>已收 $426 权利金，剩余约 $395 待回收</td>
+          <td>突发利空导致正股急跌至 $185 以下</td>
+          <td>否</td>
+          <td>正股跌破 $185 + 权利金 &gt;$8 → 改选项 B</td>
+        </tr>
+        <tr>
+          <td><b>B. 提前回补展期</b></td>
+          <td>正股跌破 $185、权利金涨至 $8（2× 成本）</td>
+          <td>买回 P175 + 卖 26-07-17 P165<br>目标 net credit ≥ $1.50</td>
+          <td>1 张</td>
+          <td>额外 net credit $150+</td>
+          <td>P165 被指派风险（约 OTM +5%）</td>
+          <td>是（卖新合约）<span class="conf-tag">需人工确认</span></td>
+          <td>正股跌破 $170 → 改选项 C 直接平仓止损</td>
+        </tr>
+        <tr>
+          <td><b>C. 触发止损平仓</b></td>
+          <td>权利金 &gt;$8.50 (2× 成本) 且正股 &lt;$185</td>
+          <td>市价回补，不再展期</td>
+          <td>1 张</td>
+          <td>已实现亏损约 -$424</td>
+          <td>错失正股反弹后的权利金衰减收益</td>
+          <td>否（平仓）</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div></div></details>
 
+<details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">NIO C7</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 $6.04</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $7</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+44.64% / +$375</span><span class="badge neu">A. 自然到期</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
+  <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块。当前正股 $6.04 / 期权 $0.155 / DTE 25 / 持仓 30 张对应 3000 股。</div>
 
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NVDA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$218.03</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$183.43</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+18.86% / +$2,422</span><span class="badge pos">偏多</span><span class="badge warn">回踩观察</span></div></summary><div class="body">
-  <div class="kpi-grid kpi-mini">
-    <div class="kpi"><div class="label">现价</div><div class="value">$215.20</div></div>
-    <div class="kpi"><div class="label">5D / 20D</div><div class="value">+8.4% / +14.1%</div></div>
-    <div class="kpi"><div class="label">RSI</div><div class="value">60.3</div></div>
-    <div class="kpi"><div class="label">SMA20 / 50</div><div class="value">$203.18 / $188.65</div></div>
-    <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$164.27 / $217.80</div></div>
-    <div class="kpi"><div class="label">失效位</div><div class="value">$179.22</div></div>
-  </div>
-  <ul style="margin-top:10px">
-    <li><b>回踩买入区：</b>$188.65 – $203.18（SMA20-50 区间）</li>
-    <li><b>突破确认进场点：</b>$219.5（阻力上沿）</li>
-    <li><b>失效位：</b>$179.22（跌破即放弃当前节奏）</li>
-    <li><b>催化剂 / 风险：</b>已持仓核心 AI 龙头；Blackwell 出货节奏；趋势完好</li>
-  </ul>
-  <div class="callout info" style="margin-top:8px;font-size:12.5px">仅作长期观察名单；当前未持仓，不自动下单，需人工确认后再执行。</div>
-</div></details>
-<details class="row"><summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NFLX</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$87.05</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$90.42</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-3.72% / $-202</span><span class="badge neg">偏空</span><span class="badge neu">低位不追</span></div></summary><div class="body">
-  <div class="kpi-grid kpi-mini">
-    <div class="kpi"><div class="label">现价</div><div class="value">$87.49</div></div>
-    <div class="kpi"><div class="label">5D / 20D</div><div class="value">-5.0% / -15.1%</div></div>
-    <div class="kpi"><div class="label">RSI</div><div class="value">24.2</div></div>
-    <div class="kpi"><div class="label">SMA20 / 50</div><div class="value">$94.63 / $95.54</div></div>
-    <div class="kpi"><div class="label">支撑 / 阻力</div><div class="value">$75.01 / $108.95</div></div>
-    <div class="kpi"><div class="label">失效位</div><div class="value">$71.26</div></div>
-  </div>
-  <ul style="margin-top:10px">
-    <li><b>回踩买入区：</b>$74.26 – $76.51（SMA20-50 区间）</li>
-    <li><b>突破确认进场点：</b>$95.54（阻力上沿）</li>
-    <li><b>失效位：</b>$71.26（跌破即放弃当前节奏）</li>
-    <li><b>催化剂 / 风险：</b>已持仓；用户增长饱和 + 广告变现节奏；趋势已转弱</li>
-  </ul>
-  <div class="callout info" style="margin-top:8px;font-size:12.5px">仅作长期观察名单；当前未持仓，不自动下单，需人工确认后再执行。</div>
-</div></details>
+  <div class="table-wrap">
+    <table class="wide t t-strategy">
+      <thead><tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>A. 自然到期</b><br><span class="badge pos">主推</span></td>
+          <td>正股 $6.04 vs strike $7.00（OTM +13.7%），权利金已蒸发 44.6%</td>
+          <td>权利金 &lt;$0.05 或 DTE &lt;5 时回补</td>
+          <td>30 张</td>
+          <td>总权利金 $465 全部收回</td>
+          <td>反弹突破 $7 被指派强制以 $7 卖出 3000 股</td>
+          <td>否</td>
+          <td>正股突破 $6.80 + 放量 → 改选项 B 提前回补</td>
+        </tr>
+        <tr>
+          <td><b>B. 提前回补 + Roll Up</b></td>
+          <td>正股反弹至 $6.80+ 且趋势确认</td>
+          <td>买回 C7 + 卖 26-07 C7.5 或 C8<br>目标净收 ≥$0.10/张</td>
+          <td>30 张</td>
+          <td>额外 $300+ 权利金，释放上行空间</td>
+          <td>展期失败若正股回落则又开新风险</td>
+          <td>是（卖新合约）<span class="conf-tag">需人工确认</span></td>
+          <td>正股跌破 SMA50 ($5.92) → 取消展期</td>
+        </tr>
+        <tr>
+          <td><b>C. 提前回补不展期</b></td>
+          <td>计划减 NIO 正股，希望释放上行</td>
+          <td>市价 $0.05–0.15 回补</td>
+          <td>30 张</td>
+          <td>权利金大部分已收回</td>
+          <td>解除上限保护，若反弹至 $7 减仓机会变好</td>
+          <td>否（平仓）</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div></div></details>
 
+<details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">TSLA</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 —</span><span style="font:700 13px var(--font-mono); color:var(--muted);">—</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
+  <div class="callout warn">该策略为开新仓，<b>必须人工确认</b>。当前 TSLA 100 股、浮盈 +11.72%、组合权重 34.33%（最高）。</div>
 
-
-
-
-
-
-
-
-</div><div class="card" data-mod="G">
-  <h2>G. 期权与收益增强 / 修复策略</h2><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center; padding:8px 28px 6px 28px; font:600 11px var(--font-body); color:var(--muted); border-bottom:1px solid #E2E8F0; margin-bottom:6px;"><span>合约</span><span>正股价</span><span>行权价</span><span>盈亏%/$</span><span>推荐操作</span></div>
-  <div class="callout info">
-    G 模块是 H 模块期权指令的「完整策略空间扩展」。H 给出今日具体动作，G 给出每个期权 underlying 完整的策略选择空间（A/B/C 方案），方便对比收益上限与主要风险。
-  </div>
-
-  <!-- TMDX -->
-  <details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">TMDX P90</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $90</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-310.71% / $-1,740</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
-    <div class="callout info">本策略已被 H 指令板引用，<b>今日具体动作见 H 模块</b>。下方为完整策略空间对比。</div>
-
-    <h4 style="margin-top:12px">选项 A：立即市价回补（推荐）<span class="conf-tag">需人工确认</span></h4>
-    <ul>
-      <li><b>适用前提：</b>已进入执行级，权利金 4 倍 + 距 strike -24.6% + DTE 38 + ITM</li>
-      <li><b>执行价位：</b>市价单 ≤ $23.0（权利金当前 $22.51）</li>
-      <li><b>执行仓位：</b>回补 1 张</li>
-      <li><b>预计成本：</b>$2,300（含手续费），释放保证金 ~$9,000</li>
-      <li><b>收益上限：</b>—（这是止损/控损动作，不追求收益）</li>
-      <li><b>主要风险：</b>若标的快速反弹，会失去权利金回落的潜在收益（次要）</li>
-      <li><b>是否新开：</b>否（平仓现有短仓）</li>
-      <li><b>失效条件：</b>盘前 TMDX 跳空 +10% 至 $74.6 以上，可暂缓评估</li>
-    </ul>
-
-    <h4 style="margin-top:14px">选项 B：展期至 26-09-19 P85 <span class="conf-tag">需人工确认</span></h4>
-    <ul>
-      <li><b>适用前提：</b>仅当 TMDX 盘前反弹至 $80+，权利金回落至 $10-12，才有展期合理性</li>
-      <li><b>执行价位：</b>买回 P90 @ ≤$15，卖出 P85 26-09-19 @ ≥$16.5，目标 net credit ≥ $1.50</li>
-      <li><b>执行仓位：</b>1 张换 1 张</li>
-      <li><b>收益上限：</b>+$150 净 credit + 4 个月时间价值缓释</li>
-      <li><b>主要风险：</b>若标的继续下行至 $70 以下，9 月新合约也会快速 ITM，问题被延后而非解决</li>
-      <li><b>是否新开：</b>是（roll 算新合约）</li>
-      <li><b>失效条件：</b>net credit 无法达到 $1.50 即放弃展期，回到选项 A</li>
-    </ul>
-
-    <h4 style="margin-top:14px">选项 C：等待行权被指派</h4>
-    <ul>
-      <li><b>适用前提：</b>愿意接 100 股 TMDX @ $90（实际成本 $84.4，考虑已收的 $560 权利金）</li>
-      <li><b>执行价位：</b>等待 5/15 后 ITM 加深，可能提前指派</li>
-      <li><b>主要风险：</b>追加投入 $9,000 现金接 100 股，现价 $67.84 浮亏约 $1,640；现金已为 -$46,935（已融资），需追加保证金</li>
-      <li><b>是否新开：</b>—</li>
-      <li><b>失效条件：</b>当前组合现金为负，<b>不具备被指派后接货的资金条件</b>，故此选项已实质失效</li>
-    </ul></div></details>
-
-  <!-- TSLA C450 -->
-  <details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">TSLA C450</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 $420.70</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $450</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-12.03% / $-142</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
-    <div class="callout info">本策略已被 H 指令板引用，<b>今日具体动作见 H 模块</b>。下方为完整策略空间对比。</div>
-
-    <h4 style="margin-top:12px">选项 A：突破 $436 立即回补</h4>
-    <ul>
-      <li><b>适用前提：</b>TSLA 突破阻力 $436.23 且 30 分钟未回落</li>
-      <li><b>执行价位：</b>市价回补 ≤$19.0</li>
-      <li><b>执行仓位：</b>回补 1 张</li>
-      <li><b>预计成本：</b>$1,900；累计亏损 $715（$1,900 - 开仓 $1,185）</li>
-      <li><b>收益上限：</b>—（控损动作）</li>
-      <li><b>主要风险：</b>若 TSLA 假突破后回落，会损失 theta 时间价值</li>
-    </ul>
-
-    <h4 style="margin-top:14px">选项 B：展期至 26-09-19 C480 <span class="conf-tag">需人工确认</span></h4>
-    <ul>
-      <li><b>适用前提：</b>TSLA 突破 $445 且持续 1 小时以上</li>
-      <li><b>执行价位：</b>买回 C450 @ ≤$25，卖出 C480 26-09-19 @ ≥$27.5，目标 net credit ≥ $2.50</li>
-      <li><b>收益上限：</b>+$250 净 credit + strike 拉高 $30 增加上行容差</li>
-      <li><b>主要风险：</b>若 TSLA 继续上行至 $480+，新仓也会 ITM；正股仓位 100 股可作 covered 对冲</li>
-      <li><b>是否新开：</b>是</li>
-    </ul>
-
-    <h4 style="margin-top:14px">选项 C：保持现状 + 正股转换为 covered call</h4>
-    <ul>
-      <li><b>适用前提：</b>TSLA 在 $420-435 区间震荡，未触发突破</li>
-      <li><b>说明：</b>当前 100 股 TSLA + 短 C450 已经实质上构成 covered call（每张 100 股），保证金占用低</li>
-      <li><b>收益上限：</b>权利金 $1,185 + 正股上涨至 $450 部分（最多 +$2,793 总收益）</li>
-      <li><b>主要风险：</b>若 TSLA 突破 $450 + $11.85 = $461.85 后将放弃所有上行</li>
-    </ul></div></details>
-
-  <!-- ORCL P175 -->
-  <details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">ORCL P175</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $175</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+1.41% / +$6</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
-
-    <h4 style="margin-top:12px">选项 A：继续持有等 theta 衰减（推荐）</h4>
-    <ul>
-      <li><b>适用前提：</b>OTM 12%、DTE 25、权利金已浮盈 +10.9%，ORCL 趋势仍偏多</li>
-      <li><b>执行价位：</b>—（持有）</li>
-      <li><b>收益上限：</b>剩余权利金 $380 全部归零，最大收益 $380</li>
-      <li><b>主要风险：</b>ORCL 跌破 $178 时权利金会快速放大</li>
-    </ul>
-
-    <h4 style="margin-top:14px">选项 B：权利金 ≤$2.0 时锁利回补</h4>
-    <ul>
-      <li><b>适用前提：</b>权利金降至 ≤$2.0（即 80%+ 收益）</li>
-      <li><b>执行价位：</b>市价回补 ≤$2.0</li>
-      <li><b>收益上限：</b>~+$226（开仓 $4.26 - 回补 $2.0 = $2.26）</li>
-      <li><b>主要风险：</b>放弃最后 $200 时间价值</li>
-    </ul></div></details>
-
-  <!-- NIO C7 -->
-  <details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">NIO C7</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 $6.04</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $7</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+50.00% / +$420</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
-
-    <h4 style="margin-top:12px">选项 A：≤$0.10 全部回补锁利（推荐）</h4>
-    <ul>
-      <li><b>适用前提：</b>权利金已从 $0.28 降至 $0.105，剩余空间有限</li>
-      <li><b>执行价位：</b>市价回补 30 张 @ ≤$0.10</li>
-      <li><b>执行仓位：</b>30 张全部</li>
-      <li><b>预计成本：</b>$300；累计收益 $540（开仓 $840 - 回补 $300）</li>
-      <li><b>收益上限：</b>$540 已实现</li>
-      <li><b>主要风险：</b>若不回补，NIO 大涨 +18% 至 $7+ 会让正股减仓被这 30 张 Call 锁住</li>
-      <li><b>失效条件：</b>$0.10 无法成交时，挂限价 $0.10 等成交</li>
-    </ul>
-
-    <h4 style="margin-top:14px">选项 B：与 NIO 减仓动作同步管理</h4>
-    <ul>
-      <li><b>适用前提：</b>今日 NIO 减仓 2,000 股，则覆盖 20 张 Call 的正股将减少（剩 4,560 股仍可覆盖 45 张）</li>
-      <li><b>说明：</b>正股减仓后短 Call 仍 covered（4,560 股 vs 30 张 = 3,000 股），不构成新风险</li>
-      <li><b>是否新开：</b>否</li>
-    </ul>
-  </div>
-
-  <div class="callout warn" style="margin-top:14px">
-    <b>纪律提示：</b>以上所有期权策略调整均属<b>策略建议</b>，需人工在交易终端确认。展期 / 新开仓不在自动化执行清单内。
+  <div class="table-wrap">
+    <table class="wide t t-strategy">
+      <thead><tr><th>选项</th><th>适用前提</th><th>执行价位</th><th>仓位/合约</th><th>收益上限</th><th>主要风险</th><th>是否新开</th><th>失效条件</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>A. 中位写购 (推荐)</b></td>
+          <td>TSLA 反弹至 $450+，下降权重 / 锁部分浮盈</td>
+          <td>卖出 1 张 TSLA 26-06-19 C470<br>目标权利金 ≥$14</td>
+          <td>1 张（对应 100 股）</td>
+          <td>权利金 +$1,400；若被指派以 $470 卖出 = +$7,621 总收益</td>
+          <td>TSLA 涨破 $485 则上限封顶，错失上涨</td>
+          <td>是（卖出 covered call）<span class="conf-tag">需人工确认</span></td>
+          <td>TSLA 跌回 $410 下方 → 取消计划</td>
+        </tr>
+        <tr>
+          <td><b>B. 远距高位写购</b></td>
+          <td>不愿触发被指派，仅收时间价值</td>
+          <td>卖出 1 张 26-09-19 C520<br>目标权利金 ≥$18</td>
+          <td>1 张</td>
+          <td>权利金 +$1,800；指派概率低</td>
+          <td>权利金回收周期长，资金占用</td>
+          <td>是<span class="conf-tag">需人工确认</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><b>C. 暂不动作</b></td>
+          <td>看好 TSLA 持续上涨突破 $500</td>
+          <td>不开新仓</td>
+          <td>—</td>
+          <td>正股上涨收益不封顶</td>
+          <td>34% 单票集中度持续暴露</td>
+          <td>否</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
   </div></div></details><div class="card" data-mod="B">
   <h2>B. SEC / 监管事件依据</h2>
   <div class="callout info">
-    数据源：SEC EDGAR（45 天回溯），覆盖 11 个持仓 + 期权 underlying tickers。ARKK 为 ETF 无单独 SEC 披露。所有事件按时间倒序，<b>影响方向 = SEC headline 关键字解析</b>，最终结论以 F 模块深度分析为准。
+    <b>数据口径：</b>SEC/EDGAR 监控覆盖 11 只标的（AEHR、ARKK、CDNS、LITE、NFLX、NIO、NVDA、ORCL、S、TMDX、TSLA），来自昨日 SEC 异步预热缓存。本期仅 AEHR 出现 Form 4 内部人交易事件，其他持仓本周无新增 8-K / 10-Q / Form 4 披露。
   </div>
 
+  <h3 style="font-size:14px;margin:14px 0 8px 0;color:#0F172A">📋 持仓相关近期事件</h3>
   <div class="table-wrap">
     <table class="t">
-      <thead>
-        <tr>
-          <th>日期</th><th>Ticker</th><th>文件类型</th><th>影响方向</th><th>关键摘要</th>
-        </tr>
-      </thead>
+      <thead><tr><th>日期</th><th>Ticker</th><th>文件类型</th><th>关键摘要</th><th>影响方向</th><th>影响强度</th></tr></thead>
       <tbody><tr>
-          <td>2026-05-11</td><td><b>NIO</b></td><td>6-K</td>
-          <td><span class="badge neu">中性 / 待评估</span></td>
-          <td>NIO Inc. 最新 6-K 披露（关键字扫描含 revenue / guidance / liquidity / capex / risk factors）；需人工读取确认是否含销量或融资动作</td>
+          <td>2026-05-01</td><td><b>AEHR</b></td><td>Form 4</td>
+          <td>内部人卖出 1 笔（204 股 @ $93.07，code F = 税务扣减）</td>
+          <td><span class="badge neg">偏空</span></td><td><span class="badge warn">中</span></td>
         </tr><tr>
-          <td>2026-05-06</td><td><b>LITE</b></td><td>10-Q</td>
-          <td><span class="badge neu">中性</span></td>
-          <td>Lumentum 季报；关键字扫描含 revenue / guidance / liquidity / capex / risk factors</td>
-        </tr><tr>
-          <td>2026-05-05</td><td><b>TMDX</b></td><td>8-K + 10-Q</td>
-          <td><span class="badge neu">中性 / 业绩</span></td>
-          <td>TransMedics 季报 + 业绩 8-K（Item 2.02, 9.01）；当前股价 $67.84 反映市场反应可能负面</td>
-        </tr><tr>
-          <td>2026-04-10</td><td><b>NIO</b></td><td>20-F</td>
-          <td><span class="badge neu">中性</span></td>
-          <td>NIO 年报 20-F；关键字扫描含 revenue/guidance/liquidity/capex/risk factors</td>
+          <td>2026-04-29</td><td><b>AEHR</b></td><td>Form 4</td>
+          <td>内部人卖出 1 笔（10,000 股，code F = 税务扣减；价格未披露）</td>
+          <td><span class="badge neg">偏空</span></td><td><span class="badge warn">中</span></td>
         </tr></tbody>
     </table>
   </div>
 
   <div class="callout warn" style="margin-top:12px">
-    <b>关键观察：</b>
-    <ul style="margin:6px 0 0 18px">
-      <li><b>偏空信号集中</b>：CDNS / S / NFLX / TSLA / AEHR 近 2 周均出现内部人净卖出，需关注是否与板块见顶相关。</li>
-      <li><b>ORCL 唯一偏多内部人信号</b>，Form 4 多次买入，对应短 Put 偏多基本面支撑。</li>
-      <li><b>TMDX 业绩披露后</b>市场反应导致股价 $67.84（远低于短 Put strike $90），是当前最大尾部风险来源。</li>
-      <li><b>NIO 5/11 最新 6-K</b>暂未读取实质内容，需人工查 SEC 原文确认是否含销量或资本动作。</li>
-    </ul>
-  <div class="subtle" style="margin-top:8px; font-size:12px;">▌已过滤 12 条常规披露（中性 8-K / 单笔小额 Form 4 等），仅保留财报与重大利好/利空事件</div></div>
+    <b>解读：</b>AEHR 两笔内部人卖出均为 code F（税务相关），并非主动减持的 S 类交易，杀伤力较弱。但叠加 RSI 55.3 接近高位、距阻力 $103.83 仅 -2.7%，建议关注后续是否出现 code S（公开市场卖出）。如出现则风险升级。
+  </div>
+
+  <div class="callout info" style="margin-top:8px">
+    <b>建议下一次复查触发器：</b>① NIO 中国子公司财务披露 ② NVDA 5 月底 FY26Q1 财报 ③ AEHR 下次 Form 4 是否出现 code S ④ TMDX 任何 8-K 公告（已深度 ITM）
+  <div class="subtle" style="margin-top:8px; font-size:12px;">▌已过滤 1 条常规披露（中性 8-K / 单笔小额 Form 4 等），仅保留财报与重大利好/利空事件</div></div>
 </div><div class="footer">Data: Futu OpenAPI live + SEC EDGAR + yfinance daily. Auto-updated daily 21:15 Beijing. Personal review only — not investment advice. Sensitive identifiers redacted.</div></div></body></html>

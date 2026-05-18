@@ -1,14 +1,14 @@
 {
-  "ts": "2026-05-15T21:31:19.835391",
+  "ts": "2026-05-18T21:28:42.629733",
   "account": {
-    "ts": "2026-05-15T21:18:16.698242",
-    "nav": 72302.0386,
+    "ts": "2026-05-18T21:18:10.238310",
+    "nav": 70271.0486,
     "cash": -51952.47,
-    "stock_mv": 128078.73,
-    "option_mv": -3824.23,
-    "today_pl": -2617.11,
-    "today_pl_pct": -3.62,
-    "cum_pl": -16244.07,
+    "stock_mv": 125757.16,
+    "option_mv": -3533.65,
+    "today_pl": -138.24,
+    "today_pl_pct": -0.2,
+    "cum_pl": -18275.05,
     "risk_status": "LEVEL5",
     "currency": "USD",
     "stocks": [
@@ -17,108 +17,108 @@
         "name": "特斯拉",
         "qty": 100.0,
         "cost_price": 393.785,
-        "current_price": 431.969,
-        "market_val": 43196.87,
-        "pl_val": 3818.41,
-        "pl_ratio": 9.700000000000001,
+        "current_price": 419.32,
+        "market_val": 41932.0,
+        "pl_val": 2553.54,
+        "pl_ratio": 6.4799999999999995,
         "position_side": "LONG",
-        "today_pl_val": -1133.13
+        "today_pl_val": -292.0
       },
       {
         "code": "US.NVDA",
         "name": "英伟达",
         "qty": 60.0,
         "cost_price": 175.205,
-        "current_price": 228.8,
-        "market_val": 13728.03,
-        "pl_val": 3215.73,
-        "pl_ratio": 30.59,
+        "current_price": 229.798,
+        "market_val": 13787.86,
+        "pl_val": 3275.562,
+        "pl_ratio": 31.16,
         "position_side": "LONG",
-        "today_pl_val": -416.37
+        "today_pl_val": 268.662
       },
       {
         "code": "US.NIO",
         "name": "蔚来",
         "qty": 7060.0,
         "cost_price": 9.3,
-        "current_price": 6.19,
-        "market_val": 43701.4,
-        "pl_val": -21957.2214,
-        "pl_ratio": -33.44,
+        "current_price": 6.08,
+        "market_val": 42922.68,
+        "pl_val": -22735.9394,
+        "pl_ratio": -34.63,
         "position_side": "LONG",
-        "today_pl_val": -423.6
+        "today_pl_val": -143.318
       },
       {
         "code": "US.NFLX",
         "name": "奈飞",
         "qty": 100.0,
         "cost_price": 89.748,
-        "current_price": 87.27,
-        "market_val": 8727.03,
-        "pl_val": -247.77,
-        "pl_ratio": -2.76,
+        "current_price": 86.67,
+        "market_val": 8667.0,
+        "pl_val": -307.8,
+        "pl_ratio": -3.4299999999999997,
         "position_side": "LONG",
-        "today_pl_val": 33.03
+        "today_pl_val": -35.0
       },
       {
         "code": "US.LITE",
         "name": "Lumentum",
         "qty": 4.0,
         "cost_price": 915.77,
-        "current_price": 954.746,
-        "market_val": 3818.99,
-        "pl_val": 155.906,
-        "pl_ratio": 4.26,
+        "current_price": 950.827,
+        "market_val": 3803.31,
+        "pl_val": 140.23,
+        "pl_ratio": 3.83,
         "position_side": "LONG",
-        "today_pl_val": -188.254
+        "today_pl_val": -79.49
       },
       {
         "code": "US.IREN",
         "name": "IREN Ltd",
         "qty": 100.0,
         "cost_price": 54.25,
-        "current_price": 56.48,
-        "market_val": 5648.0,
-        "pl_val": 223.0,
-        "pl_ratio": 4.109999999999999,
+        "current_price": 53.943,
+        "market_val": 5394.32,
+        "pl_val": -30.68,
+        "pl_ratio": -0.5700000000000001,
         "position_side": "LONG",
-        "today_pl_val": -192.0
+        "today_pl_val": 100.32
       },
       {
         "code": "US.CDNS",
         "name": "铿腾电子",
         "qty": 10.0,
         "cost_price": 345.14,
-        "current_price": 347.75,
-        "market_val": 3477.5,
-        "pl_val": 26.1,
-        "pl_ratio": 0.76,
+        "current_price": 347.01,
+        "market_val": 3470.1,
+        "pl_val": 18.7,
+        "pl_ratio": 0.54,
         "position_side": "LONG",
-        "today_pl_val": -50.9
+        "today_pl_val": -2.3
       },
       {
         "code": "US.ARKK",
         "name": "创新ETF-ARK",
         "qty": 50.0,
         "cost_price": 77.8,
-        "current_price": 76.066,
-        "market_val": 3803.31,
-        "pl_val": -86.69,
-        "pl_ratio": -2.23,
+        "current_price": 75.3,
+        "market_val": 3765.0,
+        "pl_val": -125.0,
+        "pl_ratio": -3.2099999999999995,
         "position_side": "LONG",
-        "today_pl_val": -96.69
+        "today_pl_val": 20.0
       },
       {
         "code": "US.AEHR",
         "name": "Aehr Test Systems",
         "qty": 20.0,
         "cost_price": 68.545,
-        "current_price": 98.88,
-        "market_val": 1977.6,
-        "pl_val": 606.7,
-        "pl_ratio": 44.26,
+        "current_price": 100.744,
+        "market_val": 2014.89,
+        "pl_val": 643.986,
+        "pl_ratio": 46.98,
         "position_side": "LONG",
-        "today_pl_val": -149.2
+        "today_pl_val": 24.886
       }
     ],
     "options": [
@@ -127,10 +127,10 @@
         "name": "TMDX 260618 90.00P",
         "qty": -1.0,
         "cost_price": 5.6,
-        "current_price": 27.966,
-        "market_val": -2796.57,
-        "pl_val": -2236.57,
-        "pl_ratio": -399.39,
+        "current_price": 26.974,
+        "market_val": -2697.36,
+        "pl_val": -2137.36,
+        "pl_ratio": -381.67,
         "position_side": "SHORT",
         "today_pl_val": 0.0
       },
@@ -139,10 +139,10 @@
         "name": "ORCL 260605 175.00P",
         "qty": -1.0,
         "cost_price": 4.26,
-        "current_price": 3.077,
-        "market_val": -307.66,
-        "pl_val": 118.34,
-        "pl_ratio": 27.779999999999998,
+        "current_price": 3.263,
+        "market_val": -326.29,
+        "pl_val": 99.71,
+        "pl_ratio": 23.41,
         "position_side": "SHORT",
         "today_pl_val": 0.0
       },
@@ -151,25 +151,25 @@
         "name": "NIO 260605 7.00C",
         "qty": -30.0,
         "cost_price": 0.28,
-        "current_price": 0.24,
-        "market_val": -720.0,
-        "pl_val": 120.0,
-        "pl_ratio": 14.29,
+        "current_price": 0.17,
+        "market_val": -510.0,
+        "pl_val": 330.0,
+        "pl_ratio": 39.290000000000006,
         "position_side": "SHORT",
         "today_pl_val": 0.0
       }
     ],
     "raw_account": {
-      "total_assets": 72302.0386,
-      "market_val": 124254.5,
+      "total_assets": 70271.0486,
+      "market_val": 122223.51,
       "cash": -51952.47,
-      "power": 2864.0648,
-      "max_power_short": 2864.0648,
+      "power": 638.2736,
+      "max_power_short": 638.2736,
       "net_cash_power": 0.0,
       "currency": "USD",
       "risk_level": "N/A",
       "risk_status": "LEVEL5",
-      "margin_call_margin": 60242.8249
+      "margin_call_margin": 59237.7334
     }
   },
   "modules_present": [
@@ -181,10 +181,5 @@
     "B"
   ],
   "modules_missing": [],
-  "errors": [
-    {
-      "layer": "sentiment",
-      "error": "Command '['/usr/bin/python3', '~/.hermes/profiles/stockmaster/scripts/sentiment_indicators.py']' timed out after 30 seconds"
-    }
-  ]
+  "errors": []
 }

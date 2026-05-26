@@ -1,15 +1,15 @@
 {
-  "ts": "2026-05-25T21:27:50.722368",
+  "ts": "2026-05-26T21:26:16.082651",
   "account": {
-    "ts": "2026-05-25T21:17:33.909198",
-    "nav": 65770.5486,
+    "ts": "2026-05-26T21:15:19.186526",
+    "nav": 68030.6886,
     "cash": -51022.93,
-    "stock_mv": 119139.9,
+    "stock_mv": 121400.24,
     "option_mv": -2346.43,
-    "today_pl": 0.0,
-    "today_pl_pct": 0.0,
-    "cum_pl": -22889.01,
-    "risk_status": "LEVEL6",
+    "today_pl": 2260.34,
+    "today_pl_pct": 3.32,
+    "cum_pl": -20628.67,
+    "risk_status": "LEVEL5",
     "currency": "USD",
     "stocks": [
       {
@@ -17,84 +17,84 @@
         "name": "特斯拉",
         "qty": 100.0,
         "cost_price": 393.785,
-        "current_price": 426.01,
-        "market_val": 42601.0,
-        "pl_val": 3222.54,
-        "pl_ratio": 8.18,
+        "current_price": 430.3,
+        "market_val": 43030.0,
+        "pl_val": 3651.54,
+        "pl_ratio": 9.27,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": 429.0
       },
       {
         "code": "US.NVDA",
         "name": "英伟达",
         "qty": 60.0,
         "cost_price": 175.205,
-        "current_price": 215.33,
-        "market_val": 12919.8,
-        "pl_val": 2407.5,
-        "pl_ratio": 22.900000000000002,
+        "current_price": 217.9,
+        "market_val": 13073.99,
+        "pl_val": 2561.694,
+        "pl_ratio": 24.37,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": 154.194
       },
       {
         "code": "US.NIO",
         "name": "蔚来",
         "qty": 7560.0,
         "cost_price": 9.052,
-        "current_price": 5.2,
-        "market_val": 39312.0,
-        "pl_val": -29121.6214,
-        "pl_ratio": -42.55,
+        "current_price": 5.33,
+        "market_val": 40294.8,
+        "pl_val": -28138.8214,
+        "pl_ratio": -41.120000000000005,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": 982.8
       },
       {
         "code": "US.NFLX",
         "name": "奈飞",
         "qty": 100.0,
         "cost_price": 89.748,
-        "current_price": 88.6,
-        "market_val": 8860.0,
-        "pl_val": -114.8,
-        "pl_ratio": -1.28,
+        "current_price": 88.12,
+        "market_val": 8812.0,
+        "pl_val": -162.8,
+        "pl_ratio": -1.81,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": -48.0
       },
       {
         "code": "US.MU",
         "name": "美光科技",
         "qty": 5.0,
         "cost_price": 679.78,
-        "current_price": 751.0,
-        "market_val": 3755.0,
-        "pl_val": 356.1,
-        "pl_ratio": 10.48,
+        "current_price": 815.95,
+        "market_val": 4079.75,
+        "pl_val": 680.85,
+        "pl_ratio": 20.03,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": 324.75
       },
       {
         "code": "US.IREN",
         "name": "IREN Ltd",
         "qty": 140.0,
         "cost_price": 52.564,
-        "current_price": 56.83,
-        "market_val": 7956.2,
-        "pl_val": 597.2,
-        "pl_ratio": 8.12,
+        "current_price": 59.47,
+        "market_val": 8325.8,
+        "pl_val": 966.8,
+        "pl_ratio": 13.139999999999999,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": 369.6
       },
       {
         "code": "US.CDNS",
         "name": "铿腾电子",
         "qty": 10.0,
         "cost_price": 345.14,
-        "current_price": 373.59,
-        "market_val": 3735.9,
-        "pl_val": 284.5,
-        "pl_ratio": 8.24,
+        "current_price": 378.39,
+        "market_val": 3783.9,
+        "pl_val": 332.5,
+        "pl_ratio": 9.629999999999999,
         "position_side": "LONG",
-        "today_pl_val": 0.0
+        "today_pl_val": 48.0
       }
     ],
     "options": [
@@ -136,16 +136,16 @@
       }
     ],
     "raw_account": {
-      "total_assets": 65770.5486,
-      "market_val": 116793.47,
+      "total_assets": 68030.6886,
+      "market_val": 119053.61,
       "cash": -51022.93,
-      "power": 0.0,
-      "max_power_short": 0.0,
+      "power": 309.7972,
+      "max_power_short": 309.7972,
       "net_cash_power": 0.0,
       "currency": "USD",
       "risk_level": "N/A",
-      "risk_status": "LEVEL6",
-      "margin_call_margin": 55257.158395
+      "risk_status": "LEVEL5",
+      "margin_call_margin": 56303.884
     }
   },
   "modules_present": [

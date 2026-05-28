@@ -1,311 +1,476 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Stockmaster Evening Dashboard</title><style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
-
 :root{
-  /* === Stockmaster v2 Design System (UI/UX Pro Max + 用户源参考) === */
-  /* 背景层级 */
-  --bg:#F5F5F2;            /* 页面：暖浅灰 */
-  --card:#FFFFFF;          /* 卡片：纯白 */
-  --card2:#F8F8F5;         /* sub-card / 表头 */
-  --banner:#1A2332;        /* 顶部深墨蓝 banner */
-  --banner-2:#2B3A52;      /* banner 渐变深处 */
-  /* 文字层级 */
-  --text:#0C0A09; --body:#1C1917; --muted:#57534E; --weak:#A8A29E;
-  --on-dark:#F5F5F2; --on-dark-muted:#A8B2C5;
-  /* 主色：金 + 深墨蓝 */
-  --primary:#1A2332; --pri-bg:#E8ECF0; --pri-bd:#CBD5DB;
-  --gold:#A16207; --gold-soft:#FEF3C7; --gold-deep:#78350F;
-  /* 语义色 */
-  --pos:#15803D; --pos-bg:#ECFDF3; --pos-bd:#BBF7D0;
-  --neg:#B42318; --neg-bg:#FEF3F2; --neg-bd:#FECDCA;
-  --warn:#B54708; --warn-bg:#FFFBEB; --warn-bd:#FEDF89;
-  /* 中性 / 分割 */
-  --bd:#E7E5E4; --bd2:#D6D3D1;
-  --shadow-sm:0 1px 2px rgba(15,17,21,.04);
-  --shadow-md:0 4px 14px rgba(15,17,21,.06);
-  --shadow-lg:0 8px 28px rgba(15,17,21,.08);
-  /* 字体 */
-  /* 字体策略：英文 IBM Plex / Inter，中文 PingFang(macOS) → HarmonyOS Sans → Noto Sans SC(Google Fonts 兜底) → MS YaHei；
-     数字优先 IBM Plex Mono；让 CJK 始终走"现代无衬线"，避免回退成宋体/楷体看起来"老气" */
-  --font-display:'Inter','IBM Plex Sans','PingFang SC','HarmonyOS Sans SC','Noto Sans SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,sans-serif;
-  --font-body:'IBM Plex Sans','PingFang SC','HarmonyOS Sans SC','Noto Sans SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,sans-serif;
-  --font-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,'PingFang SC','Noto Sans SC',monospace;
-  --font-serif:'Fraunces','PingFang SC','Noto Serif SC',Georgia,'Songti SC',serif;
+  /* === Stockmaster Evening — warm-paper instrument panel ===
+     Anchored to the morning brief palette. System fonts only.
+     One spot color (Oxford Blue). No tinted KPI backgrounds; color lives on
+     numbers and words, not on tiles. */
+  --paper:#F6F5F0;
+  --paper-2:#EFEDE4;
+  --ink:#16140F;
+  --ink-2:#4A463D;
+  --mute:#8B867A;
+  --weak:#B5B0A2;
+  --rule:#D6D0C0;
+  --rule-soft:#E5E1D4;
+  --spot:#1B3A5C;
+  --spot-soft:#5C7894;
+  --spot-pale:#C9D3DE;
+  --pos:#1F6F4F;
+  --neg:#8A2F26;
+  --warn:#9A6420;
+  --pos-pale:#D9E5DC;
+  --neg-pale:#E8D6D2;
+  --warn-pale:#ECDEC6;
+  /* Back-compat aliases — keep existing helpers + agent fragments resolving. */
+  --bg:var(--paper);
+  --card:var(--paper);
+  --card2:var(--paper-2);
+  --text:var(--ink);
+  --body:var(--ink-2);
+  --muted:var(--mute);
+  --bd:var(--rule);
+  --bd2:var(--rule);
+  --primary:var(--spot); --pri-bg:var(--spot-pale); --pri-bd:var(--spot-soft);
+  --gold:var(--warn); --gold-soft:var(--warn-pale); --gold-deep:var(--warn);
+  --pos-bg:var(--pos-pale); --pos-bd:var(--pos-pale);
+  --neg-bg:var(--neg-pale); --neg-bd:var(--neg-pale);
+  --warn-bg:var(--warn-pale); --warn-bd:var(--warn-pale);
+  --on-dark:var(--paper); --on-dark-muted:var(--mute);
+  /* System fonts only. No @import. */
+  --serif:"Charter","Iowan Old Style Text","Iowan Old Style",Georgia,"Times New Roman","Songti SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:"SF Mono",Menlo,Consolas,"Roboto Mono","PingFang SC",monospace;
+  /* Aliases for inline styles already in the codebase. */
+  --font-display:var(--sans);
+  --font-body:var(--sans);
+  --font-mono:var(--mono);
+  --font-serif:var(--serif);
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-  font-family:var(--font-body); font-size:15px; line-height:1.58;
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans); font-size:14px; line-height:1.6;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
 
-/* ====== Banner（深墨蓝实色，通栏） ====== */
-.banner-wrap{background:var(--banner); margin:0; padding:0;}
-.banner{max-width:1344px; margin:0 auto; padding:24px 32px;
-  display:flex; justify-content:space-between; align-items:center; gap:24px;}
-.banner .left{flex:1; min-width:0;}
-.banner .eyebrow{color:#A8B2C5; font:600 11px/1 var(--font-mono); letter-spacing:.14em; text-transform:uppercase;}
-.banner h1{font:600 34px/1.15 var(--font-serif); margin:6px 0 12px; color:#fff; letter-spacing:-.015em; font-variation-settings:"opsz" 96;}
-.banner .chips{display:flex; gap:6px; flex-wrap:wrap; margin:0;}
-.banner .chip{font:600 12px/1 var(--font-mono); padding:5px 11px; border-radius:6px;
-  background:var(--gold-soft); color:var(--gold-deep); border:none; letter-spacing:.02em;}
-.banner .chip.alt{background:transparent; color:#A8B2C5; border:1px solid #2B3A52;}
-.banner .right{text-align:right; flex-shrink:0; white-space:nowrap;}
-.banner .ts{font:700 18px/1 var(--font-mono); color:#fff;}
-.banner .sub{font:400 12px/1.4 var(--font-body); color:#A8B2C5; margin-top:4px;}
+/* ============ Masthead ============ */
+.banner-wrap{background:var(--paper); border-bottom:2px solid var(--ink); margin:0;}
+.banner{max-width:1180px; margin:0 auto; padding:32px 40px 18px;
+  display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end;}
+.banner .left{min-width:0;}
+.banner .eyebrow{color:var(--mute); font:500 11px/1 var(--sans); letter-spacing:.18em; text-transform:uppercase;}
+.banner h1{font:700 38px/1.05 var(--serif); margin:8px 0 6px; color:var(--ink); letter-spacing:-.01em;}
+.banner .standfirst{font:italic 400 16px/1.4 var(--serif); color:var(--ink-2); margin:0;}
+.banner .right{text-align:right; align-self:end;}
+.banner .ts{font:500 13px/1.2 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;}
+.banner .sub{font:400 11px/1.4 var(--sans); color:var(--mute); margin-top:3px; letter-spacing:.04em;}
+.meta-strip{max-width:1180px; margin:0 auto; padding:12px 40px 22px;
+  display:flex; flex-wrap:wrap; gap:0; font:400 12px/1.5 var(--sans); color:var(--ink-2);}
+.meta-strip > span{padding-right:18px; margin-right:18px; border-right:1px solid var(--rule);}
+.meta-strip > span:last-child{border-right:0;}
+.meta-strip strong{color:var(--ink); font-weight:600;}
+.meta-strip .src{color:var(--mute);}
+/* Legacy chips kept for back-compat (unused after redesign) */
+.banner .chips,.banner .chip{display:none;}
 
-/* ====== 主容器 ====== */
-.wrap{max-width:1344px; margin:0 auto; padding:18px 32px 32px;}
+/* ============ Main container ============ */
+.wrap{max-width:1180px; margin:0 auto; padding:0 40px 40px;}
 
-/* ====== Card ====== */
-.card{background:var(--card); border:none; border-radius:14px;
-  box-shadow:var(--shadow-md); padding:22px 24px; margin:0 0 28px;}
-.card h2{font:700 19px/1.3 var(--font-display); margin:0 0 18px; padding:0; border:none; color:var(--text);
-  display:flex; align-items:center; gap:10px;}
-.card h2 .mod-num{font:700 11px/1 var(--font-mono); padding:5px 8px; border-radius:5px;
-  background:var(--card2); color:var(--muted); letter-spacing:.10em; margin-right:4px;}
-.card h2 .mod-tag{font:600 11px/1 var(--font-mono); padding:4px 8px; border-radius:6px;
-  background:var(--gold-soft); color:var(--gold-deep); letter-spacing:.08em; text-transform:uppercase;}
-.card h3{font:600 14px/1.3 var(--font-display); color:var(--body); margin:16px 0 10px;}
+/* ============ Section ("card") — paper sits on paper; no shadows ============ */
+.card{background:transparent; border:none; border-radius:0;
+  border-top:1px solid var(--rule); padding:32px 0 28px; margin:0;}
+.card + .card{border-top:1px solid var(--rule);}
+.card:first-of-type{border-top:0; padding-top:8px;}
+.card h2{font:700 22px/1.2 var(--serif); margin:0 0 18px; padding:0; border:none; color:var(--ink);
+  letter-spacing:-.005em; display:flex; align-items:baseline; gap:14px;}
+.card h2 .mod-num{font:italic 400 24px/1 var(--serif); color:var(--spot);
+  background:transparent; padding:0; border-radius:0; letter-spacing:0; margin-right:0;
+  min-width:30px; font-variant-numeric:lining-nums;}
+.card h2 .mod-tag{font:500 10px/1 var(--sans); padding:0; border-radius:0;
+  background:transparent; color:var(--mute); letter-spacing:.16em; text-transform:uppercase;
+  margin-left:auto; align-self:center;}
+.card h3{font:600 14px/1.3 var(--sans); color:var(--ink); margin:16px 0 8px;}
+.card h4{font:600 12px/1.3 var(--sans); color:var(--mute); margin:14px 0 6px;
+  letter-spacing:.1em; text-transform:uppercase;}
+.card p{margin:8px 0;}
+.card > p:first-of-type, .card > .subtle:first-of-type{margin-top:0;}
 
-/* Module-letter pill via data-mod (no-op when h2 already has .mod-num)
-   We render via ::before only when there's NO inline .mod-num inside h2.
-   This covers agent-written modules (D/F/G/B) without changing their HTML. */
+/* Module-letter prefix injected via data-mod for agent-written modules. */
 .card[data-mod] h2::before{
-  content: attr(data-mod-num);
-  font:700 11px/1 var(--font-mono);
-  padding:5px 8px; border-radius:5px;
-  background:var(--card2); color:var(--muted); letter-spacing:.10em;
-  margin-right:4px;
-  display:none;
+  font:italic 400 24px/1 var(--serif); color:var(--spot);
+  margin-right:14px; padding:0; background:transparent; border-radius:0;
+  letter-spacing:0; min-width:30px; display:none;
+  font-variant-numeric:lining-nums;
 }
-/* default: hidden; specific modules below opt-in to ::before number */
 .card[data-mod="D"] h2::before{content:"04"; display:inline-block;}
 .card[data-mod="F"] h2::before{content:"05"; display:inline-block;}
 .card[data-mod="G"] h2::before{content:"06"; display:inline-block;}
 .card[data-mod="B"] h2::before{content:"07"; display:inline-block;}
 .card[data-mod="K"] h2::before{content:"03"; display:inline-block;}
-/* H 用金色更醒目，已在 h-card 中处理 */
+.card[data-mod="C"] h2::before{content:"08"; display:inline-block;}
+.card[data-mod="I"] h2::before{content:"09"; display:inline-block;}
+.card[data-mod="J"] h2::before{content:"10"; display:inline-block;}
 
-/* ====== KPI（金/绿/红/灰差异背景，mono 大字） ====== */
-.kpi-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:12px;}
-.kpi{background:var(--card2); border:none; border-radius:10px; padding:16px 18px;}
-.kpi.k-pos{background:var(--pos-bg);}
-.kpi.k-neg{background:var(--neg-bg);}
-.kpi.k-pri{background:var(--gold-soft);}    /* 关键 KPI（NAV）：金底 */
-.kpi.k-warn{background:var(--warn-bg);}
-.kpi .label{color:var(--muted); font:600 11px/1 var(--font-mono); letter-spacing:.08em; text-transform:uppercase;}
-.kpi .value{font:800 32px/1.1 var(--font-mono); margin-top:8px; color:var(--text); font-variant-numeric:tabular-nums;}
-.kpi.k-pri .value{color:var(--gold-deep);}
+/* ============ KPI strip — newspaper data row, hairlines, no fills ============ */
+.kpi-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:0;
+  border-top:1px solid var(--rule); padding-top:14px; margin:6px 0 4px;}
+.kpi{background:transparent; border:none; border-radius:0;
+  padding:0 22px 0 0; border-right:1px solid var(--rule);}
+.kpi:first-child{padding-left:0;}
+.kpi:last-child{border-right:0; padding-right:0;}
+.kpi + .kpi{padding-left:22px;}
+.kpi.k-pos,.kpi.k-neg,.kpi.k-pri,.kpi.k-warn{background:transparent;}
+.kpi .label{color:var(--mute); font:500 10.5px/1 var(--sans); letter-spacing:.14em;
+  text-transform:uppercase;}
+.kpi .value{font:700 26px/1.1 var(--serif); margin-top:8px; color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums; letter-spacing:-.01em;}
+.kpi.k-pri .value{color:var(--ink);}
 .kpi.k-pos .value{color:var(--pos);}
 .kpi.k-neg .value{color:var(--neg);}
-.kpi .sub{font:400 12px/1.4 var(--font-body); color:var(--muted); margin-top:4px; font-variant-numeric:tabular-nums;}
+.kpi.k-warn .value{color:var(--warn);}
+.kpi .sub{font:400 11.5px/1.4 var(--mono); color:var(--mute); margin-top:4px;
+  font-variant-numeric:tabular-nums;}
+.kpi .subtle{color:var(--mute);}
 
-/* ====== Pos/Neg 文字色 ====== */
-.pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--body)}
+/* ============ Color modifiers on inline text ============ */
+.pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--ink-2)}
 
-/* ====== Badge ====== */
-.badge{display:inline-block; font:600 12px/1 var(--font-mono); padding:3px 9px; border-radius:6px; letter-spacing:.04em;}
-.badge.pos{background:var(--pos-bg); color:var(--pos);}
-.badge.neg{background:var(--neg-bg); color:var(--neg);}
-.badge.warn{background:var(--warn-bg); color:var(--warn);}
-.badge.neu{background:var(--card2); color:var(--body);}
-.badge.pri{background:var(--gold-soft); color:var(--gold-deep);}
+/* ============ Badges — typographic, hairline boxes, no tinted fills ============ */
+.badge{display:inline-block; font:500 11px/1 var(--sans); padding:2px 7px;
+  border-radius:0; letter-spacing:.04em; border:1px solid var(--rule);
+  background:transparent; color:var(--ink-2); white-space:nowrap;
+  text-transform:uppercase;}
+.badge.pos{color:var(--pos); border-color:var(--pos-pale);}
+.badge.neg{color:var(--neg); border-color:var(--neg-pale);}
+.badge.warn{color:var(--warn); border-color:var(--warn-pale);}
+.badge.neu{color:var(--ink-2); border-color:var(--rule);}
+.badge.pri{color:var(--spot); border-color:var(--spot-pale);}
 
-/* ====== Table ====== */
+/* ============ Tables ============ */
 .table-wrap{overflow-x:auto; margin:0 -4px;}
-table.t, .card table, .h-card table{width:100%; min-width:720px; border-collapse:collapse; font-size:14px; font-family:var(--font-body);
-  /* table-layout:auto 让浏览器智能分配；但 min-width on cell 防止短文本 cell 抢占宽度 */
-  table-layout:auto;}
+table.t, .card table, .h-card table{width:100%; min-width:720px; border-collapse:collapse;
+  font-size:13px; font-family:var(--sans); table-layout:auto;}
 table.t th, table.t td, .card table th, .card table td, .h-card table th, .h-card table td{
-  padding:11px 14px; text-align:left; border-bottom:1px solid var(--bd); vertical-align:top;
-  /* 关键：默认让 cell 仅占自身内容宽度，长文本列才被分配剩余空间 */
-  word-break:normal; overflow-wrap:break-word; line-height:1.5;}
-/* 长文本列（默认），让浏览器分配剩余空间 */
+  padding:9px 12px; text-align:left; border-bottom:1px solid var(--rule-soft);
+  vertical-align:top; word-break:normal; overflow-wrap:break-word; line-height:1.55;}
 table.t td:not(.num):not(.tight), .card table td:not(.num):not(.tight){min-width:120px;}
-/* 短文本列加 .tight 后只占自身宽度（适用于"不新开/—"这种） */
 table.t td.tight, .card table td.tight, .card table th.tight{width:1%; white-space:nowrap;}
 table.t th, .card table th, .h-card table th{
-  background:var(--card2); color:var(--muted); font:600 11px/1.3 var(--font-mono); text-transform:uppercase; letter-spacing:.06em;
-  vertical-align:middle;}
+  background:transparent; color:var(--mute);
+  font:600 10.5px/1.3 var(--sans); text-transform:uppercase; letter-spacing:.1em;
+  border-bottom:1px solid var(--rule); vertical-align:middle;}
 table.t td.num, .card table td.num, .h-card table td.num,
 table.t th.num, .card table th.num, .h-card table th.num{
-  font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; font-family:var(--font-mono);
-  width:1%;}
-.card table tbody tr:hover{background:var(--card2);}
+  font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap;
+  font-family:var(--mono); width:1%;}
+.card table tbody tr:last-child td{border-bottom:0;}
+.card table tbody tr:hover{background:var(--paper-2);}
 
-/* 宽表（8+ 列）需要更大 min-width 才能舒展 */
+/* Wide tables (8+ cols) */
 .card table.wide, .card table.wide th, .card table.wide td{min-width:auto;}
 .card table.wide{min-width:1100px;}
-.card table.wide td{padding:12px 14px; vertical-align:top;}
+.card table.wide td{padding:10px 12px; vertical-align:top;}
 
-/* G 模块策略表（8 列）显式列宽 + 强制全部左对齐
-   背景：agent 习惯把 td 都加 class="num"，触发 .t td.num{text-align:right; white-space:nowrap}，
-   导致"执行价位/仓位"列右对齐 + 不换行 → 文字溢出叠加。这里用 !important 全部压回左对齐 + 可换行。 */
+/* G-module strategy table — same as before but quieter chrome */
 table.t-strategy{table-layout:fixed !important; min-width:1180px; width:100%;}
 table.t-strategy th, table.t-strategy td,
 table.t-strategy th.num, table.t-strategy td.num{
-  min-width:auto !important;
-  padding:11px 12px !important;
-  vertical-align:top !important;
-  text-align:left !important;
-  white-space:normal !important;
-  word-break:break-word !important;
-  overflow-wrap:anywhere !important;
-  line-height:1.55 !important;
-  font-family:var(--font-body) !important;  /* 不让 num 列回退到 mono，否则中文走 fallback 难看 */
-  font-variant-numeric:tabular-nums;
-  overflow:hidden;}
+  min-width:auto !important; padding:10px 12px !important; vertical-align:top !important;
+  text-align:left !important; white-space:normal !important; word-break:break-word !important;
+  overflow-wrap:anywhere !important; line-height:1.55 !important;
+  font-family:var(--sans) !important; font-variant-numeric:tabular-nums; overflow:hidden;}
 table.t-strategy th{
-  background:var(--card2) !important;
-  color:var(--muted) !important;
-  font:600 11px/1.3 var(--font-mono) !important;
-  text-transform:uppercase;
-  letter-spacing:.06em;}
-table.t-strategy th:nth-child(1), table.t-strategy td:nth-child(1){width:108px;}  /* 选项 */
-table.t-strategy th:nth-child(2), table.t-strategy td:nth-child(2){width:185px;}  /* 适用前提 */
-table.t-strategy th:nth-child(3), table.t-strategy td:nth-child(3){width:195px;}  /* 执行价位 */
-table.t-strategy th:nth-child(4), table.t-strategy td:nth-child(4){width:135px;}  /* 仓位/合约数 */
-table.t-strategy th:nth-child(5), table.t-strategy td:nth-child(5){width:170px;}  /* 收益上限 */
-table.t-strategy th:nth-child(6), table.t-strategy td:nth-child(6){width:180px;}  /* 主要风险 */
-table.t-strategy th:nth-child(7), table.t-strategy td:nth-child(7){width:108px;}  /* 是否新开（B 行常出现长句子，留 108px） */
-table.t-strategy th:nth-child(8), table.t-strategy td:nth-child(8){width:auto;}   /* 失效条件 */
+  background:transparent !important; color:var(--mute) !important;
+  font:600 10.5px/1.3 var(--sans) !important; text-transform:uppercase;
+  letter-spacing:.1em; border-bottom:1px solid var(--rule) !important;}
+table.t-strategy th:nth-child(1), table.t-strategy td:nth-child(1){width:108px;}
+table.t-strategy th:nth-child(2), table.t-strategy td:nth-child(2){width:185px;}
+table.t-strategy th:nth-child(3), table.t-strategy td:nth-child(3){width:195px;}
+table.t-strategy th:nth-child(4), table.t-strategy td:nth-child(4){width:135px;}
+table.t-strategy th:nth-child(5), table.t-strategy td:nth-child(5){width:170px;}
+table.t-strategy th:nth-child(6), table.t-strategy td:nth-child(6){width:180px;}
+table.t-strategy th:nth-child(7), table.t-strategy td:nth-child(7){width:108px;}
+table.t-strategy th:nth-child(8), table.t-strategy td:nth-child(8){width:auto;}
 
-/* ====== Callout ====== */
-.callout{padding:13px 16px; border-radius:8px; margin:8px 0; font-size:14px; line-height:1.55;}
-.callout.info{background:var(--pri-bg); color:#1E3A5F;}
-.callout.warn{background:var(--warn-bg); color:#78350F;}
-.callout.neg{background:var(--neg-bg); color:#7F1D1D;}
+/* ============ Callout — left-rule editorial note, no big tinted boxes ============ */
+.callout{padding:10px 14px 10px 16px; border-radius:0; margin:10px 0;
+  font-size:13.5px; line-height:1.6; background:transparent;
+  border-left:2px solid var(--rule); color:var(--ink-2);}
+.callout.info{border-left-color:var(--spot); color:var(--ink-2);}
+.callout.warn{border-left-color:var(--warn); color:var(--ink-2);}
+.callout.neg{border-left-color:var(--neg); color:var(--ink-2);}
+.callout b{color:var(--ink); font-weight:600;}
 
-/* ====== Risk Alert (顶部警报 callout，仅在 LEVEL3-6 时显示) ====== */
+/* ============ Risk Alert — quieter, more like a marginalia rule ============ */
 .risk-alert{display:flex; align-items:flex-start; gap:14px;
-  border-radius:12px; padding:16px 20px; margin:0 0 18px;
-  border-left:4px solid var(--neg);
-  background:var(--neg-bg); color:#7F1D1D;
-  box-shadow:0 4px 14px rgba(180,35,24,.10);}
-.risk-alert--watch{
-  border-left-color:var(--warn);
-  background:var(--warn-bg); color:#78350F;
-  box-shadow:0 4px 14px rgba(181,71,8,.08);}
-.risk-alert__icon{font-size:24px; line-height:1; flex:0 0 auto; margin-top:2px; color:var(--neg);}
+  border-radius:0; padding:14px 16px 14px 18px; margin:0 0 22px;
+  border-left:3px solid var(--neg);
+  background:transparent; color:var(--ink-2); box-shadow:none;}
+.risk-alert--watch{border-left-color:var(--warn);}
+.risk-alert__icon{font-size:18px; line-height:1; flex:0 0 auto; margin-top:1px;
+  color:var(--neg); font-family:var(--sans);}
 .risk-alert--watch .risk-alert__icon{color:var(--warn);}
 .risk-alert__body{flex:1; min-width:0;}
-.risk-alert__label{font:700 13px/1.3 var(--font-mono); letter-spacing:.06em;
-  text-transform:uppercase; margin-bottom:6px;}
-.risk-alert__msg{font:500 14px/1.55 var(--font-body); color:inherit;}
-.risk-alert__msg a{font-weight:600;}
+.risk-alert__label{font:600 11px/1.3 var(--sans); letter-spacing:.14em;
+  text-transform:uppercase; margin-bottom:5px; color:var(--ink);}
+.risk-alert__msg{font:400 13.5px/1.55 var(--sans); color:var(--ink-2);}
+.risk-alert__msg a{font-weight:500; color:var(--spot);}
 
-.footer{color:var(--weak); font:400 12px/1.5 var(--font-body); padding:8px 4px 24px; text-align:center;}
-.subtle{color:var(--muted); font-size:12px;}
+.footer{color:var(--mute); font:400 11px/1.55 var(--sans);
+  padding:24px 0 18px; text-align:left; border-top:1px solid var(--rule); margin-top:14px;
+  letter-spacing:.02em;}
+.subtle{color:var(--mute); font-size:11.5px;}
 canvas#navChart{max-width:100%; height:160px;}
 
-/* ====== 可视化组件 ====== */
-/* 1. 横向进度条 */
-.bar{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:13px;}
-.bar .bar-label{flex:0 0 auto; min-width:64px; color:var(--body); font-weight:500;}
-.bar .bar-track{flex:1; height:6px; background:var(--bd); border-radius:3px; overflow:hidden;}
-.bar .bar-fill{height:100%; border-radius:3px;}
-.bar .bar-fill.pri{background:var(--gold);}
+/* ============ Visualizations ============ */
+.bar{display:flex; align-items:center; gap:10px; margin:5px 0; font-size:12.5px;}
+.bar .bar-label{flex:0 0 auto; min-width:64px; color:var(--ink); font-weight:500;}
+.bar .bar-track{flex:1; height:5px; background:var(--rule-soft); border-radius:0; overflow:hidden;}
+.bar .bar-fill{height:100%; border-radius:0;}
+.bar .bar-fill.pri{background:var(--spot);}
 .bar .bar-fill.pos{background:var(--pos);}
 .bar .bar-fill.neg{background:var(--neg);}
 .bar .bar-fill.warn{background:var(--warn);}
-.bar .bar-fill.gray{background:var(--weak);}
-.bar .bar-val{flex:0 0 auto; min-width:60px; text-align:right; font:600 13px/1 var(--font-mono); color:var(--text);}
+.bar .bar-fill.gray{background:var(--mute);}
+.bar .bar-val{flex:0 0 auto; min-width:60px; text-align:right;
+  font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;}
 
-/* 2. Sparkline */
 .spark{display:inline-block; vertical-align:middle; width:80px; height:24px;}
 .spark-row{display:flex; align-items:center; gap:8px;}
-.spark-row .tk{font:700 13px/1 var(--font-mono); min-width:54px;}
-.spark-row .pct{font:600 13px/1 var(--font-mono); min-width:60px; text-align:right;}
+.spark-row .tk{font:600 13px/1 var(--mono); min-width:54px;}
+.spark-row .pct{font:500 12.5px/1 var(--mono); min-width:60px; text-align:right;}
 
-/* 3. Donut */
 .donut-wrap{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
 .donut{width:160px; height:160px; flex:0 0 auto;}
 .donut-legend{flex:1; min-width:200px;}
-.donut-legend .leg{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:14px;}
-.donut-legend .swatch{width:12px; height:12px; border-radius:3px; flex:0 0 auto;}
-.donut-legend .leg-val{margin-left:auto; font:600 13px/1 var(--font-mono);}
+.donut-legend .leg{display:flex; align-items:center; gap:10px; margin:5px 0;
+  font-size:13px; padding:5px 0; border-bottom:1px solid var(--rule-soft);}
+.donut-legend .leg:last-child{border-bottom:0;}
+.donut-legend .swatch{width:10px; height:10px; border-radius:0; flex:0 0 auto;}
+.donut-legend .leg-val{margin-left:auto; font:500 12.5px/1 var(--mono);
+  font-variant-numeric:tabular-nums;}
 
-/* 4. Gauge */
-.gauge{display:flex; align-items:stretch; height:36px; border-radius:6px; overflow:hidden; margin:8px 0;}
-.gauge .seg{flex:1; display:flex; align-items:center; justify-content:center; font:600 12px/1 var(--font-mono); color:#fff; opacity:.32;}
-.gauge .seg.s-ok{background:var(--pos);}
-.gauge .seg.s-watch{background:var(--warn);}
-.gauge .seg.s-warn{background:var(--neg);}
-.gauge .seg.active{opacity:1;}
+.gauge{display:flex; align-items:stretch; height:28px; border-radius:0;
+  overflow:hidden; margin:8px 0; border:1px solid var(--rule);}
+.gauge .seg{flex:1; display:flex; align-items:center; justify-content:center;
+  font:500 11px/1 var(--sans); color:var(--mute); background:transparent;
+  letter-spacing:.04em; border-right:1px solid var(--rule);}
+.gauge .seg:last-child{border-right:0;}
+.gauge .seg.s-ok.active{background:var(--pos-pale); color:var(--pos);}
+.gauge .seg.s-watch.active{background:var(--warn-pale); color:var(--warn);}
+.gauge .seg.s-warn.active{background:var(--neg-pale); color:var(--neg);}
 
-/* 5. Stat */
-.stat-row{display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 14px;}
-.stat{flex:1; min-width:140px; padding:12px 14px; background:var(--card2); border:none; border-radius:8px;}
-.stat .stat-lbl{font:600 11px/1 var(--font-mono); color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
-.stat .stat-num{font:700 22px/1.1 var(--font-mono); margin-top:4px; color:var(--text); font-variant-numeric:tabular-nums;}
-.stat.s-pos{background:var(--pos-bg);} .stat.s-pos .stat-num{color:var(--pos);}
-.stat.s-neg{background:var(--neg-bg);} .stat.s-neg .stat-num{color:var(--neg);}
-.stat.s-warn{background:var(--warn-bg);} .stat.s-warn .stat-num{color:var(--warn);}
-.stat.s-gold{background:var(--gold-soft);} .stat.s-gold .stat-num{color:var(--gold-deep);}
+.stat-row{display:flex; gap:0; flex-wrap:wrap; margin:8px 0 14px;
+  border-top:1px solid var(--rule); padding-top:12px;}
+.stat{flex:1; min-width:140px; padding:0 18px 0 0; background:transparent;
+  border:none; border-right:1px solid var(--rule); border-radius:0;}
+.stat:first-child{padding-left:0;}
+.stat:last-child{border-right:0; padding-right:0;}
+.stat + .stat{padding-left:18px;}
+.stat .stat-lbl{font:500 10.5px/1 var(--sans); color:var(--mute);
+  text-transform:uppercase; letter-spacing:.12em;}
+.stat .stat-num{font:700 20px/1.1 var(--serif); margin-top:4px; color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums;}
+.stat.s-pos,.stat.s-neg,.stat.s-warn,.stat.s-gold{background:transparent;}
+.stat.s-pos .stat-num{color:var(--pos);}
+.stat.s-neg .stat-num{color:var(--neg);}
+.stat.s-warn .stat-num{color:var(--warn);}
+.stat.s-gold .stat-num{color:var(--warn);}
 
-/* ====== H module（PM 指令板）— 金色强调 ====== */
-.h-card{background:var(--gold-soft); border:none;
-  border-radius:14px; box-shadow:0 8px 28px rgba(161,98,7,.14); padding:24px 26px; margin:0 0 28px;}
-.h-card h2{color:var(--gold-deep); font:700 21px/1.3 var(--font-display); margin:0 0 14px;
-  display:flex; align-items:center; gap:10px;}
+/* ============ H module (今日执行指令板) ============
+   Headline event — visually unmissable but no gold-soft tile.
+   Distinction comes from a heavier serif headline, an Oxford Blue spot rule,
+   and inset white instruction blocks, NOT from a saturated background. */
+.h-card{background:transparent; border:none; border-radius:0;
+  box-shadow:none; padding:32px 0 28px; margin:0;
+  border-top:1px solid var(--rule);
+  position:relative;}
+.h-card::before{content:""; position:absolute; left:-12px; top:32px; width:3px;
+  height:42px; background:var(--spot);}
+.h-card h2{color:var(--ink); font:700 26px/1.15 var(--serif); margin:0 0 6px;
+  letter-spacing:-.01em; display:flex; align-items:baseline; gap:14px;}
 .h-card h2::before{
-  content:"02"; font:700 11px/1 var(--font-mono);
-  padding:5px 8px; border-radius:5px;
-  background:var(--gold-deep); color:var(--gold-soft); letter-spacing:.10em;
-  margin-right:4px;}
-.h-card .summary{background:#fff; border:none; padding:12px 16px; border-radius:10px; margin-bottom:12px; font-size:14px; color:var(--text);}
-.h-card .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
-.h-card .pill{font:600 12px/1 var(--font-mono); padding:5px 11px; border-radius:6px;}
-.h-card .pill.red{background:var(--neg-bg); color:var(--neg);}
-.h-card .pill.amber{background:#fff; color:var(--warn);}
-.h-card .pill.gray{background:#fff; color:var(--muted);}
-.h-card .instr{background:#fff; border:none; border-radius:10px; padding:14px 16px; margin:8px 0; position:relative;}
-.h-card .instr .top{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
-.h-card .instr .ticker{font:700 14px/1 var(--font-mono); color:var(--text);}
-.h-card .instr .price{font:500 14px/1.3 var(--font-mono); color:var(--muted); margin:6px 0 4px;}
-.h-card .instr .action{font:700 15px/1.45 var(--font-mono); color:var(--text); margin:8px 0;
-  background:var(--card2); border:none; padding:10px 14px; border-radius:6px;}
-.h-card .instr .action b{color:var(--gold-deep);}
-.h-card .instr .meta{color:var(--muted); font-size:13px; line-height:1.5; margin-top:4px;}
-.h-card .instr .more-link{display:inline-block; margin-top:8px; font:600 12px/1 var(--font-mono); color:var(--gold-deep); text-decoration:none;
-  padding:5px 10px; border-radius:6px; background:var(--gold-soft);}
-.h-card .instr .more-link:hover{background:#FCE7A8;}
-.h-card .instr .conf-tag{position:absolute; top:10px; right:12px; font:600 11px/1 var(--font-mono); color:var(--neg);}
+  content:"02"; font:italic 400 26px/1 var(--serif); color:var(--spot);
+  padding:0; border-radius:0; background:transparent;
+  letter-spacing:0; margin-right:0; min-width:32px;
+  font-variant-numeric:lining-nums;}
+.h-card > .standfirst{font:italic 400 14.5px/1.5 var(--serif); color:var(--ink-2);
+  margin:0 0 18px; max-width:62ch;}
+.h-card .summary{background:transparent; border:none; border-left:2px solid var(--spot);
+  padding:10px 16px; border-radius:0; margin:0 0 14px;
+  font:400 14px/1.6 var(--sans); color:var(--ink-2);}
+.h-card .summary b{color:var(--ink); font-weight:600;}
+.h-card .pill-row{display:flex; gap:18px; flex-wrap:wrap; margin:0 0 18px;
+  padding:8px 0; border-top:1px solid var(--rule-soft);
+  border-bottom:1px solid var(--rule-soft); align-items:baseline;}
+.h-card .pill{font:500 11px/1.2 var(--sans); padding:0; border-radius:0;
+  background:transparent; letter-spacing:.06em; text-transform:uppercase;
+  display:inline-flex; align-items:baseline; gap:6px;}
+.h-card .pill.red{color:var(--neg);}
+.h-card .pill.amber{color:var(--warn);}
+.h-card .pill.gray{color:var(--mute);}
+.h-card .pill.blue{color:var(--spot);}
+.h-card .instr{background:var(--paper); border:none; border-radius:0;
+  padding:18px 0 16px; margin:0; position:relative;
+  border-bottom:1px solid var(--rule-soft);}
+.h-card .instr:last-child{border-bottom:0;}
+.h-card .instr .top{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;
+  margin-bottom:8px;}
+.h-card .instr .ticker{font:600 16px/1.1 var(--mono); color:var(--ink);
+  font-variant-numeric:tabular-nums; letter-spacing:-.01em;}
+.h-card .instr .price{font:400 12.5px/1.55 var(--mono); color:var(--mute);
+  margin:4px 0 6px; font-variant-numeric:tabular-nums;}
+.h-card .instr .action{font:400 14.5px/1.6 var(--serif); color:var(--ink);
+  margin:6px 0; background:transparent; border:none; padding:0; border-radius:0;}
+.h-card .instr .action b{color:var(--ink); font-weight:700; font-family:var(--sans);
+  font-variant-numeric:tabular-nums;}
+.h-card .instr .meta{color:var(--mute); font:400 12.5px/1.55 var(--sans);
+  margin-top:5px;}
+.h-card .instr .meta b{color:var(--ink-2); font-weight:600;}
+.h-card .instr .more-link{display:inline-block; margin-top:8px;
+  font:500 11.5px/1 var(--sans); color:var(--spot); text-decoration:none;
+  padding:0; border-radius:0; background:transparent;
+  border-bottom:1px solid var(--spot-pale); letter-spacing:.04em;}
+.h-card .instr .more-link:hover{background:transparent; border-bottom-color:var(--spot);}
+.h-card .instr .conf-tag{position:static; display:inline-block;
+  font:500 10.5px/1 var(--sans); color:var(--warn);
+  letter-spacing:.14em; text-transform:uppercase; margin:0 0 6px;}
+
+/* ============ details rows — editorial index, not generic accordion ============ */
+details.row{background:transparent; border:none; border-radius:0;
+  margin:0; border-bottom:1px solid var(--rule-soft);}
+details.row:first-of-type{border-top:1px solid var(--rule);}
+details.row > summary{padding:11px 0; cursor:pointer; list-style:none;
+  display:flex; gap:14px; align-items:baseline; flex-wrap:wrap;
+  font:500 13px/1.4 var(--sans); color:var(--ink);}
+details.row > summary:hover{background:transparent; color:var(--spot);}
+details.row > summary::-webkit-details-marker{display:none}
+details.row > summary::after{content:"+"; margin-left:auto; color:var(--mute);
+  font:400 16px/1 var(--mono); align-self:center;}
+details.row[open] > summary::after{content:"−";}
+details.row > summary b{color:var(--ink); font-weight:600;}
+details.row .body{padding:8px 0 16px; border-top:1px dotted var(--rule);
+  background:transparent;}
+details.row .body ul{margin:6px 0 10px 18px; padding:0;}
+details.row .body li{margin:3px 0; font-size:13px; line-height:1.6; color:var(--ink-2);}
+details.row .body h4{margin:12px 0 4px; font:600 11px/1.2 var(--sans);
+  color:var(--mute); letter-spacing:.14em; text-transform:uppercase;}
 
 /* watchlist summary inline chips */
-details.row > summary .sum-action{font:600 12px/1.4 var(--font-mono); padding:3px 8px; border-radius:6px;}
-details.row > summary .sum-buy{font:500 13px/1 var(--font-mono); color:var(--body); background:var(--card2); padding:3px 8px; border-radius:6px;}
-details.row > summary .sum-buy b{color:var(--text);}
+details.row > summary .sum-action{font:500 11.5px/1.4 var(--sans);
+  padding:0; border-radius:0; background:transparent; color:var(--ink-2);
+  border-bottom:1px solid var(--rule);}
+details.row > summary .sum-buy{font:500 12.5px/1 var(--mono); color:var(--ink-2);
+  background:transparent; padding:0;}
+details.row > summary .sum-buy b{color:var(--ink); font-weight:600;}
 
-/* D module debate columns */
-.debate-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
-.debate-grid .col{background:var(--card2); border:none; border-radius:10px; padding:14px;}
-.debate-grid .col h3{font:700 14px/1.3 var(--font-display); margin:0 0 8px;}
+/* D module debate columns — 保守/激进/最终倾向 stays as 3-col grid,
+   but typography (italic serif heading), not colored fills, signals each side. */
+.debate-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+  border-top:1px solid var(--rule); padding-top:12px; margin:8px 0;}
+.debate-grid .col{background:transparent; border:none; border-radius:0;
+  padding:0 18px; border-right:1px solid var(--rule);}
+.debate-grid .col:first-child{padding-left:0;}
+.debate-grid .col:last-child{border-right:0; padding-right:0;}
+.debate-grid .col h3{font:italic 600 16px/1.3 var(--serif); margin:0 0 8px;
+  color:var(--ink); letter-spacing:0;}
 .debate-grid .col.con h3{color:var(--neg);}
 .debate-grid .col.agg h3{color:var(--pos);}
-.debate-grid .col.fin h3{color:var(--gold-deep);}
+.debate-grid .col.fin h3{color:var(--spot);}
+.debate-grid .col ul{margin:6px 0 0 16px; padding:0;}
+.debate-grid .col li{margin:4px 0; font-size:13px; line-height:1.55; color:var(--ink-2);}
 
-/* expandable rows */
-details.row{background:var(--card2); border:none; border-radius:8px; margin:6px 0;}
-details.row > summary{padding:10px 14px; cursor:pointer; list-style:none; display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
-details.row > summary::-webkit-details-marker{display:none}
-details.row > summary::after{content:"展开 ▾"; margin-left:auto; color:var(--muted); font-size:12px;}
-details.row[open] > summary::after{content:"收起 ▴";}
-details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); background:#fff;}
+/* lists inside cards */
+.card ul{margin:6px 0 10px 18px; padding:0;}
+.card li{margin:4px 0; line-height:1.55;}
 
-/* ====== 移动端 ====== */
+/* hyperlinks */
+a{color:var(--spot); text-decoration:none; border-bottom:1px solid var(--spot-pale);}
+a:hover{border-bottom-color:var(--spot);}
+
+/* ============ A module split — vertical KPI column + hero trajectory chart ============ */
+.a-split{display:grid; grid-template-columns:minmax(260px, 1fr) minmax(420px, 1.6fr);
+  gap:36px; align-items:start; margin:14px 0 4px;
+  border-top:1px solid var(--rule); padding-top:18px;}
+.a-stack{display:flex; flex-direction:column; gap:0; min-width:0;}
+.a-stack-row{padding:12px 0; border-bottom:1px solid var(--rule-soft);
+  display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline;}
+.a-stack-row:first-child{padding-top:0;}
+.a-stack-row:last-child{border-bottom:0; padding-bottom:0;}
+.a-stack-row .label{color:var(--mute); font:500 10.5px/1.1 var(--sans);
+  letter-spacing:.14em; text-transform:uppercase; min-width:72px;}
+.a-stack-row .value{font:700 22px/1.1 var(--serif); color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums; letter-spacing:-.01em; text-align:right;
+  min-width:0; word-break:break-word;}
+.a-stack-row .value.pos{color:var(--pos);}
+.a-stack-row .value.neg{color:var(--neg);}
+.a-stack-row .value .subtle{font:400 11.5px/1.4 var(--mono); color:var(--mute);
+  margin-left:6px; font-variant-numeric:tabular-nums;}
+.a-chart-cell{min-width:0;}
+.nav-hero-head{display:flex; justify-content:space-between; align-items:baseline;
+  gap:14px; padding:0 0 10px; border-bottom:1px solid var(--rule); margin-bottom:6px;}
+.nav-hero-eyebrow{font:500 10.5px/1.1 var(--sans); color:var(--mute);
+  letter-spacing:.14em; text-transform:uppercase;}
+.nav-hero-delta{display:flex; align-items:baseline; gap:12px;
+  font-variant-numeric:tabular-nums;}
+.nav-hero-delta .nh-delta-pct{font:700 26px/1 var(--serif); letter-spacing:-.01em;}
+.nav-hero-delta .nh-delta-abs{font:500 12.5px/1 var(--mono);}
+
+/* ============ D module gauge grid — fixed 4-up on desktop ============ */
+.gauge-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:0 18px; margin-top:0;}
+.gauge-grid .g-cell{background:transparent; border-top:1px solid var(--rule);
+  padding:14px 0 8px;}
+.gauge-grid .g-cell svg{width:100%; max-width:none; height:auto; display:block; margin:0 auto;}
+
+/* ============ H module branch sub-cards ============ */
+.branch-cards{margin:8px 0 6px; padding-left:16px;}
+.branch-card{padding:10px 0 8px; border-top:1px solid var(--rule-soft);
+  display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;}
+.branch-card:first-child{border-top:1px solid var(--rule);}
+.branch-num{font:italic 600 14px/1.3 var(--serif); color:var(--spot);
+  font-variant-numeric:lining-nums;}
+.branch-fields{display:flex; flex-direction:column; gap:5px; min-width:0;}
+.branch-row{display:grid; grid-template-columns:42px 1fr; gap:10px; align-items:baseline;}
+.branch-eyebrow{font:500 10px/1.3 var(--sans); color:var(--mute);
+  letter-spacing:.14em; text-transform:uppercase;}
+.branch-cond{font:400 13.5px/1.5 var(--sans); color:var(--ink);}
+.branch-act{font:italic 400 14px/1.55 var(--serif); color:var(--ink);}
+.branch-act b{font-style:normal; font-family:var(--sans); font-weight:700;
+  color:var(--ink); font-variant-numeric:tabular-nums;}
+
+/* ============ Mobile ============ */
 @media (max-width: 760px){
-  .banner{padding:16px 20px; flex-direction:column; align-items:flex-start;}
-  .banner h1{font-size:22px;}
+  .banner{padding:24px 20px 14px; grid-template-columns:1fr;}
+  .banner h1{font-size:28px;}
   .banner .right{text-align:left;}
-  .wrap{padding:14px 16px;}
-  .card{padding:18px 16px;}
-  .kpi-grid{grid-template-columns:repeat(2,1fr); gap:10px;}
-  .kpi{padding:12px 14px;}
+  .meta-strip{padding:10px 20px 18px; gap:6px;}
+  .meta-strip > span{padding-right:12px; margin-right:12px;}
+  .wrap{padding:0 20px 28px;}
+  .card{padding:24px 0 22px;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr); gap:0;}
+  .kpi{padding:10px 12px 10px 0; border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule-soft);}
+  .kpi:nth-child(2n){border-right:0;}
+  .kpi + .kpi{padding-left:12px;}
   .kpi .value{font-size:22px;}
-  .debate-grid{grid-template-columns:1fr;}
+  .debate-grid{grid-template-columns:1fr; border-top:1px solid var(--rule);}
+  .debate-grid .col{padding:12px 0; border-right:0;
+    border-bottom:1px solid var(--rule-soft);}
+  .debate-grid .col:last-child{border-bottom:0;}
+  .stat{padding:10px 12px 10px 0; border-right:1px solid var(--rule);}
+  .stat:last-child{border-right:0;}
+  .h-card::before{display:none;}
+  .h-card{border-left:3px solid var(--spot); padding-left:14px;}
+  .a-split{grid-template-columns:1fr; gap:20px; padding-top:14px;}
+  .a-stack-row{grid-template-columns:1fr; gap:4px;}
+  .a-stack-row .value{text-align:left;}
+  .gauge-grid{grid-template-columns:repeat(2, 1fr);}
+  .branch-cards{padding-left:8px;}
+  .branch-row{grid-template-columns:1fr;}
 }
-</style></head><body><div class="banner-wrap"><div class="banner"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DASHBOARD</div><h1>美股开盘前组合面板</h1><div class="chips"><span class="chip">Futu live</span><span class="chip">SEC EDGAR</span><span class="chip alt">yfinance</span><span class="chip alt">17 watchlist</span></div></div><div class="right"><div class="ts">2026-05-28 21:31:22</div><div class="sub">Beijing &middot; Auto-refresh @ 21:15 (Mon-Fri)</div></div></div></div><div class="wrap"><div class="card" data-mod="A"><h2><span class="mod-num">01</span>A. 账户实时快照</h2><div class="risk-alert risk-alert--warn"><div class="risk-alert__icon">⚠</div><div class="risk-alert__body"><div class="risk-alert__label">组合风险灯号 · 当前 危险 <span class="badge neg">LEVEL5</span></div><div class="risk-alert__msg">已进入执行级风险窗口；请优先扫读 <a href="#h-card-anchor" style="color:inherit;text-decoration:underline;">H 指令板</a> 中"立即执行"指令，未执行前不宜新增风险敞口。</div></div></div><div class="kpi-grid"><div class="kpi k-pri"><div class="label">总资产 NAV</div><div class="value">$72,538.19</div></div><div class="kpi k-neg"><div class="label">当日盈亏</div><div class="value neg">-$1,088.48 <span class="subtle">(-1.50%)</span></div></div><div class="kpi k-neg"><div class="label">累计盈亏</div><div class="value neg">-$18,042.86</div></div><div class="kpi"><div class="label">现金</div><div class="value">$-50,741.29</div></div></div><div style="margin-top:14px"><div style="display:inline-flex; align-items:center; gap:12px; margin-left:14px; padding:6px 12px; background:var(--card2); border-radius:8px;"><span class="subtle" style="font:600 11px/1 var(--font-mono); text-transform:uppercase;">NAV 轨迹</span><svg width="220" height="40" viewBox="0 0 220 40" style="display:block;"><path d="M 0.0,27.0 L 18.3,22.3 L 36.7,18.1 L 55.0,14.9 L 73.3,2.0 L 91.7,13.8 L 110.0,21.3 L 128.3,37.1 L 146.7,37.7 L 165.0,22.3 L 183.3,37.0 L 201.7,38.0 L 220.0,12.9 L 220.0,40 L 0,40 Z" fill="#15803D" fill-opacity="0.08"/><path d="M 0.0,27.0 L 18.3,22.3 L 36.7,18.1 L 55.0,14.9 L 73.3,2.0 L 91.7,13.8 L 110.0,21.3 L 128.3,37.1 L 146.7,37.7 L 165.0,22.3 L 183.3,37.0 L 201.7,38.0 L 220.0,12.9" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font:700 13px/1 var(--font-mono); color:#15803D;">+5.55%</span><span class="subtle" style="font:500 11px/1 var(--font-mono);">最近13日</span></div></div><div style="margin-top:14px; padding-top:14px; border-top:1px dashed var(--bd);"><div class="subtle" style="margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; font-size:11px;">资产配置</div><div class="donut-wrap"><svg class="donut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#F1F5F9" stroke-width="20"/><circle cx="70" cy="70" r="60" fill="none" stroke="#2563EB" stroke-width="20" stroke-dasharray="651.71 -274.72" stroke-dashoffset="-0.00" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">总资产</text><text x="70" y="82" text-anchor="middle" font-size="14" fill="#0F172A" font-weight="700" font-family="ui-monospace,monospace">$72.5K</text></svg><div class="donut-legend"><div class="leg"><span class="swatch" style="background:#2563EB"></span><span>股票</span><span class="leg-val">$125,398.62 <span class="subtle">(172.9%)</span></span></div><div class="leg"><span class="swatch" style="background:#0891B2"></span><span>期权</span><span class="leg-val">$-2,119.15 <span class="subtle">(-2.9%)</span></span></div><div class="leg"><span class="swatch" style="background:#94A3B8"></span><span>现金</span><span class="leg-val">$-50,741.29 <span class="subtle">(-70.0%)</span></span></div></div></div></div><div class="subtle" style="margin-top:14px">数据时点 2026-05-28 21:17:38 · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="h-card" data-mod="H">
-  <h2>H. Portfolio Manager 指令板</h2><div style="display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 14px 0;"><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#FEE2E2; color:#B42318; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#B42318; border-radius:50%;"></span>立即执行 · 5</span><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#FEF3C7; color:#B54708; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#B54708; border-radius:50%;"></span>条件触发 · 10</span><span style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:18px; background:#F1F5F9; color:#475569; font:700 12px var(--font-body);"><span style="width:8px; height:8px; background:#475569; border-radius:50%;"></span>观察备选 · 7</span></div>
+@media (max-width: 480px){
+  .gauge-grid{grid-template-columns:1fr;}
+}
+</style></head><body><div class="banner-wrap"><div class="banner"><div class="left"><div class="eyebrow">STOCKMASTER &middot; EVENING DESK</div><h1>美股开盘前组合面板</h1><p class="standfirst">2026-05-28 周四 · 收盘后 21:15 冻结一次，开盘前回看用。</p></div><div class="right"><div class="ts">2026-05-28 22:21:02</div><div class="sub">Beijing &middot; 每周一至周五自动更新</div></div></div><div class="meta-strip"><span><strong>持仓</strong> Futu OpenAPI</span><span><strong>事件</strong> SEC EDGAR</span><span><strong>行情</strong> yfinance</span><span><strong>观察池</strong> 17 只观察标的</span><span class="src">单次冻结 · 下游不再重抓</span></div></div><div class="wrap"><div class="card" data-mod="A"><h2><span class="mod-num">01</span>账户实时快照</h2><div class="risk-alert risk-alert--warn"><div class="risk-alert__icon">⚠</div><div class="risk-alert__body"><div class="risk-alert__label">组合风险灯号 · 当前 危险 <span class="badge neg">LEVEL5</span></div><div class="risk-alert__msg">已进入执行级风险窗口；请优先扫读 <a href="#h-card-anchor" style="color:inherit;text-decoration:underline;">H 指令板</a> 中"立即执行"指令，未执行前不宜新增风险敞口。</div></div></div><div class="a-split"><div class="a-stack"><div class="a-stack-row"><div class="label">总资产 NAV</div><div class="value">$72,538.19</div></div><div class="a-stack-row"><div class="label">当日盈亏</div><div class="value neg">-$1,088.48 <span class="subtle">(-1.50%)</span></div></div><div class="a-stack-row"><div class="label">累计盈亏</div><div class="value neg">-$18,042.86</div></div><div class="a-stack-row"><div class="label">现金</div><div class="value">$-50,741.29</div></div></div><div class="a-chart-cell"><div class="nav-hero"><div class="nav-hero-head"><div class="nav-hero-eyebrow">NAV 轨迹 · 最近 13 日</div><div class="nav-hero-delta" style="color:#1F6F4F;"><span class="nh-delta-pct">+5.55%</span><span class="nh-delta-abs">+$3,811</span></div></div><svg viewBox="0 0 720 300" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block; max-width:100%; height:auto; min-height:280px;"><line x1="64" y1="46.3" x2="696" y2="46.3" stroke="#E5E1D4" stroke-width="1" stroke-dasharray="2 4"/><line x1="64" y1="148.0" x2="696" y2="148.0" stroke="#E5E1D4" stroke-width="1" stroke-dasharray="2 4"/><line x1="64" y1="249.7" x2="696" y2="249.7" stroke="#E5E1D4" stroke-width="1" stroke-dasharray="2 4"/><line x1="64" y1="266.0" x2="696" y2="266.0" stroke="#D6D0C0" stroke-width="1"/><path d="M 64.0,187.8 L 116.7,160.8 L 169.3,137.1 L 222.0,119.1 L 274.7,46.3 L 327.3,113.0 L 380.0,155.5 L 432.7,244.7 L 485.3,248.3 L 538.0,161.0 L 590.7,243.9 L 643.3,249.7 L 696.0,108.1 L 696.0,266.0 L 64.0,266.0 Z" fill="#1F6F4F" fill-opacity="0.10"/><path d="M 64.0,187.8 L 116.7,160.8 L 169.3,137.1 L 222.0,119.1 L 274.7,46.3 L 327.3,113.0 L 380.0,155.5 L 432.7,244.7 L 485.3,248.3 L 538.0,161.0 L 590.7,243.9 L 643.3,249.7 L 696.0,108.1" fill="none" stroke="#1F6F4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><g fill="#1F6F4F"><circle cx="64.0" cy="187.8" r="2.2"/><circle cx="116.7" cy="160.8" r="2.2"/><circle cx="169.3" cy="137.1" r="2.2"/><circle cx="222.0" cy="119.1" r="2.2"/><circle cx="274.7" cy="46.3" r="2.2"/><circle cx="327.3" cy="113.0" r="2.2"/><circle cx="380.0" cy="155.5" r="2.2"/><circle cx="432.7" cy="244.7" r="2.2"/><circle cx="485.3" cy="248.3" r="2.2"/><circle cx="538.0" cy="161.0" r="2.2"/><circle cx="590.7" cy="243.9" r="2.2"/><circle cx="643.3" cy="249.7" r="2.2"/><circle cx="696.0" cy="108.1" r="2.2"/></g><text x="54" y="50" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" style="letter-spacing:.04em;">$75.5K</text><text x="54" y="152" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" style="letter-spacing:.04em;">$70.6K</text><text x="54" y="254" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" style="letter-spacing:.04em;">$65.8K</text><text x="64" y="286" text-anchor="start" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" style="letter-spacing:.04em;">05-08</text><text x="380" y="286" text-anchor="middle" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" style="letter-spacing:.04em;">05-18</text><text x="696" y="286" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" style="letter-spacing:.04em;">05-28</text></svg></div></div></div><div class="subtle" style="margin-top:18px; padding-top:12px; border-top:1px solid var(--rule-soft); font:400 11px/1.5 var(--sans); color:var(--mute);">数据时点 <span style="font-family:var(--mono); color:var(--ink-2);">2026-05-28 21:17:38</span> · 来源 Futu OpenAPI · 本面板单次冻结，下游不再重抓</div></div><div class="h-card" data-mod="H">
+  <h2>H. Portfolio Manager 指令板</h2><div class="pill-row"><span class="pill red"><b style="font:600 14px var(--mono); color:var(--neg);">5</b> 立即执行</span><span class="pill amber"><b style="font:600 14px var(--mono); color:var(--warn);">10</b> 条件触发</span><span class="pill gray"><b style="font:600 14px var(--mono); color:var(--ink-2);">7</b> 观察备选</span></div>
 
   <div class="summary">
     <b>今日核心指令：</b>盘中优先处理 <b>TMDX 短 Put</b>（已 ITM 3.58 倍亏损，DTE 21）—— 触及 $0.10 以下窗口立即回补，否则盘中评估展期；<b>NIO</b> 浮亏 -37%、已进入执行级，但占组合 34% 权重，今日仅减仓 <b>800–1200 股</b>（约 11–16%），不一次性清仓；<b>NFLX</b> 跌破 SMA50 已触及 $87.40 支撑，本周内若收盘破位 $85.10 立即减仓 50%。
@@ -339,7 +504,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
       <span class="ticker">[NIO]</span>
       <span class="pill red">减仓 11%–16%</span>
     </div>
-    <div class="action">今日盘前分三档限价单：<b>$5.75</b>×400股 / <b>$5.85</b>×400股 / <b>$5.95</b>×400股，最多减仓 <b>1,200 股</b>（占当前 7,560 股的 15.9%）；若开盘直接 gap up >$5.90 → 优先成交首档。</div>
+    <div class="action"><div class="branch-cards"><div class="branch-card"><div class="branch-num">1</div><div class="branch-fields"><div class="branch-row"><span class="branch-eyebrow">动作</span><span class="branch-act">今日盘前分三档限价单：<b>$5.75</b>×400股 / <b>$5.85</b>×400股 / <b>$5.95</b>×400股，最多减仓 <b>1,200 股</b>（占当前 7,560 股的 15.9%）</span></div></div></div><div class="branch-card"><div class="branch-num">2</div><div class="branch-fields"><div class="branch-row"><span class="branch-eyebrow">条件</span><span class="branch-cond">若开盘直接 gap up >$5.90</span></div><div class="branch-row"><span class="branch-eyebrow">动作</span><span class="branch-act">优先成交首档</span></div></div></div></div></div>
     <div class="price">参考价位：SMA20 $5.92 / SMA50 $6.06 / 现价 $5.68 / 60 日支撑 $5.43</div>
     <div class="meta">触发条件：浮亏 -37.25% 已进入执行级；价格已跌破 SMA50；中概 ADR 暴露 34.24% 偏高；今日单日拖累组合 -$529.</div>
     <div class="meta">失效条件：若开盘跳水跌破 <b>$5.43</b>（60 日支撑）→ 暂缓减仓，改盘中观察反弹至 $5.55–5.65 区间再分批。</div>
@@ -353,7 +518,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
       <span class="ticker">[NFLX]</span>
       <span class="pill red">条件触发减仓 50%</span>
     </div>
-    <div class="action">条件单：若 NFLX 日收盘价 ≤ <b>$85.10</b>（60 日支撑下沿）→ 次日开盘市价减仓 <b>50 股</b>（占持仓 50%）；若盘中跌破 $85.10 但收盘收回 → 不触发。</div>
+    <div class="action"><div class="branch-cards"><div class="branch-card"><div class="branch-num">1</div><div class="branch-fields"><div class="branch-row"><span class="branch-eyebrow">条件</span><span class="branch-cond">若 NFLX 日收盘价 ≤ <b>$85.10</b>（60 日支撑下沿）</span></div><div class="branch-row"><span class="branch-eyebrow">动作</span><span class="branch-act">次日开盘市价减仓 <b>50 股</b>（占持仓 50%）</span></div></div></div><div class="branch-card"><div class="branch-num">2</div><div class="branch-fields"><div class="branch-row"><span class="branch-eyebrow">条件</span><span class="branch-cond">若盘中跌破 $85.10 但收盘收回</span></div><div class="branch-row"><span class="branch-eyebrow">动作</span><span class="branch-act">不触发</span></div></div></div></div></div>
     <div class="price">触发线：$85.10 收盘 / 现价 $87.45 / 成本 $89.75 / SMA50 $93.37</div>
     <div class="meta">触发条件：现价距 60 日支撑仅 -0.13%，已跌破 SMA50；二级止损提醒；近期内部人 Form 4 卖出活动（2026-05-07，bearish bias）。</div>
     <div class="meta">失效条件：若收盘站回 SMA50 $93.37 上方两个交易日 → 取消条件单，转回继续持有观察。</div>
@@ -423,15 +588,15 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
       <span class="ticker">[CDNS]</span>
       <span class="pill gray">继续持有</span>
     </div>
-    <div class="action">继续持有 10 股，不挂任何订单。监控阻力 <b>$383.80</b>，若突破并放量 → 不操作（仓位太小不值得加仓）；若跌破 SMA20 $353.89 → 评估全部清仓。</div>
+    <div class="action"><div class="branch-cards"><div class="branch-card"><div class="branch-num">1</div><div class="branch-fields"><div class="branch-row"><span class="branch-eyebrow">条件</span><span class="branch-cond">若突破并放量</span></div><div class="branch-row"><span class="branch-eyebrow">动作</span><span class="branch-act">不操作（仓位太小不值得加仓）</span></div></div></div><div class="branch-card"><div class="branch-num">2</div><div class="branch-fields"><div class="branch-row"><span class="branch-eyebrow">条件</span><span class="branch-cond">若跌破 SMA20 $353.89</span></div><div class="branch-row"><span class="branch-eyebrow">动作</span><span class="branch-act">评估全部清仓</span></div></div></div></div></div>
     <div class="price">现价 $374.00 / 成本 $345.14 / 浮盈 +8.36% / 阻力 $383.80 / SMA20 $353.89</div>
     <div class="meta">触发条件：5/27 连续两份 Form 4 出现 insider sell 与 buy（M-code），影响中性；仓位仅 2.98%，单仓风险低。</div>
     <div class="meta">失效条件：跌破 SMA50 $318.67 → 直接清仓（仓位太小无防守价值）。</div>
   </div>
 
   <div class="callout warn" style="margin-top:14px"><b>纪律提醒：</b>所有策略建议均"需人工确认，不自动执行"。开新期权策略（covered call、roll、新开 short put）必须在富途客户端手动核对保证金与流动性后执行。</div>
-</div><div class="card" data-mod="K"><h2>K. 模拟交易跟踪 vs 真实账户</h2><div class="callout" style="background:var(--pri-bg);border-color:var(--pri-bd);color:var(--text);">已运行 <b>15</b> 天 · 已执行 <b>5</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$423.81</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th class="num">模拟账户 (paper)</th><th class="num">真实账户 (real)</th><th class="num">差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$73,780.83</td><td class="num">$73,357.02</td><td class="num"><span class="pos">+$423.81</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="neg">$-277.50</span></td><td class="num"><span class="pos">+$4,858.03</span></td><td class="num"><span class="neg">-$5,135.53</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$4,166.71</span></td><td class="num"><span class="pos">+$3,742.90</span></td><td class="num"><span class="pos">+$423.81</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">每日净值轨迹（最近 10 个交易日）</h3><div class="table-wrap"><table><thead><tr><th>日期</th><th class="num">paper NAV</th><th class="num">real NAV</th><th class="num">paper 当日</th><th class="num">real 当日</th><th class="num">累计差额</th></tr></thead><tbody><tr><td>2026-05-15</td><td class="num">$75,063.09</td><td class="num">$75,056.27</td><td class="num"><span class="neg">$-472.40</span></td><td class="num"><span class="neg">$-1,288.13</span></td><td class="num"><span class="pos">+$6.82</span></td></tr><tr><td>2026-05-16</td><td class="num">$72,688.59</td><td class="num">$70,241.67</td><td class="num"><span class="neg">$-2,374.50</span></td><td class="num"><span class="neg">$-4,814.60</span></td><td class="num"><span class="pos">+$2,446.92</span></td></tr><tr><td>2026-05-19</td><td class="num">$70,922.81</td><td class="num">$67,693.31</td><td class="num"><span class="neg">$-1,765.78</span></td><td class="num"><span class="neg">$-2,548.36</span></td><td class="num"><span class="pos">+$3,229.50</span></td></tr><tr><td>2026-05-20</td><td class="num">$70,236.75</td><td class="num">$65,526.38</td><td class="num"><span class="neg">$-686.06</span></td><td class="num"><span class="neg">$-2,166.93</span></td><td class="num"><span class="pos">+$4,710.37</span></td></tr><tr><td>2026-05-21</td><td class="num">$71,534.87</td><td class="num">$67,004.62</td><td class="num"><span class="pos">+$1,298.12</span></td><td class="num"><span class="pos">+$1,478.24</span></td><td class="num"><span class="pos">+$4,530.25</span></td></tr><tr><td>2026-05-22</td><td class="num">$72,391.09</td><td class="num">$68,152.21</td><td class="num"><span class="pos">+$856.22</span></td><td class="num"><span class="pos">+$1,147.59</span></td><td class="num"><span class="pos">+$4,238.88</span></td></tr><tr><td>2026-05-23</td><td class="num">$73,076.19</td><td class="num">$65,663.66</td><td class="num"><span class="pos">+$685.10</span></td><td class="num"><span class="neg">$-2,488.55</span></td><td class="num"><span class="pos">+$7,412.53</span></td></tr><tr><td>2026-05-26</td><td class="num">$73,076.19</td><td class="num">$65,770.55</td><td class="num"><span class="pos">+$0.00</span></td><td class="num"><span class="pos">+$106.89</span></td><td class="num"><span class="pos">+$7,305.64</span></td></tr><tr><td>2026-05-27</td><td class="num">$74,058.33</td><td class="num">$68,498.99</td><td class="num"><span class="pos">+$982.14</span></td><td class="num"><span class="pos">+$2,728.44</span></td><td class="num"><span class="pos">+$5,559.34</span></td></tr><tr><td>2026-05-28</td><td class="num">$73,780.83</td><td class="num">$73,357.02</td><td class="num"><span class="neg">$-277.50</span></td><td class="num"><span class="pos">+$4,858.03</span></td><td class="num"><span class="pos">+$423.81</span></td></tr></tbody></table></div><h3 style="font-size:14px;margin:16px 0 8px;color:var(--body);">已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th class="num">数量</th><th class="num">成交价</th><th class="num">已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-16 22:00:25</td><td>US.NIO260605C7000</td><td>close_all</td><td class="num">-30.0</td><td class="num">$0.17</td><td class="num"><span class="pos">+$330.00</span></td><td><span class="muted" style="font-size:11px;">evening_h_immediate</span></td></tr><tr><td>2026-05-15 22:00:30</td><td>US.NIO</td><td>close_all</td><td class="num">4592.0</td><td class="num">$6.17</td><td class="num"><span class="neg">$-15,557.70</span></td><td><span class="muted" style="font-size:11px;">evening_h_immediate</span></td></tr><tr><td>2026-05-14 22:00:54</td><td>US.NIO</td><td>trim</td><td class="num">1968</td><td class="num">$6.43</td><td class="num"><span class="neg">$-6,155.90</span></td><td><span class="muted" style="font-size:11px;">evening_h_immediate</span></td></tr><tr><td>2026-05-12 22:00:22</td><td>US.TMDX260618P90000</td><td>buy_back_short</td><td class="num">1</td><td class="num">$26.05</td><td class="num"><span class="neg">$-2,045.00</span></td><td><span class="muted" style="font-size:11px;">evening_h_immediate</span></td></tr><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="muted" style="font-size:11px;">auto_expiry</span></td></tr></tbody></table></div><div class="muted" style="font-size:11px;margin-top:10px;">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="card" data-mod="D">
-  <h2>D. 市场级止盈 / 止损总警报</h2><div style="margin:8px 0 18px 0;"><div style="text-align:center; padding:6px 0 16px 0;"><span style="font:600 12px var(--font-body); color:var(--muted); margin-right:10px;">市场综合灯号</span><span style="display:inline-block; padding:5px 16px; border-radius:14px; background:#CA8A04; color:#fff; font:700 14px var(--font-body);">观察级</span><div class="subtle" style="margin-top:8px; font:500 12px var(--font-body);">VIX 16.43 已低于 17，进入观察级低波动区间； QQQ P/E 35.58 已高于 34，估值进入观察级</div></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:8px;"><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#15803D" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#CA8A04" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#B54708" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">15</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">30</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="174.9,184.8 185.1,175.2 114.7,109.6" fill="#0F172A"/><polygon points="174.9,184.8 185.1,175.2 192.2,193.2" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">16.43</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">VIX · 恐慌指数</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">正常偏低</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#15803D" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#CA8A04" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#B54708" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">34</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">36</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">38</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">42</text><polygon points="173.2,181.5 186.8,178.5 159.2,86.3" fill="#0F172A"/><polygon points="173.2,181.5 186.8,178.5 183.9,197.6" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">35.58</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">QQQ · Trailing P/E</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">现价 $729.45</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">观察级</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#B42318" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#CA8A04" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#15803D" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#CA8A04" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">45</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">55</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">75</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">100</text><polygon points="174.6,175.6 185.4,184.4 240.3,105.3" fill="#0F172A"/><polygon points="174.6,175.6 185.4,184.4 168.7,194.0" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">61</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">CNN Fear & Greed</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">一周前 58</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#CA8A04"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">贪婪</text></svg></div><div style="background:#FAFAF7; border-radius:14px; padding:20px 14px 14px 14px; box-shadow:inset 0 2px 6px rgba(15,23,42,0.04);"><svg viewBox="0 0 360 320" style="width:100%; max-width:380px; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#B42318" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#CA8A04" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#15803D" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#CA8A04" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#B42318" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-50</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-20</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-10</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">10</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="183.5,173.9 176.5,186.1 263.1,228.0" fill="#0F172A"/><polygon points="183.5,173.9 176.5,186.1 164.4,171.0" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">+50.0</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">AAII · 多空差</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">多 50.0% · 空 0.0%</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#B42318"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">极度乐观</text></svg></div></div></div>
+</div><div class="card" data-mod="K"><h2>模拟交易跟踪 vs 真实账户</h2><div class="callout info">已运行 <b>15</b> 天 · 已执行 <b>5</b> 笔模拟交易 · 当前模拟账户领先真实账户 <b class="pos">+$423.81</b>（说明晚报"立即执行"指令的累计 P&L 优于真实操作）</div><div class="table-wrap"><table><thead><tr><th>指标</th><th class="num">模拟账户 (paper)</th><th class="num">真实账户 (real)</th><th class="num">差额 (paper − real)</th></tr></thead><tbody><tr><td>当前 NAV</td><td class="num">$73,780.83</td><td class="num">$73,357.02</td><td class="num"><span class="pos">+$423.81</span></td></tr><tr><td>当日盈亏</td><td class="num"><span class="neg">$-277.50</span></td><td class="num"><span class="pos">+$4,858.03</span></td><td class="num"><span class="neg">-$5,135.53</span></td></tr><tr><td>累计盈亏（自 t0）</td><td class="num"><span class="pos">+$4,166.71</span></td><td class="num"><span class="pos">+$3,742.90</span></td><td class="num"><span class="pos">+$423.81</span></td></tr><tr><td>起始 NAV (t0)</td><td class="num" colspan="3">$69,614.12（冻结于 2026-05-07T22:19:33+08:00）</td></tr></tbody></table></div><div style="margin:18px 0 4px;"><div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px; padding:0 0 10px; border-bottom:1px solid var(--rule); margin-bottom:6px; flex-wrap:wrap;"><div style="font:500 10.5px/1.1 var(--sans); color:var(--mute); text-transform:uppercase; letter-spacing:.14em;">模拟 vs 真实账户 · 最近 15 个交易日</div><div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;"><span style="display:inline-flex; align-items:baseline; gap:6px; color:#1B3A5C; font-variant-numeric:tabular-nums;"><span style="font:500 10.5px/1 var(--sans); text-transform:uppercase; letter-spacing:.10em; color:#8B867A;">模拟</span><span style="font:700 18px/1 var(--serif); letter-spacing:-.01em;">+5.99%</span><span style="font:500 11.5px/1 var(--mono);">(+$4,167)</span></span><span style="display:inline-flex; align-items:baseline; gap:6px; color:#4A463D; font-variant-numeric:tabular-nums;"><span style="font:500 10.5px/1 var(--sans); text-transform:uppercase; letter-spacing:.10em; color:#8B867A;">真实</span><span style="font:700 18px/1 var(--serif); letter-spacing:-.01em;">+5.38%</span><span style="font:500 11.5px/1 var(--mono);">(+$3,743)</span></span></div></div><svg viewBox="0 0 720 280" width="100%" preserveAspectRatio="xMidYMid meet" style="display:block; max-width:100%; height:auto; min-height:260px;"><line x1="68" y1="41.2" x2="684" y2="41.2" stroke="#E5E1D4" stroke-width="1" stroke-dasharray="2 4"/><line x1="68" y1="136.0" x2="684" y2="136.0" stroke="#E5E1D4" stroke-width="1" stroke-dasharray="2 4"/><line x1="68" y1="230.8" x2="684" y2="230.8" stroke="#E5E1D4" stroke-width="1" stroke-dasharray="2 4"/><line x1="68" y1="159.2" x2="684" y2="159.2" stroke="#8B867A" stroke-width="1" stroke-dasharray="5 4"/><text x="688" y="163.2" text-anchor="start" font-size="10" fill="#8B867A" font-style="italic" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">t0</text><line x1="68" y1="246.0" x2="684" y2="246.0" stroke="#D6D0C0" stroke-width="1"/><path d="M 68.0,157.6 L 112.0,140.9 L 156.0,104.9 L 200.0,122.1 L 244.0,55.4 L 288.0,63.6 L 332.0,105.3 L 376.0,136.2 L 420.0,148.2 L 464.0,125.5 L 508.0,110.5 L 552.0,98.5 L 596.0,98.5 L 640.0,81.3 L 684.0,86.1 L 684.0,246.0 L 68.0,246.0 Z" fill="#1B3A5C" fill-opacity="0.08"/><path d="M 68.0,159.4 L 112.0,142.7 L 156.0,104.6 L 200.0,132.6 L 244.0,41.2 L 288.0,63.8 L 332.0,148.2 L 376.0,192.8 L 420.0,230.8 L 464.0,204.9 L 508.0,184.8 L 552.0,228.4 L 596.0,226.5 L 640.0,178.7 L 684.0,93.5" fill="none" stroke="#4A463D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><g fill="#4A463D"><circle cx="68.0" cy="159.4" r="1.7"/><circle cx="112.0" cy="142.7" r="1.7"/><circle cx="156.0" cy="104.6" r="1.7"/><circle cx="200.0" cy="132.6" r="1.7"/><circle cx="244.0" cy="41.2" r="1.7"/><circle cx="288.0" cy="63.8" r="1.7"/><circle cx="332.0" cy="148.2" r="1.7"/><circle cx="376.0" cy="192.8" r="1.7"/><circle cx="420.0" cy="230.8" r="1.7"/><circle cx="464.0" cy="204.9" r="1.7"/><circle cx="508.0" cy="184.8" r="1.7"/><circle cx="552.0" cy="228.4" r="1.7"/><circle cx="596.0" cy="226.5" r="1.7"/><circle cx="640.0" cy="178.7" r="1.7"/><circle cx="684.0" cy="93.5" r="1.7"/></g><path d="M 68.0,157.6 L 112.0,140.9 L 156.0,104.9 L 200.0,122.1 L 244.0,55.4 L 288.0,63.6 L 332.0,105.3 L 376.0,136.2 L 420.0,148.2 L 464.0,125.5 L 508.0,110.5 L 552.0,98.5 L 596.0,98.5 L 640.0,81.3 L 684.0,86.1" fill="none" stroke="#1B3A5C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><g fill="#1B3A5C"><circle cx="68.0" cy="157.6" r="2.4"/><circle cx="112.0" cy="140.9" r="2.4"/><circle cx="156.0" cy="104.9" r="2.4"/><circle cx="200.0" cy="122.1" r="2.4"/><circle cx="244.0" cy="55.4" r="2.4"/><circle cx="288.0" cy="63.6" r="2.4"/><circle cx="332.0" cy="105.3" r="2.4"/><circle cx="376.0" cy="136.2" r="2.4"/><circle cx="420.0" cy="148.2" r="2.4"/><circle cx="464.0" cy="125.5" r="2.4"/><circle cx="508.0" cy="110.5" r="2.4"/><circle cx="552.0" cy="98.5" r="2.4"/><circle cx="596.0" cy="98.5" r="2.4"/><circle cx="640.0" cy="81.3" r="2.4"/><circle cx="684.0" cy="86.1" r="2.4"/></g><text x="58" y="45" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">$76.3K</text><text x="58" y="140" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">$70.9K</text><text x="58" y="235" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">$65.5K</text><text x="68" y="266" text-anchor="start" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">05-07</text><text x="376" y="266" text-anchor="middle" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">05-19</text><text x="684" y="266" text-anchor="end" font-size="10.5" fill="#8B867A" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">05-28</text></svg><div style="display:flex; gap:18px; justify-content:flex-end; margin:6px 0 0; padding:6px 4px 0; font:500 11px/1 var(--sans); color:var(--ink-2);"><span style="display:inline-flex; align-items:center; gap:7px;"><span style="display:inline-block; width:8px; height:8px; background:#1B3A5C;"></span>模拟 (paper)</span><span style="display:inline-flex; align-items:center; gap:7px;"><span style="display:inline-block; width:8px; height:8px; background:#4A463D;"></span>真实 (real)</span></div></div><h3>已执行的晚报「立即执行」指令</h3><div class="table-wrap"><table><thead><tr><th>时间</th><th>合约</th><th>动作</th><th class="num">数量</th><th class="num">成交价</th><th class="num">已实现盈亏</th><th>来源</th></tr></thead><tbody><tr><td>2026-05-16 22:00:25</td><td>US.NIO260605C7000</td><td>close_all</td><td class="num">-30.0</td><td class="num">$0.17</td><td class="num"><span class="pos">+$330.00</span></td><td><span class="subtle">evening_h_immediate</span></td></tr><tr><td>2026-05-15 22:00:30</td><td>US.NIO</td><td>close_all</td><td class="num">4592.0</td><td class="num">$6.17</td><td class="num"><span class="neg">$-15,557.70</span></td><td><span class="subtle">evening_h_immediate</span></td></tr><tr><td>2026-05-14 22:00:54</td><td>US.NIO</td><td>trim</td><td class="num">1968</td><td class="num">$6.43</td><td class="num"><span class="neg">$-6,155.90</span></td><td><span class="subtle">evening_h_immediate</span></td></tr><tr><td>2026-05-12 22:00:22</td><td>US.TMDX260618P90000</td><td>buy_back_short</td><td class="num">1</td><td class="num">$26.05</td><td class="num"><span class="neg">$-2,045.00</span></td><td><span class="subtle">evening_h_immediate</span></td></tr><tr><td>2026-05-08 06:13:19</td><td>US.COIN260508P140000</td><td>expire_otm</td><td class="num">-1.0</td><td class="num">$192.96</td><td class="num"><span class="pos">+$455.00</span></td><td><span class="subtle">auto_expiry</span></td></tr></tbody></table></div><div class="subtle" style="margin-top:14px; padding-top:10px; border-top:1px solid var(--rule-soft); font:400 11px/1.55 var(--sans);">本模块是确定性渲染（不由 agent 生成）。模拟账户在 t0 冻结一份与真实账户相同的持仓快照，此后只接受晚报 H 模块「立即执行」指令为输入，按次日开盘价模拟成交。一个月后 paper_monthly_review.py 出复盘。</div></div><div class="card" data-mod="D">
+  <h2>D. 市场级止盈 / 止损总警报</h2><div style="margin:8px 0 18px 0;"><div style="padding:0 0 8px 0; font:500 11px/1.4 var(--sans); color:var(--mute); letter-spacing:.14em; text-transform:uppercase; border-bottom:1px solid var(--rule);">市场综合灯号 &nbsp;·&nbsp; <span style="color:#9A6420; font:600 13px/1 var(--sans); text-transform:none; letter-spacing:.02em;">观察级</span> <span style="color:var(--ink-2); font:italic 400 13px/1.4 var(--serif); text-transform:none; letter-spacing:0;">— VIX 16.43 已低于 17，进入观察级低波动区间；QQQ P/E 35.58 已高于 34，估值进入观察级</span></div><div class="gauge-grid"><div class="g-cell"><svg viewBox="0 0 360 320" style="width:100%; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#1F6F4F" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#9A6420" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#9A6420" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#8A2F26" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">15</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">30</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="174.9,184.8 185.1,175.2 114.7,109.6" fill="#0F172A"/><polygon points="174.9,184.8 185.1,175.2 192.2,193.2" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">16.43</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">VIX · 恐慌指数</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#9A6420"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">正常偏低</text></svg></div><div class="g-cell"><svg viewBox="0 0 360 320" style="width:100%; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 67.76 114.41 L 90.21 127.53 A 104 104 0 0 0 89.93 232.00 Z" fill="#1F6F4F" stroke="none"/><path d="M 67.08 115.59 A 130 130 0 0 1 180.68 50.00 L 180.54 76.00 A 104 104 0 0 0 89.66 128.47 Z" fill="#9A6420" stroke="none"/><path d="M 179.32 50.00 A 130 130 0 0 1 292.92 115.59 L 270.34 128.47 A 104 104 0 0 0 179.46 76.00 Z" fill="#9A6420" stroke="none"/><path d="M 292.24 114.41 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 269.79 127.53 Z" fill="#8A2F26" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="77.8" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="48.6" y1="215.2" x2="58.3" y2="212.6" stroke="#94A3B8" stroke-width="1"/><line x1="44.0" y1="180.0" x2="54.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="48.6" y1="144.8" x2="58.3" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="62.0" stroke="#475569" stroke-width="2"/><line x1="83.8" y1="83.8" x2="90.9" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="112.0" y1="62.2" x2="117.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="144.8" y1="48.6" x2="147.4" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="282.2" y2="121.0" stroke="#475569" stroke-width="2"/><line x1="215.2" y1="48.6" x2="212.6" y2="58.3" stroke="#94A3B8" stroke-width="1"/><line x1="248.0" y1="62.2" x2="243.0" y2="70.9" stroke="#94A3B8" stroke-width="1"/><line x1="276.2" y1="83.8" x2="269.1" y2="90.9" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="311.4" y1="144.8" x2="301.7" y2="147.4" stroke="#94A3B8" stroke-width="1"/><line x1="316.0" y1="180.0" x2="306.0" y2="180.0" stroke="#94A3B8" stroke-width="1"/><line x1="311.4" y1="215.2" x2="301.7" y2="212.6" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="48.4" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">34</text><text x="180.0" y="32.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">36</text><text x="311.6" y="108.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">38</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">42</text><polygon points="173.2,181.5 186.8,178.5 159.2,86.3" fill="#0F172A"/><polygon points="173.2,181.5 186.8,178.5 183.9,197.6" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">35.58</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">QQQ · Trailing P/E</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">现价 $729.45</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#9A6420"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">观察级</text></svg></div><div class="g-cell"><svg viewBox="0 0 360 320" style="width:100%; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#8A2F26" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#9A6420" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#1F6F4F" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#9A6420" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#8A2F26" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">0</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">25</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">45</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">55</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">75</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">100</text><polygon points="174.6,175.6 185.4,184.4 240.3,105.3" fill="#0F172A"/><polygon points="174.6,175.6 185.4,184.4 168.7,194.0" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">61</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">CNN Fear & Greed</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">一周前 58</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#9A6420"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">贪婪</text></svg></div><div class="g-cell"><svg viewBox="0 0 360 320" style="width:100%; height:auto; display:block; margin:0 auto;"><path d="M 67.42 245.00 A 130 130 0 1 1 292.58 245.00 L 270.07 232.00 A 104 104 0 1 0 89.93 232.00 Z" fill="#E2E8F0" stroke="none"/><path d="M 67.42 245.00 A 130 130 0 0 1 56.57 139.18 L 81.26 147.34 A 104 104 0 0 0 89.93 232.00 Z" fill="#8A2F26" stroke="none"/><path d="M 56.15 140.48 A 130 130 0 0 1 127.75 60.96 L 138.20 84.77 A 104 104 0 0 0 80.92 148.38 Z" fill="#9A6420" stroke="none"/><path d="M 126.50 61.52 A 130 130 0 0 1 233.50 61.52 L 222.80 85.21 A 104 104 0 0 0 137.20 85.21 Z" fill="#1F6F4F" stroke="none"/><path d="M 232.25 60.96 A 130 130 0 0 1 303.85 140.48 L 279.08 148.38 A 104 104 0 0 0 221.80 84.77 Z" fill="#9A6420" stroke="none"/><path d="M 303.43 139.18 A 130 130 0 0 1 292.58 245.00 L 270.07 232.00 A 104 104 0 0 0 278.74 147.34 Z" fill="#8A2F26" stroke="none"/><line x1="62.2" y1="248.0" x2="77.8" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="138.0" x2="67.8" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="50.7" y1="222.0" x2="60.2" y2="218.9" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="194.2" x2="54.7" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="44.7" y1="165.8" x2="54.7" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="124.7" y1="55.8" x2="132.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="62.2" y1="112.0" x2="70.9" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="78.9" y1="89.0" x2="86.4" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="100.1" y1="70.0" x2="105.9" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="235.3" y1="55.8" x2="228.0" y2="72.2" stroke="#475569" stroke-width="2"/><line x1="151.7" y1="47.0" x2="153.8" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="180.0" y1="44.0" x2="180.0" y2="54.0" stroke="#94A3B8" stroke-width="1"/><line x1="208.3" y1="47.0" x2="206.2" y2="56.8" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="138.0" x2="292.2" y2="143.5" stroke="#475569" stroke-width="2"/><line x1="259.9" y1="70.0" x2="254.1" y2="78.1" stroke="#94A3B8" stroke-width="1"/><line x1="281.1" y1="89.0" x2="273.6" y2="95.7" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="112.0" x2="289.1" y2="117.0" stroke="#94A3B8" stroke-width="1"/><line x1="297.8" y1="248.0" x2="282.2" y2="239.0" stroke="#475569" stroke-width="2"/><line x1="315.3" y1="165.8" x2="305.3" y2="166.8" stroke="#94A3B8" stroke-width="1"/><line x1="315.3" y1="194.2" x2="305.3" y2="193.2" stroke="#94A3B8" stroke-width="1"/><line x1="309.3" y1="222.0" x2="299.8" y2="218.9" stroke="#94A3B8" stroke-width="1"/><text x="48.4" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-50</text><text x="35.4" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-20</text><text x="118.2" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">-10</text><text x="241.8" y="45.1" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">10</text><text x="324.6" y="137.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">20</text><text x="311.6" y="260.0" text-anchor="middle" style="font:600 11px var(--font-mono); fill:#475569;">50</text><polygon points="183.5,173.9 176.5,186.1 263.1,228.0" fill="#0F172A"/><polygon points="183.5,173.9 176.5,186.1 164.4,171.0" fill="#475569"/><circle cx="180" cy="180" r="22" fill="#1E293B"/><circle cx="180" cy="180" r="20" fill="#334155"/><circle cx="180" cy="180" r="6" fill="#0F172A"/><text x="180" y="260" text-anchor="middle" style="font:700 36px var(--font-mono); fill:#0F172A;">+50.0</text><text x="180" y="280" text-anchor="middle" style="font:600 12px var(--font-body); fill:#475569;">AAII · 多空差</text><text x="180" y="296" text-anchor="middle" style="font:500 10px var(--font-mono); fill:#94A3B8;">多 50.0% · 空 0.0%</text><rect x="278" y="8" rx="10" ry="10" width="70" height="22" fill="#8A2F26"/><text x="313" y="24" text-anchor="middle" style="font:700 11px var(--font-body); fill:#FFFFFF;">极度乐观</text></svg></div></div></div>
 
   <div class="callout warn">
     <b>组合总灯号：观察级</b> · VIX 16.43 已低于 17，QQQ 25.58 trailing P/E 35.58 已高于 34 → 同时进入"组合级止盈敏感窗口"前哨；尚未触发一级提醒。当前组合实际状态：<b>NIO 执行级 + TMDX 短 Put 二级提醒</b>，单仓风险高于市场级风险。
@@ -490,8 +655,8 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   <h3 style="margin-top:14px;color:#0F172A;font-size:16px">F1. 持仓正股 + 期权 underlying 深度分析</h3>
 
   <!-- TSLA -->
-  <div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center; padding:8px 28px 6px 28px; font:600 11px var(--font-body); color:var(--muted); border-bottom:1px solid #E2E8F0; margin-bottom:6px;"><span>代号</span><span>现价</span><span>成本</span><span>盈亏%/$</span><span>偏向</span><span>操作</span></div><details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">TSLA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$437.16</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$393.79</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+11.01% / +$4,338</span><span class="badge pos">偏多</span><span class="badge pos">继续持有</span></div></summary>
+  <div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; padding:10px 0 8px; font:600 10.5px/1 var(--sans); color:var(--mute); text-transform:uppercase; letter-spacing:.12em; border-bottom:1px solid var(--rule); margin:14px 0 0;"><span>代号</span><span>现价</span><span>成本</span><span>盈亏%/$</span><span>偏向</span><span style="text-align:right;">操作</span></div><details class="row">
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">TSLA</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$437.16</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$393.79</span><span style="font:600 12.5px/1 var(--mono); color:var(--pos); font-variant-numeric:tabular-nums;">+11.01% / +$4,338</span><span class="badge pos">偏多</span><span class="badge pos">继续持有</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">RSI</div><div class="value">64.2</div></div>
@@ -520,7 +685,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
 
   <!-- NVDA -->
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NVDA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$212.08</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$183.89</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+15.33% / +$2,255</span><span class="badge pos">偏多</span><span class="badge pos">继续持有</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">NVDA</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$212.08</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$183.89</span><span style="font:600 12.5px/1 var(--mono); color:var(--pos); font-variant-numeric:tabular-nums;">+15.33% / +$2,255</span><span class="badge pos">偏多</span><span class="badge pos">继续持有</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">RSI</div><div class="value">54.2</div></div>
@@ -549,7 +714,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
 
   <!-- NIO -->
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NIO</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$5.68</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$9.05</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-37.25% / $-25,493</span><span class="badge neg">偏空</span><span class="badge neg">执行级减仓</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">NIO</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$5.68</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$9.05</span><span style="font:600 12.5px/1 var(--mono); color:var(--neg); font-variant-numeric:tabular-nums;">-37.25% / $-25,493</span><span class="badge neg">偏空</span><span class="badge neg">执行级减仓</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">RSI</div><div class="value">47.2</div></div>
@@ -579,7 +744,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
 
   <!-- NFLX -->
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NFLX</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$87.45</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$89.75</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-2.56% / $-230</span><span class="badge warn">中性偏空</span><span class="badge neg">条件触发减仓</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">NFLX</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$87.45</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$89.75</span><span style="font:600 12.5px/1 var(--mono); color:var(--neg); font-variant-numeric:tabular-nums;">-2.56% / $-230</span><span class="badge warn">中性偏空</span><span class="badge neg">条件触发减仓</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">RSI</div><div class="value">46.5</div></div>
@@ -609,7 +774,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
 
   <!-- IREN -->
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">IREN</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$66.36</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$52.56</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+26.25% / +$1,931</span><span class="badge pos">偏多</span><span class="badge neu">突破后锁利</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">IREN</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$66.36</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$52.56</span><span style="font:600 12.5px/1 var(--mono); color:var(--pos); font-variant-numeric:tabular-nums;">+26.25% / +$1,931</span><span class="badge pos">偏多</span><span class="badge neu">突破后锁利</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">RSI</div><div class="value">56.4</div></div>
@@ -638,7 +803,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
 
   <!-- CDNS -->
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">CDNS</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$374.00</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$345.14</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+8.36% / +$289</span><span class="badge pos">偏多</span><span class="badge pos">继续持有</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">CDNS</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$374.00</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$345.14</span><span style="font:600 12.5px/1 var(--mono); color:var(--pos); font-variant-numeric:tabular-nums;">+8.36% / +$289</span><span class="badge pos">偏多</span><span class="badge pos">继续持有</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">RSI</div><div class="value">61.0</div></div>
@@ -680,7 +845,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   
   
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NVDA</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$212.08</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$183.89</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+15.33% / +$2,255</span><span class="badge neu">中性</span><span class="badge warn">回踩观察</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">NVDA</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$212.08</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$183.89</span><span style="font:600 12.5px/1 var(--mono); color:var(--pos); font-variant-numeric:tabular-nums;">+15.33% / +$2,255</span><span class="badge neu">中性</span><span class="badge warn">回踩观察</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">现价</div><div class="value">$212.60</div></div>
@@ -699,7 +864,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
     </div>
   </details>
   <details class="row">
-    <summary style="padding:10px 12px;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:14px; align-items:center;"><span style="font:700 15px var(--font-mono); color:#0F172A;">NFLX</span><span style="font:600 13px var(--font-mono); color:#0F172A;">$87.45</span><span style="font:500 13px var(--font-mono); color:var(--muted);" title="成本价">$89.75</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-2.56% / $-230</span><span class="badge neu">中性</span><span class="badge warn">回踩观察</span></div></summary>
+    <summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:90px 90px 90px 1fr auto auto; gap:16px; align-items:baseline; width:100%;"><span style="font:600 14px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">NFLX</span><span style="font:500 12.5px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;">$87.45</span><span style="font:400 12.5px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="成本价">$89.75</span><span style="font:600 12.5px/1 var(--mono); color:var(--neg); font-variant-numeric:tabular-nums;">-2.56% / $-230</span><span class="badge neu">中性</span><span class="badge warn">回踩观察</span></div></summary>
     <div class="body">
       <div class="kpi-grid">
         <div class="kpi"><div class="label">现价</div><div class="value">$87.35</div></div>
@@ -726,7 +891,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
   
   
   
-</div><h2>G. 期权与收益增强 / 修复策略</h2><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center; padding:8px 28px 6px 28px; font:600 11px var(--font-body); color:var(--muted); border-bottom:1px solid #E2E8F0; margin-bottom:6px;"><span>合约</span><span>正股价</span><span>行权价</span><span>盈亏%/$</span><span>推荐操作</span></div><details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">TMDX P90</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $90</span><span style="font:700 13px var(--font-mono); color:var(--neg);">-258.15% / $-1,446</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;"><div class="callout info">本模块是 H 指令板期权指令的"完整策略空间扩展"。H 给出今日具体动作，G 给出每个 underlying 的完整策略选择空间。<b>仅覆盖 H 模块出现过的期权 underlying：TMDX、ORCL、IREN（条件 covered call）。</b></div>
+</div><h2>G. 期权与收益增强 / 修复策略</h2><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:14px; align-items:baseline; padding:10px 0 8px; font:600 10.5px/1 var(--sans); color:var(--mute); text-transform:uppercase; letter-spacing:.12em; border-bottom:1px solid var(--rule); margin:14px 0 0;"><span>合约</span><span>正股价</span><span>行权价</span><span>盈亏%/$</span><span style="text-align:right;">推荐操作</span></div><details class="row"><summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:14px; align-items:baseline; width:100%;"><span style="font:600 13.5px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">TMDX P90</span><span style="font:400 12px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="正股价">正股 —</span><span style="font:500 12px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;" title="行权价">行权 $90</span><span style="font:600 12.5px/1 var(--mono); color:var(--neg); font-variant-numeric:tabular-nums;">-258.15% / $-1,446</span><span class="badge neu">查看选项</span></div></summary><div class="body"><div class="callout info">本模块是 H 指令板期权指令的"完整策略空间扩展"。H 给出今日具体动作，G 给出每个 underlying 的完整策略选择空间。<b>仅覆盖 H 模块出现过的期权 underlying：TMDX、ORCL、IREN（条件 covered call）。</b></div>
 
   
   <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块"立即执行 1"。以下为完整策略选择空间。</div>
@@ -771,7 +936,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
 
   <div class="callout warn" style="margin-top:8px"><b>方案对比：</b>A 锁损但简洁；B 用时间换空间但增加保证金；C 现金压力大不推荐。<b>当前最优 = A 或 B 二选一，根据盘中权利金价格决定。</b></div></div></details>
 
-<details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">ORCL P175</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 $175</span><span style="font:700 13px var(--font-mono); color:var(--pos);">+73.36% / +$312</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
+<details class="row"><summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:14px; align-items:baseline; width:100%;"><span style="font:600 13.5px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">ORCL P175</span><span style="font:400 12px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="正股价">正股 —</span><span style="font:500 12px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;" title="行权价">行权 $175</span><span style="font:600 12.5px/1 var(--mono); color:var(--pos); font-variant-numeric:tabular-nums;">+73.36% / +$312</span><span class="badge neu">查看选项</span></div></summary><div class="body">
   <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块"条件触发 2"。以下为完整策略选择空间。</div>
 
   <div class="table-wrap">
@@ -812,7 +977,7 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
     </table>
   </div></div></details>
 
-<details class="row" style="margin-bottom:10px;"><summary style="padding:12px 14px;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:12px; align-items:center;"><span style="font:700 14px var(--font-mono); color:#0F172A;">IREN</span><span style="font:600 12px var(--font-mono); color:var(--muted);" title="正股价">正股 —</span><span style="font:600 12px var(--font-mono); color:#0F172A;" title="行权价">行权 —</span><span style="font:700 13px var(--font-mono); color:var(--muted);">—</span><span class="badge neu">查看选项</span></div></summary><div class="body" style="padding:6px 14px 14px 14px;">
+<details class="row"><summary style="padding:11px 0;"><div style="display:grid; grid-template-columns:130px 70px 60px 1fr auto; gap:14px; align-items:baseline; width:100%;"><span style="font:600 13.5px/1.1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em;">IREN</span><span style="font:400 12px/1 var(--mono); color:var(--mute); font-variant-numeric:tabular-nums;" title="正股价">正股 —</span><span style="font:500 12px/1 var(--mono); color:var(--ink); font-variant-numeric:tabular-nums;" title="行权价">行权 —</span><span style="font:600 12.5px/1 var(--mono); color:var(--muted); font-variant-numeric:tabular-nums;">—</span><span class="badge neu">查看选项</span></div></summary><div class="body">
   <div class="callout info">本策略已被 H 指令板引用，今日具体动作见 H 模块"条件触发 3"。以下为完整策略选择空间。</div>
 
   <div class="table-wrap">
@@ -879,5 +1044,5 @@ details.row .body{padding:10px 16px 14px; border-top:1px solid var(--bd); backgr
       <li><b>NIO</b>：5/22 6-K 已落地无 risk flag，问题不在新事件而在持续浮亏。</li>
       <li><b>CDNS</b>：5/27 单日两份 Form 4，含 51,887 股大额内部人卖出 @ $370，需持续关注。</li>
     </ul>
-  <div class="subtle" style="margin-top:8px; font-size:12px;">▌已过滤 8 条常规披露（中性 8-K / 单笔小额 Form 4 等），仅保留财报与重大利好/利空事件</div></div>
+  <div class="subtle" style="margin-top:10px; padding-top:8px; border-top:1px solid var(--rule-soft); font:italic 400 12.5px/1.5 var(--serif); color:var(--mute);">已过滤 8 条常规披露（中性 8-K / 单笔小额 Form 4 等），仅保留财报与重大利好/利空事件。</div></div>
 </div><div class="footer">Data: Futu OpenAPI live + SEC EDGAR + yfinance daily. Auto-updated daily 21:15 Beijing. Personal review only — not investment advice. Sensitive identifiers redacted.</div></div></body></html>

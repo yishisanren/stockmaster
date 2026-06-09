@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股早报 · 2026-06-10</title>
+<style>
+:root{
+  --bg:#F6F8FB; --paper:#FFFFFF; --sub:#F8FAFC;
+  --ink:#0F172A; --body:#334155; --muted:#64748B; --faint:#94A3B8;
+  --primary:#2563EB; --primary-bg:#EFF6FF; --primary-bd:#BFDBFE;
+  --pos:#15803D; --pos-bg:#ECFDF3; --pos-bd:#BBF7D0;
+  --neg:#B42318; --neg-bg:#FEF3F2; --neg-bd:#FECDCA;
+  --warn:#B54708; --warn-bg:#FFFAEB; --warn-bd:#FEDF89;
+  --rule:#E2E8F0; --rule-strong:#CBD5E1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--body);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.58;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
+.report-header{background:var(--paper);border:1px solid var(--rule);border-top:4px solid var(--primary);border-radius:18px;padding:22px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.report-header .left{flex:1;min-width:0}
+.report-header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:6px}
+.report-header h1{margin:0 0 10px;font-family:Charter,"Iowan Old Style Text",Georgia,serif;font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;padding:3px 10px;font-size:12px;border-radius:999px;background:var(--primary-bg);color:#1D4ED8;border:1px solid var(--primary-bd);font-weight:500}
+.report-header .meta{text-align:right;color:var(--muted);font-size:13px;flex-shrink:0;white-space:nowrap;line-height:1.7}
+.report-header .meta strong{color:var(--ink);font-weight:600}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:24px 26px;margin-top:20px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.section-title{font-family:Charter,"Iowan Old Style Text",Georgia,serif;font-size:20px;font-weight:700;color:var(--ink);margin:0 0 4px;display:flex;align-items:center;gap:10px}
+.section-title::before{content:"";width:3px;height:18px;background:var(--primary);border-radius:2px;display:inline-block}
+.section-sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+.hero{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-top:8px}
+.hero-num{font-family:"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;font-size:46px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;position:relative;padding-bottom:6px}
+.hero-num::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--primary);border-radius:2px;opacity:.7}
+.hero-label{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.kpi{background:var(--sub);border:1px solid var(--rule);border-radius:12px;padding:14px 16px}
+.kpi .l{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.kpi .v{font-family:"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;font-size:20px;font-weight:700;color:var(--ink);margin-top:4px;letter-spacing:-.01em}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--muted)}
+.pill{display:inline-flex;align-items:center;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid;line-height:1.6}
+.pill.positive{background:var(--pos-bg);color:var(--pos);border-color:var(--pos-bd)}
+.pill.negative{background:var(--neg-bg);color:var(--neg);border-color:var(--neg-bd)}
+.pill.warning{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-bd)}
+.pill.neutral{background:var(--sub);color:var(--muted);border-color:var(--rule-strong)}
+.pill.primary{background:var(--primary-bg);color:#1D4ED8;border-color:var(--primary-bd)}
+.callout{padding:12px 14px;border-radius:10px;border:1px solid;font-size:13.5px;margin-top:14px}
+.callout.info{background:var(--primary-bg);border-color:var(--primary-bd);color:#1E3A8A}
+.callout.warn{background:var(--warn-bg);border-color:var(--warn-bd);color:#7C2D12}
+.callout.risk{background:var(--neg-bg);border-color:var(--neg-bd);color:#7F1D1D}
+.callout.stable{background:var(--pos-bg);border-color:var(--pos-bd);color:#14532D}
+.table-wrap{margin-top:14px;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+@media (max-width:760px){.table-wrap{overflow-x:auto}}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px}
+thead th{background:var(--sub);color:var(--muted);text-align:left;padding:11px 14px;font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--rule)}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--rule);color:var(--ink)}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-family:"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums}
+td.ticker{font-weight:600}
+.spark{vertical-align:middle}
+@media (max-width:760px){
+  .wrap{padding:18px 14px 40px}
+  .report-header{flex-direction:column;align-items:stretch;padding:18px}
+  .report-header .meta{text-align:left;white-space:normal}
+  .card{padding:18px;border-radius:14px}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .hero-num{font-size:36px}
+}
+.footer{text-align:center;color:var(--faint);font-size:11.5px;margin-top:32px;line-height:1.7}
+.score-row{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+.score-card{background:var(--sub);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.score-num{font-family:"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;min-width:64px;color:var(--ink)}
+.score-num small{font-size:11px;color:var(--muted);font-weight:500}
+.score-ticker{font-family:"SF Mono",Menlo,monospace;font-weight:700;font-size:15px;color:var(--ink);min-width:62px}
+.score-meta{flex:1;min-width:200px;font-size:13px;color:var(--body)}
+.attr-bars{margin-top:14px}
+.attr-row{display:flex;align-items:center;gap:10px;font-size:13px;margin:8px 0}
+.attr-ticker{font-family:"SF Mono",Menlo,monospace;font-weight:600;width:62px;color:var(--ink)}
+.attr-track{flex:1;background:var(--sub);height:18px;border-radius:6px;position:relative;border:1px solid var(--rule);overflow:hidden}
+.attr-fill{position:absolute;top:0;bottom:0;border-radius:5px}
+.attr-fill.neg{background:linear-gradient(90deg,#FECDCA,#B42318)}
+.attr-fill.pos{background:linear-gradient(90deg,#BBF7D0,#15803D)}
+.attr-val{font-family:"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;width:90px;text-align:right;font-weight:600}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.subcard{background:var(--sub);border:1px solid var(--rule);border-radius:12px;padding:14px 16px}
+.subcard h4{margin:0 0 10px;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:8px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+<!-- Header -->
+<div class="report-header">
+  <div class="left">
+    <div class="eyebrow">Daily Brief · 美股早报</div>
+    <h1>持仓复盘 · 隔夜归因 · 风险快照</h1>
+    <div class="chips">
+      <span class="chip">Futu OpenAPI</span>
+      <span class="chip">yfinance</span>
+      <span class="chip">OpenBB Yield-Curve</span>
+      <span class="chip">SEC Monitor · 缺口</span>
+    </div>
+  </div>
+  <div class="meta">
+    <div><strong>2026-06-10</strong>　周三</div>
+    <div>北京 07:01 / NY 19:01 (前日)</div>
+    <div>市场：盘后 · After Hours</div>
+    <div>USD 账户 · 融资</div>
+  </div>
+</div>
+
+<!-- A. Account -->
+<div class="card">
+  <div class="section-title">A. 账户结果总览</div>
+  <div class="section-sub">真实账户净值 / 当日盈亏 / 累计盈亏 · 数据源 Futu OpenAPI 实时快照</div>
+  <div class="hero">
+    <div>
+      <div class="hero-label">Account NAV (USD)</div>
+      <div class="hero-num">$63,330.73</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="pill negative">当日 −$4,109.74</span>
+      <span class="pill negative">累计 −$26,750.44</span>
+      <span class="pill warning">风险等级 LEVEL6</span>
+    </div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="l">总市值</div><div class="v">$120,459.95</div></div>
+    <div class="kpi"><div class="l">现金（融资）</div><div class="v neg">−$57,129.23</div></div>
+    <div class="kpi"><div class="l">当日盈亏</div><div class="v neg">−$4,109.74</div></div>
+    <div class="kpi"><div class="l">累计盈亏</div><div class="v neg">−$26,750.44</div></div>
+  </div>
+  <div class="callout warn"><strong>隔夜关键变动：</strong>组合当日普跌，EV 与中概双引擎（NIO+TSLA）合计拖累 −$2,546；TMDX 卖出 PUT 受益于正股反弹获利 +$378 缓冲；VIX 一周从 15→19.87 反映情绪转弱。融资头寸下风险等级 LEVEL6（追保参考线 $52,553.76），需留意净值缓冲距离。</div>
+</div>
+
+<!-- B. Macro -->
+<div class="card">
+  <div class="section-title">B. 宏观速览</div>
+  <div class="section-sub">7 日 sparkline · 数据源 yfinance + OpenBB</div>
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="l">VIX</div>
+      <div class="v">19.87 <span style="font-size:12px;color:var(--neg)">+0.95</span></div>
+      <svg class="spark" width="160" height="28" viewBox="0 0 160 28"><polyline fill="none" stroke="#B42318" stroke-width="1.6" points="0,18 27,20 53,18 80,22 107,2 133,8 160,5"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="l">DXY 美元指数</div>
+      <div class="v">99.995 <span style="font-size:12px;color:var(--pos)">−0.06</span></div>
+      <svg class="spark" width="160" height="28" viewBox="0 0 160 28"><polyline fill="none" stroke="#2563EB" stroke-width="1.6" points="0,22 27,21 53,17 80,19 107,4 133,5 160,6"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="l">美债 10Y</div>
+      <div class="v">4.528% <span style="font-size:12px;color:var(--pos)">−2.4bp</span></div>
+      <svg class="spark" width="160" height="28" viewBox="0 0 160 28"><polyline fill="none" stroke="#475569" stroke-width="1.6" points="0,18 27,22 53,16 80,17 107,8 133,6 160,9"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="l">2s10s 利差</div>
+      <div class="v">+0.41pp</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:2px">仍正向陡峭 · 非倒挂</div>
+    </div>
+  </div>
+  <div class="callout info"><strong>事件提示：</strong>本周市场关注美国 5 月 CPI 数据与下周 FOMC 会议窗口。VIX 一周抬升约 24% 配合美元守 100、10Y 高位回落 — 风险情绪偏紧但未到危机水平。<em>（合理推断）</em></div>
+</div>
+<!-- C. Holdings -->
+<div class="card">
+  <div class="section-title">C. 持仓涨跌明细</div>
+  <div class="section-sub">股票主表 + 期权简表 · 数据源 Futu OpenAPI 实时</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th class="num">现价</th>
+          <th class="num">涨跌幅(隐含)</th>
+          <th class="num">数量</th>
+          <th class="num">成本</th>
+          <th class="num">今日盈亏</th>
+          <th class="num">累计盈亏</th>
+          <th class="num">市值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="ticker">NIO</td><td class="num">5.29</td><td class="num neg">−2.94%</td><td class="num">7,560</td><td class="num">9.052</td><td class="num neg">−1,208.84</td><td class="num neg">−28,440.47</td><td class="num">39,993.16</td></tr>
+        <tr><td class="ticker">TSLA</td><td class="num">395.58</td><td class="num neg">−3.27%</td><td class="num">100</td><td class="num">393.785</td><td class="num neg">−1,337.00</td><td class="num pos">+179.54</td><td class="num">39,558.00</td></tr>
+        <tr><td class="ticker">NVDA</td><td class="num">206.15</td><td class="num neg">−1.19%</td><td class="num">80</td><td class="num">183.888</td><td class="num neg">−198.96</td><td class="num pos">+1,781.19</td><td class="num">16,492.24</td></tr>
+        <tr><td class="ticker">NFLX</td><td class="num">81.85</td><td class="num neg">−0.96%</td><td class="num">100</td><td class="num">89.748</td><td class="num neg">−79.18</td><td class="num neg">−789.98</td><td class="num">8,184.82</td></tr>
+        <tr><td class="ticker">IREN</td><td class="num">53.37</td><td class="num neg">−9.83%</td><td class="num">90</td><td class="num">47.987</td><td class="num neg">−523.80</td><td class="num pos">+484.50</td><td class="num">4,803.30</td></tr>
+        <tr><td class="ticker">QCOM</td><td class="num">204.40</td><td class="num neg">−6.14%</td><td class="num">20</td><td class="num">212.489</td><td class="num neg">−267.40</td><td class="num neg">−161.77</td><td class="num">4,088.00</td></tr>
+        <tr><td class="ticker">CDNS</td><td class="num">389.37</td><td class="num neg">−1.24%</td><td class="num">10</td><td class="num">345.14</td><td class="num neg">−48.70</td><td class="num pos">+442.30</td><td class="num">3,893.70</td></tr>
+        <tr><td class="ticker">AXTI</td><td class="num">79.01</td><td class="num neg">−10.55%</td><td class="num">40</td><td class="num">85.99</td><td class="num neg">−470.52</td><td class="num neg">−279.12</td><td class="num">3,160.48</td></tr>
+        <tr><td class="ticker">MSFT</td><td class="num">402.95</td><td class="num neg">−1.08%</td><td class="num">5</td><td class="num">410.00</td><td class="num neg">−43.95</td><td class="num neg">−35.25</td><td class="num">2,014.75</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:18px;font-size:13px;color:var(--muted)"><strong>期权简表（SHORT 卖方）</strong></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Underlying</th>
+          <th>Strike</th>
+          <th class="num">正股</th>
+          <th class="num">距 strike</th>
+          <th>ITM/OTM</th>
+          <th class="num">数量</th>
+          <th class="num">当前权利金</th>
+          <th class="num">今日盈亏</th>
+          <th class="num">累计盈亏</th>
+          <th>到期</th>
+          <th>灯号</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ticker">TMDX</td>
+          <td>90 PUT</td>
+          <td class="num">74.29</td>
+          <td class="num neg">−17.46%</td>
+          <td><span class="pill negative">深度 ITM</span></td>
+          <td class="num">−1</td>
+          <td class="num">$15.71</td>
+          <td class="num pos">+377.94</td>
+          <td class="num neg">−1,011.00</td>
+          <td>06/18 · 8D</td>
+          <td><span class="pill negative">红</span></td>
+        </tr>
+        <tr>
+          <td class="ticker">NIO</td>
+          <td>6.50 CALL</td>
+          <td class="num">5.29</td>
+          <td class="num pos">−18.62%</td>
+          <td><span class="pill positive">OTM</span></td>
+          <td class="num">−45</td>
+          <td class="num">$0.035</td>
+          <td class="num pos">+90.00</td>
+          <td class="num pos">+877.50</td>
+          <td>06/26 · 16D</td>
+          <td><span class="pill positive">绿</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout risk"><strong>TMDX 卖出 PUT 风险提示（事实）：</strong>正股 $74.29 远低于 strike $90，权利金已从成本 $5.60 涨至 $15.71（−180% 浮亏），DTE 仅 8 个交易日，到期被指派接 100 股 TMDX@$90 的概率显著。<em>提示，不构成操作建议。</em></div>
+</div>
+<!-- D. Decision Dashboard -->
+<div class="card">
+  <div class="section-title">D. 决策看板 · 监控优先级</div>
+  <div class="section-sub">按风险贡献排序前 3 大仓位 · 轻量定性评分（SMA + RSI + 盈亏比）</div>
+  <div class="callout info"><strong>说明：</strong>本模块仅做快速定性，<strong>不是交易建议</strong>。评分参考：80+ 强势 / 60–79 偏多 / 40–59 中性 / 20–39 偏弱 / 0–19 弱势。</div>
+  <div class="score-row">
+    <div class="score-card">
+      <div class="score-num">30<small>/100</small></div>
+      <div class="score-ticker">NIO</div>
+      <div class="score-meta">
+        <span class="pill negative">偏弱</span>
+        权重 32.77% · 现价 5.28 < SMA20/50/200，RSI 14=41.4，结构虽 golden_cross 但价格深陷均线下方。<br>
+        <span style="color:var(--muted)">今日关键变量：中概 ADR 风险偏好 · 5.0 心理位是否破位 · 公司端是否有月度交付/政策催化。</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">45<small>/100</small></div>
+      <div class="score-ticker">TSLA</div>
+      <div class="score-meta">
+        <span class="pill neutral">中性</span>
+        权重 32.35% · 现价 395.58 紧贴 SMA50（396.72），SMA50 < SMA200 死叉，RSI 14=47.3。<br>
+        <span style="color:var(--muted)">今日关键变量：SMA50 / 400 整数关能否站稳 · Robotaxi 与 EV 板块情绪 · 利率敏感度。</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">68<small>/100</small></div>
+      <div class="score-ticker">NVDA</div>
+      <div class="score-meta">
+        <span class="pill positive">偏多</span>
+        权重 13.49% · 现价 208.19 > SMA200 +10.2%（金叉），RSI 14=40.1 短期偏弱但中期结构完好。<br>
+        <span style="color:var(--muted)">今日关键变量：AI 算力链情绪 · 200 关支撑 · 半导体小盘（AXTI/QCOM）联动信号。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E. Attribution -->
+<div class="card">
+  <div class="section-title">E. 隔夜事件与收益归因</div>
+  <div class="section-sub">谁拖累 / 谁贡献 · 仅选与持仓直接相关项</div>
+  <div class="attr-bars">
+    <div class="attr-row"><div class="attr-ticker">TSLA</div><div class="attr-track"><div class="attr-fill neg" style="left:0;width:100%"></div></div><div class="attr-val neg">−1,337.00</div></div>
+    <div class="attr-row"><div class="attr-ticker">NIO 股</div><div class="attr-track"><div class="attr-fill neg" style="left:0;width:90.4%"></div></div><div class="attr-val neg">−1,208.84</div></div>
+    <div class="attr-row"><div class="attr-ticker">IREN</div><div class="attr-track"><div class="attr-fill neg" style="left:0;width:39.2%"></div></div><div class="attr-val neg">−523.80</div></div>
+    <div class="attr-row"><div class="attr-ticker">AXTI</div><div class="attr-track"><div class="attr-fill neg" style="left:0;width:35.2%"></div></div><div class="attr-val neg">−470.52</div></div>
+    <div class="attr-row"><div class="attr-ticker">QCOM</div><div class="attr-track"><div class="attr-fill neg" style="left:0;width:20.0%"></div></div><div class="attr-val neg">−267.40</div></div>
+    <div class="attr-row"><div class="attr-ticker">NVDA</div><div class="attr-track"><div class="attr-fill neg" style="left:0;width:14.9%"></div></div><div class="attr-val neg">−198.96</div></div>
+    <div class="attr-row"><div class="attr-ticker">TMDX P</div><div class="attr-track"><div class="attr-fill pos" style="left:50%;width:28.3%"></div></div><div class="attr-val pos">+377.94</div></div>
+    <div class="attr-row"><div class="attr-ticker">NIO C</div><div class="attr-track"><div class="attr-fill pos" style="left:50%;width:6.7%"></div></div><div class="attr-val pos">+90.00</div></div>
+  </div>
+  <div class="legend"><span><i style="background:#B42318"></i>拖累</span><span><i style="background:#15803D"></i>贡献</span></div>
+  <div class="split" style="margin-top:18px">
+    <div class="subcard">
+      <h4>拖累端 · 事实归因</h4>
+      <p style="margin:0 0 8px;font-size:13.5px"><strong>EV 双轨</strong>：TSLA −3.27%、NIO −2.94% 合计 −$2,546，对应当日 VIX 抬升 +5% 与 EV 板块普跌。</p>
+      <p style="margin:0 0 8px;font-size:13.5px"><strong>半导体/算力链</strong>：IREN −9.8%、AXTI −10.6%、QCOM −6.1%、NVDA −1.2% 同步回调，AI 与 BTC/算力情绪同步降温。<em>合理推断</em>：本周 CPI 与 FOMC 前的风险减持。</p>
+      <p style="margin:0;font-size:13.5px"><strong>大盘科技</strong>：NFLX/MSFT 跌幅温和，单项影响 < $80。</p>
+    </div>
+    <div class="subcard">
+      <h4>贡献端 · 期权对冲层</h4>
+      <p style="margin:0 0 8px;font-size:13.5px"><strong>TMDX 90P（SHORT）+$378</strong>：正股 TMDX 当日 +4.4%（71.14→74.29），SHORT PUT 端期权 IV/价格回落带来 mark-to-market 获利。<em>注意</em>：累计仍亏 −$1,011，且深度 ITM 未脱险。</p>
+      <p style="margin:0;font-size:13.5px"><strong>NIO 6.50C（SHORT）+$90</strong>：正股下跌 → 期权进一步衰减，SHORT CALL 持续获利，已近无价值。</p>
+    </div>
+  </div>
+  <div class="callout warn"><strong>数据缺口：</strong>SEC filing monitor 脚本本次超时（55s），隔夜 SEC / 8-K / 财报评论层未能拉取。本归因依靠 Futu 实时仓位 + 板块联动推断，<strong>未含具体新闻/Filing 证据链</strong>。建议下次手动复跑或在晚报补强。</div>
+</div>
+<!-- F. Risk Snapshot -->
+<div class="card">
+  <div class="section-title">F. 组合风险快照</div>
+  <div class="section-sub">权重 / 集中度 / 风格暴露 / 期权风险 · 来源 portfolio_risk_attribution + options-risk-monitor 轻量层</div>
+  <div class="split">
+    <div class="subcard">
+      <h4>Top 3 集中度</h4>
+      <div style="display:flex;align-items:center;gap:18px;margin-top:6px">
+        <svg width="120" height="120" viewBox="0 0 42 42">
+          <circle cx="21" cy="21" r="15.915" fill="none" stroke="#E2E8F0" stroke-width="6"/>
+          <circle cx="21" cy="21" r="15.915" fill="none" stroke="#B42318" stroke-width="6" stroke-dasharray="32.77 67.23" stroke-dashoffset="25" />
+          <circle cx="21" cy="21" r="15.915" fill="none" stroke="#B54708" stroke-width="6" stroke-dasharray="32.35 67.65" stroke-dashoffset="-7.77" />
+          <circle cx="21" cy="21" r="15.915" fill="none" stroke="#2563EB" stroke-width="6" stroke-dasharray="13.49 86.51" stroke-dashoffset="-40.12" />
+          <text x="21" y="22" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0F172A" font-family="SF Mono,Menlo,monospace">78.6%</text>
+          <text x="21" y="27" text-anchor="middle" font-size="3" fill="#64748B">Top3 合计</text>
+        </svg>
+        <div style="font-size:13px;line-height:1.9">
+          <div><i style="display:inline-block;width:10px;height:10px;background:#B42318;border-radius:2px;margin-right:6px;vertical-align:middle"></i>NIO 32.77%</div>
+          <div><i style="display:inline-block;width:10px;height:10px;background:#B54708;border-radius:2px;margin-right:6px;vertical-align:middle"></i>TSLA 32.35%</div>
+          <div><i style="display:inline-block;width:10px;height:10px;background:#2563EB;border-radius:2px;margin-right:6px;vertical-align:middle"></i>NVDA 13.49%</div>
+          <div style="margin-top:6px"><span class="pill warning">集中度：中</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="subcard">
+      <h4>风格暴露</h4>
+      <div style="font-size:13.5px;line-height:2">
+        <div>EV 板块（NIO+TSLA）：<strong>65.12%</strong> <span class="pill negative">高</span></div>
+        <div>中概 ADR（NIO）：<strong>32.77%</strong> <span class="pill warning">偏高</span></div>
+        <div>AI 半导（NVDA+QCOM+AXTI+CDNS）：<strong>16.82%</strong> <span class="pill neutral">中</span></div>
+        <div>大盘科技（MSFT+NFLX）：<strong>15.14%</strong> <span class="pill neutral">中</span></div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--muted)">主因素：EV + 中概双轨；AI/算力为次因素。</div>
+      </div>
+    </div>
+  </div>
+  <div class="split" style="margin-top:14px">
+    <div class="subcard">
+      <h4>期权风险灯号</h4>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <svg width="180" height="100" viewBox="0 0 200 110">
+          <defs>
+            <linearGradient id="gauge" x1="0" x2="1">
+              <stop offset="0%" stop-color="#15803D"/>
+              <stop offset="50%" stop-color="#B54708"/>
+              <stop offset="100%" stop-color="#B42318"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 90 A 80 80 0 0 1 180 90" fill="none" stroke="#E2E8F0" stroke-width="14"/>
+          <path d="M 20 90 A 80 80 0 0 1 180 90" fill="none" stroke="url(#gauge)" stroke-width="14" stroke-dasharray="251" stroke-dashoffset="0" opacity=".25"/>
+          <!-- needle for TMDX: 17.5% below strike → high risk → ~85% pos -->
+          <line x1="100" y1="90" x2="160" y2="35" stroke="#B42318" stroke-width="3"/>
+          <circle cx="100" cy="90" r="4" fill="#0F172A"/>
+          <text x="100" y="108" text-anchor="middle" font-size="11" fill="#64748B">TMDX 距 strike</text>
+        </svg>
+        <div style="font-size:13px;line-height:1.85">
+          <div><span class="pill negative">TMDX 90P</span> DTE 8 · 正股 −17.5% 低于 strike · <strong>深度 ITM · 指派风险高</strong></div>
+          <div style="margin-top:6px"><span class="pill positive">NIO 6.50C</span> DTE 16 · OTM −18.6% · 接近无价值 · 安全</div>
+          <div style="margin-top:6px;color:var(--muted);font-size:12px">最近到期：TMDX 06/18（事实）</div>
+        </div>
+      </div>
+    </div>
+    <div class="subcard">
+      <h4>压力测试参考（注入数据）</h4>
+      <div style="font-size:13.5px;line-height:2">
+        <div>全多头同步 −5%：<span class="neg">≈ −$6,113</span></div>
+        <div>TSLA + NVDA −8%：<span class="neg">≈ −$4,484</span></div>
+        <div>中概 ADR −10%：<span class="neg">≈ −$4,007</span></div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--muted)">主要风险源：NIO（中概暴露偏高）。<em>主观判断</em>：融资模式下尾部回撤敏感度高于普通现金账户。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Paper vs Real -->
+<div class="card">
+  <div class="section-title">📊 模拟组合 vs 真实组合</div>
+  <div class="section-sub">模拟账户从 2026-05-07 起仅执行晚报「立即执行」指令 · 次日开盘价模拟成交</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="l">起始日期</div><div class="v" style="font-size:15px">2026-05-07</div></div>
+    <div class="kpi"><div class="l">模拟 NAV</div><div class="v">$68,816.13</div></div>
+    <div class="kpi"><div class="l">真实 NAV</div><div class="v">$63,330.73</div></div>
+    <div class="kpi"><div class="l">差异 (模拟 − 真实净值口径)</div><div class="v pos">+$5,205.38</div></div>
+    <div class="kpi"><div class="l">模拟累计 P&amp;L</div><div class="v neg">−$797.99</div></div>
+    <div class="kpi"><div class="l">真实累计 P&amp;L</div><div class="v neg">−$6,003.37</div></div>
+    <div class="kpi"><div class="l">模拟当日</div><div class="v neg">−$1,647.56</div></div>
+    <div class="kpi"><div class="l">真实当日</div><div class="v neg">−$3,565.28</div></div>
+  </div>
+  <div class="callout info"><strong>方法学：</strong>模拟账户仅执行晚报 H 模块『立即执行』指令、次日开盘价模拟成交、不构成投资建议。当前已模拟 5 笔交易、9 个持仓。</div>
+</div>
+<!-- Footer -->
+<div class="footer">
+  数据口径：账户/持仓为 Futu OpenAPI 实时快照；技术指标 yfinance 1y / SMA20-50-200 + RSI14；宏观 yfinance + OpenBB Federal Reserve；SEC Filing Monitor 本次脚本超时（55s），隔夜 SEC 证据层为缺口，已显式标注。<br>
+  本报告仅做持仓结果 / 归因 / 风险快照展示，<strong>不构成任何交易建议</strong>。投资有风险，决策请独立判断。<br>
+  生成时间 2026-06-10 07:01 (Asia/Shanghai) · 美股早报 · Daily Brief
+</div>
+</div>
+</body>
+</html>

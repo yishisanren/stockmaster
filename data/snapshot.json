@@ -1,14 +1,14 @@
 {
-  "ts": "2026-06-12T21:30:12.509490",
+  "ts": "2026-06-15T21:32:05.736671",
   "account": {
-    "ts": "2026-06-12T21:15:02.836536",
-    "nav": 63592.3686,
-    "cash": -56537.87,
-    "stock_mv": 121882.83,
-    "option_mv": -1753.5,
-    "today_pl": 384.33,
-    "today_pl_pct": 0.6,
-    "cum_pl": -26961.93,
+    "ts": "2026-06-15T21:17:44.005857",
+    "nav": 65855.0502,
+    "cash": -54863.55,
+    "stock_mv": 122542.7,
+    "option_mv": -1821.5,
+    "today_pl": 1903.43,
+    "today_pl_pct": 2.89,
+    "cum_pl": -25036.37,
     "risk_status": "LEVEL5",
     "currency": "USD",
     "stocks": [
@@ -17,132 +17,120 @@
         "name": "特斯拉",
         "qty": 90.0,
         "cost_price": 395.057,
-        "current_price": 399.19,
-        "market_val": 35927.1,
-        "pl_val": 371.99,
-        "pl_ratio": 1.05,
+        "current_price": 411.663,
+        "market_val": 37049.68,
+        "pl_val": 1494.569,
+        "pl_ratio": 4.2,
         "position_side": "LONG",
-        "today_pl_val": 3.6
+        "today_pl_val": 470.979
       },
       {
         "code": "US.SNOW",
         "name": "Snowflake",
         "qty": 10.0,
         "cost_price": 236.56,
-        "current_price": 241.0,
-        "market_val": 2410.0,
-        "pl_val": 44.4,
-        "pl_ratio": 1.8800000000000001,
+        "current_price": 236.55,
+        "market_val": 2365.5,
+        "pl_val": -0.1,
+        "pl_ratio": 0.0,
         "position_side": "LONG",
-        "today_pl_val": 6.1
+        "today_pl_val": 37.7
       },
       {
         "code": "US.RBRK",
         "name": "Rubrik",
         "qty": 40.0,
         "cost_price": 69.8,
-        "current_price": 71.65,
-        "market_val": 2866.0,
-        "pl_val": 74.0,
-        "pl_ratio": 2.65,
+        "current_price": 69.56,
+        "market_val": 2782.4,
+        "pl_val": -9.6,
+        "pl_ratio": -0.33999999999999997,
         "position_side": "LONG",
-        "today_pl_val": 8.0
+        "today_pl_val": 54.8
       },
       {
         "code": "US.QCOM",
         "name": "高通",
         "qty": 20.0,
         "cost_price": 212.489,
-        "current_price": 202.09,
-        "market_val": 4041.8,
-        "pl_val": -207.97,
-        "pl_ratio": -4.89,
+        "current_price": 221.248,
+        "market_val": 4424.96,
+        "pl_val": 175.192,
+        "pl_ratio": 4.12,
         "position_side": "LONG",
-        "today_pl_val": -17.4
+        "today_pl_val": 190.562
       },
       {
         "code": "US.NVDA",
         "name": "英伟达",
         "qty": 80.0,
         "cost_price": 183.888,
-        "current_price": 204.58,
-        "market_val": 16366.4,
-        "pl_val": 1655.35,
-        "pl_ratio": 11.25,
+        "current_price": 208.395,
+        "market_val": 16671.6,
+        "pl_val": 1960.55,
+        "pl_ratio": 13.33,
         "position_side": "LONG",
-        "today_pl_val": -23.2
+        "today_pl_val": 256.4
       },
       {
         "code": "US.NIO",
         "name": "蔚来",
         "qty": 6000.0,
         "cost_price": 10.046,
-        "current_price": 5.27,
-        "market_val": 31620.0,
-        "pl_val": -28654.8214,
-        "pl_ratio": -47.54,
+        "current_price": 5.251,
+        "market_val": 31506.0,
+        "pl_val": -28768.8214,
+        "pl_ratio": -47.73,
         "position_side": "LONG",
-        "today_pl_val": 240.0
+        "today_pl_val": 246.0
       },
       {
         "code": "US.NFLX",
         "name": "奈飞",
         "qty": 100.0,
         "cost_price": 89.748,
-        "current_price": 81.985,
-        "market_val": 8198.5,
-        "pl_val": -776.3,
-        "pl_ratio": -8.649999999999999,
+        "current_price": 80.46,
+        "market_val": 8046.0,
+        "pl_val": -928.8,
+        "pl_ratio": -10.35,
         "position_side": "LONG",
-        "today_pl_val": 71.5
+        "today_pl_val": 12.0
       },
       {
         "code": "US.MSFT",
         "name": "微软",
-        "qty": 15.0,
-        "cost_price": 396.33,
-        "current_price": 392.542,
-        "market_val": 5888.13,
-        "pl_val": -56.8215,
-        "pl_ratio": -0.96,
+        "qty": 21.0,
+        "cost_price": 392.508,
+        "current_price": 396.603,
+        "market_val": 8328.65,
+        "pl_val": 85.9846,
+        "pl_ratio": 1.04,
         "position_side": "LONG",
-        "today_pl_val": 33.0285
+        "today_pl_val": 123.1146
       },
       {
         "code": "US.GOOG",
         "name": "谷歌-C",
         "qty": 20.0,
         "cost_price": 346.358,
-        "current_price": 360.2,
-        "market_val": 7204.0,
-        "pl_val": 276.84,
-        "pl_ratio": 4.0,
+        "current_price": 364.146,
+        "market_val": 7282.91,
+        "pl_val": 355.754,
+        "pl_ratio": 5.140000000000001,
         "position_side": "LONG",
-        "today_pl_val": 72.8
-      },
-      {
-        "code": "US.CDNS",
-        "name": "铿腾电子",
-        "qty": 10.0,
-        "cost_price": 345.14,
-        "current_price": 384.77,
-        "market_val": 3847.7,
-        "pl_val": 396.3,
-        "pl_ratio": 11.48,
-        "position_side": "LONG",
-        "today_pl_val": 10.3
+        "today_pl_val": 119.714
       },
       {
         "code": "US.AXTI",
         "name": "AXT Inc",
-        "qty": 40.0,
-        "cost_price": 85.99,
-        "current_price": 87.83,
-        "market_val": 3513.2,
-        "pl_val": 73.6,
-        "pl_ratio": 2.1399999999999997,
+        "qty": 38.0,
+        "cost_price": 85.779,
+        "current_price": 107.5,
+        "market_val": 4085.0,
+        "pl_val": 825.4,
+        "pl_ratio": 25.319999999999997,
         "position_side": "LONG",
-        "today_pl_val": -20.4
+        "today_pl_val": 392.16
       }
     ],
     "options": [
@@ -151,10 +139,10 @@
         "name": "TMDX 260618 90.00P",
         "qty": -1.0,
         "cost_price": 5.6,
-        "current_price": 16.41,
-        "market_val": -1641.0,
-        "pl_val": -1081.0,
-        "pl_ratio": -193.04000000000002,
+        "current_price": 17.09,
+        "market_val": -1709.0,
+        "pl_val": -1149.0,
+        "pl_ratio": -205.18,
         "position_side": "SHORT",
         "today_pl_val": 0.0
       },
@@ -172,16 +160,16 @@
       }
     ],
     "raw_account": {
-      "total_assets": 63592.3686,
-      "market_val": 120130.23,
-      "cash": -56537.87,
-      "power": 3097.74232,
-      "max_power_short": 3097.74232,
+      "total_assets": 65855.0502,
+      "market_val": 120718.6016,
+      "cash": -54863.55,
+      "power": 7688.354,
+      "max_power_short": 7688.354,
       "net_cash_power": 0.0,
       "currency": "USD",
       "risk_level": "N/A",
       "risk_status": "LEVEL5",
-      "margin_call_margin": 50452.9396
+      "margin_call_margin": 50667.8242
     }
   },
   "modules_present": [
@@ -193,5 +181,16 @@
     "B"
   ],
   "modules_missing": [],
-  "errors": []
+  "errors": [
+    {
+      "layer": "component_errors",
+      "error": {
+        "component": "sec_filing_monitor",
+        "error": "script_timeout:80s",
+        "script": "~/.hermes/profiles/stockmaster/skills/research/stockmaster-portfolio-intelligence/scripts/us-sec-filing-monitor/sec/monitor_filings.py",
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  ]
 }

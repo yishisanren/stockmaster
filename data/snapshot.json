@@ -1,14 +1,14 @@
 {
-  "ts": "2026-06-24T22:05:44.727424",
+  "ts": "2026-06-25T21:26:23.437724",
   "account": {
-    "ts": "2026-06-24T21:54:43.759939",
-    "nav": 58245.7496,
+    "ts": "2026-06-25T21:15:20.179674",
+    "nav": 56984.7336,
     "cash": -55872.72,
-    "stock_mv": 115158.48,
-    "option_mv": -1040.0,
-    "today_pl": -361.89,
-    "today_pl_pct": -0.62,
-    "cum_pl": -31694.69,
+    "stock_mv": 113854.98,
+    "option_mv": -997.51,
+    "today_pl": 688.34,
+    "today_pl_pct": 1.21,
+    "cum_pl": -32955.7,
     "risk_status": "LEVEL5",
     "currency": "USD",
     "stocks": [
@@ -17,108 +17,108 @@
         "name": "特斯拉",
         "qty": 90.0,
         "cost_price": 395.057,
-        "current_price": 383.38,
-        "market_val": 34504.2,
-        "pl_val": -1050.91,
-        "pl_ratio": -2.96,
+        "current_price": 376.27,
+        "market_val": 33864.31,
+        "pl_val": -1690.801,
+        "pl_ratio": -4.760000000000001,
         "position_side": "LONG",
-        "today_pl_val": 159.3
+        "today_pl_val": 66.609
       },
       {
         "code": "US.SNOW",
         "name": "Snowflake",
         "qty": 10.0,
         "cost_price": 236.56,
-        "current_price": 230.64,
-        "market_val": 2306.4,
-        "pl_val": -59.2,
-        "pl_ratio": -2.5,
+        "current_price": 223.0,
+        "market_val": 2230.0,
+        "pl_val": -135.6,
+        "pl_ratio": -5.7299999999999995,
         "position_side": "LONG",
-        "today_pl_val": 2.3
+        "today_pl_val": -29.5
       },
       {
         "code": "US.QCOM",
         "name": "高通",
         "qty": 35.0,
         "cost_price": 209.279,
-        "current_price": 197.255,
-        "market_val": 6903.93,
-        "pl_val": -420.845,
-        "pl_ratio": -5.75,
+        "current_price": 213.5,
+        "market_val": 7472.5,
+        "pl_val": 147.73,
+        "pl_ratio": 2.02,
         "position_side": "LONG",
-        "today_pl_val": -253.675
+        "today_pl_val": 563.15
       },
       {
         "code": "US.NVDA",
         "name": "英伟达",
         "qty": 80.0,
         "cost_price": 183.888,
-        "current_price": 200.99,
-        "market_val": 16079.21,
-        "pl_val": 1368.158,
-        "pl_ratio": 9.3,
+        "current_price": 201.46,
+        "market_val": 16116.8,
+        "pl_val": 1405.75,
+        "pl_ratio": 9.56,
         "position_side": "LONG",
-        "today_pl_val": 76.008
+        "today_pl_val": 196.8
       },
       {
         "code": "US.NIO",
         "name": "蔚来",
         "qty": 4995.0,
         "cost_price": 11.047,
-        "current_price": 5.008,
-        "market_val": 25016.96,
-        "pl_val": -30162.4934,
-        "pl_ratio": -54.66,
+        "current_price": 4.9,
+        "market_val": 24475.5,
+        "pl_val": -30703.9514,
+        "pl_ratio": -55.64,
         "position_side": "LONG",
-        "today_pl_val": -407.592
+        "today_pl_val": 0.0
       },
       {
         "code": "US.NFLX",
         "name": "奈飞",
         "qty": 100.0,
         "cost_price": 89.748,
-        "current_price": 72.73,
-        "market_val": 7273.0,
-        "pl_val": -1701.8,
-        "pl_ratio": -18.96,
+        "current_price": 71.42,
+        "market_val": 7142.0,
+        "pl_val": -1832.8,
+        "pl_ratio": -20.419999999999998,
         "position_side": "LONG",
-        "today_pl_val": -9.0
+        "today_pl_val": -42.0
       },
       {
         "code": "US.MSFT",
         "name": "微软",
         "qty": 31.0,
         "cost_price": 387.762,
-        "current_price": 375.59,
-        "market_val": 11643.29,
-        "pl_val": -377.33,
-        "pl_ratio": -3.1399999999999997,
+        "current_price": 363.77,
+        "market_val": 11276.87,
+        "pl_val": -743.75,
+        "pl_ratio": -6.1899999999999995,
         "position_side": "LONG",
-        "today_pl_val": 51.15
+        "today_pl_val": -52.39
       },
       {
         "code": "US.GOOG",
         "name": "谷歌-C",
         "qty": 25.0,
         "cost_price": 346.286,
-        "current_price": 348.23,
-        "market_val": 8705.75,
-        "pl_val": 48.59,
-        "pl_ratio": 0.5599999999999999,
+        "current_price": 338.6,
+        "market_val": 8465.0,
+        "pl_val": -192.165,
+        "pl_ratio": -2.22,
         "position_side": "LONG",
-        "today_pl_val": 53.75
+        "today_pl_val": -161.005
       },
       {
         "code": "US.AXTI",
         "name": "AXT Inc",
         "qty": 38.0,
         "cost_price": 85.779,
-        "current_price": 71.73,
-        "market_val": 2725.74,
-        "pl_val": -533.86,
-        "pl_ratio": -16.38,
+        "current_price": 74.0,
+        "market_val": 2812.0,
+        "pl_val": -447.6,
+        "pl_ratio": -13.73,
         "position_side": "LONG",
-        "today_pl_val": -234.84
+        "today_pl_val": 146.68
       }
     ],
     "options": [
@@ -127,12 +127,12 @@
         "name": "TMDX 260717 85.00P",
         "qty": -1.0,
         "cost_price": 12.0,
-        "current_price": 9.95,
-        "market_val": -995.0,
-        "pl_val": 205.0,
-        "pl_ratio": 17.080000000000002,
+        "current_price": 9.525,
+        "market_val": -952.51,
+        "pl_val": 247.49,
+        "pl_ratio": 20.62,
         "position_side": "SHORT",
-        "today_pl_val": 245.26
+        "today_pl_val": 0.0
       },
       {
         "code": "US.NIO260626C6500",
@@ -144,20 +144,20 @@
         "pl_val": 990.0,
         "pl_ratio": 95.65,
         "position_side": "SHORT",
-        "today_pl_val": -44.55
+        "today_pl_val": 0.0
       }
     ],
     "raw_account": {
-      "total_assets": 58245.7496,
-      "market_val": 114118.471,
+      "total_assets": 56984.7336,
+      "market_val": 112857.455,
       "cash": -55872.72,
-      "power": 20199.6581272,
-      "max_power_short": 20199.6581272,
+      "power": 534.6880758,
+      "max_power_short": 534.6880758,
       "net_cash_power": 0.0,
       "currency": "USD",
       "risk_level": "N/A",
       "risk_status": "LEVEL5",
-      "margin_call_margin": 44199.6395614
+      "margin_call_margin": 45295.8155621
     }
   },
   "modules_present": [

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股早报 · 2026-06-26 · Weiwei Zhang</title>
+<style>
+:root{
+  --bg:#F6F8FB; --card:#FFFFFF; --card2:#F8FAFC;
+  --text:#0F172A; --body:#334155; --muted:#64748B; --weak:#94A3B8;
+  --blue:#2563EB; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE;
+  --pos:#15803D; --pos-bg:#ECFDF3; --pos-bd:#BBF7D0;
+  --neg:#B42318; --neg-bg:#FEF3F2; --neg-bd:#FECDCA;
+  --warn:#B54708; --warn-bg:#FFFAEB; --warn-bd:#FEDF89;
+  --bd:#E2E8F0; --bd-strong:#CBD5E1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;line-height:1.58;font-size:14.5px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 56px}
+.report-header{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:22px 24px;box-shadow:0 8px 24px rgba(15,23,42,.04);position:relative;overflow:hidden;margin-bottom:22px}
+.report-header::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--blue)}
+.report-header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.report-header .left{flex:1;min-width:0}
+.report-header .eyebrow{color:var(--blue);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.report-header h1{margin:0 0 10px;font-size:24px;color:var(--text);font-weight:700;letter-spacing:-.01em}
+.report-header .chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:var(--card2);color:var(--muted);font-size:12px;border:1px solid var(--bd)}
+.chip.blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd)}
+.report-header .meta{text-align:right;color:var(--muted);font-size:13px;flex-shrink:0;white-space:nowrap}
+.report-header .meta .date{color:var(--text);font-weight:600;font-size:14px;margin-bottom:2px}
+
+.section{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px 24px;margin-bottom:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.section-title{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:17px;color:var(--text);font-weight:700}
+.section-title::before{content:"";display:inline-block;width:4px;height:18px;background:var(--blue);border-radius:2px}
+.section-title .tag{margin-left:auto;font-size:11px;font-weight:500;color:var(--muted);padding:2px 8px;background:var(--card2);border:1px solid var(--bd);border-radius:999px;letter-spacing:.02em}
+
+.grid{display:grid;gap:12px}
+.grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+.metric{background:var(--card2);border:1px solid var(--bd);border-radius:12px;padding:14px 16px}
+.metric .label{color:var(--muted);font-size:12px;margin-bottom:4px;letter-spacing:.02em}
+.metric .val{color:var(--text);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.metric .sub{color:var(--muted);font-size:12px;margin-top:3px;font-variant-numeric:tabular-nums}
+
+.pos{color:var(--pos)}
+.neg{color:var(--neg)}
+.neu{color:var(--muted)}
+
+.callout{border-radius:12px;padding:12px 14px;font-size:13.5px;margin:10px 0;border:1px solid}
+.callout.info{background:var(--blue-bg);border-color:var(--blue-bd);color:#1E40AF}
+.callout.warn{background:var(--warn-bg);border-color:var(--warn-bd);color:var(--warn)}
+.callout.risk{background:var(--neg-bg);border-color:var(--neg-bd);color:var(--neg)}
+.callout.calm{background:var(--pos-bg);border-color:var(--pos-bd);color:var(--pos)}
+
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:600;border:1px solid;font-variant-numeric:tabular-nums;line-height:1.6}
+.badge.green{background:var(--pos-bg);color:var(--pos);border-color:var(--pos-bd)}
+.badge.red{background:var(--neg-bg);color:var(--neg);border-color:var(--neg-bd)}
+.badge.yellow{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-bd)}
+.badge.blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd)}
+.badge.gray{background:var(--card2);color:var(--muted);border-color:var(--bd)}
+
+.table-wrap{overflow-x:auto;margin:8px -4px;border-radius:12px;border:1px solid var(--bd)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px;background:#fff}
+thead th{background:var(--card2);color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd);white-space:nowrap}
+tbody td{padding:11px 12px;border-bottom:1px solid var(--bd);color:var(--body);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--card2)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.tk{font-weight:700;color:var(--text);white-space:nowrap}
+
+.scoreboard{display:grid;gap:10px}
+.scoreboard .row{background:var(--card2);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.scoreboard .row .tk{font-weight:700;color:var(--text);font-size:15px}
+.scoreboard .row .score{font-variant-numeric:tabular-nums;color:var(--text);font-weight:600}
+.scoreboard .row .var{flex:1;min-width:200px;color:var(--muted);font-size:13px}
+
+.paper-card{background:var(--card2);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;display:grid;gap:10px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.paper-card .it{font-size:12.5px}
+.paper-card .it .lb{color:var(--muted);font-size:11.5px;margin-bottom:2px}
+.paper-card .it .v{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;font-size:14px}
+
+footer{margin-top:20px;color:var(--muted);font-size:12px;line-height:1.7}
+footer p{margin:6px 0}
+
+@media (max-width:760px){
+  .wrap{padding:16px 12px 36px}
+  .section{padding:16px 14px;border-radius:14px}
+  .report-header{padding:16px 16px}
+  .grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .paper-card{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metric .val{font-size:18px}
+  table{min-width:720px}
+}
+@media (max-width:480px){
+  .report-header{flex-direction:column;align-items:flex-start}
+  .report-header .meta{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="report-header">
+    <div class="left">
+      <div class="eyebrow">U.S. Equities Morning Briefing</div>
+      <h1>美股早报 · 持仓监控与隔夜归因</h1>
+      <div class="chips">
+        <span class="chip blue">Weiwei Zhang</span>
+        <span class="chip">Futu OpenAPI</span>
+        <span class="chip">SEC EDGAR</span>
+        <span class="chip">yfinance</span>
+        <span class="chip">脚本注入</span>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="date">2026-06-26 · 周五</div>
+      <div>07:01 CST · 盘后时段</div>
+      <div>市场状态：AFTER_HOURS_BEGIN</div>
+      <div>情绪：风险偏好中性偏弱</div>
+    </div>
+  </header>
+
+  <!-- A. 账户结果总览 -->
+  <section class="section">
+    <h2 class="section-title">A · 账户结果总览 <span class="tag">真实持仓口径</span></h2>
+    <div class="grid cols-4">
+      <div class="metric">
+        <div class="label">账户净值 (NAV)</div>
+        <div class="val">$54,769.14</div>
+        <div class="sub">USD · 实时</div>
+      </div>
+      <div class="metric">
+        <div class="label">总市值</div>
+        <div class="val">$109,429.77</div>
+        <div class="sub">含期权 SHORT 负市值</div>
+      </div>
+      <div class="metric">
+        <div class="label">当日盈亏</div>
+        <div class="val neg">-$1,494.55</div>
+        <div class="sub">注入口径 -$1,507.09</div>
+      </div>
+      <div class="metric">
+        <div class="label">累计未实现盈亏</div>
+        <div class="val neg">-$36,388.62</div>
+        <div class="sub">NIO 独占 -$31,392</div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:14px">
+      <strong>融资 / 杠杆提示：</strong>现金余额 -$54,660.63（融资负余额），保证金 $45,979.68，风险等级 LEVEL6。杠杆放大波动，组合对市场回撤敏感度高于裸长仓。<span class="badge yellow" style="margin-left:8px">监控变量</span> NIO 浮亏占比、TSLA 单票暴露、TMDX 短 put 指派风险。
+    </div>
+  </section>
+
+  <!-- B. 宏观速览 -->
+  <section class="section">
+    <h2 class="section-title">B · 宏观速览 <span class="tag">2026-06-25 收盘</span></h2>
+    <div class="grid cols-4">
+      <div class="metric">
+        <div class="label">VIX</div>
+        <div class="val">18.89 <span class="badge red" style="font-size:11px">+1.40%</span></div>
+        <div class="sub">中性偏弱区，未进入恐慌</div>
+      </div>
+      <div class="metric">
+        <div class="label">DXY 美元指数</div>
+        <div class="val">101.44 <span class="badge green" style="font-size:11px">-0.17%</span></div>
+        <div class="sub">边际走弱，对成长股略友好</div>
+      </div>
+      <div class="metric">
+        <div class="label">US 10Y</div>
+        <div class="val">4.39% <span class="badge green" style="font-size:11px">-1.33%</span></div>
+        <div class="sub">收益率下行</div>
+      </div>
+      <div class="metric">
+        <div class="label">2s10s 估算</div>
+        <div class="val">+71 bps</div>
+        <div class="sub">10Y 4.39% − 13W 3.68%，曲线小幅陡峭</div>
+      </div>
+    </div>
+    <p style="margin:12px 4px 0;color:var(--muted);font-size:13px">SPY 734.30（距 SMA50 +0.07%，RSI14 38.4）/ QQQ 716.38（距 SMA50 +2.13%，RSI14 43.8），大盘动能略偏弱但未破位。今日（周五）通常为月底核心 PCE 公布日附近，请关注实际经济数据公告 —— 注入数据未提供具体日历事件，<span class="badge gray">数据缺口</span>。</p>
+  </section>
+
+  <!-- C. 持仓涨跌明细 -->
+  <section class="section">
+    <h2 class="section-title">C · 持仓涨跌明细 <span class="tag">USD · LONG 除非标注</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th class="num">数量</th>
+            <th class="num">成本价</th>
+            <th class="num">现价</th>
+            <th class="num">市值</th>
+            <th class="num">今日盈亏</th>
+            <th class="num">累计盈亏</th>
+            <th class="num">累计%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="tk">TSLA</td><td class="num">90</td><td class="num">395.057</td><td class="num">374.58</td><td class="num">33,712.20</td><td class="num neg">-85.50</td><td class="num neg">-1,842.91</td><td class="num neg">-5.18%</td></tr>
+          <tr><td class="tk">NVDA</td><td class="num">80</td><td class="num">183.888</td><td class="num">194.75</td><td class="num">15,580.00</td><td class="num neg">-340.00</td><td class="num pos">+868.95</td><td class="num pos">+5.91%</td></tr>
+          <tr><td class="tk">NIO</td><td class="num">2,995</td><td class="num">15.212</td><td class="num">4.73</td><td class="num">14,166.35</td><td class="num neg">-688.55</td><td class="num neg">-31,392.50</td><td class="num neg">-68.91%</td></tr>
+          <tr><td class="tk">MSFT</td><td class="num">36</td><td class="num">383.534</td><td class="num">354.632</td><td class="num">12,766.76</td><td class="num neg">-349.10</td><td class="num neg">-1,040.46</td><td class="num neg">-7.54%</td></tr>
+          <tr><td class="tk">GOOG</td><td class="num">30</td><td class="num">344.879</td><td class="num">340.70</td><td class="num">10,221.00</td><td class="num neg">-94.20</td><td class="num neg">-125.36</td><td class="num neg">-1.21%</td></tr>
+          <tr><td class="tk">QCOM</td><td class="num">35</td><td class="num">209.279</td><td class="num">204.67</td><td class="num">7,163.45</td><td class="num pos">+254.10</td><td class="num neg">-161.32</td><td class="num neg">-2.20%</td></tr>
+          <tr><td class="tk">NFLX</td><td class="num">100</td><td class="num">89.748</td><td class="num">71.466</td><td class="num">7,146.57</td><td class="num neg">-37.43</td><td class="num neg">-1,828.23</td><td class="num neg">-20.37%</td></tr>
+          <tr><td class="tk">IREN</td><td class="num">100</td><td class="num">49.00</td><td class="num">47.91</td><td class="num">4,791.00</td><td class="num neg">-109.00</td><td class="num neg">-109.00</td><td class="num neg">-2.22%</td></tr>
+          <tr><td class="tk">AXTI</td><td class="num">38</td><td class="num">85.779</td><td class="num">68.38</td><td class="num">2,598.44</td><td class="num neg">-66.88</td><td class="num neg">-661.16</td><td class="num neg">-20.28%</td></tr>
+          <tr><td class="tk">SNOW</td><td class="num">10</td><td class="num">236.56</td><td class="num">226.40</td><td class="num">2,264.00</td><td class="num pos">+4.50</td><td class="num neg">-101.60</td><td class="num neg">-4.29%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin:20px 0 8px;font-size:14px;color:var(--text);font-weight:600">期权持仓（SHORT，卖方）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>合约</th>
+            <th>方向</th>
+            <th class="num">数量</th>
+            <th class="num">正股现价</th>
+            <th class="num">Strike</th>
+            <th>ITM/OTM</th>
+            <th class="num">DTE</th>
+            <th class="num">期权价</th>
+            <th class="num">今日 P&L</th>
+            <th class="num">累计 P&L</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tk">TMDX 260717 85.00P</td>
+            <td><span class="badge yellow">SHORT PUT</span></td>
+            <td class="num">-1</td>
+            <td class="num">77.75</td>
+            <td class="num">85.00</td>
+            <td><span class="badge red">ITM 9.32%</span></td>
+            <td class="num">21</td>
+            <td class="num">9.35</td>
+            <td class="num pos">+17.51</td>
+            <td class="num pos">+265.00</td>
+          </tr>
+          <tr>
+            <td class="tk">NIO 260626 6.50C</td>
+            <td><span class="badge yellow">SHORT CALL</span></td>
+            <td class="num">-45</td>
+            <td class="num">4.73</td>
+            <td class="num">6.50</td>
+            <td><span class="badge green">OTM 37.4%</span></td>
+            <td class="num">0</td>
+            <td class="num">0.01</td>
+            <td class="num neu">0.00</td>
+            <td class="num pos">+990.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info">
+      <strong>期权事实：</strong>NIO 6.5C 今日（6/26）到期，期权价 $0.01，深度 OTM，预计安全过期 → 锁定 $990 卖方收益。
+      <br><strong>TMDX 85P</strong> 还有 21 天到期，currently ITM 约 9.32%，作为 short put 存在指派可能（若 7/17 收盘前 TMDX 仍 &lt; 85，对应 100 股名义本金约 $8,500）。
+      <span class="badge gray">事实陈述，不构成操作建议</span>
+    </div>
+  </section>
+
+  <!-- D. 决策看板 -->
+  <section class="section">
+    <h2 class="section-title">D · 决策看板 <span class="tag">监控优先级 · 快速定性</span></h2>
+    <div class="callout info">本模块基于 SMA50/200、RSI、累计盈亏综合给出的<strong>快速定性评分</strong>，仅用于提示监控优先级。<strong>不是交易建议</strong>，不包含加仓/减仓/止盈止损操作意见。</div>
+    <div class="scoreboard">
+      <div class="row">
+        <span class="tk">TSLA</span>
+        <span class="badge yellow">评分 38/100 · 偏弱</span>
+        <span class="badge red">趋势 偏空</span>
+        <span class="var">今日关键变量：单票占组合 30.53%（最大权重）；RSI14 36.08、SMA50/200 死叉、距 SMA200 −10.22%；累计 -5.18% 但短期超卖。</span>
+      </div>
+      <div class="row">
+        <span class="tk">NVDA</span>
+        <span class="badge yellow">评分 52/100 · 中性</span>
+        <span class="badge gray">趋势 中性</span>
+        <span class="var">今日关键变量：6/23 多名内部人合计抛售近 100 万股（209.69–210.43 价位区）；RSI14 32.67 短期超卖、仍维持 SMA50/200 金叉；累计 +5.91%。</span>
+      </div>
+      <div class="row">
+        <span class="tk">NIO</span>
+        <span class="badge red">评分 18/100 · 弱势</span>
+        <span class="badge red">趋势 偏空</span>
+        <span class="var">今日关键变量：浮亏占组合 86% 的拖累源；RSI14 17.12 极度超卖、距 SMA200 −18.41%；6/24 6-K 业务更新无明确催化；NIO 6.5C 今日到期 OTM。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- E. 隔夜事件与收益归因 -->
+  <section class="section">
+    <h2 class="section-title">E · 隔夜事件与收益归因</h2>
+    <div class="grid cols-2">
+      <div>
+        <h3 style="margin:0 0 10px;font-size:14px;color:var(--pos)">▲ 今日贡献者</h3>
+        <ul style="margin:0;padding-left:18px;font-size:13.5px;line-height:1.85">
+          <li><strong>QCOM</strong> <span class="badge green">+$254.10</span> ：今日组合最大贡献者；技术面维持 SMA50/200 金叉、距 SMA200 +22.13%，整理形态偏强。6/24 8-K 仅 Item 3.02 股权发行，低影响。</li>
+          <li><strong>TMDX 85P (SHORT)</strong> <span class="badge green">+$17.51</span> ：正股 TMDX 隔夜小幅反弹（RSI14 60.96），put 估值小幅下行。</li>
+          <li><strong>SNOW</strong> <span class="badge green">+$4.50</span> ：小幅止跌。</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin:0 0 10px;font-size:14px;color:var(--neg)">▼ 今日拖累者</h3>
+        <ul style="margin:0;padding-left:18px;font-size:13.5px;line-height:1.85">
+          <li><strong>NIO</strong> <span class="badge red">-$688.55</span> ：单日最大拖累；6/24 6-K 业务更新无具体催化披露；技术 RSI14 17.12 极度超卖但累计已 -68.91%。</li>
+          <li><strong>MSFT</strong> <span class="badge red">-$349.10</span> ：RSI14 15.25 极度超卖、距 SMA200 -21.35%，趋势破坏；4/29 10-Q 早已披露，无近 7 日新事件。</li>
+          <li><strong>NVDA</strong> <span class="badge red">-$340.00</span> ：6/23 多名内部人合计卖出近 100 万股（≈209.7–210.4）<span class="badge yellow">insider_sell</span>，短期情绪承压。</li>
+          <li><strong>IREN</strong> <span class="badge red">-$109.00</span> ：新建仓首日小幅回落，BTC + AI cloud 双线敏感于宏观风险偏好。</li>
+          <li><strong>GOOG / TSLA / AXTI / NFLX</strong> ：小幅跟随大盘弱势调整。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:14px">
+      <strong>关键事件清单（近 7 日 SEC）：</strong>NVDA 6/23 Form 4 多笔 insider sell（bearish, medium）｜ SNOW 6/24 Form 4 多笔 insider sell（bearish, medium）｜ NIO 6/24 6-K 业务更新（neutral）｜ QCOM 6/24 8-K Item 3.02（low）｜ AXTI 6/22 8-K 董事任命（low）。TSLA / MSFT / NFLX / GOOG / TMDX 近 7 日无新 8-K。
+    </div>
+  </section>
+
+  <!-- F. 组合风险快照 -->
+  <section class="section">
+    <h2 class="section-title">F · 组合风险快照</h2>
+    <div class="grid cols-3">
+      <div class="metric">
+        <div class="label">前三大持仓权重</div>
+        <div class="val">57.5%</div>
+        <div class="sub">TSLA 30.5% · NVDA 14.1% · NIO 12.9%</div>
+      </div>
+      <div class="metric">
+        <div class="label">集中度等级</div>
+        <div class="val"><span class="badge yellow">中</span></div>
+        <div class="sub">主要风险源：TSLA</div>
+      </div>
+      <div class="metric">
+        <div class="label">期权风险灯号</div>
+        <div class="val"><span class="badge yellow">注意</span></div>
+        <div class="sub">TMDX 85P ITM；NIO 6.5C 今日到期 OTM</div>
+      </div>
+    </div>
+    <h3 style="margin:18px 0 8px;font-size:14px;color:var(--text);font-weight:600">风格暴露</h3>
+    <div class="grid cols-4">
+      <div class="metric"><div class="label">EV</div><div class="val">43.39%</div><div class="sub">TSLA + NIO</div></div>
+      <div class="metric"><div class="label">Mega-cap Tech</div><div class="val">34.92%</div><div class="sub">MSFT + GOOG + NFLX</div></div>
+      <div class="metric"><div class="label">AI / 半导</div><div class="val">20.59%</div><div class="sub">NVDA + QCOM + AXTI</div></div>
+      <div class="metric"><div class="label">China ADR</div><div class="val">12.86%</div><div class="sub">NIO 单一</div></div>
+    </div>
+    <h3 style="margin:18px 0 8px;font-size:14px;color:var(--text);font-weight:600">压力测试（基于注入数据）</h3>
+    <div class="grid cols-3">
+      <div class="metric"><div class="label">全部股票 -5%</div><div class="val neg">-$5,520.74</div><div class="sub">均匀下跌</div></div>
+      <div class="metric"><div class="label">TSLA + NVDA -8%</div><div class="val neg">-$4,760.50</div><div class="sub">核心成长压力</div></div>
+      <div class="metric"><div class="label">China ADR -10%</div><div class="val neg">-$1,419.57</div><div class="sub">NIO 单边</div></div>
+    </div>
+    <div class="callout info" style="margin-top:14px">
+      <strong>最近到期 / 距 strike 最近：</strong>① <strong>NIO 6.5C</strong>（今日到期，OTM 37.4%，预期安全过期）；② <strong>TMDX 85P</strong>（DTE 21，ITM 9.32%，距指派最近的合约）。
+    </div>
+  </section>
+
+  <!-- 模拟 vs 真实 -->
+  <section class="section">
+    <h2 class="section-title">📊 模拟组合 vs 真实组合 <span class="tag">轻量对照</span></h2>
+    <div class="paper-card">
+      <div class="it"><div class="lb">起始日期</div><div class="v">2026-05-07</div></div>
+      <div class="it"><div class="lb">模拟交易笔数</div><div class="v">7</div></div>
+      <div class="it"><div class="lb">模拟 NAV</div><div class="v">$65,646.05</div></div>
+      <div class="it"><div class="lb">真实 NAV</div><div class="v">$54,769.14</div></div>
+      <div class="it"><div class="lb">模拟累计 P&L</div><div class="v neg">-$3,968.07 (-5.7%)</div></div>
+      <div class="it"><div class="lb">真实累计 P&L</div><div class="v neg">-$14,617.99 (-21.0%)</div></div>
+      <div class="it"><div class="lb">模拟今日 P&L</div><div class="v neg">-$1,271.72</div></div>
+      <div class="it"><div class="lb">差异（模拟 − 真实）</div><div class="v pos">+$10,649.92</div></div>
+    </div>
+    <p style="margin:10px 4px 0;color:var(--muted);font-size:12.5px">模拟组合方法学：仅执行晚报 H 模块「立即执行」指令、次日开盘价模拟成交、不构成投资建议。</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>数据口径：</strong>持仓 / 账户来自 Futu OpenAPI（实时）；技术指标 yfinance period=1y SMA20/50/200 + RSI14；隔夜事件 SEC EDGAR 近 7 日；宏观快照 yfinance 收盘价。SMA200 在数据点 &lt; 200 时显示 N/A。</p>
+    <p><strong>已知缺口：</strong>注入未提供具体今日宏观日历事件；2s10s 用 10Y 4.39% − 13W 3.68% 估算（非严格 2Y），结果仅供参考。</p>
+    <p><strong>免责声明：</strong>本报告由 Hermes Stockmaster 自动生成，仅作为持仓监控与隔夜归因的事实复盘，<strong>不构成投资建议</strong>。决策看板的「评分 / 趋势 / 关键变量」仅为快速定性、不含交易指令。投资有风险，决策请独立判断。</p>
+    <p style="color:var(--weak)">Generated 2026-06-26 07:01 CST · Weiwei Zhang · Hermes Agent · stockmaster profile</p>
+  </footer>
+
+</div>
+</body>
+</html>

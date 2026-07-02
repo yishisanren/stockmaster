@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>美股实盘早报 · 2026-07-03</title>
+<style>
+:root{
+  --bg:#F6F8FB;--card:#FFFFFF;--soft:#F8FAFC;
+  --ink:#0F172A;--body:#334155;--muted:#64748B;--faint:#94A3B8;
+  --blue:#2563EB;--blue-soft:#EFF6FF;--blue-border:#BFDBFE;
+  --pos:#15803D;--pos-bg:#ECFDF3;--pos-border:#BBF7D0;
+  --neg:#B42318;--neg-bg:#FEF3F2;--neg-border:#FECDCA;
+  --warn:#B54708;--warn-bg:#FFFAEB;--warn-border:#FEDF89;
+  --line:#E2E8F0;--line-strong:#CBD5E1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.58;font-size:15px}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 48px}
+.report-header{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:16px;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.report-header .left{flex:1;min-width:0}
+.report-header .eyebrow{font-size:12px;letter-spacing:.12em;color:var(--blue);font-weight:600;text-transform:uppercase}
+.report-header h1{margin:6px 0 10px;font-size:24px;font-weight:700;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.report-header .meta{text-align:right;color:var(--muted);font-size:13px;flex-shrink:0;white-space:nowrap}
+.report-header .meta .k{color:var(--ink);font-weight:600}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin-top:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.section-title{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:17px;font-weight:700;color:var(--ink)}
+.section-title::before{content:"";display:inline-block;width:4px;height:16px;border-radius:2px;background:var(--blue)}
+.section-title .tag{font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-border);border-radius:999px;padding:2px 8px;margin-left:4px}
+.grid{display:grid;gap:14px}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.metric{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.metric .lbl{font-size:12px;color:var(--muted);font-weight:500}
+.metric .val{font-size:22px;font-weight:700;color:var(--ink);margin-top:4px;font-variant-numeric:tabular-nums}
+.metric .sub{font-size:12px;color:var(--muted);margin-top:4px}
+.pos{color:var(--pos)}
+.neg{color:var(--neg)}
+.neu{color:var(--muted)}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;border:1px solid transparent}
+.pill.positive{color:var(--pos);background:var(--pos-bg);border-color:var(--pos-border)}
+.pill.negative{color:var(--neg);background:var(--neg-bg);border-color:var(--neg-border)}
+.pill.warning{color:var(--warn);background:var(--warn-bg);border-color:var(--warn-border)}
+.pill.neutral{color:var(--muted);background:var(--soft);border-color:var(--line-strong)}
+.pill.primary{color:var(--blue);background:var(--blue-soft);border-color:var(--blue-border)}
+.table-wrap{overflow-x:auto;margin-top:6px;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead th{background:var(--soft);color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--soft)}
+.callout{border-radius:12px;padding:12px 14px;border:1px solid;font-size:13.5px;line-height:1.55}
+.callout.info{background:var(--blue-soft);border-color:var(--blue-border);color:#1E40AF}
+.callout.warn{background:var(--warn-bg);border-color:var(--warn-border);color:var(--warn)}
+.callout.risk{background:var(--neg-bg);border-color:var(--neg-border);color:var(--neg)}
+.callout.stable{background:var(--pos-bg);border-color:var(--pos-border);color:var(--pos)}
+.disc{color:var(--faint);font-size:12px}
+.macro-row{display:flex;flex-wrap:wrap;gap:10px;font-size:13.5px;color:var(--body)}
+.macro-row .item{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.macro-row .item b{color:var(--ink);font-variant-numeric:tabular-nums}
+.decision-card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--soft)}
+.decision-card h4{margin:0 0 6px;font-size:15px;color:var(--ink)}
+.decision-card .row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.decision-card .meta-line{font-size:12.5px;color:var(--muted)}
+footer{margin-top:24px;color:var(--faint);font-size:12px;line-height:1.6}
+@media(max-width:760px){
+  .wrap{padding:16px 12px 32px}
+  .report-header{padding:16px 18px}
+  section.card{padding:16px 18px}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .metric .val{font-size:19px}
+}
+@media(max-width:480px){
+  .report-header{flex-direction:column}
+  .report-header .meta{text-align:left;white-space:normal}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="report-header">
+  <div class="left">
+    <div class="eyebrow">STOCKMASTER · 早报</div>
+    <h1>美股实盘早报 · 2026-07-03</h1>
+    <div class="chips">
+      <span class="chip">Weiwei Zhang 组合</span>
+      <span class="chip">数据源:Futu / SEC / yfinance / OpenBB</span>
+      <span class="chip">口径:2026-07-02 收盘 + 盘后</span>
+    </div>
+  </div>
+  <div class="meta">
+    <div>报告时间 <span class="k">2026-07-03 07:00 UTC</span></div>
+    <div>市场状态 <span class="k">盘后 (AFTER_HOURS)</span></div>
+    <div>情绪 <span class="k">中性偏谨慎</span></div>
+  </div>
+</header>
+
+<!-- A. 账户结果总览 -->
+<section class="card">
+  <h2 class="section-title">A. 账户结果总览</h2>
+  <div class="grid grid-4">
+    <div class="metric">
+      <div class="lbl">账户净资产</div>
+      <div class="val">$56,355.57</div>
+      <div class="sub">总市值 $111,278 / 保证金 -$54,923</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">当日盈亏</div>
+      <div class="val neg">−$3,791</div>
+      <div class="sub">主要拖累 TSLA −$2,762 (占 73%)</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">累计浮盈亏</div>
+      <div class="val neg">−$34,360</div>
+      <div class="sub">NIO 长期埋伏 −$31,168 主导</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">风险状态</div>
+      <div class="val"><span class="pill warning">LEVEL 6</span></div>
+      <div class="sub">margin call 阈值 $46,547</div>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:14px">
+    <b>隔夜关键变动：</b>TSLA 于 07-02 盘后提交 8-K Item 2.02（Q2 交付/生产数据发布），当日 −0.13%（−$2,762）；组合最大单一风险源仍是 TSLA 27.95% 权重。TMDX 260717 85P 短仓深度 ITM（正股 68.86 vs strike 85），距到期 15 天，assignment 风险高。
+  </div>
+</section>
+
+<!-- B. 宏观速览 -->
+<section class="card">
+  <h2 class="section-title">B. 宏观速览</h2>
+  <div class="macro-row">
+    <div class="item">VIX <b>16.15</b> <span class="pill positive">低波</span></div>
+    <div class="item">DXY <b>100.85</b> <span class="pill neutral">日内走弱 (open 101.40)</span></div>
+    <div class="item">2s10s <b>+31 bp</b> <span class="pill neutral">正常正斜率</span></div>
+    <div class="item">10Y <b>4.48%</b></div>
+    <div class="item">3m10y <b>+63 bp</b></div>
+  </div>
+  <p style="margin:10px 0 0;color:var(--body);font-size:13.5px">整体风险偏好中性偏 risk-on：VIX < 17、SPY +0.5% vs SMA20、QQQ 距 SMA50 仅 +0.49%。7 月是 Q2 业绩预告和财报窗口起点，TSLA 已交付数据、NIO 6-K 或涉月度交付；不构成宏观级冲击。</p>
+</section>
+
+<!-- C. 持仓涨跌明细 -->
+<section class="card">
+  <h2 class="section-title">C. 持仓涨跌明细</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>标的</th><th>数量</th><th>成本</th><th>现价</th><th>涨跌%</th><th>今日 P&L</th><th>累计 P&L</th><th>市值</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TSLA 特斯拉</td><td>80</td><td>394.76</td><td>394.26</td><td class="neg">−0.13%</td><td class="neg">−2,761.83</td><td class="neg">−39.94</td><td>31,540.77</td></tr>
+        <tr><td>NVDA 英伟达</td><td>80</td><td>183.64</td><td>194.64</td><td class="pos">+5.99%</td><td class="neg">−235.50</td><td class="pos">+879.85</td><td>15,570.90</td></tr>
+        <tr><td>NIO 蔚来</td><td>2,995</td><td>15.21</td><td>4.81</td><td class="neg">−68.41%</td><td class="neg">−494.18</td><td class="neg">−31,167.88</td><td>14,390.98</td></tr>
+        <tr><td>MSFT 微软</td><td>36</td><td>383.53</td><td>390.80</td><td class="pos">+1.89%</td><td class="pos">+234.72</td><td class="pos">+261.58</td><td>14,068.80</td></tr>
+        <tr><td>GOOG 谷歌-C</td><td>30</td><td>344.88</td><td>355.75</td><td class="pos">+3.15%</td><td class="neg">−64.20</td><td class="pos">+326.14</td><td>10,672.50</td></tr>
+        <tr><td>IREN</td><td>200</td><td>44.65</td><td>39.13</td><td class="neg">−12.36%</td><td class="neg">−536.00</td><td class="neg">−1,104.00</td><td>7,826.00</td></tr>
+        <tr><td>NFLX 奈飞</td><td>100</td><td>89.75</td><td>77.50</td><td class="neg">−13.65%</td><td class="pos">+331.00</td><td class="neg">−1,224.80</td><td>7,750.00</td></tr>
+        <tr><td>QCOM 高通</td><td>35</td><td>209.28</td><td>177.28</td><td class="neg">−15.29%</td><td class="neg">−162.40</td><td class="neg">−1,119.97</td><td>6,204.80</td></tr>
+        <tr><td>SNOW</td><td>10</td><td>236.56</td><td>259.00</td><td class="pos">+9.49%</td><td class="neg">−21.90</td><td class="pos">+224.40</td><td>2,590.00</td></tr>
+        <tr><td>AXTI</td><td>38</td><td>85.78</td><td>59.94</td><td class="neg">−30.12%</td><td class="neg">−193.42</td><td class="neg">−981.88</td><td>2,277.72</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:18px 0 8px;font-size:14.5px;color:var(--ink)">期权持仓</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>合约</th><th>方向</th><th>行权价</th><th>DTE</th><th>ITM/OTM</th><th>现价</th><th>今日 P&L</th><th>累计 P&L</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TMDX 260717 85P</td>
+          <td>Short −1</td>
+          <td>85.00</td>
+          <td>15</td>
+          <td><span class="pill negative">深度 ITM (正股 68.86)</span></td>
+          <td>16.14</td>
+          <td class="pos">+113.41</td>
+          <td class="neg">−414.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout risk" style="margin-top:12px">
+    <b>期权风险提示（事实）：</b>TMDX 现价 68.86 显著低于 strike 85，权利金已达 16.14，距到期仅 15 天，若不采取行动，届时被指派买入 100 股 TMDX 的概率非常高，隐含名义暴露 ≈ $8,500。<span class="disc"> 不构成交易建议。</span>
+  </div>
+</section>
+
+<!-- D. 决策看板 -->
+<section class="card">
+  <h2 class="section-title">D. 决策看板 <span class="tag">监控优先级 · 快速定性</span></h2>
+  <div class="grid grid-3">
+    <div class="decision-card">
+      <h4>TSLA 特斯拉 <span class="pill negative">27.95% 权重</span></h4>
+      <div class="row">
+        <span class="pill neutral">评分 45/100</span>
+        <span class="pill neutral">趋势: 中性偏空</span>
+      </div>
+      <div class="meta-line">
+        价格 393.45 · RSI 48 · SMA50 死叉 SMA200 · 距 SMA50 −3.19% · 距 SMA200 −6.01%<br>
+        <b>今日关键变量：</b>Q2 交付 8-K 已披露，市场反馈、Model 更新节奏、盘中放量方向。
+      </div>
+    </div>
+    <div class="decision-card">
+      <h4>NVDA 英伟达 <span class="pill neutral">13.79% 权重</span></h4>
+      <div class="row">
+        <span class="pill positive">评分 62/100</span>
+        <span class="pill positive">趋势: 偏多</span>
+      </div>
+      <div class="meta-line">
+        价格 194.83 · RSI 40 · 金叉 · 距 SMA200 +1.99% · 累计浮盈 +$880<br>
+        <b>今日关键变量：</b>AI 供应链需求 / 亚洲夜盘对科技的传导 / 大盘 QQQ 是否守住 710。
+      </div>
+    </div>
+    <div class="decision-card">
+      <h4>NIO 蔚来 <span class="pill negative">12.73% 权重</span></h4>
+      <div class="row">
+        <span class="pill negative">评分 22/100</span>
+        <span class="pill negative">趋势: 偏空</span>
+      </div>
+      <div class="meta-line">
+        价格 4.79 · RSI 33 · 死叉 · 距 SMA50 −14.73% · 累计浮亏 −$31,168 (−68%)<br>
+        <b>今日关键变量：</b>07-02 6-K 内容（推断为月度交付）、中国 ADR 情绪、$4.50 关键前低。
+      </div>
+    </div>
+  </div>
+  <div class="callout info" style="margin-top:14px">
+    评分范围：80+ 强势 / 60-79 偏多 / 40-59 中性 / 20-39 偏弱 / 0-19 弱势。<b>本看板为轻量定性监控，仅用于识别今日应重点跟踪的仓位与变量，不构成任何交易建议。</b>
+  </div>
+</section>
+
+<!-- E. 隔夜事件与收益归因 -->
+<section class="card">
+  <h2 class="section-title">E. 隔夜事件与收益归因</h2>
+  <div class="grid grid-2">
+    <div>
+      <h3 style="margin:0 0 8px;font-size:14.5px;color:var(--pos)">✓ 收益贡献 Top</h3>
+      <ul style="margin:0;padding-left:18px;color:var(--body);font-size:13.5px;line-height:1.7">
+        <li><b>NFLX +$331</b>：连续多笔内部人 Form 4 权益授予（code=A，非公开市场买入，但方向性信号偏多）；技术面 RSI 42 尝试筑底。</li>
+        <li><b>MSFT +$235</b>：Form 4 无实质交易，日内相对韧性，突破 SMA20；今日贡献第二。</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin:0 0 8px;font-size:14.5px;color:var(--neg)">✗ 收益拖累 Top</h3>
+      <ul style="margin:0;padding-left:18px;color:var(--body);font-size:13.5px;line-height:1.7">
+        <li><b>TSLA −$2,762</b>：Q2 交付/生产 8-K 落地（Item 2.02），单一事件驱动日内回落；由于仓位 27.95% 集中，拖累占当日 73%。</li>
+        <li><b>IREN −$536</b>：RSI 20 深度超卖，价格 −28.74% vs SMA50；同时 8-K Item 5.02 + 多笔内部人授予，属人事变动 + 权益激励叠加。</li>
+        <li><b>NIO −$494</b>：07-02 6-K 业务更新落地（推断月度交付相关），叠加 RSI 33 弱势。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout info" style="margin-top:12px">
+    <b>其他值得留意的隔夜事件：</b>GOOG 07-01 Form 4（10 sell / 2 buy，含公开市场卖出 345-347 区间，中性偏空信号）；SNOW 07-01 Form 4 内含开市卖出 24,680 + 39,663 股 @ 250-251，需关注机构行为；NVDA 07-02 8-K 为 Item 5.02 高管变动（低影响）。
+  </div>
+</section>
+
+<!-- F. 组合风险快照 -->
+<section class="card">
+  <h2 class="section-title">F. 组合风险快照</h2>
+  <div class="grid grid-3">
+    <div class="metric">
+      <div class="lbl">前三大权重</div>
+      <div class="val">54.47%</div>
+      <div class="sub">TSLA 27.95 · NVDA 13.79 · NIO 12.73</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">集中度等级</div>
+      <div class="val"><span class="pill warning">中</span></div>
+      <div class="sub">单票 TSLA 近 28%，需关注</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">主要风险源</div>
+      <div class="val" style="font-size:18px">TSLA</div>
+      <div class="sub">单日最大回撤贡献 −$2,762</div>
+    </div>
+  </div>
+
+  <h3 style="margin:18px 0 8px;font-size:14.5px">风格暴露</h3>
+  <div class="macro-row">
+    <div class="item">EV <b>40.69%</b></div>
+    <div class="item">Mega-cap Tech <b>35.70%</b></div>
+    <div class="item">AI Semis <b>19.29%</b></div>
+    <div class="item">China ADR <b>12.73%</b></div>
+  </div>
+
+  <h3 style="margin:18px 0 8px;font-size:14.5px">压力测试（情景假设，非预测）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>情景</th><th>预估 P&L</th></tr></thead>
+      <tbody>
+        <tr><td>所有多头统一下跌 5%</td><td class="neg">−$5,645</td></tr>
+        <tr><td>TSLA / NVDA 下跌 8%</td><td class="neg">−$4,624</td></tr>
+        <tr><td>中概 ADR 下跌 10%</td><td class="neg">−$1,438</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:18px 0 8px;font-size:14.5px">期权风险灯号</h3>
+  <div class="callout risk">
+    <b>🔴 TMDX 260717 85P（short）</b>：DTE 15 · 深度 ITM（正股 68.86 vs strike 85，价内 $16.14）· 权利金已 16.14 · assignment 概率高 · 若被指派名义暴露 $8,500 + 保证金压力叠加当前 LEVEL 6。
+    <div class="disc" style="margin-top:6px;color:var(--neg);opacity:.75">仅为风险监控事实描述，不构成交易建议。</div>
+  </div>
+</section>
+
+<!-- 模拟组合 vs 真实组合 -->
+<section class="card">
+  <h2 class="section-title">📊 模拟组合 vs 真实组合 <span class="tag">对照追踪</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th></th><th>模拟组合</th><th>真实组合</th><th>差异</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>起始日期</td><td>2026-05-07</td><td>2026-05-07</td><td class="neu">—</td></tr>
+        <tr><td>当前 NAV</td><td>$67,041.15</td><td>$56,202.52</td><td class="pos">+$10,838.63</td></tr>
+        <tr><td>累计 P&L</td><td class="neg">−$2,572.97 (−3.7%)</td><td class="neg">−$13,411.60 (−19.27%)</td><td class="pos">模拟领先 +$10,839</td></tr>
+        <tr><td>当日 P&L</td><td class="neg">−$4,141.30</td><td class="neg">−$4,101.66</td><td class="neu">−$39.64</td></tr>
+        <tr><td>交易笔数 / 持仓数</td><td>7 笔 / 8 只</td><td>—</td><td class="neu">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="disc" style="margin-top:8px">口径：模拟账户仅执行历次晚报 H 模块「立即执行」指令，次日开盘价模拟成交，不构成投资建议。</div>
+</section>
+
+<!-- SEC 事件依据 -->
+<section class="card">
+  <h2 class="section-title">SEC / 监管事件（近 7 日，节选）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>标的</th><th>日期</th><th>类型</th><th>影响强度</th><th>方向</th><th>要点</th></tr></thead>
+      <tbody>
+        <tr><td>TSLA</td><td>2026-07-02</td><td>8-K</td><td><span class="pill warning">中</span></td><td class="neu">中性</td><td>Item 2.02 Q2 生产/交付新闻稿；组合最大权重的事件驱动</td></tr>
+        <tr><td>NIO</td><td>2026-07-02</td><td>6-K</td><td><span class="pill primary">高</span></td><td class="neu">中性</td><td>业务更新（推断为月度交付相关，需核实）</td></tr>
+        <tr><td>NFLX</td><td>2026-07-02</td><td>Form 4 × 11</td><td><span class="pill neutral">中</span></td><td class="pos">偏多</td><td>集中的内部人权益授予信号</td></tr>
+        <tr><td>NVDA</td><td>2026-07-02</td><td>8-K</td><td><span class="pill neutral">低</span></td><td class="neu">中性</td><td>Item 5.02 高管变动</td></tr>
+        <tr><td>IREN</td><td>2026-07-01</td><td>8-K + Form 4</td><td><span class="pill neutral">中</span></td><td class="pos">偏多</td><td>Item 5.02 人事变动 + 多笔内部人授予</td></tr>
+        <tr><td>SNOW</td><td>2026-07-01</td><td>Form 4</td><td><span class="pill neutral">中</span></td><td class="neu">中性</td><td>公开市场卖出 24,680 + 39,663 股 @ 250-251，需关注</td></tr>
+        <tr><td>GOOG</td><td>2026-07-01</td><td>Form 4</td><td><span class="pill neutral">中</span></td><td class="neg">偏空</td><td>10 卖 2 买，公开市场卖出 345-347 区间</td></tr>
+        <tr><td>QCOM</td><td>2026-07-01</td><td>Form 4</td><td><span class="pill neutral">低</span></td><td class="pos">偏多</td><td>小额内部人授予</td></tr>
+        <tr><td>AXTI</td><td>2026-07-02</td><td>8-K</td><td><span class="pill neutral">低</span></td><td class="neu">中性</td><td>Item 1.01 AXT-Tongmei 子公司协议</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 执行纪律 / 数据口径 -->
+<section class="card">
+  <h2 class="section-title">数据口径与免责声明</h2>
+  <ul style="margin:0;padding-left:18px;color:var(--body);font-size:13.5px;line-height:1.75">
+    <li><b>持仓来源：</b>Futu OpenAPI 实时账户快照，时间戳 2026-07-03 07:00 UTC，市场状态 AFTER_HOURS_BEGIN。</li>
+    <li><b>技术指标：</b>yfinance 日线，截至 2026-07-02 收盘；SMA20/50/200 与 RSI14 均基于日线。</li>
+    <li><b>宏观：</b>DXY 100.85（07-02）通过 OpenBB YFinance；美债收益率来自 Federal Reserve；VIX 通过 yfinance。</li>
+    <li><b>SEC 事件：</b>近 7 日 EDGAR，仅提炼与本组合相关的高相关文件；Form 4 code=A 表示权益授予，非公开市场买入。</li>
+    <li><b>分类：</b><span class="pill positive" style="margin:0 2px">事实</span>=数据源直读；<span class="pill primary" style="margin:0 2px">推断</span>=基于事实的合理推理；<span class="pill neutral" style="margin:0 2px">判断</span>=主观定性。当前报告已明确标注推断项（如 NIO 6-K 内容）。</li>
+    <li><b>免责：</b>本报告为账户结果、归因与风险快照，不构成任何投资建议，不含加/减仓或止盈止损执行指令。使用免费/延迟数据源可能存在时效偏差，请结合独立判断。</li>
+  </ul>
+</section>
+
+<footer>
+  Stockmaster Morning Report · Generated 2026-07-03 07:00 UTC · profile=stockmaster ·
+  数据源：Futu · SEC EDGAR · yfinance · OpenBB · 投资有风险，分析仅供参考。
+</footer>
+
+</div>
+</body>
+</html>

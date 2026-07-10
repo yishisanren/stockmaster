@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stockmaster · 美股早报 · 2026-07-11</title>
+<style>
+  :root{
+    --paper:#F6F5F0;
+    --ink:#16140F;
+    --ink-2:#4A463D;
+    --mute:#8B867A;
+    --rule:#D6D0C0;
+    --rule-soft:#E5E1D4;
+    --spot:#1B3A5C;
+    --spot-soft:#5C7894;
+    --spot-pale:#C9D3DE;
+    --pos:#1F6F4F;
+    --neg:#8A2F26;
+    --warn:#9A6420;
+    --pos-pale:#D9E5DC;
+    --neg-pale:#E8D6D2;
+    --serif:"Charter","Iowan Old Style Text","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink);margin:0;padding:0}
+  body{font-family:var(--sans);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .page{max-width:920px;margin:0 auto;padding:36px 40px 56px}
+
+  /* MASTHEAD */
+  .masthead{padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .masthead .topline{display:flex;justify-content:space-between;align-items:baseline;color:var(--mute);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;font-family:var(--sans)}
+  .masthead .topline .vol{color:var(--ink-2)}
+  .masthead h1{font-family:var(--serif);font-weight:700;font-size:46px;letter-spacing:-0.01em;line-height:1;margin:0 0 8px;color:var(--ink)}
+  .masthead .standfirst{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);margin:0;letter-spacing:0.01em}
+  .masthead .meta-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-2);font-family:var(--sans)}
+  .masthead .meta-strip > span{padding-right:18px;margin-right:18px;border-right:1px solid var(--rule)}
+  .masthead .meta-strip > span:last-child{border-right:0;padding-right:0;margin-right:0}
+  .masthead .meta-strip strong{color:var(--ink);font-weight:600}
+
+  /* MODULES */
+  section.mod{padding:36px 0 28px;border-bottom:1px solid var(--rule)}
+  section.mod:last-of-type{border-bottom:0}
+  .kicker{display:flex;align-items:baseline;gap:14px;margin:0 0 22px}
+  .kicker .num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:28px;color:var(--spot);line-height:1;min-width:34px}
+  .kicker h2{font-family:var(--serif);font-weight:700;font-size:22px;margin:0;color:var(--ink);letter-spacing:-0.005em;line-height:1.15}
+  .kicker .source{font-family:var(--sans);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;text-transform:uppercase;margin-left:auto;align-self:center}
+
+  /* MODULE A - HERO */
+  .hero{display:grid;grid-template-columns:1.05fr 0.95fr;gap:38px;align-items:start;margin-bottom:22px}
+  .hero .heronum{font-family:var(--serif);font-weight:700;font-size:62px;line-height:1;letter-spacing:-0.018em;color:var(--pos);font-variant-numeric:tabular-nums}
+  .hero .heronum.neg{color:var(--neg)}
+  .hero .herolabel{font-family:var(--sans);font-size:11px;color:var(--mute);letter-spacing:0.14em;text-transform:uppercase;margin:4px 0 18px}
+  .hero .recovery-cap{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-top:10px}
+  .hero .recovery-cap b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .hero .narrative{font-family:var(--serif);font-size:16px;line-height:1.65;color:var(--ink-2);margin:0;padding-top:6px}
+  .hero .narrative b{color:var(--ink);font-weight:600}
+
+  .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);padding-top:14px;margin-top:10px}
+  .stat-strip .s{padding:0 18px;border-right:1px solid var(--rule)}
+  .stat-strip .s:first-child{padding-left:0}
+  .stat-strip .s:last-child{border-right:0;padding-right:0}
+  .stat-strip .sk{font-size:11px;color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+  .stat-strip .sv{font-family:var(--mono);font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+  .stat-strip .sv.neg{color:var(--neg)}
+  .stat-strip .sv.pos{color:var(--pos)}
+  .stat-strip .ss{font-size:11px;color:var(--mute);margin-top:3px}
+
+  /* MODULE B - MACRO */
+  .macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .macro-cell{padding:0 20px;border-right:1px solid var(--rule)}
+  .macro-cell:first-child{padding-left:0}
+  .macro-cell:last-child{border-right:0;padding-right:0}
+  .macro-cell .ml{font-family:var(--sans);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .macro-cell .spark{display:block;margin-bottom:6px}
+  .macro-cell .mv{font-family:var(--serif);font-weight:700;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-0.01em}
+  .macro-cell .md{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:3px;font-variant-numeric:tabular-nums}
+  .macro-cell .md.pos{color:var(--pos)}
+  .macro-cell .md.neg{color:var(--neg)}
+  .macro-cell .mn{font-family:var(--sans);font-size:12px;color:var(--mute);margin-top:8px;line-height:1.5}
+  .macro-footer{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-2);margin:22px 0 0;padding-top:14px;border-top:1px dotted var(--rule)}
+
+  /* MODULE C - CONTRIBUTION CHART + TABLE */
+  .contrib{margin-bottom:26px}
+  .contrib .chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;font-family:var(--sans);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+  .contrib .scale{font-family:var(--mono);color:var(--ink-2);letter-spacing:0}
+  .bar-row{display:grid;grid-template-columns:78px 1fr 92px;align-items:center;gap:0;padding:5px 0;font-family:var(--sans)}
+  .bar-row .br-tk{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink)}
+  .bar-row .br-track{position:relative;height:14px;background:transparent;margin:0 12px}
+  .bar-row .br-axis{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--rule);transform:translateX(-0.5px)}
+  .bar-row .br-bar{position:absolute;top:1px;height:12px}
+  .bar-row .br-bar.pos{background:var(--pos);left:50%}
+  .bar-row .br-bar.neg{background:var(--neg);right:50%}
+  .bar-row .br-val{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
+  .bar-row .br-val.pos{color:var(--pos)}
+  .bar-row .br-val.neg{color:var(--neg)}
+
+  .table-section{margin-top:24px}
+  .subhead{font-family:var(--sans);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;font-weight:600}
+  .detail{width:100%;border-collapse:collapse;font-size:12.5px;font-family:var(--sans)}
+  .detail th{text-align:right;font-weight:500;color:var(--mute);font-family:var(--sans);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--rule)}
+  .detail th:first-child{text-align:left}
+  .detail th.t-num{text-align:right}
+  .detail td{padding:9px 10px;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums;color:var(--ink-2);text-align:right}
+  .detail td:first-child{text-align:left;color:var(--ink);font-weight:600}
+  .detail td.num{font-family:var(--mono)}
+  .detail td.pos{color:var(--pos)}
+  .detail td.neg{color:var(--neg)}
+  .detail tr:last-child td{border-bottom:0}
+
+  .opts{margin-top:26px}
+  .opt-card{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;align-items:center;padding:14px 0;border-top:1px solid var(--rule-soft)}
+  .opt-card:first-of-type{border-top:1px solid var(--rule)}
+  .opt-name{font-family:var(--sans);font-size:13px;color:var(--ink)}
+  .opt-name b{font-weight:600;font-family:var(--mono);letter-spacing:-0.01em}
+  .opt-name .opt-meta{display:block;color:var(--mute);font-size:11px;margin-top:3px;letter-spacing:0.04em}
+  .opt-gauge{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+  .opt-gauge svg{flex-shrink:0}
+  .opt-pnl{text-align:right;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+  .opt-pnl .pnl-today{display:block;color:var(--ink-2);font-size:11.5px}
+  .opt-pnl .pnl-cum{display:block;margin-top:2px}
+  .opt-pnl .pnl-cum.pos{color:var(--pos)}
+  .opt-pnl .pnl-cum.neg{color:var(--neg)}
+  .opt-tag{font-family:var(--sans);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase}
+  .opt-tag.warn{color:var(--warn)}
+  .opt-tag.ok{color:var(--pos)}
+
+  /* MODULE D - DECISION GAUGES */
+  .gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .gauge{padding:0 22px;border-right:1px solid var(--rule)}
+  .gauge:first-child{padding-left:0}
+  .gauge:last-child{border-right:0;padding-right:0}
+  .gauge .g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .gauge .g-tk{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-0.005em}
+  .gauge .g-num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+  .gauge .g-num .g-out{font-size:13px;color:var(--mute);font-weight:400;font-family:var(--sans)}
+  .gauge .g-scale{margin:14px 0 6px}
+  .gauge .g-trend{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);margin-bottom:6px}
+  .gauge .g-tech{font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:-0.01em;margin-bottom:8px}
+  .gauge .g-var{font-family:var(--sans);font-size:12px;color:var(--ink-2);line-height:1.5}
+  .gauges-foot{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--mute);margin:22px 0 0;padding-top:12px;border-top:1px dotted var(--rule);line-height:1.55}
+
+  /* MODULE E - ATTRIBUTION */
+  .attr-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .attr-col h4{font-family:var(--sans);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin:0 0 14px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  .attr-row{padding:10px 0;border-bottom:1px solid var(--rule-soft)}
+  .attr-row:last-child{border-bottom:0}
+  .attr-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:3px}
+  .attr-tk{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink)}
+  .attr-tk .ts{font-weight:400;color:var(--mute);font-size:11.5px;margin-left:4px;letter-spacing:0.04em}
+  .attr-val{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+  .attr-val.pos{color:var(--pos)}
+  .attr-val.neg{color:var(--neg)}
+  .attr-note{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);line-height:1.5;margin:0}
+  .marginalia{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);line-height:1.6;margin:24px 0 0;padding:14px 16px 14px 18px;border-left:2px solid var(--warn);background:transparent}
+  .marginalia b{color:var(--ink);font-weight:600;font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:0.04em}
+
+  /* MODULE F - RISK */
+  .risk-top{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;margin-bottom:28px}
+  .donut-wrap{position:relative;width:200px;height:200px}
+  .donut-wrap .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .donut-wrap .donut-pct{font-family:var(--serif);font-weight:700;font-size:32px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-0.01em}
+  .donut-wrap .donut-label{font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-top:5px}
+  .donut-wrap .donut-sub{font-family:var(--serif);font-style:italic;font-size:11.5px;color:var(--ink-2);margin-top:6px}
+  .legend{font-family:var(--sans);font-size:13px}
+  .legend .leg-title{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:10px;font-weight:600}
+  .legend .leg-row{display:grid;grid-template-columns:14px 1fr auto auto;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums}
+  .legend .leg-row:last-child{border-bottom:0}
+  .legend .leg-swatch{width:10px;height:10px;align-self:center}
+  .legend .leg-name{font-family:var(--sans);font-weight:600;color:var(--ink)}
+  .legend .leg-pct{font-family:var(--mono);color:var(--ink);font-size:13px}
+  .legend .leg-mv{font-family:var(--mono);color:var(--mute);font-size:11.5px;margin-left:10px}
+
+  .exposure{margin-top:6px}
+  .exp-row{display:grid;grid-template-columns:96px 1fr 60px;gap:12px;align-items:center;padding:5px 0}
+  .exp-label{font-family:var(--sans);font-size:12.5px;color:var(--ink-2)}
+  .exp-track{position:relative;height:10px;background:var(--rule-soft)}
+  .exp-bar{position:absolute;top:0;left:0;bottom:0;background:var(--spot)}
+  .exp-bar.soft{background:var(--spot-soft)}
+  .exp-val{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right;font-variant-numeric:tabular-nums}
+
+  .opt-risk{margin-top:6px}
+  .opt-risk-row{display:grid;grid-template-columns:1.3fr 1fr 100px;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--rule-soft)}
+  .opt-risk-row:first-child{border-top:1px solid var(--rule)}
+  .opt-risk-name{font-family:var(--mono);font-size:12.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .opt-risk-name .lbl{display:block;font-family:var(--sans);font-size:10.5px;color:var(--mute);margin-top:3px;letter-spacing:0.05em}
+  .opt-risk-scale{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);display:flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
+  .opt-risk-tag{font-family:var(--sans);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;text-align:right}
+  .opt-risk-tag.warn{color:var(--warn)}
+  .opt-risk-tag.ok{color:var(--pos)}
+
+  .stress{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px;padding-top:14px;border-top:1px solid var(--rule)}
+  .stress-row{font-family:var(--sans);font-size:13px;color:var(--ink-2);display:flex;justify-content:space-between;align-items:baseline}
+  .stress-row .sl{color:var(--ink-2)}
+  .stress-row .sv{font-family:var(--mono);color:var(--neg);font-variant-numeric:tabular-nums}
+
+  .risk-callout{font-family:var(--serif);font-style:italic;font-size:13.5px;line-height:1.6;color:var(--ink-2);margin:22px 0 0;padding:14px 0 0;border-top:1px solid var(--rule)}
+  .risk-callout b{color:var(--ink);font-weight:600;font-style:normal;font-family:var(--sans);font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+  /* SIM vs REAL */
+  .aside-sim{margin-top:36px;padding:20px 0 18px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .aside-sim .as-kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+  .aside-sim .as-kicker b{color:var(--ink);font-weight:600;font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0;text-transform:none;margin-right:8px}
+  .sim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .sim-cell{padding:0 16px;border-right:1px solid var(--rule)}
+  .sim-cell:first-child{padding-left:0}
+  .sim-cell:last-child{border-right:0;padding-right:0}
+  .sim-cell .sk{font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+  .sim-cell .sv{font-family:var(--mono);font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .sim-cell .ss{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:3px;font-variant-numeric:tabular-nums}
+  .sim-cell .ss .pos{color:var(--pos)}
+  .sim-cell .ss .neg{color:var(--neg)}
+
+  /* COLOPHON */
+  .colophon{margin-top:32px;padding-top:18px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:11px;color:var(--mute);line-height:1.7}
+  .colophon p{margin:0 0 6px}
+  .colophon .cl-title{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+
+  .delta-arrow{display:inline-block;font-family:var(--sans);font-size:9px;vertical-align:1px;margin-right:2px}
+
+  /* MOBILE */
+  @media (max-width: 760px){
+    .page{padding:24px 18px 36px}
+    .masthead h1{font-size:34px}
+    .masthead .standfirst{font-size:15px}
+    .masthead .meta-strip{font-size:11px;gap:6px}
+    .masthead .meta-strip > span{padding-right:10px;margin-right:10px}
+    .kicker h2{font-size:18px}
+    .kicker .num{font-size:22px;min-width:26px}
+    .kicker .source{display:none}
+
+    .hero{grid-template-columns:1fr;gap:18px}
+    .hero .heronum{font-size:46px}
+    .hero .narrative{font-size:14px}
+    .stat-strip{grid-template-columns:1fr;gap:0;padding-top:8px}
+    .stat-strip .s{padding:10px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .stat-strip .s:last-child{border-bottom:0}
+
+    .macro-grid{grid-template-columns:1fr;gap:0}
+    .macro-cell{padding:14px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .macro-cell:last-child{border-bottom:0}
+
+    .bar-row{grid-template-columns:60px 1fr 76px}
+    .bar-row .br-tk{font-size:12px}
+    .bar-row .br-val{font-size:11.5px}
+    .opt-card{grid-template-columns:1fr;gap:8px;padding:12px 0}
+    .opt-pnl{text-align:left}
+
+    .gauges{grid-template-columns:1fr;gap:0}
+    .gauge{padding:18px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .gauge:last-child{border-bottom:0}
+
+    .attr-cols{grid-template-columns:1fr;gap:20px}
+
+    .risk-top{grid-template-columns:1fr;gap:18px;text-align:center}
+    .donut-wrap{margin:0 auto}
+    .legend{text-align:left}
+    .legend .leg-row{grid-template-columns:14px 1fr auto;gap:8px}
+    .legend .leg-mv{display:none}
+    .opt-risk-row{grid-template-columns:1fr;gap:6px}
+    .opt-risk-tag{text-align:left}
+    .stress{grid-template-columns:1fr;gap:8px}
+
+    .sim-grid{grid-template-columns:repeat(2,1fr);gap:14px 0}
+    .sim-cell{padding:8px 12px;border-right:1px solid var(--rule)}
+    .sim-cell:nth-child(2n){border-right:0}
+
+    .detail{font-size:11.5px}
+    .detail th,.detail td{padding:7px 6px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="topline">
+      <span>Stockmaster Morning Brief</span>
+      <span class="vol">VOL. II &nbsp;·&nbsp; NO. 192</span>
+    </div>
+    <h1>美股早报</h1>
+    <p class="standfirst">隔夜结果 / 归因 / 风险快照, 2026-07-11 周六, 美东 7-10 收盘</p>
+    <div class="meta-strip">
+      <span>北京 <strong>07:01 UTC+8</strong> / 美东盘后</span>
+      <span>市场状态 <strong>AFTER_HOURS</strong></span>
+      <span>风险偏好 <strong>上升 · VIX↓</strong></span>
+      <span>账户风险 <strong>LEVEL6</strong></span>
+    </div>
+  </header>
+
+  <!-- I. 账户结果 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">I</span>
+      <h2>账户结果</h2>
+      <span class="source">Futu OpenAPI · 实时</span>
+    </div>
+
+    <div class="hero">
+      <div>
+        <div class="heronum pos">+$84.63</div>
+        <div class="herolabel">TODAY · 当日盈亏</div>
+
+        <!-- Recovery bar: width=360. Today's recovery segment = RECOVERY_BAR_WIDTH px wide,
+             positioned RECOVERY_BAR_X px from left. Cron computes:
+               recovered_frac = today_pnl / abs(yesterday_cum_pnl), clamped to [0,1]
+               RECOVERY_BAR_WIDTH = round(recovered_frac * 360)
+               RECOVERY_BAR_X     = 360 - RECOVERY_BAR_WIDTH
+             If today_pnl is negative, cron can render an empty bar (RECOVERY_BAR_WIDTH = 0)
+             and replace fill color with --neg, or replace the whole hero block per its taste.
+        -->
+        <svg viewBox="0 0 360 28" width="100%" height="28" style="display:block;margin-top:4px" preserveAspectRatio="none">
+          <rect x="0" y="11" width="360" height="6" fill="#E5E1D4"/>
+          <rect x="359" y="9" width="1" height="10" fill="#1F6F4F"/>
+          <line x1="360" y1="6" x2="360" y2="22" stroke="#16140F" stroke-width="1"/>
+          <line x1="0" y1="6" x2="0" y2="22" stroke="#16140F" stroke-width="1"/>
+        </svg>
+        <div class="recovery-cap">
+          昨日累计未实现 <b>-$31,649.95</b> &nbsp;→&nbsp; 今日 <b>-$31,565.32</b> &nbsp;·&nbsp; 今日修复 <b>0.27%</b>
+        </div>
+      </div>
+
+      <p class="narrative">隔夜 NVDA 单票贡献 <b>+$704.7</b> 抵消 AXTI 8-K 债务加速触发的 <b>-$208.4</b> 拖累, 全账小幅修复 <b>+$84.6</b>。累计浮亏仍主要由 <b>NIO</b> 单票 -$31,213 驱动, 其余仓位偏均衡。杠杆使用 <b>-$56,387</b> 保证金贷款, 风险状态 <b>LEVEL6</b>, 集中度 <b>中</b>。</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="s">
+        <div class="sk">账户净值</div>
+        <div class="sv">$59,149.50</div>
+        <div class="ss">USD · Futu 实时</div>
+      </div>
+      <div class="s">
+        <div class="sk">持仓总市值</div>
+        <div class="sv">$115,536.94</div>
+        <div class="ss">含杠杆, 多头长头寸</div>
+      </div>
+      <div class="s">
+        <div class="sk">累计未实现</div>
+        <div class="sv neg">-$31,565.32</div>
+        <div class="ss">含 NIO -$31,213 结构性浮亏</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- II. 宏观速览 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">II</span>
+      <h2>宏观速览</h2>
+      <span class="source">yfinance · 收盘 · OpenBB · 收益率曲线</span>
+    </div>
+
+    <div class="macro-grid">
+
+      <div class="macro-cell">
+        <div class="ml">VIX · 恐慌指数</div>
+        <!-- 3.0,7.3 18.7,13.4 34.3,21.5 50.0,13.7 65.7,3.0 81.3,17.7 97.0,29.0: 7 comma-separated "x,y" pairs in a 100x32 viewBox.
+             Cron normalises the 7-day series across its own min/max. -->
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="3.0,7.3 18.7,13.4 34.3,21.5 50.0,13.7 65.7,3.0 81.3,17.7 97.0,29.0" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="97.0" cy="29.0" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">15.03</div>
+        <div class="md pos"><span class="delta-arrow">▼</span>-0.81  vs 昨</div>
+        <div class="mn">risk-on 抬升, VIX 破 15 至 4 月低点区间</div>
+      </div>
+
+      <div class="macro-cell">
+        <div class="ml">DXY · 美元指数</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="3.0,3.0 18.7,28.5 34.3,29.0 50.0,15.0 65.7,19.4 81.3,24.7 97.0,23.7" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="97.0" cy="23.7" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">100.97</div>
+        <div class="md neu"><span class="delta-arrow">▲</span>+0.025  vs 昨</div>
+        <div class="mn">美元横盘 100.9-101.1, 无方向</div>
+      </div>
+
+      <div class="macro-cell">
+        <div class="ml">2s10s · 期限利差</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="3.0,29.0 18.7,8.6 34.3,7.9 50.0,4.8 65.7,3.0 81.3,5.9 97.0,5.0" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="97.0" cy="5.0" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">+63bp</div>
+        <div class="md">10Y 4.57% · 2Y 3.94%</div>
+        <div class="mn">曲线维持温和陡峭, 无衰退倒挂信号<br>QQQ 725.51 (SMA20 上) · SPY 754.95 (SMA20 上)</div>
+      </div>
+
+    </div>
+
+    <p class="macro-footer">宏观整体 <b>risk-on 偏支持</b>: 波动率回落, 美元稳定, 曲线陡峭。今日 (7-11 周六) 美股休市, 无宏观数据发布。下周关注 7-15 CPI (6 月读数) 和银行财报季启动。</p>
+  </section>
+
+  <!-- III. 持仓涨跌 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">III</span>
+      <h2>持仓涨跌</h2>
+      <span class="source">Futu · 现价及盈亏</span>
+    </div>
+
+    <div class="contrib">
+      <div class="chart-head">
+        <span>今日盈亏贡献 · 按绝对值排序</span>
+        <span class="scale">单位 USD · 基准 ±750</span>
+      </div>
+
+      <!-- <div class="bar-row"><span class="br-tk">NVDA</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:46.98%"></div></div>
+      <span class="br-val pos">+$704.70</span></div>
+<div class="bar-row"><span class="br-tk">AXTI</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:13.89%"></div></div>
+      <span class="br-val neg">-$208.41</span></div>
+<div class="bar-row"><span class="br-tk">NFLX</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:13.67%"></div></div>
+      <span class="br-val neg">-$205.00</span></div>
+<div class="bar-row"><span class="br-tk">IREN</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:9.73%"></div></div>
+      <span class="br-val neg">-$146.00</span></div>
+<div class="bar-row"><span class="br-tk">QCOM</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:4.92%"></div></div>
+      <span class="br-val neg">-$73.85</span></div>
+<div class="bar-row"><span class="br-tk">SNOW</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:3.79%"></div></div>
+      <span class="br-val neg">-$56.80</span></div>
+<div class="bar-row"><span class="br-tk">TSLA</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:3.41%"></div></div>
+      <span class="br-val pos">+$51.20</span></div>
+<div class="bar-row"><span class="br-tk">TMDX P</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:3.19%"></div></div>
+      <span class="br-val neg">-$47.90</span></div>
+<div class="bar-row"><span class="br-tk">ASTS P</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:2.67%"></div></div>
+      <span class="br-val pos">+$40.00</span></div>
+<div class="bar-row"><span class="br-tk">MSFT</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:2.26%"></div></div>
+      <span class="br-val pos">+$33.94</span></div>
+<div class="bar-row"><span class="br-tk">GOOG</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:2.22%"></div></div>
+      <span class="br-val neg">-$33.30</span></div>
+<div class="bar-row"><span class="br-tk">NIO</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:1.96%"></div></div>
+      <span class="br-val pos">+$29.35</span></div>: cron emits one .bar-row per position (stocks + options),
+           ordered by abs(pnl) descending. Each row shape:
+           <div class="bar-row">
+             <span class="br-tk">TICKER</span>
+             <div class="br-track">
+               <div class="br-axis"></div>
+               <div class="br-bar {{pos|neg}}" style="width:{{WIDTH_PCT}}%"></div>
+             </div>
+             <span class="br-val {{pos|neg}}">+/-VAL</span>
+           </div>
+           WIDTH_PCT = clamp(abs(pnl) / CONTRIB_AXIS_USD, 0, 1) * 50  (because each side is 50% of track)
+      -->
+      <div class="bar-row"><span class="br-tk">NVDA</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:46.98%"></div></div>
+      <span class="br-val pos">+$704.70</span></div>
+<div class="bar-row"><span class="br-tk">AXTI</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:13.89%"></div></div>
+      <span class="br-val neg">-$208.41</span></div>
+<div class="bar-row"><span class="br-tk">NFLX</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:13.67%"></div></div>
+      <span class="br-val neg">-$205.00</span></div>
+<div class="bar-row"><span class="br-tk">IREN</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:9.73%"></div></div>
+      <span class="br-val neg">-$146.00</span></div>
+<div class="bar-row"><span class="br-tk">QCOM</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:4.92%"></div></div>
+      <span class="br-val neg">-$73.85</span></div>
+<div class="bar-row"><span class="br-tk">SNOW</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:3.79%"></div></div>
+      <span class="br-val neg">-$56.80</span></div>
+<div class="bar-row"><span class="br-tk">TSLA</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:3.41%"></div></div>
+      <span class="br-val pos">+$51.20</span></div>
+<div class="bar-row"><span class="br-tk">TMDX P</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:3.19%"></div></div>
+      <span class="br-val neg">-$47.90</span></div>
+<div class="bar-row"><span class="br-tk">ASTS P</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:2.67%"></div></div>
+      <span class="br-val pos">+$40.00</span></div>
+<div class="bar-row"><span class="br-tk">MSFT</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:2.26%"></div></div>
+      <span class="br-val pos">+$33.94</span></div>
+<div class="bar-row"><span class="br-tk">GOOG</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar neg" style="width:2.22%"></div></div>
+      <span class="br-val neg">-$33.30</span></div>
+<div class="bar-row"><span class="br-tk">NIO</span>
+      <div class="br-track"><div class="br-axis"></div><div class="br-bar pos" style="width:1.96%"></div></div>
+      <span class="br-val pos">+$29.35</span></div>
+    </div>
+
+    <div class="table-section">
+      <h4 class="subhead">股票持仓 · 详细数据</h4>
+      <table class="detail">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th class="t-num">现价</th>
+            <th class="t-num">涨跌%</th>
+            <th class="t-num">数量</th>
+            <th class="t-num">成本</th>
+            <th class="t-num">今日盈亏</th>
+            <th class="t-num">累计盈亏</th>
+            <th class="t-num">市值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+      <td>TSLA</td>
+      <td class="num">$407.19</td>
+      <td class="num pos">+0.16%</td>
+      <td class="num">80</td>
+      <td class="num">$394.76</td>
+      <td class="num pos">+$51.20</td>
+      <td class="num pos">+$994.49</td>
+      <td class="num">$32,575.20</td>
+    </tr>
+<tr>
+      <td>NVDA</td>
+      <td class="num">$210.61</td>
+      <td class="num pos">+3.86%</td>
+      <td class="num">90</td>
+      <td class="num">$184.57</td>
+      <td class="num pos">+$704.70</td>
+      <td class="num pos">+$2,343.85</td>
+      <td class="num">$18,954.90</td>
+    </tr>
+<tr>
+      <td>NIO</td>
+      <td class="num">$4.79</td>
+      <td class="num pos">+0.21%</td>
+      <td class="num">2995</td>
+      <td class="num">$15.21</td>
+      <td class="num pos">+$29.35</td>
+      <td class="num neg">-$31,213.40</td>
+      <td class="num">$14,345.45</td>
+    </tr>
+<tr>
+      <td>MSFT</td>
+      <td class="num">$385.30</td>
+      <td class="num pos">+0.25%</td>
+      <td class="num">36</td>
+      <td class="num">$383.53</td>
+      <td class="num pos">+$33.94</td>
+      <td class="num pos">+$63.58</td>
+      <td class="num">$13,870.90</td>
+    </tr>
+<tr>
+      <td>GOOG</td>
+      <td class="num">$355.13</td>
+      <td class="num neg">-0.31%</td>
+      <td class="num">30</td>
+      <td class="num">$344.88</td>
+      <td class="num neg">-$33.30</td>
+      <td class="num pos">+$307.54</td>
+      <td class="num">$10,653.90</td>
+    </tr>
+<tr>
+      <td>IREN</td>
+      <td class="num">$40.99</td>
+      <td class="num neg">-1.75%</td>
+      <td class="num">200</td>
+      <td class="num">$44.65</td>
+      <td class="num neg">-$146.00</td>
+      <td class="num neg">-$732.00</td>
+      <td class="num">$8,198.00</td>
+    </tr>
+<tr>
+      <td>NFLX</td>
+      <td class="num">$73.42</td>
+      <td class="num neg">-2.72%</td>
+      <td class="num">100</td>
+      <td class="num">$89.75</td>
+      <td class="num neg">-$205.00</td>
+      <td class="num neg">-$1,632.80</td>
+      <td class="num">$7,342.00</td>
+    </tr>
+<tr>
+      <td>QCOM</td>
+      <td class="num">$189.00</td>
+      <td class="num neg">-1.10%</td>
+      <td class="num">35</td>
+      <td class="num">$209.28</td>
+      <td class="num neg">-$73.85</td>
+      <td class="num neg">-$709.77</td>
+      <td class="num">$6,615.00</td>
+    </tr>
+<tr>
+      <td>SNOW</td>
+      <td class="num">$261.81</td>
+      <td class="num neg">-2.12%</td>
+      <td class="num">10</td>
+      <td class="num">$236.56</td>
+      <td class="num neg">-$56.80</td>
+      <td class="num pos">+$252.50</td>
+      <td class="num">$2,618.10</td>
+    </tr>
+<tr>
+      <td>AXTI</td>
+      <td class="num">$57.07</td>
+      <td class="num neg">-8.77%</td>
+      <td class="num">38</td>
+      <td class="num">$85.78</td>
+      <td class="num neg">-$208.41</td>
+      <td class="num neg">-$1,091.11</td>
+      <td class="num">$2,168.49</td>
+    </tr>: one <tr> per stock holding. Row shape:
+               <tr>
+                 <td>TICKER</td>
+                 <td class="num">PRICE</td>
+                 <td class="num {pos|neg}">DAY_PCT</td>
+                 <td class="num">QTY</td>
+                 <td class="num">COST</td>
+                 <td class="num {pos|neg}">TODAY_PNL</td>
+                 <td class="num {pos|neg}">CUM_PNL</td>
+                 <td class="num">MARKET_VALUE</td>
+               </tr>
+          -->
+          <tr>
+      <td>TSLA</td>
+      <td class="num">$407.19</td>
+      <td class="num pos">+0.16%</td>
+      <td class="num">80</td>
+      <td class="num">$394.76</td>
+      <td class="num pos">+$51.20</td>
+      <td class="num pos">+$994.49</td>
+      <td class="num">$32,575.20</td>
+    </tr>
+<tr>
+      <td>NVDA</td>
+      <td class="num">$210.61</td>
+      <td class="num pos">+3.86%</td>
+      <td class="num">90</td>
+      <td class="num">$184.57</td>
+      <td class="num pos">+$704.70</td>
+      <td class="num pos">+$2,343.85</td>
+      <td class="num">$18,954.90</td>
+    </tr>
+<tr>
+      <td>NIO</td>
+      <td class="num">$4.79</td>
+      <td class="num pos">+0.21%</td>
+      <td class="num">2995</td>
+      <td class="num">$15.21</td>
+      <td class="num pos">+$29.35</td>
+      <td class="num neg">-$31,213.40</td>
+      <td class="num">$14,345.45</td>
+    </tr>
+<tr>
+      <td>MSFT</td>
+      <td class="num">$385.30</td>
+      <td class="num pos">+0.25%</td>
+      <td class="num">36</td>
+      <td class="num">$383.53</td>
+      <td class="num pos">+$33.94</td>
+      <td class="num pos">+$63.58</td>
+      <td class="num">$13,870.90</td>
+    </tr>
+<tr>
+      <td>GOOG</td>
+      <td class="num">$355.13</td>
+      <td class="num neg">-0.31%</td>
+      <td class="num">30</td>
+      <td class="num">$344.88</td>
+      <td class="num neg">-$33.30</td>
+      <td class="num pos">+$307.54</td>
+      <td class="num">$10,653.90</td>
+    </tr>
+<tr>
+      <td>IREN</td>
+      <td class="num">$40.99</td>
+      <td class="num neg">-1.75%</td>
+      <td class="num">200</td>
+      <td class="num">$44.65</td>
+      <td class="num neg">-$146.00</td>
+      <td class="num neg">-$732.00</td>
+      <td class="num">$8,198.00</td>
+    </tr>
+<tr>
+      <td>NFLX</td>
+      <td class="num">$73.42</td>
+      <td class="num neg">-2.72%</td>
+      <td class="num">100</td>
+      <td class="num">$89.75</td>
+      <td class="num neg">-$205.00</td>
+      <td class="num neg">-$1,632.80</td>
+      <td class="num">$7,342.00</td>
+    </tr>
+<tr>
+      <td>QCOM</td>
+      <td class="num">$189.00</td>
+      <td class="num neg">-1.10%</td>
+      <td class="num">35</td>
+      <td class="num">$209.28</td>
+      <td class="num neg">-$73.85</td>
+      <td class="num neg">-$709.77</td>
+      <td class="num">$6,615.00</td>
+    </tr>
+<tr>
+      <td>SNOW</td>
+      <td class="num">$261.81</td>
+      <td class="num neg">-2.12%</td>
+      <td class="num">10</td>
+      <td class="num">$236.56</td>
+      <td class="num neg">-$56.80</td>
+      <td class="num pos">+$252.50</td>
+      <td class="num">$2,618.10</td>
+    </tr>
+<tr>
+      <td>AXTI</td>
+      <td class="num">$57.07</td>
+      <td class="num neg">-8.77%</td>
+      <td class="num">38</td>
+      <td class="num">$85.78</td>
+      <td class="num neg">-$208.41</td>
+      <td class="num neg">-$1,091.11</td>
+      <td class="num">$2,168.49</td>
+    </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="opts">
+      <h4 class="subhead" style="margin-top:24px">期权持仓 · SHORT puts · 距离 strike</h4>
+      <!-- <div class="opt-card">
+      <div class="opt-name"><b>TMDX 260717 P85</b>
+        <span class="opt-meta">正股 $71.23  /  strike $85  ·  DTE 7d  ·  现价 $13.85 / 成本 $12.00</span>
+      </div>
+      <div class="opt-gauge">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="70" y1="3" x2="70" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="24.6" cy="8" r="3.5" fill="#8A2F26"/>
+        </svg>
+        <span>距 strike <b style="color:#8A2F26">-16.2%</b></span>
+      </div>
+      <div class="opt-pnl">
+        <span class="pnl-today">今日 <span style="color:#8A2F26">-$47.90</span></span>
+        <span class="pnl-cum neg">累计 -$185.00</span>
+        <span class="opt-tag warn" style="display:block;margin-top:4px">深度 ITM · assignment 高</span>
+      </div>
+    </div>
+<div class="opt-card">
+      <div class="opt-name"><b>ASTS 260807 P66</b>
+        <span class="opt-meta">正股 $73.32  /  strike $66  ·  DTE 28d  ·  现价 $4.20 / 成本 $4.60</span>
+      </div>
+      <div class="opt-gauge">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="65" y1="3" x2="65" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="96.1" cy="8" r="3.5" fill="#1F6F4F"/>
+        </svg>
+        <span>距 strike <b style="color:#1F6F4F">+11.1%</b></span>
+      </div>
+      <div class="opt-pnl">
+        <span class="pnl-today">今日 <span style="color:#1F6F4F">+$40.00</span></span>
+        <span class="pnl-cum pos">累计 +$40.00</span>
+        <span class="opt-tag ok" style="display:block;margin-top:4px">OTM · 时间价值回收</span>
+      </div>
+    </div>: one .opt-card per option. Row shape:
+           <div class="opt-card">
+             <div class="opt-name">
+               <b>{{CONTRACT}}</b>
+               <span class="opt-meta">正股 SPOT  /  strike STRIKE  ·  DTE Nd</span>
+             </div>
+             <div class="opt-gauge">
+               <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+                 <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+                 <!-- strike vertical marker; spot dot. Compute:
+                      For SHORT put: spot < strike = ITM (dot left of marker, neg fill)
+                                     spot > strike = OTM (dot right of marker, pos fill)
+                      strike_x = 70 (mid for ITM cases) or 65 (off-center for OTM cases) - cron picks
+                      spot_x   = strike_x + clamp((spot-strike)/strike * 280, -65, 65)
+                 -->
+                 <line x1="{{STRIKE_X}}" y1="3" x2="{{STRIKE_X}}" y2="13" stroke="#16140F" stroke-width="1"/>
+                 <circle cx="{{SPOT_X}}" cy="8" r="3.5" fill="{{SPOT_COLOR}}"/>
+               </svg>
+               <span>距 strike <b style="color:{{SPOT_COLOR}}">{{DIST_PCT}}</b></span>
+             </div>
+             <div class="opt-pnl">
+               <span class="pnl-today">今日 <span style="color:{{TODAY_COLOR}}">+$84.63</span></span>
+               <span class="pnl-cum {pos|neg}">累计 -$31,565.32</span>
+               <span class="opt-tag {warn|ok}" style="display:block;margin-top:4px">{{TAG_TEXT}}</span>
+             </div>
+           </div>
+      -->
+      <div class="opt-card">
+      <div class="opt-name"><b>TMDX 260717 P85</b>
+        <span class="opt-meta">正股 $71.23  /  strike $85  ·  DTE 7d  ·  现价 $13.85 / 成本 $12.00</span>
+      </div>
+      <div class="opt-gauge">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="70" y1="3" x2="70" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="24.6" cy="8" r="3.5" fill="#8A2F26"/>
+        </svg>
+        <span>距 strike <b style="color:#8A2F26">-16.2%</b></span>
+      </div>
+      <div class="opt-pnl">
+        <span class="pnl-today">今日 <span style="color:#8A2F26">-$47.90</span></span>
+        <span class="pnl-cum neg">累计 -$185.00</span>
+        <span class="opt-tag warn" style="display:block;margin-top:4px">深度 ITM · assignment 高</span>
+      </div>
+    </div>
+<div class="opt-card">
+      <div class="opt-name"><b>ASTS 260807 P66</b>
+        <span class="opt-meta">正股 $73.32  /  strike $66  ·  DTE 28d  ·  现价 $4.20 / 成本 $4.60</span>
+      </div>
+      <div class="opt-gauge">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="65" y1="3" x2="65" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="96.1" cy="8" r="3.5" fill="#1F6F4F"/>
+        </svg>
+        <span>距 strike <b style="color:#1F6F4F">+11.1%</b></span>
+      </div>
+      <div class="opt-pnl">
+        <span class="pnl-today">今日 <span style="color:#1F6F4F">+$40.00</span></span>
+        <span class="pnl-cum pos">累计 +$40.00</span>
+        <span class="opt-tag ok" style="display:block;margin-top:4px">OTM · 时间价值回收</span>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- IV. 决策看板 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">IV</span>
+      <h2>决策看板</h2>
+      <span class="source">监控优先级 · 不构成交易建议</span>
+    </div>
+
+    <div class="gauges">
+      <!-- <div class="gauge">
+      <div class="g-head"><span class="g-tk">TSLA</span>
+        <span class="g-num">55<span class="g-out"> / 100</span></span>
+      </div>
+      <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+        <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+        <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+        <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        <line x1="110" y1="10" x2="110" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+        <circle cx="110" cy="18" r="3" fill="#1B3A5C"/>
+      </svg>
+      <div class="g-trend">趋势 · 中性 · 短线偏震荡</div>
+      <div class="g-tech">SMA20 400.9 ↑ · SMA50 409.2 ↓ · RSI 51.99 · 50/200 死叉</div>
+      <div class="g-var">能否守住 400 整数关口, 若破位, 关注 SMA200 418.14 上方阻力。</div>
+    </div>
+<div class="gauge">
+      <div class="g-head"><span class="g-tk">NVDA</span>
+        <span class="g-num">72<span class="g-out"> / 100</span></span>
+      </div>
+      <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+        <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+        <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+        <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        <line x1="144" y1="10" x2="144" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+        <circle cx="144" cy="18" r="3" fill="#1B3A5C"/>
+      </svg>
+      <div class="g-trend">趋势 · 偏多 · 结构最强</div>
+      <div class="g-tech">SMA20 201.9 ↑ · SMA50 209.2 ↑ · RSI 50.27 · 50/200 金叉</div>
+      <div class="g-var">能否再破 215 阻力, 若确认将挑战前高。今日 +704.7 为最大贡献。</div>
+    </div>
+<div class="gauge">
+      <div class="g-head"><span class="g-tk">NIO</span>
+        <span class="g-num">26<span class="g-out"> / 100</span></span>
+      </div>
+      <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+        <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+        <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+        <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        <line x1="52" y1="10" x2="52" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+        <circle cx="52" cy="18" r="3" fill="#1B3A5C"/>
+      </svg>
+      <div class="g-trend">趋势 · 偏弱 · 深度浮亏</div>
+      <div class="g-tech">SMA20 4.97 ↓ · SMA50 5.47 ↓ · RSI 42.21 · 50/200 死叉</div>
+      <div class="g-var">4.50-4.60 关键支撑, 若破位则前低风险重启。累计浮亏 -$31,213 为组合最大结构性风险。</div>
+    </div>: one .gauge block per ticker (typically 3). Card shape:
+           <div class="gauge">
+             <div class="g-head">
+               <span class="g-tk">{{TICKER}}</span>
+               <span class="g-num">{{SCORE}}<span class="g-out"> / 100</span></span>
+             </div>
+             <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+               <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+               <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+               <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+               <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+               <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+               <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+               <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+               <!-- TICK_X = round(SCORE / 100 * 200), clamped to [4, 196] for visibility -->
+               <line x1="{{TICK_X}}" y1="10" x2="{{TICK_X}}" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+               <circle cx="{{TICK_X}}" cy="18" r="3" fill="#1B3A5C"/>
+             </svg>
+             <div class="g-trend">趋势 · {{TREND_LABEL}}</div>
+             <div class="g-tech">{{TECH_LINE}}</div>
+             <div class="g-var">{{KEY_VARIABLE}}</div>
+           </div>
+      -->
+      <div class="gauge">
+      <div class="g-head"><span class="g-tk">TSLA</span>
+        <span class="g-num">55<span class="g-out"> / 100</span></span>
+      </div>
+      <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+        <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+        <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+        <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        <line x1="110" y1="10" x2="110" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+        <circle cx="110" cy="18" r="3" fill="#1B3A5C"/>
+      </svg>
+      <div class="g-trend">趋势 · 中性 · 短线偏震荡</div>
+      <div class="g-tech">SMA20 400.9 ↑ · SMA50 409.2 ↓ · RSI 51.99 · 50/200 死叉</div>
+      <div class="g-var">能否守住 400 整数关口, 若破位, 关注 SMA200 418.14 上方阻力。</div>
+    </div>
+<div class="gauge">
+      <div class="g-head"><span class="g-tk">NVDA</span>
+        <span class="g-num">72<span class="g-out"> / 100</span></span>
+      </div>
+      <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+        <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+        <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+        <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        <line x1="144" y1="10" x2="144" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+        <circle cx="144" cy="18" r="3" fill="#1B3A5C"/>
+      </svg>
+      <div class="g-trend">趋势 · 偏多 · 结构最强</div>
+      <div class="g-tech">SMA20 201.9 ↑ · SMA50 209.2 ↑ · RSI 50.27 · 50/200 金叉</div>
+      <div class="g-var">能否再破 215 阻力, 若确认将挑战前高。今日 +704.7 为最大贡献。</div>
+    </div>
+<div class="gauge">
+      <div class="g-head"><span class="g-tk">NIO</span>
+        <span class="g-num">26<span class="g-out"> / 100</span></span>
+      </div>
+      <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+        <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+        <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+        <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+        <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        <line x1="52" y1="10" x2="52" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+        <circle cx="52" cy="18" r="3" fill="#1B3A5C"/>
+      </svg>
+      <div class="g-trend">趋势 · 偏弱 · 深度浮亏</div>
+      <div class="g-tech">SMA20 4.97 ↓ · SMA50 5.47 ↓ · RSI 42.21 · 50/200 死叉</div>
+      <div class="g-var">4.50-4.60 关键支撑, 若破位则前低风险重启。累计浮亏 -$31,213 为组合最大结构性风险。</div>
+    </div>
+    </div>
+    <p class="gauges-foot">
+      评分基于 SMA50 / SMA200 / RSI / 盈亏比的轻量加权, 仅用于监控优先级排序。本看板不包含加仓, 减仓, 止盈止损建议。
+    </p>
+  </section>
+
+  <!-- V. 隔夜归因 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">V</span>
+      <h2>隔夜事件与收益归因</h2>
+      <span class="source">2026-07-10 美东盘后</span>
+    </div>
+
+    <div class="attr-cols">
+
+      <div class="attr-col">
+        <h4>主要贡献</h4>
+        <!-- <div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">NVDA <span class="ts">AI 半导体延续</span></span>
+        <span class="attr-val pos">+$704.70</span>
+      </div>
+      <p class="attr-note">延续 50/200 金叉结构, 距 SMA200 仍有 +10% 空间。无 SEC 风险事件, 内部人 500k 股 code=G 属赠与而非公开卖出。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">TSLA <span class="ts">短线企稳</span></span>
+        <span class="attr-val pos">+$51.20</span>
+      </div>
+      <p class="attr-note">回到 SMA20 上方 407.19, 但 50/200 死叉仍在。10-Q 已披露, 无新增催化。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">ASTS P66 <span class="ts">SHORT put 时间价值</span></span>
+        <span class="attr-val pos">+$40.00</span>
+      </div>
+      <p class="attr-note">正股 73.32 vs strike 66, OTM +11.1%, 距到期 28 天, IV crush 有利。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">MSFT <span class="ts">窄幅上行</span></span>
+        <span class="attr-val pos">+$33.94</span>
+      </div>
+      <p class="attr-note">接近 SMA20, 无 SEC 新增风险 flag。</p>
+    </div>: one .attr-row per contributor. Row shape:
+             <div class="attr-row">
+               <div class="attr-line">
+                 <span class="attr-tk">{{TICKER}} <span class="ts">{{TAG}}</span></span>
+                 <span class="attr-val pos">{{PNL}}</span>
+               </div>
+               <p class="attr-note">{{NOTE}}</p>
+             </div>
+        -->
+        <div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">NVDA <span class="ts">AI 半导体延续</span></span>
+        <span class="attr-val pos">+$704.70</span>
+      </div>
+      <p class="attr-note">延续 50/200 金叉结构, 距 SMA200 仍有 +10% 空间。无 SEC 风险事件, 内部人 500k 股 code=G 属赠与而非公开卖出。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">TSLA <span class="ts">短线企稳</span></span>
+        <span class="attr-val pos">+$51.20</span>
+      </div>
+      <p class="attr-note">回到 SMA20 上方 407.19, 但 50/200 死叉仍在。10-Q 已披露, 无新增催化。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">ASTS P66 <span class="ts">SHORT put 时间价值</span></span>
+        <span class="attr-val pos">+$40.00</span>
+      </div>
+      <p class="attr-note">正股 73.32 vs strike 66, OTM +11.1%, 距到期 28 天, IV crush 有利。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">MSFT <span class="ts">窄幅上行</span></span>
+        <span class="attr-val pos">+$33.94</span>
+      </div>
+      <p class="attr-note">接近 SMA20, 无 SEC 新增风险 flag。</p>
+    </div>
+      </div>
+
+      <div class="attr-col">
+        <h4>主要拖累</h4>
+        <!-- <div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">AXTI <span class="ts">8-K 债务加速触发</span></span>
+        <span class="attr-val neg">-$208.41</span>
+      </div>
+      <p class="attr-note"><b>7-08 Item 2.04 (Triggering Events)</b>: 债务义务加速或增加。RSI 30.93 · 距 SMA50 -39.74%, 结构显著恶化, 需盯偿债细节。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">NFLX <span class="ts">广告业务预期回落</span></span>
+        <span class="attr-val neg">-$205.00</span>
+      </div>
+      <p class="attr-note">距 SMA200 -22.72%, 死叉结构未修复, 10-Q 4-17 已披露, 无新增事件。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">IREN <span class="ts">BTC 挖矿盈利承压</span></span>
+        <span class="attr-val neg">-$146.00</span>
+      </div>
+      <p class="attr-note">RSI 23.4 深度超卖, 距 SMA50 -23.52%。10-Q 5-08 已披露, 短期无新催化。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">QCOM <span class="ts">半导体估值调整</span></span>
+        <span class="attr-val neg">-$73.85</span>
+      </div>
+      <p class="attr-note">RSI 29.16 超卖, 但距 SMA200 仍有 +12%。10-Q 4-29 已披露, 短期无正向催化。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">SNOW <span class="ts">内部人集中减持</span></span>
+        <span class="attr-val neg">-$56.80</span>
+      </div>
+      <p class="attr-note"><b>7-06/08 Form 4</b>: 多名内部人真实 S 代码卖出 (~140k+ @254-263), RSI 71.92 超买, 涨势遇阻。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">TMDX P85 <span class="ts">深度 ITM 时间价值消耗</span></span>
+        <span class="attr-val neg">-$47.90</span>
+      </div>
+      <p class="attr-note">正股 71.23 vs strike 85, 距 -16.2%, DTE 仅 7 天, assignment 概率极高。</p>
+    </div>: same shape as TOP_CONTRIBUTORS but with class="attr-val neg" -->
+        <div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">AXTI <span class="ts">8-K 债务加速触发</span></span>
+        <span class="attr-val neg">-$208.41</span>
+      </div>
+      <p class="attr-note"><b>7-08 Item 2.04 (Triggering Events)</b>: 债务义务加速或增加。RSI 30.93 · 距 SMA50 -39.74%, 结构显著恶化, 需盯偿债细节。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">NFLX <span class="ts">广告业务预期回落</span></span>
+        <span class="attr-val neg">-$205.00</span>
+      </div>
+      <p class="attr-note">距 SMA200 -22.72%, 死叉结构未修复, 10-Q 4-17 已披露, 无新增事件。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">IREN <span class="ts">BTC 挖矿盈利承压</span></span>
+        <span class="attr-val neg">-$146.00</span>
+      </div>
+      <p class="attr-note">RSI 23.4 深度超卖, 距 SMA50 -23.52%。10-Q 5-08 已披露, 短期无新催化。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">QCOM <span class="ts">半导体估值调整</span></span>
+        <span class="attr-val neg">-$73.85</span>
+      </div>
+      <p class="attr-note">RSI 29.16 超卖, 但距 SMA200 仍有 +12%。10-Q 4-29 已披露, 短期无正向催化。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">SNOW <span class="ts">内部人集中减持</span></span>
+        <span class="attr-val neg">-$56.80</span>
+      </div>
+      <p class="attr-note"><b>7-06/08 Form 4</b>: 多名内部人真实 S 代码卖出 (~140k+ @254-263), RSI 71.92 超买, 涨势遇阻。</p>
+    </div>
+<div class="attr-row">
+      <div class="attr-line">
+        <span class="attr-tk">TMDX P85 <span class="ts">深度 ITM 时间价值消耗</span></span>
+        <span class="attr-val neg">-$47.90</span>
+      </div>
+      <p class="attr-note">正股 71.23 vs strike 85, 距 -16.2%, DTE 仅 7 天, assignment 概率极高。</p>
+    </div>
+      </div>
+    </div>
+
+    <!-- <p class="marginalia">
+  <b>SEC 事件重点 · 编辑注</b>
+  最值得关注的是 <b>AXTI 2026-07-08 8-K Item 2.04</b>——债务加速或增加直接财务义务, 常见于契约违反 (covenant breach) 或触发提前偿付。这解释了 AXTI 今日 -$208.4 的最大拖累和距 SMA50 -39.7% 的深度背离; 权重虽仅 1.85%, 但作为观察层的信用事件需持续跟踪偿债披露。SNOW 内部人 7-06/08 集中真实卖出 (140k+ 股) 与 RSI 71.9 超买叠加, 属于典型的分配式减持。GOOG 与 NVDA 的 Form 4 分别为 code=A (授予) 和 code=G (赠与), 均非公开抛售, 影响中性。
+</p>: free-text or full marginalia block. Default frame:
+         <p class="marginalia">
+           <b>数据缺口 · 编辑注</b>
+           ...note text...
+         </p>
+         If no gap to report, cron can emit an empty string and the section ends cleanly.
+    -->
+    <p class="marginalia">
+  <b>SEC 事件重点 · 编辑注</b>
+  最值得关注的是 <b>AXTI 2026-07-08 8-K Item 2.04</b>——债务加速或增加直接财务义务, 常见于契约违反 (covenant breach) 或触发提前偿付。这解释了 AXTI 今日 -$208.4 的最大拖累和距 SMA50 -39.7% 的深度背离; 权重虽仅 1.85%, 但作为观察层的信用事件需持续跟踪偿债披露。SNOW 内部人 7-06/08 集中真实卖出 (140k+ 股) 与 RSI 71.9 超买叠加, 属于典型的分配式减持。GOOG 与 NVDA 的 Form 4 分别为 code=A (授予) 和 code=G (赠与), 均非公开抛售, 影响中性。
+</p>
+  </section>
+
+  <!-- VI. 组合风险快照 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">VI</span>
+      <h2>组合风险快照</h2>
+      <span class="source">基于 Futu 持仓 · 收盘市值</span>
+    </div>
+
+    <div class="risk-top">
+      <div class="donut-wrap">
+        <!-- <circle cx="50" cy="50" r="40" fill="none" stroke="#1B3A5C" stroke-width="14" stroke-dasharray="69.768 181.559" stroke-dashoffset="0.000" transform="rotate(-90 50 50)"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#5C7894" stroke-width="14" stroke-dasharray="40.589 210.738" stroke-dashoffset="-69.768" transform="rotate(-90 50 50)"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#C9D3DE" stroke-width="14" stroke-dasharray="30.737 220.590" stroke-dashoffset="-110.358" transform="rotate(-90 50 50)"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#D6D0C0" stroke-width="14" stroke-dasharray="110.232 141.095" stroke-dashoffset="-141.095" transform="rotate(-90 50 50)"/>: cron emits 4 segments (Top1, Top2, Top3, Others).
+             For each, render a <circle> with computed stroke-dasharray and stroke-dashoffset.
+             Circumference C = 2*pi*40 = 251.327.
+             For each segment in order:
+               length_i = pct_i * C
+               offset_i = -cumulative_length_before_i
+             Render order: <circle ... stroke="{{COLOR_i}}" stroke-dasharray="{{length_i}} 251.33" stroke-dashoffset="{{offset_i}}" .../>
+             Standard colors: Top1=#1B3A5C, Top2=#5C7894, Top3=#C9D3DE, Others=#D6D0C0
+        -->
+        <svg viewBox="0 0 100 100" width="200" height="200">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#E5E1D4" stroke-width="14"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#1B3A5C" stroke-width="14" stroke-dasharray="69.768 181.559" stroke-dashoffset="0.000" transform="rotate(-90 50 50)"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#5C7894" stroke-width="14" stroke-dasharray="40.589 210.738" stroke-dashoffset="-69.768" transform="rotate(-90 50 50)"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#C9D3DE" stroke-width="14" stroke-dasharray="30.737 220.590" stroke-dashoffset="-110.358" transform="rotate(-90 50 50)"/>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#D6D0C0" stroke-width="14" stroke-dasharray="110.232 141.095" stroke-dashoffset="-141.095" transform="rotate(-90 50 50)"/>
+        </svg>
+        <div class="donut-center">
+          <div class="donut-pct">56.1%</div>
+          <div class="donut-label">TOP 3 集中度</div>
+          <div class="donut-sub">中 · 单边事件即可<br>拖动全账 6-8%</div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="leg-title">前三大权重 + 其他</div>
+        <!-- <div class="leg-row">
+      <span class="leg-swatch" style="background:#1B3A5C"></span>
+      <span class="leg-name">TSLA</span>
+      <span class="leg-pct">27.76%</span>
+      <span class="leg-mv">$32,575</span>
+    </div>
+<div class="leg-row">
+      <span class="leg-swatch" style="background:#5C7894"></span>
+      <span class="leg-name">NVDA</span>
+      <span class="leg-pct">16.15%</span>
+      <span class="leg-mv">$18,955</span>
+    </div>
+<div class="leg-row">
+      <span class="leg-swatch" style="background:#C9D3DE"></span>
+      <span class="leg-name">NIO</span>
+      <span class="leg-pct">12.23%</span>
+      <span class="leg-mv">$14,345</span>
+    </div>
+<div class="leg-row">
+  <span class="leg-swatch" style="background:#D6D0C0"></span>
+  <span class="leg-name">其他 7 只</span>
+  <span class="leg-pct">43.86%</span>
+  <span class="leg-mv">$51,466</span>
+</div>: cron emits 4 .leg-row blocks. Row shape:
+             <div class="leg-row">
+               <span class="leg-swatch" style="background:{{COLOR}}"></span>
+               <span class="leg-name">{{TICKER}}</span>
+               <span class="leg-pct">{{PCT}}</span>
+               <span class="leg-mv">{{MV}}</span>
+             </div>
+        -->
+        <div class="leg-row">
+      <span class="leg-swatch" style="background:#1B3A5C"></span>
+      <span class="leg-name">TSLA</span>
+      <span class="leg-pct">27.76%</span>
+      <span class="leg-mv">$32,575</span>
+    </div>
+<div class="leg-row">
+      <span class="leg-swatch" style="background:#5C7894"></span>
+      <span class="leg-name">NVDA</span>
+      <span class="leg-pct">16.15%</span>
+      <span class="leg-mv">$18,955</span>
+    </div>
+<div class="leg-row">
+      <span class="leg-swatch" style="background:#C9D3DE"></span>
+      <span class="leg-name">NIO</span>
+      <span class="leg-pct">12.23%</span>
+      <span class="leg-mv">$14,345</span>
+    </div>
+<div class="leg-row">
+  <span class="leg-swatch" style="background:#D6D0C0"></span>
+  <span class="leg-name">其他 7 只</span>
+  <span class="leg-pct">43.86%</span>
+  <span class="leg-mv">$51,466</span>
+</div>
+      </div>
+    </div>
+
+    <h4 class="subhead">风格暴露 · 占组合市值</h4>
+    <div class="exposure">
+      <!-- <div class="exp-row">
+      <span class="exp-label">EV (TSLA+NIO)</span>
+      <div class="exp-track"><div class="exp-bar " style="width:39.98%"></div></div>
+      <span class="exp-val">39.98%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">Mega-cap Tech (MSFT+GOOG+NFLX)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:27.16%"></div></div>
+      <span class="exp-val">27.16%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">AI Semis (NVDA+QCOM)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:21.79%"></div></div>
+      <span class="exp-val">21.79%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">BTC Miner (IREN)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:6.99%"></div></div>
+      <span class="exp-val">6.99%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">China ADR (NIO)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:12.23%"></div></div>
+      <span class="exp-val">12.23%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">Compound Semi (AXTI)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:1.85%"></div></div>
+      <span class="exp-val">1.85%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">Data Cloud (SNOW)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:2.23%"></div></div>
+      <span class="exp-val">2.23%</span>
+    </div>: cron emits one .exp-row per style category. Row shape:
+           <div class="exp-row">
+             <span class="exp-label">{{LABEL}}</span>
+             <div class="exp-track"><div class="exp-bar {{soft|''}}" style="width:{{PCT}}%"></div></div>
+             <span class="exp-val">{{PCT}}</span>
+           </div>
+           Primary (largest) category uses no extra class (solid spot); secondaries use .soft.
+      -->
+      <div class="exp-row">
+      <span class="exp-label">EV (TSLA+NIO)</span>
+      <div class="exp-track"><div class="exp-bar " style="width:39.98%"></div></div>
+      <span class="exp-val">39.98%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">Mega-cap Tech (MSFT+GOOG+NFLX)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:27.16%"></div></div>
+      <span class="exp-val">27.16%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">AI Semis (NVDA+QCOM)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:21.79%"></div></div>
+      <span class="exp-val">21.79%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">BTC Miner (IREN)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:6.99%"></div></div>
+      <span class="exp-val">6.99%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">China ADR (NIO)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:12.23%"></div></div>
+      <span class="exp-val">12.23%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">Compound Semi (AXTI)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:1.85%"></div></div>
+      <span class="exp-val">1.85%</span>
+    </div>
+<div class="exp-row">
+      <span class="exp-label">Data Cloud (SNOW)</span>
+      <div class="exp-track"><div class="exp-bar soft" style="width:2.23%"></div></div>
+      <span class="exp-val">2.23%</span>
+    </div>
+    </div>
+
+    <h4 class="subhead" style="margin-top:26px">期权风险 · SHORT put 灯号</h4>
+    <div class="opt-risk">
+      <!-- <div class="opt-risk-row">
+      <div class="opt-risk-name">TMDX 260717 P85
+        <span class="lbl">正股 $71.23 / strike $85 · DTE 7d</span>
+      </div>
+      <div class="opt-risk-scale">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="70" y1="3" x2="70" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="24.6" cy="8" r="3.5" fill="#8A2F26"/>
+        </svg>
+        <span>距 <b style="color:#8A2F26">-16.2%</b></span>
+      </div>
+      <div class="opt-risk-tag warn">ITM · Assignment 高</div>
+    </div>
+<div class="opt-risk-row">
+      <div class="opt-risk-name">ASTS 260807 P66
+        <span class="lbl">正股 $73.32 / strike $66 · DTE 28d</span>
+      </div>
+      <div class="opt-risk-scale">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="65" y1="3" x2="65" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="96.1" cy="8" r="3.5" fill="#1F6F4F"/>
+        </svg>
+        <span>距 <b style="color:#1F6F4F">+11.1%</b></span>
+      </div>
+      <div class="opt-risk-tag ok">OTM · 时间价值回收</div>
+    </div>: same data as OPTION_ROWS in module C but distilled.
+           One .opt-risk-row per option. Row shape mirrors the module C options gauge.
+      -->
+      <div class="opt-risk-row">
+      <div class="opt-risk-name">TMDX 260717 P85
+        <span class="lbl">正股 $71.23 / strike $85 · DTE 7d</span>
+      </div>
+      <div class="opt-risk-scale">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="70" y1="3" x2="70" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="24.6" cy="8" r="3.5" fill="#8A2F26"/>
+        </svg>
+        <span>距 <b style="color:#8A2F26">-16.2%</b></span>
+      </div>
+      <div class="opt-risk-tag warn">ITM · Assignment 高</div>
+    </div>
+<div class="opt-risk-row">
+      <div class="opt-risk-name">ASTS 260807 P66
+        <span class="lbl">正股 $73.32 / strike $66 · DTE 28d</span>
+      </div>
+      <div class="opt-risk-scale">
+        <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+          <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="65" y1="3" x2="65" y2="13" stroke="#16140F" stroke-width="1"/>
+          <circle cx="96.1" cy="8" r="3.5" fill="#1F6F4F"/>
+        </svg>
+        <span>距 <b style="color:#1F6F4F">+11.1%</b></span>
+      </div>
+      <div class="opt-risk-tag ok">OTM · 时间价值回收</div>
+    </div>
+    </div>
+
+    <div class="stress">
+      <!-- <div class="stress-row"><span class="sl">全部多头 -5%</span><span class="sv">-$5,866.93</span></div>
+<div class="stress-row"><span class="sl">TSLA+NVDA -8%</span><span class="sv">-$4,974.46</span></div>
+<div class="stress-row"><span class="sl">China ADR (NIO) -10%</span><span class="sv">-$1,434.55</span></div>
+<div class="stress-row"><span class="sl">AI Semis (NVDA+QCOM) -8%</span><span class="sv">-$2,045.59</span></div>: cron emits 2-3 .stress-row blocks. Row shape:
+           <div class="stress-row">
+             <span class="sl">{{SCENARIO}}</span>
+             <span class="sv">{{PNL}}</span>
+           </div>
+      -->
+      <div class="stress-row"><span class="sl">全部多头 -5%</span><span class="sv">-$5,866.93</span></div>
+<div class="stress-row"><span class="sl">TSLA+NVDA -8%</span><span class="sv">-$4,974.46</span></div>
+<div class="stress-row"><span class="sl">China ADR (NIO) -10%</span><span class="sv">-$1,434.55</span></div>
+<div class="stress-row"><span class="sl">AI Semis (NVDA+QCOM) -8%</span><span class="sv">-$2,045.59</span></div>
+    </div>
+
+    <p class="risk-callout">
+      <b>主要风险 · 三条</b>
+      ① <b>NIO 单票 -$31,213 结构性浮亏</b> 是账户最大长期风险源, RSI 42 + 死叉未修复, 权重仍占 12.23%; ② <b>期权 TMDX P85 DTE 7 天 · ITM -16.2%</b>, assignment 概率极高, 需在到期前明确 roll/买回决策 (本报告不给指令, 仅提示); ③ <b>AXTI 8-K Item 2.04 债务加速</b> 属信用事件, 权重虽小但需持续跟踪偿债披露, 避免进一步基本面恶化。
+    </p>
+  </section>
+
+  <!-- ASIDE: 模拟 vs 真实 (optional, omit block entirely if data not available) -->
+  <aside class="aside-sim">
+    <div class="as-kicker"><b>模拟 vs 真实</b> 起始 2026-05-07 · 仅执行晚报「立即执行」指令</div>
+    <div class="sim-grid">
+      <div class="sim-cell">
+        <div class="sk">模拟 NAV</div>
+        <div class="sv">$70,052.83</div>
+        <div class="ss">累计 <span class="pos">+$438.71</span> · +0.63%</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">真实 NAV</div>
+        <div class="sv">$59,114.77</div>
+        <div class="ss">累计 <span class="neg">-$10,499.35</span> · -15.08%</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">差异 (模拟 - 真实)</div>
+        <div class="sv">+$10,938.06</div>
+        <div class="ss">模拟交易笔数 7</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">今日 P&amp;L</div>
+        <div class="sv">模拟 <span class="pos">+$295.26</span></div>
+        <div class="ss">真实 <span class="pos">+$130.54</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="cl-title">Colophon · 数据口径与免责</div>
+    <p>账户与持仓以 Futu OpenAPI 为权威 (实时); 技术指标与宏观数据采用 yfinance 2026-07-10 收盘 (存在最长约 12h 延迟); 收益率曲线来自 OpenBB / Federal Reserve。</p>
+    <p>无关键数据缺口。VIX / DXY / 收益率均基于 yfinance 7-10 收盘, 存在最长 12h 延迟, 不影响趋势判断。</p>
+    <p>本报告仅作个人持仓监控与风险快照, 不构成投资建议; 分析仅供参考, 投资有风险, 决策需自负。</p>
+  </footer>
+
+</div>
+</body>
+</html>

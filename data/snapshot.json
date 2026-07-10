@@ -1,14 +1,14 @@
 {
-  "ts": "2026-07-08T21:33:19.859516",
+  "ts": "2026-07-10T21:26:12.999673",
   "account": {
-    "ts": "2026-07-08T21:15:52.925075",
-    "nav": 57311.3351,
+    "ts": "2026-07-10T21:15:40.982176",
+    "nav": 59438.4858,
     "cash": -56844.92,
-    "stock_mv": 115554.21,
-    "option_mv": -1397.95,
-    "today_pl": -745.98,
-    "today_pl_pct": -1.3,
-    "cum_pl": -33402.7,
+    "stock_mv": 117620.51,
+    "option_mv": -1337.1,
+    "today_pl": 374.4,
+    "today_pl_pct": 0.63,
+    "cum_pl": -31275.55,
     "risk_status": "LEVEL6",
     "currency": "USD",
     "stocks": [
@@ -17,120 +17,120 @@
         "name": "特斯拉",
         "qty": 80.0,
         "cost_price": 394.759,
-        "current_price": 400.689,
-        "market_val": 32055.13,
-        "pl_val": 474.418,
-        "pl_ratio": 1.5,
+        "current_price": 407.79,
+        "market_val": 32623.2,
+        "pl_val": 1042.49,
+        "pl_ratio": 3.3000000000000003,
         "position_side": "LONG",
-        "today_pl_val": -176.872
+        "today_pl_val": 99.2
       },
       {
         "code": "US.SNOW",
         "name": "Snowflake",
         "qty": 10.0,
         "cost_price": 236.56,
-        "current_price": 257.7,
-        "market_val": 2577.0,
-        "pl_val": 211.4,
-        "pl_ratio": 8.94,
+        "current_price": 270.95,
+        "market_val": 2709.5,
+        "pl_val": 343.9,
+        "pl_ratio": 14.540000000000001,
         "position_side": "LONG",
-        "today_pl_val": -50.4
+        "today_pl_val": 34.6
       },
       {
         "code": "US.QCOM",
         "name": "高通",
         "qty": 35.0,
         "cost_price": 209.279,
-        "current_price": 181.5,
-        "market_val": 6352.5,
-        "pl_val": -972.27,
-        "pl_ratio": -13.270000000000001,
+        "current_price": 188.71,
+        "market_val": 6604.85,
+        "pl_val": -719.92,
+        "pl_ratio": -9.83,
         "position_side": "LONG",
-        "today_pl_val": -51.45
+        "today_pl_val": -84.0
       },
       {
         "code": "US.NVDA",
         "name": "英伟达",
         "qty": 90.0,
         "cost_price": 184.567,
-        "current_price": 195.505,
-        "market_val": 17595.43,
-        "pl_val": 984.382,
-        "pl_ratio": 5.93,
+        "current_price": 201.682,
+        "market_val": 18151.4,
+        "pl_val": 1540.348,
+        "pl_ratio": 9.27,
         "position_side": "LONG",
-        "today_pl_val": -128.268
+        "today_pl_val": -98.802
       },
       {
         "code": "US.NIO",
         "name": "蔚来",
         "qty": 2995.0,
         "cost_price": 15.212,
-        "current_price": 4.899,
-        "market_val": 14671.61,
-        "pl_val": -30887.2449,
-        "pl_ratio": -67.80000000000001,
+        "current_price": 4.88,
+        "market_val": 14615.6,
+        "pl_val": -30943.2514,
+        "pl_ratio": -67.92,
         "position_side": "LONG",
-        "today_pl_val": 56.0065
+        "today_pl_val": 299.5
       },
       {
         "code": "US.NFLX",
         "name": "奈飞",
         "qty": 100.0,
         "cost_price": 89.748,
-        "current_price": 76.58,
-        "market_val": 7658.0,
-        "pl_val": -1316.8,
-        "pl_ratio": -14.67,
+        "current_price": 75.75,
+        "market_val": 7575.0,
+        "pl_val": -1399.8,
+        "pl_ratio": -15.6,
         "position_side": "LONG",
-        "today_pl_val": 40.0
+        "today_pl_val": 28.0
       },
       {
         "code": "US.MSFT",
         "name": "微软",
         "qty": 36.0,
         "cost_price": 383.534,
-        "current_price": 382.79,
-        "market_val": 13780.44,
-        "pl_val": -26.78,
-        "pl_ratio": -0.19,
+        "current_price": 388.5,
+        "market_val": 13986.0,
+        "pl_val": 178.78,
+        "pl_ratio": 1.29,
         "position_side": "LONG",
-        "today_pl_val": -217.8
+        "today_pl_val": 149.04
       },
       {
         "code": "US.IREN",
         "name": "IREN Ltd",
         "qty": 200.0,
         "cost_price": 44.65,
-        "current_price": 39.42,
-        "market_val": 7884.0,
-        "pl_val": -1046.0,
-        "pl_ratio": -11.709999999999999,
+        "current_price": 41.92,
+        "market_val": 8384.0,
+        "pl_val": -546.0,
+        "pl_ratio": -6.11,
         "position_side": "LONG",
-        "today_pl_val": -79.0
+        "today_pl_val": 40.0
       },
       {
         "code": "US.GOOG",
         "name": "谷歌-C",
         "qty": 30.0,
         "cost_price": 344.879,
-        "current_price": 360.66,
-        "market_val": 10819.8,
-        "pl_val": 473.44,
-        "pl_ratio": 4.58,
+        "current_price": 355.24,
+        "market_val": 10657.2,
+        "pl_val": 310.84,
+        "pl_ratio": 3.0,
         "position_side": "LONG",
-        "today_pl_val": -88.8
+        "today_pl_val": -30.0
       },
       {
         "code": "US.AXTI",
         "name": "AXT Inc",
         "qty": 38.0,
         "cost_price": 85.779,
-        "current_price": 56.85,
-        "market_val": 2160.3,
-        "pl_val": -1099.3,
-        "pl_ratio": -33.73,
+        "current_price": 60.888,
+        "market_val": 2313.76,
+        "pl_val": -945.8408,
+        "pl_ratio": -29.020000000000003,
         "position_side": "LONG",
-        "today_pl_val": -49.4
+        "today_pl_val": -63.1408
       }
     ],
     "options": [
@@ -139,17 +139,17 @@
         "name": "TMDX 260717 85.00P",
         "qty": -1.0,
         "cost_price": 12.0,
-        "current_price": 13.98,
-        "market_val": -1397.95,
-        "pl_val": -197.95,
-        "pl_ratio": -16.5,
+        "current_price": 13.371,
+        "market_val": -1337.1,
+        "pl_val": -137.1,
+        "pl_ratio": -11.43,
         "position_side": "SHORT",
         "today_pl_val": 0.0
       }
     ],
     "raw_account": {
-      "total_assets": 57311.3351,
-      "market_val": 114156.2565,
+      "total_assets": 59438.4858,
+      "market_val": 116283.4072,
       "cash": -56844.92,
       "power": 0.0,
       "max_power_short": 0.0,
@@ -157,7 +157,7 @@
       "currency": "USD",
       "risk_level": "N/A",
       "risk_status": "LEVEL6",
-      "margin_call_margin": 47306.785925
+      "margin_call_margin": 48067.3860168
     }
   },
   "modules_present": [

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>美股持仓早报 2026-08-04</title>
+<style>
+:root{
+  --bg:#F6F8FB; --card:#FFFFFF; --card2:#F8FAFC;
+  --tx:#0F172A; --body:#334155; --mut:#64748B; --weak:#94A3B8;
+  --blue:#2563EB; --blue-bg:#EFF6FF; --blue-bd:#BFDBFE;
+  --up:#15803D; --up-bg:#ECFDF3; --up-bd:#BBF7D0;
+  --dn:#B42318; --dn-bg:#FEF3F2; --dn-bd:#FECDCA;
+  --wn:#B54708; --wn-bg:#FFFAEB; --wn-bd:#FEDF89;
+  --bd:#E2E8F0; --bd2:#CBD5E1;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:26px 16px 44px;background:var(--bg);color:var(--body);
+  line-height:1.58;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px;-webkit-text-size-adjust:100%}
+.wrap{max-width:1080px;margin:0 auto}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* header */
+.report-header{background:var(--card);border:1px solid var(--bd);border-top:4px solid var(--blue);
+  border-radius:18px;padding:20px 22px;margin-bottom:18px;
+  box-shadow:0 8px 24px rgba(15,23,42,.04);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.report-header .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);font-weight:700;margin-bottom:6px}
+.report-header h1{margin:0 0 10px;font-size:23px;line-height:1.25;color:var(--tx);font-weight:700}
+.report-header .meta{text-align:right;color:var(--mut);font-size:13px;flex-shrink:0;white-space:nowrap}
+.report-header .meta b{color:var(--tx);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;
+  background:var(--card2);border:1px solid var(--bd);color:var(--mut);white-space:nowrap}
+.chip.ok{background:var(--up-bg);border-color:var(--up-bd);color:var(--up)}
+.chip.warn{background:var(--wn-bg);border-color:var(--wn-bd);color:var(--wn)}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;
+  padding:20px 22px;margin-bottom:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.section-title{display:flex;align-items:center;gap:9px;margin:0 0 14px;
+  font-size:16.5px;font-weight:700;color:var(--tx)}
+.section-title::before{content:"";width:4px;height:17px;border-radius:3px;background:var(--blue);flex-shrink:0}
+.section-title .sub{font-size:12px;font-weight:500;color:var(--weak);margin-left:2px}
+
+/* metric grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.metric{background:var(--card2);border:1px solid var(--bd);border-radius:13px;padding:13px 14px}
+.metric .k{font-size:11.5px;color:var(--mut);margin-bottom:5px;letter-spacing:.02em}
+.metric .v{font-size:20px;font-weight:700;color:var(--tx);
+  font-variant-numeric:tabular-nums;line-height:1.2;word-break:break-all}
+.metric .s{font-size:11.5px;color:var(--weak);margin-top:4px}
+
+.pos{color:var(--up)!important} .neg{color:var(--dn)!important} .neu{color:var(--mut)!important}
+
+/* badges */
+.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;
+  font-weight:600;white-space:nowrap;border:1px solid transparent}
+.badge.green{background:var(--up-bg);color:var(--up);border-color:var(--up-bd)}
+.badge.red{background:var(--dn-bg);color:var(--dn);border-color:var(--dn-bd)}
+.badge.yellow{background:var(--wn-bg);color:var(--wn);border-color:var(--wn-bd)}
+.badge.blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd)}
+.badge.gray{background:var(--card2);color:var(--mut);border-color:var(--bd2)}
+
+/* tables */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--bd);border-radius:13px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card)}
+thead th{background:var(--card2);color:var(--mut);font-weight:600;font-size:12px;
+  text-align:right;padding:10px 12px;border-bottom:1px solid var(--bd);white-space:nowrap}
+thead th:first-child{text-align:left}
+tbody td{padding:10px 12px;border-bottom:1px solid var(--bd);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--body)}
+tbody td:first-child{text-align:left;font-weight:600;color:var(--tx)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr.total td{background:var(--card2);font-weight:700;color:var(--tx)}
+
+/* callouts */
+.callout{border-radius:13px;padding:13px 15px;margin:13px 0 0;font-size:13.5px;border:1px solid}
+.callout.info{background:var(--blue-bg);border-color:var(--blue-bd);color:#1D4ED8}
+.callout.warn{background:var(--wn-bg);border-color:var(--wn-bd);color:var(--wn)}
+.callout.risk{background:var(--dn-bg);border-color:var(--dn-bd);color:var(--dn)}
+.callout.good{background:var(--up-bg);border-color:var(--up-bd);color:var(--up)}
+.callout b{font-weight:700}
+
+.note{font-size:12.5px;color:var(--weak);margin-top:10px}
+.lead{font-size:14px;color:var(--body);margin:0 0 13px}
+ul.tight{margin:8px 0 0;padding-left:19px} ul.tight li{margin-bottom:5px}
+
+footer{color:var(--weak);font-size:12px;line-height:1.7;padding:18px 22px;
+  background:var(--card);border:1px solid var(--bd);border-radius:18px}
+footer b{color:var(--mut)}
+
+@media (max-width:760px){
+  body{padding:16px 11px 32px;font-size:14.5px}
+  .card,.report-header{padding:16px 15px;border-radius:15px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:9px}
+  .grid.g3{grid-template-columns:repeat(2,1fr)}
+  .metric .v{font-size:17.5px}
+  table{min-width:720px}
+  .report-header h1{font-size:19px}
+}
+@media (max-width:480px){
+  .report-header{flex-direction:column;gap:11px}
+  .report-header .meta{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="report-header">
+  <div>
+    <div class="eyebrow">Stockmaster · 美股实盘监控</div>
+    <h1>美股持仓复盘早报</h1>
+    <div class="chips">
+      <span class="chip ok">Futu 实时持仓</span>
+      <span class="chip">yfinance 技术面</span>
+      <span class="chip">SEC EDGAR</span>
+      <span class="chip warn">OpenD 已恢复</span>
+    </div>
+  </div>
+  <div class="meta">
+    <div><b>2026-08-04</b> 07:40 CST</div>
+    <div>交易日 2026-08-03 收盘</div>
+    <div>美股：盘后 AFTER_HOURS</div>
+    <div>风险温度：<b class="neg">偏高</b></div>
+  </div>
+</div>
+
+<!-- ============ A. 账户结果总览 ============ -->
+<div class="card">
+  <h2 class="section-title">A. 账户结果总览 <span class="sub">全员翻红的一天</span></h2>
+  <div class="grid">
+    <div class="metric">
+      <div class="k">账户净值 NAV</div>
+      <div class="v">$51,451.88</div>
+      <div class="s">持仓市值 $90,599.05</div>
+    </div>
+    <div class="metric">
+      <div class="k">当日盈亏</div>
+      <div class="v pos">+$4,306.19</div>
+      <div class="s">股票 +3,727.96 / 期权 +578.23</div>
+    </div>
+    <div class="metric">
+      <div class="k">累计浮动盈亏</div>
+      <div class="v neg">-$7,064.41</div>
+      <div class="s">仍处整体浮亏</div>
+    </div>
+    <div class="metric">
+      <div class="k">现金 / 购买力</div>
+      <div class="v neg">-$39,147.17</div>
+      <div class="s">购买力 $8,859.58</div>
+    </div>
+  </div>
+
+  <div class="callout good">
+    <b>隔夜关键变动：</b>10 个持仓<b>全部录得正收益</b>，无一拖累项。当日 +$4,306.19 由 TSLA(+1,235.85)、
+    IREN(+692.00)、NVDA(+625.00)、GOOG(+550.00) 领涨；最小贡献 ARM 也有 +34.30。
+    但累计仍浮亏 -$7,064.41，本日属于<b>深跌后的反弹修复</b>，非趋势反转。<span class="neu">（已知事实 + 合理推断）</span>
+  </div>
+
+  <div class="callout warn">
+    <b>杠杆与保证金状态：</b>现金为 <b>-$39,147.17</b>（融资负债），账户 <b>risk_status = LEVEL5</b>，
+    维持保证金 $35,976.98，剩余购买力 $8,859.58。持仓市值 $90,599 对应净值 $51,452，
+    约 <b>1.76× 杠杆</b>——这意味着标的波动会被放大传导到净值。<span class="neu">（已知事实；杠杆倍数为推算）</span>
+  </div>
+
+  <div class="callout risk">
+    <b>数据链路异常（须知悉）：</b>今晨前置脚本首次运行失败。表层报错为「venv 缺 yfinance」，
+    但真实根因是 <b>FutuOpenD 守护进程未运行</b>（端口 11111 ECONNREFUSED），导致持仓源不可用。
+    已按既有恢复流程重启 OpenD（v10.9.6918，server_ver 1009，行情/交易登录均为 True）并完整重跑数据层，
+    本报告所有数字均来自<b>恢复后的实时账户快照</b>，非缓存或旧值。
+  </div>
+</div>
+
+<!-- ============ B. 宏观速览 ============ -->
+<div class="card">
+  <h2 class="section-title">B. 宏观速览 <span class="sub">2026-08-03 收盘</span></h2>
+  <div class="grid">
+    <div class="metric">
+      <div class="k">VIX 波动率</div>
+      <div class="v">15.86</div>
+      <div class="s pos">-0.13 (-0.81%)</div>
+    </div>
+    <div class="metric">
+      <div class="k">DXY 美元指数</div>
+      <div class="v">99.99</div>
+      <div class="s neg">+0.19 (+0.19%)</div>
+    </div>
+    <div class="metric">
+      <div class="k">10Y 美债收益率</div>
+      <div class="v">4.686%</div>
+      <div class="s pos">-5.9bp</div>
+    </div>
+    <div class="metric">
+      <div class="k">QQQ / SPY</div>
+      <div class="v">700.07</div>
+      <div class="s">SPY 757.67</div>
+    </div>
+  </div>
+
+  <p class="lead" style="margin-top:14px">
+    <b>风险偏好中性偏暖。</b>VIX 15.86 处低波动区间（已进入 &lt;17 的止盈观察级语境），
+    10Y 收益率回落 5.9bp 至 4.686% 对成长股形成温和支撑，DXY 站上 100 关口小幅走强。
+    <b>但指数分化明显：</b>SPY 757.67 站稳 SMA20/50/200 上方（RSI 53.93），
+    而 <b>QQQ 700.07 仍在 SMA50(714.83) 下方 -2.06%</b>、RSI 42.06——
+    科技权重板块尚未修复，昨日的普涨更像超卖反抽而非纳指级别转强。<span class="neu">（已知事实 + 主观判断）</span>
+  </p>
+
+  <div class="callout info">
+    <b>事件提示：</b>正值财报密集期（组合内 AXTI 7/30 已发、ARM 7/29 已发 6-K）。
+    低 VIX + 财报周的组合意味着<b>单票事件驱动的跳空风险高于指数系统性风险</b>，
+    个股波动不会被 VIX 充分定价。
+  </div>
+</div>
+
+<!-- ============ C. 持仓涨跌明细 ============ -->
+<div class="card">
+  <h2 class="section-title">C. 持仓涨跌明细 <span class="sub">8 只股票 + 2 张期权</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>标的</th><th>现价</th><th>当日涨跌</th><th>数量</th><th>成本</th>
+        <th>今日盈亏</th><th>累计盈亏</th><th>累计%</th><th>市值</th>
+      </tr></thead>
+      <tbody>
+      <tr>
+        <td>TSLA<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 23.6 超卖 · 死叉</div></td>
+        <td>322.98</td>
+        <td class="pos">+3.78%</td>
+        <td>105</td>
+        <td>387.13</td>
+        <td class="pos">+1,235.85</td>
+        <td class="neg">-6,736.00</td>
+        <td class="neg">-16.57%</td>
+        <td>33,912.90</td>
+      </tr>
+      <tr>
+        <td>NVDA<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 45.7 · 金叉</div></td>
+        <td>207.00</td>
+        <td class="pos">+3.11%</td>
+        <td>100</td>
+        <td>185.97</td>
+        <td class="pos">+625.00</td>
+        <td class="pos">+2,103.45</td>
+        <td class="pos">+11.31%</td>
+        <td>20,700.00</td>
+      </tr>
+      <tr>
+        <td>GOOG<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 55.7 · 金叉</div></td>
+        <td>370.40</td>
+        <td class="pos">+3.86%</td>
+        <td>40</td>
+        <td>338.96</td>
+        <td class="pos">+550.00</td>
+        <td class="pos">+1,257.64</td>
+        <td class="pos">+9.28%</td>
+        <td>14,816.00</td>
+      </tr>
+      <tr>
+        <td>IREN<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 51.5 · 站上 SMA20</div></td>
+        <td>40.26</td>
+        <td class="pos">+9.40%</td>
+        <td>200</td>
+        <td>44.65</td>
+        <td class="pos">+692.00</td>
+        <td class="neg">-878.00</td>
+        <td class="neg">-9.83%</td>
+        <td>8,052.00</td>
+      </tr>
+      <tr>
+        <td>QCOM<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 25.2 超卖</div></td>
+        <td>152.00</td>
+        <td class="pos">+2.97%</td>
+        <td>35</td>
+        <td>209.28</td>
+        <td class="pos">+153.65</td>
+        <td class="neg">-2,004.77</td>
+        <td class="neg">-27.37%</td>
+        <td>5,320.00</td>
+      </tr>
+      <tr>
+        <td>AXTI<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 57.4 · 高于 SMA20 30%</div></td>
+        <td>71.00</td>
+        <td class="pos">+17.49%</td>
+        <td>38</td>
+        <td>85.78</td>
+        <td class="pos">+401.61</td>
+        <td class="neg">-561.65</td>
+        <td class="neg">-17.23%</td>
+        <td>2,697.95</td>
+      </tr>
+      <tr>
+        <td>SOXX<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 35.9 · 弱势</div></td>
+        <td>512.00</td>
+        <td class="pos">+1.41%</td>
+        <td>5</td>
+        <td>506.26</td>
+        <td class="pos">+35.55</td>
+        <td class="pos">+28.72</td>
+        <td class="pos">+1.13%</td>
+        <td>2,560.00</td>
+      </tr>
+      <tr>
+        <td>ARM<div style="font-size:11px;color:var(--weak);font-weight:400">RSI 35.3 · 弱势</div></td>
+        <td>243.12</td>
+        <td class="pos">+1.43%</td>
+        <td>10</td>
+        <td>280.00</td>
+        <td class="pos">+34.30</td>
+        <td class="neg">-368.80</td>
+        <td class="neg">-13.17%</td>
+        <td>2,431.20</td>
+      </tr>
+      <tr class="total">
+        <td>股票合计</td><td>—</td><td>—</td><td>—</td><td>—</td>
+        <td class="pos">+3,727.96</td>
+        <td class="neg">-7,159.41</td>
+        <td>—</td><td>90,490.05</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">当日涨跌幅由「今日盈亏 ÷ 持仓数量」反推得出，与交易所官方收盘涨跌幅可能存在细微差异。</p>
+
+  <h2 class="section-title" style="margin-top:22px">期权持仓 <span class="sub">含正股表现与距离 strike</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>合约</th><th>方向</th><th>正股现价</th><th>Strike</th><th>距 Strike</th>
+        <th>到期日</th><th>DTE</th><th>状态</th><th>现价</th><th>今日盈亏</th><th>累计盈亏</th><th>持仓估值</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>ASTS 66.00P<div style="font-size:11px;color:var(--weak);font-weight:400">AST SpaceMobile</div></td>
+          <td><span class="badge red">卖出看跌</span></td>
+          <td>63.52</td><td>66.00</td>
+          <td class="neg">-3.76%</td>
+          <td>2026-08-07</td>
+          <td><span class="badge red">4 天</span></td>
+          <td><span class="badge red">ITM</span></td>
+          <td>4.45</td>
+          <td class="pos">+360.87</td>
+          <td class="pos">+15.00</td>
+          <td class="neg">-445.00</td>
+        </tr>
+        <tr>
+          <td>ORCL 250.00C<div style="font-size:11px;color:var(--weak);font-weight:400">Oracle</div></td>
+          <td><span class="badge green">买入看涨</span></td>
+          <td>141.85</td><td>250.00</td>
+          <td class="neg">-43.26%</td>
+          <td>2027-01-15</td>
+          <td><span class="badge gray">165 天</span></td>
+          <td><span class="badge gray">OTM</span></td>
+          <td>5.50</td>
+          <td class="pos">+217.36</td>
+          <td class="pos">+80.00</td>
+          <td>+550.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <b>ASTS 66P（卖出看跌）为当前唯一到期临近的仓位：</b>正股 63.52 位于行权价 66.00 <b>之下 3.76%</b>，
+    合约处于 <b>实值(ITM)</b> 状态，仅剩 <b>4 个自然日</b>到期（2026-08-07）。
+    作为期权卖方，若到期时正股仍低于 66.00，理论上存在<b>被指派买入 100 股 ASTS</b> 的可能。
+    ASTS 技术面偏弱（SMA50 81.03 / SMA200 82.35 呈死叉，现价距 SMA200 -22.86%），
+    但 RSI 44.47 已回到中性、且刚站上 SMA20(62.94)。今日该合约录得 +360.87（权利金收窄对卖方有利）。
+    <span class="neu">此处仅陈述风险结构与到期事实，不含任何操作建议。</span>
+  </div>
+
+  <div class="callout info">
+    <b>ORCL 250C：</b>正股 141.85 距行权价 250.00 尚有 <b>-43.26%</b> 的距离，深度虚值，
+    但到期日远至 2027-01-15（165 天），时间价值充裕。ORCL 昨日 RSI 60.07、
+    现价高于 SMA20(128.79) 达 +10.14%，短期动能修复中，惟 SMA50/200 仍为死叉。
+  </div>
+</div>
+
+<!-- ============ D. 决策看板 ============ -->
+<div class="card">
+  <h2 class="section-title">D. 决策看板 <span class="sub">监控优先级 / 快速定性</span></h2>
+  <p class="lead">按<b>风险贡献（持仓权重）</b>排序的前三大仓位。评分为轻量定性（SMA50/200 位置 + RSI + 盈亏状态综合），
+  用于确定今日盯盘优先级，<b>不代表方向预测</b>。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>标的</th><th>权重</th><th>评分</th><th>趋势</th><th>今日关键变量</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>TSLA</td>
+          <td class="num">37.46%</td>
+          <td><span class="badge red">32 / 100</span></td>
+          <td><span class="badge red">偏空</span></td>
+          <td style="text-align:left;white-space:normal">RSI 23.6 深度超卖能否延续反抽；现价 322.98 距 SMA20(359.05) 仍有 -10.3%，死叉未修复</td>
+        </tr>
+        <tr>
+          <td>NVDA</td>
+          <td class="num">22.87%</td>
+          <td><span class="badge yellow">58 / 100</span></td>
+          <td><span class="badge gray">中性</span></td>
+          <td style="text-align:left;white-space:normal">能否站稳 SMA50(205.84) 之上；RSI 45.65 中性，现价 207.00 刚好卡在均线附近</td>
+        </tr>
+        <tr>
+          <td>GOOG</td>
+          <td class="num">16.38%</td>
+          <td><span class="badge green">74 / 100</span></td>
+          <td><span class="badge green">偏多</span></td>
+          <td style="text-align:left;white-space:normal">全组合技术面最强（金叉 + 站上全部均线）；关注 7/30 内部人卖出是否形成持续压力</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout risk">
+    <b>⚠️ 这不是交易建议，只是快速定性。</b>评分仅由技术位置与盈亏状态机械合成，
+    不含基本面目标价、不含估值判断，也不隐含任何加仓 / 减仓 / 买卖倾向。
+    真实决策请结合个人风险承受度与完整研究独立作出。
+  </div>
+
+  <div class="callout info">
+    <b>三大仓位合计占 76.71% 的持仓市值</b>——这意味着组合当日结果基本由 TSLA / NVDA / GOOG 三只标的决定，
+    其余 7 个仓位合计影响力不足四分之一。<span class="neu">（已知事实）</span>
+  </div>
+</div>
+
+<!-- ============ E. 隔夜事件与收益归因 ============ -->
+<div class="card">
+  <h2 class="section-title">E. 隔夜事件与收益归因 <span class="sub">谁贡献 / 谁拖累</span></h2>
+
+  <div class="grid g3">
+    <div class="metric">
+      <div class="k">最大贡献</div>
+      <div class="v pos">TSLA</div>
+      <div class="s">+$1,235.85（占当日 28.7%）</div>
+    </div>
+    <div class="metric">
+      <div class="k">次级贡献</div>
+      <div class="v pos">IREN</div>
+      <div class="s">+$692.00（权重仅 8.91%）</div>
+    </div>
+    <div class="metric">
+      <div class="k">最小贡献</div>
+      <div class="v neu">ARM</div>
+      <div class="s">+$34.30（无负贡献项）</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:14px;color:var(--tx);margin:20px 0 8px">贡献收益的仓位</h3>
+  <ul class="tight">
+    <li><b>TSLA +$1,235.85</b>｜权重最高(37.46%)且 RSI 23.6 处深度超卖，昨日为<b>超卖反抽</b>。
+        但现价 322.98 距 SMA20 仍 -10.3%、距 SMA200 -21.65%，死叉结构未变，累计仍浮亏 -$6,736。
+        <span class="neu">（已知事实 + 主观判断：反弹尚未构成趋势修复）</span></li>
+    <li><b>IREN +$692.00</b>｜<b>本日效率之王</b>——权重仅 8.91% 却贡献了 16% 的当日收益。
+        现价 40.26 已站上 SMA20(38.24) 且 RSI 51.53 回中性，是组合内相对动能最好的中小仓位。</li>
+    <li><b>NVDA +$625.00 / GOOG +$550.00</b>｜两大核心权重股同步走强。GOOG 技术面最健康
+        （现价高于 SMA20/50/200，金叉，RSI 55.67）；NVDA 则恰好回到 SMA50 附近，方向待定。</li>
+    <li><b>AXTI +$401.61</b>｜<b>有明确事件对应</b>：SEC 记录显示 AXT Inc 于 <b>2026-07-30 提交 8-K</b>
+        （Item 2.02 Results of Operations，含 operating/capital allocation 催化标记），即季度业绩发布。
+        该股现价 71.00 高于 SMA20 达 <b>+30.42%</b>、RSI 57.35，属财报后强势延续。
+        <span class="neu">（已知事实：8-K 存在且日期确凿；推断：涨幅与该业绩事件相关）</span></li>
+  </ul>
+
+  <h3 style="font-size:14px;color:var(--tx);margin:20px 0 8px">拖累收益的仓位</h3>
+  <div class="callout good">
+    <b>本交易日无拖累项。</b>10 个持仓（含 2 张期权）当日盈亏<b>全部为正</b>，
+    这在组合层面较为少见，通常出现在<b>板块级普涨</b>或<b>深跌后的系统性反抽</b>中。
+    结合 QQQ 仍在 SMA50 下方、VIX 走低的背景，后者可能性更高。<span class="neu">（合理推断）</span>
+  </div>
+
+  <h3 style="font-size:14px;color:var(--tx);margin:20px 0 8px">SEC / 监管事件（近 7 天，仅列高相关）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>标的</th><th>日期</th><th>文件</th><th>影响方向</th><th>与昨日表现的关系</th></tr></thead>
+      <tbody>
+        <tr><td>AXTI</td><td>2026-07-30</td><td>8-K (Item 2.02)</td>
+            <td><span class="badge green">催化剂</span></td>
+            <td style="text-align:left;white-space:normal">季度业绩发布；对应昨日 +$401.61 与 RSI 57.35 的强势</td></tr>
+        <tr><td>GOOG</td><td>2026-07-30</td><td>Form 4</td>
+            <td><span class="badge yellow">偏空 / 中等</span></td>
+            <td style="text-align:left;white-space:normal">内部人卖出 1 笔（买入 0）；<b>昨日未构成压制</b>，GOOG 仍 +$550.00</td></tr>
+        <tr><td>ARM</td><td>2026-07-29</td><td>6-K</td>
+            <td><span class="badge gray">中性 / 高</span></td>
+            <td style="text-align:left;white-space:normal">季报期 2026-04-01~06-30；ARM 昨日仅 +$34.30，仍距 SMA50 -26.28%</td></tr>
+        <tr><td>ASTS</td><td>2026-05-11</td><td>10-Q</td>
+            <td><span class="badge gray">中性 / 高</span></td>
+            <td style="text-align:left;white-space:normal">最新季报，非隔夜事件；与本周 66P 到期共同构成监控语境</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">SEC 摘要由 EDGAR 关键词扫描自动生成，<b>影响方向为机械标记而非人工研判</b>，仅作线索指引；
+  重大结论请回溯原文（sec_report_brief 已附原始 filing URL）。</p>
+</div>
+
+<!-- ============ F. 组合风险快照 ============ -->
+<div class="card">
+  <h2 class="section-title">F. 组合风险快照 <span class="sub">集中度 · 风格 · 期权灯号</span></h2>
+
+  <div class="grid">
+    <div class="metric">
+      <div class="k">前三大权重合计</div>
+      <div class="v neg">76.71%</div>
+      <div class="s">TSLA + NVDA + GOOG</div>
+    </div>
+    <div class="metric">
+      <div class="k">集中度等级</div>
+      <div class="v neg">高</div>
+      <div class="s">单一持仓 TSLA 达 37.46%</div>
+    </div>
+    <div class="metric">
+      <div class="k">风险温度</div>
+      <div class="v neg">偏高</div>
+      <div class="s">主要风险源：TSLA</div>
+    </div>
+    <div class="metric">
+      <div class="k">期权风险灯号</div>
+      <div class="v neg">🔴 红灯</div>
+      <div class="s">ASTS 66P · ITM · 4 DTE</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:14px;color:var(--tx);margin:20px 0 8px">前三大持仓权重</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>标的</th><th>市值</th><th>权重</th><th>今日盈亏</th><th>累计盈亏</th></tr></thead>
+      <tbody>
+        <tr><td>TSLA</td><td>33,906.60</td><td class="neg">37.46%</td><td class="pos">+1,229.55</td><td class="neg">-6,742.30</td></tr>
+        <tr><td>NVDA</td><td>20,702.00</td><td>22.87%</td><td class="pos">+627.00</td><td class="pos">+2,105.45</td></tr>
+        <tr><td>GOOG</td><td>14,822.40</td><td>16.38%</td><td class="pos">+556.40</td><td class="pos">+1,264.04</td></tr>
+        <tr class="total"><td>合计</td><td>69,431.00</td><td class="neg">76.71%</td><td class="pos">+2,412.95</td><td class="neg">-3,372.81</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:14px;color:var(--tx);margin:20px 0 8px">风格暴露</h3>
+  <div class="grid">
+    <div class="metric"><div class="k">大型科技股</div><div class="v">39.25%</div><div class="s">mega-cap tech</div></div>
+    <div class="metric"><div class="k">电动车 EV</div><div class="v">37.46%</div><div class="s">全部来自 TSLA</div></div>
+    <div class="metric"><div class="k">AI / 半导体</div><div class="v">31.59%</div><div class="s">NVDA·QCOM·SOXX·ARM·AXTI</div></div>
+    <div class="metric"><div class="k">中概股 ADR</div><div class="v neu">0.00%</div><div class="s">无暴露</div></div>
+  </div>
+  <p class="note">风格分类之间存在重叠（如 NVDA 同属大型科技与 AI/半导体），合计可超过 100%。</p>
+
+  <h3 style="font-size:14px;color:var(--tx);margin:20px 0 8px">压力测试（静态估算）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>情景</th><th>估算组合盈亏</th><th>对净值影响</th></tr></thead>
+      <tbody>
+        <tr><td>全部多头股票 -5%</td><td class="neg">-$4,525.17</td><td class="neg">-8.80%</td></tr>
+        <tr><td>TSLA / NVDA 同步 -8%</td><td class="neg">-$5,554.48</td><td class="neg">-10.80%</td></tr>
+        <tr><td>中概 ADR -10%</td><td class="neu">$0.00</td><td class="neu">无暴露</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">对净值影响 = 估算盈亏 ÷ 当前净值 $51,451.88。因账户使用融资（约 1.76× 杠杆），
+  标的端 5% 的回撤会放大为净值端约 8.8% 的波动——<b>这是当前结构下最需要意识到的传导关系</b>。</p>
+
+  <div class="callout risk">
+    <b>最近到期 / 距 strike 最近的仓位：ASTS 66.00P（卖出看跌）</b><br>
+    到期 <b>2026-08-07（仅剩 4 天）</b>｜正股 63.52 <b>低于</b>行权价 66.00 达 -3.76%｜当前 <b>ITM 实值</b>。
+    这是组合中唯一同时满足「临近到期 + 实值 + 卖方」三个条件的仓位，
+    因此被标记为 assignment（被指派）风险最高。<b>本模块仅作风险披露，不含任何应对建议。</b>
+  </div>
+
+  <div class="callout warn">
+    <b>集中度提示：</b>TSLA 单票占 37.46%，且是当前<b>浮亏最大</b>（-$6,742.30）与
+    <b>技术面最弱</b>（RSI 23.6、死叉、距 SMA200 -21.65%）的仓位——
+    权重最高与风险最高在同一标的上重合，这是当前组合结构最值得持续留意的一点。
+    <span class="neu">（已知事实 + 主观判断）</span>
+  </div>
+</div>
+
+<!-- ============ 模拟组合 vs 真实组合 ============ -->
+<div class="card">
+  <h2 class="section-title">📊 模拟组合 vs 真实组合 <span class="sub">起始 2026-05-07</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>口径</th><th>NAV</th><th>累计 P&amp;L</th><th>累计收益率</th><th>当日盈亏</th><th>交易笔数</th></tr></thead>
+      <tbody>
+        <tr><td>模拟组合</td><td>61,214.45</td><td class="neg">-8,399.67</td><td class="neg">-12.07%</td><td class="pos">+2,230.23</td><td>9</td></tr>
+        <tr><td>真实组合</td><td>51,258.85</td><td class="neg">-18,355.27</td><td class="neg">-26.37%</td><td class="pos">+4,429.79</td><td>—</td></tr>
+        <tr class="total"><td>差异（模拟 − 真实）</td><td class="pos">+9,955.60</td><td class="pos">+9,955.60</td><td class="pos">+14.30pp</td><td class="neg">-2,199.56</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">起始净值 $69,614.12。模拟账户当前<b>领先真实账户 $9,955.60（14.30 个百分点）</b>。
+  表中真实 NAV $51,258.85 取自模拟对照脚本快照，与 A 模块 Futu 实时 NAV $51,451.88 存在采样时间差，属正常现象。</p>
+</div>
+
+<!-- ============ G. 交易行为快照 ============ -->
+<div class="card">
+  <h2 class="section-title">G. 交易行为快照 <span class="sub">Shadow Account · YTD 行为诊断</span></h2>
+
+  <div class="grid">
+    <div class="metric"><div class="k">胜率</div><div class="v">47.8%</div><div class="s">138 个回合</div></div>
+    <div class="metric"><div class="k">盈亏比</div><div class="v neg">0.72</div><div class="s">平均盈利 &lt; 平均亏损</div></div>
+    <div class="metric"><div class="k">已实现盈亏 (YTD)</div><div class="v neg">-$3,975.15</div><div class="s">291 笔成交</div></div>
+    <div class="metric"><div class="k">过度交易灯号</div><div class="v neg">🔴 红灯</div><div class="s">12.7× 影子预算</div></div>
+  </div>
+
+  <p class="lead" style="margin-top:16px">
+    <b>胜率 47.8% ｜ 盈亏比 0.72 ｜ 已实现(YTD) -$3,975.15 ｜ 回合数 138</b>
+  </p>
+
+  <div class="callout risk">
+    <b>过度交易：红灯。</b>实际成交笔数达影子预算的 <b>12.7 倍</b>——手偏勤。
+    在胜率不足 50%（47.8%）且盈亏比小于 1（0.72）的组合下，
+    <b>交易频率越高，摩擦成本对结果的侵蚀越显著</b>。这是 YTD 已实现口径为负的结构性原因之一。
+    <span class="neu">（已知事实 + 合理推断）</span>
+  </div>
+
+  <div class="callout warn">
+    <b>处置效应（Disposition Effect）：</b>盈利单平均持有 <b>17.4 天</b>，
+    亏损单平均持有 <b>21.3 天</b>，持有周期中位数 9.5 天。
+    亏损单比盈利单多拿 <b>3.9 天</b>，呈现「<b>盈利卖太早、亏损拖太久</b>」的经典倾向——
+    这与盈亏比仅 0.72 的结果互为印证。
+  </div>
+
+  <p class="note">本模块为<b>交易行为复盘</b>（YTD 已实现口径），非持仓监控，
+  不针对任何标的给出买卖或加减仓判断。数据来自 Futu 历史成交的 FIFO 回合配对。</p>
+</div>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <b>数据口径：</b>持仓、账户净值、现金与当日/累计盈亏来自 <b>Futu OpenAPI 实时账户快照</b>
+  （2026-08-04 07:38 CST，唯一权威持仓源，美股状态 AFTER_HOURS_BEGIN）；
+  技术指标（SMA20/50/200、RSI14）来自 yfinance，基于 2026-08-03 收盘、251 个交易日样本；
+  宏观数据（VIX、DXY、10Y/短端收益率）来自 yfinance 延迟行情；
+  SEC 事件来自 EDGAR 近 7 日关键词扫描；交易行为诊断来自 Futu 历史成交 FIFO 回合配对。<br><br>
+
+  <b>本期数据链路异常与处置：</b>前置数据脚本首次运行以「venv 解释器缺少 yfinance」报错退出，
+  经排查真实根因为 <b>FutuOpenD 守护进程未运行</b>（端口 11111 连接被拒），持仓源不可用。
+  已重启 OpenD（v10.9.6918 / server_ver 1009，行情与交易登录均为 True）并<b>完整重跑全部数据层</b>，
+  重跑后 component_errors、technicals.errors、futu errors <b>均为空</b>。
+  本报告全部数字取自恢复后的实时快照，未使用任何缓存值或历史残留数据。<br><br>
+
+  <b>已知缺口与延迟：</b>① 当日涨跌幅由「今日盈亏 ÷ 数量」反推，与交易所官方收盘涨跌幅或有细微差异；
+  ② 宏观与技术面为免费延迟数据源，存在时效偏差；
+  ③ SEC 摘要的「影响方向」为关键词机械标记，非人工研判，仅作线索；
+  ④ 压力测试为静态线性估算，未考虑相关性变化、波动率聚集与流动性冲击；
+  ⑤ 模拟对照模块中的真实 NAV 与 A 模块 Futu 实时 NAV 存在采样时间差。<br><br>
+
+  <b>模拟账户方法学：</b>仅执行晚报 H 模块「立即执行」指令、按次日开盘价模拟成交、不计滑点与佣金，
+  用于对照真实操作与纪律化执行的差异，不构成投资建议。<br><br>
+
+  <b>免责声明：</b>本早报定位为「<b>结果 + 归因 + 风险快照</b>」，
+  <b>不含任何加仓、减仓、买入、卖出、止盈或止损的执行建议</b>。
+  D 模块评分与趋势标签为机械合成的快速定性，用于确定盯盘优先级，<b>不构成交易建议</b>，
+  也不隐含方向预测。投资有风险，本文所有内容仅供个人参考，据此操作风险自担。
+</footer>
+
+</div>
+</body>
+</html>

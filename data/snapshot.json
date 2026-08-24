@@ -1,19 +1,176 @@
 {
-  "ts": "2026-08-24T21:22:52.040803",
+  "ts": "2026-08-24T21:53:17.494423",
   "account": {
-    "ts": "2026-08-24T21:15:38.682410",
-    "nav": null,
-    "cash": null,
-    "stock_mv": 0.0,
-    "option_mv": 0.0,
-    "today_pl": 0.0,
-    "today_pl_pct": null,
-    "cum_pl": 0.0,
-    "risk_status": null,
+    "ts": "2026-08-24T21:44:50.594043",
+    "nav": 52976.0036,
+    "cash": -29931.47,
+    "stock_mv": 84809.98,
+    "option_mv": -1902.5,
+    "today_pl": -3366.2,
+    "today_pl_pct": -6.35,
+    "cum_pl": -5751.35,
+    "risk_status": "LEVEL5",
     "currency": "USD",
-    "stocks": [],
-    "options": [],
-    "raw_account": {}
+    "stocks": [
+      {
+        "code": "US.TSLA",
+        "name": "特斯拉",
+        "qty": 105.0,
+        "cost_price": 387.132,
+        "current_price": 353.0,
+        "market_val": 37065.0,
+        "pl_val": -3583.9,
+        "pl_ratio": -8.82,
+        "position_side": "LONG",
+        "today_pl_val": -1035.3
+      },
+      {
+        "code": "US.SOXX",
+        "name": "半导体ETF-iShares",
+        "qty": 5.0,
+        "cost_price": 506.256,
+        "current_price": 502.28,
+        "market_val": 2511.4,
+        "pl_val": -19.88,
+        "pl_ratio": -0.79,
+        "position_side": "LONG",
+        "today_pl_val": -88.85
+      },
+      {
+        "code": "US.QCOM",
+        "name": "高通",
+        "qty": 35.0,
+        "cost_price": 209.279,
+        "current_price": 157.535,
+        "market_val": 5513.73,
+        "pl_val": -1811.045,
+        "pl_ratio": -24.72,
+        "position_side": "LONG",
+        "today_pl_val": -112.525
+      },
+      {
+        "code": "US.NVDA",
+        "name": "英伟达",
+        "qty": 100.0,
+        "cost_price": 185.966,
+        "current_price": 210.08,
+        "market_val": 21008.0,
+        "pl_val": 2411.45,
+        "pl_ratio": 12.97,
+        "position_side": "LONG",
+        "today_pl_val": -464.0
+      },
+      {
+        "code": "US.GOOG",
+        "name": "谷歌-C",
+        "qty": 20.0,
+        "cost_price": 341.033,
+        "current_price": 343.38,
+        "market_val": 6867.6,
+        "pl_val": 46.94,
+        "pl_ratio": 0.69,
+        "position_side": "LONG",
+        "today_pl_val": 70.1
+      },
+      {
+        "code": "US.AXTI",
+        "name": "AXT Inc",
+        "qty": 70.0,
+        "cost_price": 82.917,
+        "current_price": 62.335,
+        "market_val": 4363.45,
+        "pl_val": -1440.71,
+        "pl_ratio": -24.82,
+        "position_side": "LONG",
+        "today_pl_val": -588.35
+      },
+      {
+        "code": "US.ARM",
+        "name": "Arm Holdings",
+        "qty": 15.0,
+        "cost_price": 270.667,
+        "current_price": 237.47,
+        "market_val": 3562.05,
+        "pl_val": -497.95,
+        "pl_ratio": -12.26,
+        "position_side": "LONG",
+        "today_pl_val": -87.75
+      },
+      {
+        "code": "US.AMZN",
+        "name": "亚马逊",
+        "qty": 15.0,
+        "cost_price": 258.5,
+        "current_price": 261.25,
+        "market_val": 3918.75,
+        "pl_val": 41.25,
+        "pl_ratio": 1.06,
+        "position_side": "LONG",
+        "today_pl_val": 39.3
+      }
+    ],
+    "options": [
+      {
+        "code": "US.DRAM260918P55000",
+        "name": "DRAM 260918 55.00P",
+        "qty": -1.0,
+        "cost_price": 4.4,
+        "current_price": 4.575,
+        "market_val": -457.5,
+        "pl_val": -17.5,
+        "pl_ratio": -3.9800000000000004,
+        "position_side": "SHORT",
+        "today_pl_val": -180.1
+      },
+      {
+        "code": "US.ASTS260918P65000",
+        "name": "ASTS 260918 65.00P",
+        "qty": -1.0,
+        "cost_price": 5.0,
+        "current_price": 5.225,
+        "market_val": -522.5,
+        "pl_val": -22.5,
+        "pl_ratio": -4.5,
+        "position_side": "SHORT",
+        "today_pl_val": -120.0
+      },
+      {
+        "code": "US.AAOI260918P105000",
+        "name": "AAOI 260918 105.00P",
+        "qty": -1.0,
+        "cost_price": 5.35,
+        "current_price": 12.5,
+        "market_val": -1250.0,
+        "pl_val": -715.0,
+        "pl_ratio": -133.64000000000001,
+        "position_side": "SHORT",
+        "today_pl_val": -740.0
+      },
+      {
+        "code": "US.ORCL270115C250000",
+        "name": "ORCL 270115 250.00C",
+        "qty": 1.0,
+        "cost_price": 4.7,
+        "current_price": 3.275,
+        "market_val": 327.5,
+        "pl_val": -142.5,
+        "pl_ratio": -30.320000000000004,
+        "position_side": "LONG",
+        "today_pl_val": -58.73
+      }
+    ],
+    "raw_account": {
+      "total_assets": 52976.0036,
+      "market_val": 82907.475,
+      "cash": -29931.47,
+      "power": 9560.2022,
+      "max_power_short": 9560.2022,
+      "net_cash_power": 0.0,
+      "currency": "USD",
+      "risk_level": "N/A",
+      "risk_status": "LEVEL5",
+      "margin_call_margin": 40376.765
+    }
   },
   "modules_present": [
     "A",
@@ -28,10 +185,5 @@
     "J"
   ],
   "modules_missing": [],
-  "errors": [
-    {
-      "layer": "sentiment",
-      "error": "Command '['~/.hermes/hermes-agent/venv/bin/python', '~/.hermes/profiles/stockmaster/scripts/sentiment_indicators.py']' timed out after 30 seconds"
-    }
-  ]
+  "errors": []
 }

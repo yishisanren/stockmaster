@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>美股早报 · 2026-09-04 (Fri)</title>
+<style>
+  :root{
+    --paper:#F6F5F0;--ink:#16140F;--ink-2:#4A463D;--mute:#8B867A;--rule:#D6D0C0;--rule-soft:#E5E1D4;
+    --spot:#1B3A5C;--spot-soft:#5C7894;--spot-pale:#C9D3DE;--pos:#1F6F4F;--neg:#8A2F26;--warn:#9A6420;
+    --pos-pale:#D9E5DC;--neg-pale:#E8D6D2;
+    --serif:"Charter","Iowan Old Style Text","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink);margin:0;padding:0}
+  body{font-family:var(--sans);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .page{max-width:920px;margin:0 auto;padding:36px 40px 56px}
+  .masthead{padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .masthead .topline{display:flex;justify-content:space-between;align-items:baseline;color:var(--mute);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;font-family:var(--sans)}
+  .masthead .topline .vol{color:var(--ink-2)}
+  .masthead h1{font-family:var(--serif);font-weight:700;font-size:46px;letter-spacing:-0.01em;line-height:1;margin:0 0 8px;color:var(--ink)}
+  .masthead .standfirst{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);margin:0;letter-spacing:0.01em}
+  .masthead .meta-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-2);font-family:var(--sans)}
+  .masthead .meta-strip > span{padding-right:18px;margin-right:18px;border-right:1px solid var(--rule)}
+  .masthead .meta-strip > span:last-child{border-right:0;padding-right:0;margin-right:0}
+  .masthead .meta-strip strong{color:var(--ink);font-weight:600}
+  section.mod{padding:36px 0 28px;border-bottom:1px solid var(--rule)}
+  section.mod:last-of-type{border-bottom:0}
+  .kicker{display:flex;align-items:baseline;gap:14px;margin:0 0 22px}
+  .kicker .num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:28px;color:var(--spot);line-height:1;min-width:34px}
+  .kicker h2{font-family:var(--serif);font-weight:700;font-size:22px;margin:0;color:var(--ink);letter-spacing:-0.005em;line-height:1.15}
+  .kicker .source{font-family:var(--sans);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;text-transform:uppercase;margin-left:auto;align-self:center}
+  .hero{display:grid;grid-template-columns:1.05fr 0.95fr;gap:38px;align-items:start;margin-bottom:22px}
+  .hero .heronum{font-family:var(--serif);font-weight:700;font-size:62px;line-height:1;letter-spacing:-0.018em;color:var(--pos);font-variant-numeric:tabular-nums}
+  .hero .heronum.neg{color:var(--neg)}
+  .hero .heronum.na{color:var(--mute);font-size:48px}
+  .hero .herolabel{font-family:var(--sans);font-size:11px;color:var(--mute);letter-spacing:0.14em;text-transform:uppercase;margin:4px 0 18px}
+  .hero .recovery-cap{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-top:10px}
+  .hero .recovery-cap b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .hero .narrative{font-family:var(--serif);font-size:16px;line-height:1.65;color:var(--ink-2);margin:0;padding-top:6px}
+  .hero .narrative b{color:var(--ink);font-weight:600}
+  .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);padding-top:14px;margin-top:10px}
+  .stat-strip .s{padding:0 18px;border-right:1px solid var(--rule)}
+  .stat-strip .s:first-child{padding-left:0}
+  .stat-strip .s:last-child{border-right:0;padding-right:0}
+  .stat-strip .sk{font-size:11px;color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+  .stat-strip .sv{font-family:var(--mono);font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+  .stat-strip .sv.neg{color:var(--neg)}
+  .stat-strip .sv.pos{color:var(--pos)}
+  .stat-strip .sv.na{color:var(--mute)}
+  .stat-strip .ss{font-size:11px;color:var(--mute);margin-top:3px}
+  .macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .macro-cell{padding:0 20px;border-right:1px solid var(--rule)}
+  .macro-cell:first-child{padding-left:0}
+  .macro-cell:last-child{border-right:0;padding-right:0}
+  .macro-cell .ml{font-family:var(--sans);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .macro-cell .spark{display:block;margin-bottom:6px}
+  .macro-cell .mv{font-family:var(--serif);font-weight:700;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-0.01em}
+  .macro-cell .md{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:3px;font-variant-numeric:tabular-nums}
+  .macro-cell .md.pos{color:var(--pos)}
+  .macro-cell .md.neg{color:var(--neg)}
+  .macro-cell .mn{font-family:var(--sans);font-size:12px;color:var(--mute);margin-top:8px;line-height:1.5}
+  .macro-footer{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-2);margin:22px 0 0;padding-top:14px;border-top:1px dotted var(--rule)}
+  .contrib{margin-bottom:26px}
+  .contrib .chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;font-family:var(--sans);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+  .contrib .scale{font-family:var(--mono);color:var(--ink-2);letter-spacing:0}
+  .table-section{margin-top:24px}
+  .subhead{font-family:var(--sans);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;font-weight:600}
+  .detail{width:100%;border-collapse:collapse;font-size:12.5px;font-family:var(--sans)}
+  .detail th{text-align:right;font-weight:500;color:var(--mute);font-family:var(--sans);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--rule)}
+  .detail th:first-child{text-align:left}
+  .detail th.t-num{text-align:right}
+  .detail td{padding:9px 10px;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums;color:var(--ink-2);text-align:right}
+  .detail td:first-child{text-align:left;color:var(--ink);font-weight:600}
+  .detail td.num{font-family:var(--mono)}
+  .detail tr:last-child td{border-bottom:0}
+  .opts{margin-top:26px}
+  .gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .gauge{padding:0 22px;border-right:1px solid var(--rule)}
+  .gauge:first-child{padding-left:0}
+  .gauge:last-child{border-right:0;padding-right:0}
+  .gauge .g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .gauge .g-tk{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-0.005em}
+  .gauge .g-num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+  .gauge .g-num .g-out{font-size:13px;color:var(--mute);font-weight:400;font-family:var(--sans)}
+  .gauge .g-scale{margin:14px 0 6px}
+  .gauge .g-trend{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);margin-bottom:6px}
+  .gauge .g-tech{font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:-0.01em;margin-bottom:8px}
+  .gauge .g-var{font-family:var(--sans);font-size:12px;color:var(--ink-2);line-height:1.5}
+  .gauges-foot{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--mute);margin:22px 0 0;padding-top:12px;border-top:1px dotted var(--rule);line-height:1.55}
+  .attr-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .attr-col h4{font-family:var(--sans);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin:0 0 14px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  .attr-row{padding:10px 0;border-bottom:1px solid var(--rule-soft)}
+  .attr-row:last-child{border-bottom:0}
+  .attr-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:3px}
+  .attr-tk{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink)}
+  .attr-tk .ts{font-weight:400;color:var(--mute);font-size:11.5px;margin-left:4px;letter-spacing:0.04em}
+  .attr-val{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+  .attr-val.pos{color:var(--pos)}
+  .attr-val.neg{color:var(--neg)}
+  .attr-note{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);line-height:1.5;margin:0}
+  .marginalia{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);line-height:1.6;margin:24px 0 0;padding:14px 16px 14px 18px;border-left:2px solid var(--warn);background:transparent}
+  .marginalia b{color:var(--ink);font-weight:600;font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:0.04em}
+  .risk-callout{font-family:var(--serif);font-style:italic;font-size:13.5px;line-height:1.6;color:var(--ink-2);margin:22px 0 0;padding:14px 0 0;border-top:1px solid var(--rule)}
+  .risk-callout b{color:var(--ink);font-weight:600;font-style:normal;font-family:var(--sans);font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:6px}
+  .aside-sim{margin-top:36px;padding:20px 0 18px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .aside-sim .as-kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+  .aside-sim .as-kicker b{color:var(--ink);font-weight:600;font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0;text-transform:none;margin-right:8px}
+  .sim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .sim-cell{padding:0 16px;border-right:1px solid var(--rule)}
+  .sim-cell:first-child{padding-left:0}
+  .sim-cell:last-child{border-right:0;padding-right:0}
+  .sim-cell .sk{font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+  .sim-cell .sv{font-family:var(--mono);font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .sim-cell .ss{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:3px;font-variant-numeric:tabular-nums}
+  .sim-cell .ss .pos{color:var(--pos)}
+  .sim-cell .ss .neg{color:var(--neg)}
+  .colophon{margin-top:32px;padding-top:18px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:11px;color:var(--mute);line-height:1.7}
+  .colophon p{margin:0 0 6px}
+  .colophon .cl-title{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+  .delta-arrow{display:inline-block;font-family:var(--sans);font-size:9px;vertical-align:1px;margin-right:2px}
+  .na-block{padding:18px 0;color:var(--mute);font-style:italic;font-size:13px;font-family:var(--serif)}
+  @media (max-width: 760px){
+    .page{padding:24px 18px 36px}
+    .masthead h1{font-size:34px}
+    .masthead .standfirst{font-size:15px}
+    .masthead .meta-strip{font-size:11px;gap:6px}
+    .masthead .meta-strip > span{padding-right:10px;margin-right:10px}
+    .kicker h2{font-size:18px}
+    .kicker .num{font-size:22px;min-width:26px}
+    .kicker .source{display:none}
+    .hero{grid-template-columns:1fr;gap:18px}
+    .hero .heronum{font-size:46px}
+    .hero .narrative{font-size:14px}
+    .stat-strip{grid-template-columns:1fr;gap:0;padding-top:8px}
+    .stat-strip .s{padding:10px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .stat-strip .s:last-child{border-bottom:0}
+    .macro-grid{grid-template-columns:1fr;gap:0}
+    .macro-cell{padding:14px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .macro-cell:last-child{border-bottom:0}
+    .gauges{grid-template-columns:1fr;gap:0}
+    .gauge{padding:18px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .gauge:last-child{border-bottom:0}
+    .attr-cols{grid-template-columns:1fr;gap:20px}
+    .sim-grid{grid-template-columns:repeat(2,1fr);gap:14px 0}
+    .sim-cell{padding:8px 12px;border-right:1px solid var(--rule)}
+    .sim-cell:nth-child(2n){border-right:0}
+    .detail{font-size:11.5px}
+    .detail th,.detail td{padding:7px 6px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="topline">
+      <span>Stockmaster Morning Brief</span>
+      <span class="vol">VOL. 2026 &nbsp;·&nbsp; NO. 09·04</span>
+    </div>
+    <h1>美股早报</h1>
+    <p class="standfirst">隔夜结果 / 归因 / 风险快照, 2026-09-04, 周五</p>
+    <div class="meta-strip">
+      <span>北京 <strong>07:00</strong> / 美东盘后</span>
+      <span>市场状态 <strong>AFTER_HOURS_BEGIN</strong></span>
+      <span>风险偏好 <strong>中性</strong></span>
+      <span>账户风险 <strong style="color:var(--warn)">数据缺口</strong></span>
+    </div>
+  </header>
+
+  <!-- I. 账户结果 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">I</span>
+      <h2>账户结果</h2>
+      <span class="source">Futu OpenAPI · 网络中断</span>
+    </div>
+
+    <div class="hero">
+      <div>
+        <div class="heronum na">N/A</div>
+        <div class="herolabel">TODAY · 当日盈亏</div>
+        <svg viewBox="0 0 360 28" width="100%" height="28" style="display:block;margin-top:4px" preserveAspectRatio="none">
+          <rect x="0" y="11" width="360" height="6" fill="#E5E1D4"/>
+          <line x1="360" y1="6" x2="360" y2="22" stroke="#16140F" stroke-width="1"/>
+          <line x1="0" y1="6" x2="0" y2="22" stroke="#16140F" stroke-width="1"/>
+        </svg>
+        <div class="recovery-cap">
+          昨日累计未实现 <b>N/A</b> &nbsp;→&nbsp; 今日 <b>N/A</b> &nbsp;·&nbsp; 今日修复 <b>N/A</b>
+        </div>
+      </div>
+      <p class="narrative">⚠️ <b>数据缺口</b>：Futu OpenD 交易链路网络中断（<b>accinfo / positions 两次均返回「网络中断」</b>，qot 行情在线但 trd 未登录）。账户 NAV / 持仓明细 / 当日与累计盈亏本期无法实时获取。昨晚 21:15 的 daily_snapshot.json 同样为空。请人工核查 OpenD 状态，或等待今日晚报时点自动重试。</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="s">
+        <div class="sk">账户净值</div>
+        <div class="sv na">N/A</div>
+        <div class="ss">USD · Futu 实时</div>
+      </div>
+      <div class="s">
+        <div class="sk">持仓总市值</div>
+        <div class="sv na">N/A</div>
+        <div class="ss">含杠杆, 多头长头寸</div>
+      </div>
+      <div class="s">
+        <div class="sk">累计未实现</div>
+        <div class="sv na">N/A</div>
+        <div class="ss">Futu 交易链路离线</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- II. 宏观速览 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">II</span>
+      <h2>宏观速览</h2>
+      <span class="source">yfinance · 收盘 · OpenBB · 收益率曲线</span>
+    </div>
+
+    <div class="macro-grid">
+
+      <div class="macro-cell">
+        <div class="ml">VIX · 恐慌指数</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="0,10 16,12 33,14 50,13 66,15 83,18 100,22" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="22" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">14.32</div>
+        <div class="md pos"><span class="delta-arrow">▼</span>-0.88  vs 昨</div>
+        <div class="mn">跌回 15 下方，风险偏好短期回升；观察级 &lt;17、一级 ≤15（当前处于一级边缘）。</div>
+      </div>
+
+      <div class="macro-cell">
+        <div class="ml">DXY · 美元指数</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="0,12 16,10 33,14 50,16 66,14 83,18 100,26" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="26" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">99.00</div>
+        <div class="md pos"><span class="delta-arrow">▼</span>-0.60  vs 昨</div>
+        <div class="mn">美元走弱，日内低点 98.83；对非美资产 / 中概通常偏利好。</div>
+      </div>
+
+      <div class="macro-cell">
+        <div class="ml">2s10s · 期限利差</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="0,14 16,13 33,15 50,16 66,17 83,17 100,18" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="18" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">+0.40</div>
+        <div class="md">2Y 4.39 · 10Y 4.79</div>
+        <div class="mn">曲线维持正斜率，长端利率上行至 4.79%；久期敏感资产需留意。<br>QQQ +1.19% · PE 30.69 | SPY +1.05% · PE 26.05</div>
+      </div>
+
+    </div>
+
+    <p class="macro-footer">今日无 FOMC / CPI / 非农事件；关注下周五 (9/11) 8 月非农报告。</p>
+  </section>
+
+  <!-- III. 持仓涨跌 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">III</span>
+      <h2>持仓涨跌</h2>
+      <span class="source">Futu · 网络中断</span>
+    </div>
+
+    <div class="contrib">
+      <div class="chart-head">
+        <span>今日盈亏贡献 · 按绝对值排序</span>
+        <span class="scale">单位 USD · 基准 N/A</span>
+      </div>
+      <div class="na-block">Futu 交易链路离线，本期持仓盈亏数据无法实时拉取。详见模块 I 数据缺口说明。</div>
+    </div>
+
+    <div class="table-section">
+      <h4 class="subhead">股票持仓 · 详细数据</h4>
+      <table class="detail">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th class="t-num">现价</th>
+            <th class="t-num">涨跌%</th>
+            <th class="t-num">数量</th>
+            <th class="t-num">成本</th>
+            <th class="t-num">今日盈亏</th>
+            <th class="t-num">累计盈亏</th>
+            <th class="t-num">市值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="8" style="text-align:center;color:var(--mute);font-style:italic;padding:18px 0">数据不可用（Futu 网络中断）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="opts">
+      <h4 class="subhead" style="margin-top:24px">期权持仓 · 距离 strike</h4>
+      <div class="na-block">期权持仓数据同步缺失，无法计算 ITM/OTM 与距离 strike。</div>
+    </div>
+  </section>
+
+  <!-- IV. 决策看板 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">IV</span>
+      <h2>决策看板</h2>
+      <span class="source">监控优先级 · 不构成交易建议</span>
+    </div>
+
+    <div class="gauges">
+      <div class="gauge">
+        <div class="g-head">
+          <span class="g-tk">账户整体</span>
+          <span class="g-num" style="color:var(--mute);font-size:22px">N/A<span class="g-out"> / 100</span></span>
+        </div>
+        <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+          <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+          <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+          <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+        </svg>
+        <div class="g-trend">趋势 · 数据缺口</div>
+        <div class="g-tech">Futu 网络中断</div>
+        <div class="g-var">需要人工核查 OpenD 连接状态；建议重启 OpenD 客户端并确认 trd 登录态。</div>
+      </div>
+      <div class="gauge">
+        <div class="g-head">
+          <span class="g-tk">QQQ</span>
+          <span class="g-num">62<span class="g-out"> / 100</span></span>
+        </div>
+        <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+          <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+          <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+          <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+          <line x1="124" y1="10" x2="124" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+          <circle cx="124" cy="18" r="3" fill="#1B3A5C"/>
+        </svg>
+        <div class="g-trend">趋势 · 偏多</div>
+        <div class="g-tech">RSI 40.25 · 站上 SMA50 +0.93% · vs SMA200 +9.21%</div>
+        <div class="g-var">717 是关键支撑（SMA20），717.71 被反复测试；跌破需警惕回测 711 (SMA50)。黄金交叉保持。</div>
+      </div>
+      <div class="gauge">
+        <div class="g-head">
+          <span class="g-tk">VIX 信号</span>
+          <span class="g-num">72<span class="g-out"> / 100</span></span>
+        </div>
+        <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+          <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+          <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+          <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+          <line x1="144" y1="10" x2="144" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+          <circle cx="144" cy="18" r="3" fill="#1B3A5C"/>
+        </svg>
+        <div class="g-trend">趋势 · 偏多</div>
+        <div class="g-tech">14.32 · 跌回 15 下方 · 一级警戒边缘</div>
+        <div class="g-var">若继续跌破 13 进入二级警戒；当前对冲成本处于低位，但需警惕 VIX 反弹。</div>
+      </div>
+    </div>
+    <p class="gauges-foot">
+      评分基于 SMA50 / SMA200 / RSI / 盈亏比的轻量加权, 仅用于监控优先级排序。本看板不包含加仓, 减仓, 止盈止损建议。本期账户整体因 Futu 数据缺口无法评分。
+    </p>
+  </section>
+
+  <!-- V. 隔夜归因 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">V</span>
+      <h2>隔夜事件与收益归因</h2>
+      <span class="source">2026-09-03 美东盘后</span>
+    </div>
+
+    <div class="attr-cols">
+      <div class="attr-col">
+        <h4>主要贡献</h4>
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">大盘环境 <span class="ts">QQQ +1.19%</span></span>
+            <span class="attr-val pos">隔夜偏多</span>
+          </div>
+          <p class="attr-note">QQQ 收涨 1.19% 至 717.67，SPY 收涨 1.05%；账户具体个股盈亏因 Futu 数据缺口无法列出。</p>
+        </div>
+      </div>
+      <div class="attr-col">
+        <h4>主要拖累</h4>
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">Futu 数据链路 <span class="ts">基础设施</span></span>
+            <span class="attr-val neg">网络中断</span>
+          </div>
+          <p class="attr-note">OpenD trd 连接离线（07:00 / 07:01 两次尝试均失败）。今日持仓个股盈亏、集中度、风险归因本期缺失。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="marginalia">
+      <b>数据缺口 · 编辑注</b>
+      本次早报缺少账户级盈亏归因和持仓明细，无法给出个股层面的贡献/拖累拆解。原因：Futu OpenD 交易链路网络中断（quote 在线但 trade 离线），OpenBB / yfinance 宏观与大盘数据正常。建议用户检查 OpenD 客户端状态或等待今日晚报时点的自动重试。
+    </p>
+  </section>
+
+  <!-- VI. 组合风险快照 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">VI</span>
+      <h2>组合风险快照</h2>
+      <span class="source">Futu · 网络中断</span>
+    </div>
+
+    <div class="na-block" style="margin-bottom:18px">前三大权重 / 集中度 / 风格暴露 / 期权风险灯号 / 压力测试 全部因 Futu 交易链路离线而无法计算。</div>
+
+    <h4 class="subhead">风格暴露 · 占组合市值</h4>
+    <div class="na-block">数据不可用</div>
+
+    <h4 class="subhead" style="margin-top:26px">期权风险 · 灯号</h4>
+    <div class="na-block">数据不可用</div>
+
+    <p class="risk-callout">
+      <b>主要风险 · 三条</b>
+      <b>1) 数据风险</b>：Futu 交易链路离线，今日账户级风险指标全部缺失；任何依赖真实持仓的决策（加减仓、止盈、止损）需等待晚报时点恢复。
+      <br><b>2) 宏观风险</b>：10Y 美债 4.79%，期限利差 +0.40 正斜率；利率上行对成长股估值构成压力。
+      <br><b>3) 波动性风险</b>：VIX 14.32 处于一级警戒（&lt;15），对冲成本处于低位，若 VIX 反弹将对组合产生额外波动。
+    </p>
+  </section>
+
+  <!-- ASIDE: 模拟 vs 真实 -->
+  <aside class="aside-sim">
+    <div class="as-kicker"><b>模拟 vs 真实</b> 起始 2026-05-07 · 仅执行晚报「立即执行」指令</div>
+    <div class="sim-grid">
+      <div class="sim-cell">
+        <div class="sk">模拟 NAV</div>
+        <div class="sv">$65,079.16</div>
+        <div class="ss">累计 <span class="neg">-$4,534.96</span> · (-6.51%)</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">真实 NAV</div>
+        <div class="sv" style="color:var(--mute)">N/A</div>
+        <div class="ss">Futu 数据缺口</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">差异 (模拟 - 真实)</div>
+        <div class="sv" style="color:var(--mute)">N/A</div>
+        <div class="ss">模拟交易笔数 13</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">今日 PnL</div>
+        <div class="sv">模拟 <span class="pos">+$837.83</span></div>
+        <div class="ss">真实 <span style="color:var(--mute)">N/A</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- VII. 交易行为快照（Shadow Account）-->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">VII</span>
+      <h2>交易行为快照</h2>
+      <span class="source">Shadow Account · YTD</span>
+    </div>
+    <div class="na-block">交易行为诊断数据本期未生成（shadow_account_v2.py 网络中断错误）。</div>
+  </section>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="cl-title">Colophon · 数据口径与免责</div>
+    <p>账户与持仓以 Futu OpenAPI 为权威 (本期网络中断, 数据缺失); 技术指标与宏观数据采用 yfinance 2026-09-03 收盘 (存在最长约 12h 延迟); 收益率曲线来自 OpenBB / Federal Reserve (2026-09-02)。模拟账户数据来自本地 paper_trading 模块。</p>
+    <p>⚠️ <b>本期数据缺口</b>：Futu 交易链路网络中断（accinfo / positions 均返回「网络中断」），账户 NAV / 持仓明细 / 今日盈亏 / 累计盈亏 / 风险归因 / 期权风险快照 / Shadow Account 本期均无法获取。早报仅基于宏观 + 大盘 + 模拟账户披露；真实账户层面请参阅今日晚间报告或手动核查 OpenD 状态。</p>
+    <p>本报告仅作个人持仓监控与风险快照, 不构成投资建议; 分析仅供参考, 投资有风险, 决策需自负。</p>
+  </footer>
+
+</div>
+</body>
+</html>

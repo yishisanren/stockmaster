@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>美股早报 2026-09-10 · 数据缺口通知</title>
+<style>
+  :root{
+    --paper:#F6F5F0; --ink:#16140F; --ink-2:#4A463D; --mute:#8B867A;
+    --rule:#D6D0C0; --rule-soft:#E5E1D4;
+    --spot:#1B3A5C; --spot-soft:#5C7894; --spot-pale:#C9D3DE;
+    --pos:#1F6F4F; --neg:#8A2F26; --warn:#9A6420;
+    --pos-pale:#D9E5DC; --neg-pale:#E8D6D2; --warn-pale:#F0E3CC;
+    --serif:"Charter","Iowan Old Style Text","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink);margin:0;padding:0}
+  body{font-family:var(--sans);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .page{max-width:920px;margin:0 auto;padding:36px 40px 56px}
+  .masthead{padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .masthead .topline{display:flex;justify-content:space-between;align-items:baseline;color:var(--mute);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px}
+  .masthead h1{font-family:var(--serif);font-weight:700;font-size:46px;letter-spacing:-0.01em;line-height:1;margin:0 0 8px;color:var(--ink)}
+  .masthead .standfirst{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);margin:0}
+  .masthead .meta-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-2)}
+  .masthead .meta-strip > span{padding-right:18px;margin-right:18px;border-right:1px solid var(--rule)}
+  .masthead .meta-strip > span:last-child{border-right:0;padding-right:0;margin-right:0}
+  .masthead .meta-strip strong{color:var(--ink);font-weight:600}
+  section.mod{padding:32px 0 24px;border-bottom:1px solid var(--rule)}
+  section.mod:last-of-type{border-bottom:0}
+  .kicker{display:flex;align-items:baseline;gap:14px;margin:0 0 20px}
+  .kicker .num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--spot);line-height:1;min-width:34px}
+  .kicker h2{font-family:var(--serif);font-weight:700;font-size:22px;margin:0;color:var(--ink)}
+  .alert{background:var(--neg-pale);border-left:4px solid var(--neg);padding:18px 22px;margin:0 0 24px;font-size:14px;line-height:1.65;color:var(--ink)}
+  .alert b{color:var(--neg);font-weight:700}
+  .alert code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:3px;font-family:var(--mono);font-size:12px}
+  .alert ol{margin:10px 0 0;padding-left:22px}
+  .alert li{margin:4px 0}
+  .macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .macro-cell{padding:0 20px;border-right:1px solid var(--rule)}
+  .macro-cell:first-child{padding-left:0}
+  .macro-cell:last-child{border-right:0;padding-right:0}
+  .macro-cell .ml{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .macro-cell .mv{font-family:var(--serif);font-weight:700;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .macro-cell .md{font-family:var(--mono);font-size:11.5px;margin-top:3px;font-variant-numeric:tabular-nums}
+  .macro-cell .md.pos{color:var(--pos)}
+  .macro-cell .md.neg{color:var(--neg)}
+  .macro-cell .mn{font-size:12px;color:var(--mute);margin-top:8px;line-height:1.5}
+  .watch-table{width:100%;border-collapse:collapse;font-size:12.5px;font-family:var(--sans)}
+  .watch-table th{text-align:left;font-weight:600;color:var(--mute);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--rule)}
+  .watch-table th.num,.watch-table td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .watch-table td{padding:8px 10px;border-bottom:1px solid var(--rule-soft);color:var(--ink-2)}
+  .watch-table td:first-child{color:var(--ink);font-weight:600;font-family:var(--mono)}
+  .watch-table tr:last-child td{border-bottom:0}
+  .badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10.5px;letter-spacing:0.04em;font-weight:600}
+  .badge.bullish{background:var(--pos-pale);color:var(--pos)}
+  .badge.bearish{background:var(--neg-pale);color:var(--neg)}
+  .badge.neutral{background:var(--rule-soft);color:var(--ink-2)}
+  .badge.volatile{background:var(--warn-pale);color:var(--warn)}
+  .colophon{margin-top:32px;padding-top:18px;border-top:1px solid var(--rule);font-size:11px;color:var(--mute);line-height:1.7}
+  .colophon p{margin:0 0 6px}
+  .colophon .cl-title{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+  @media (max-width: 760px){
+    .page{padding:24px 18px 36px}
+    .masthead h1{font-size:32px}
+    .macro-grid{grid-template-columns:1fr}
+    .macro-cell{padding:14px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .macro-cell:last-child{border-bottom:0}
+    .watch-table{font-size:11.5px}
+    .watch-table th,.watch-table td{padding:6px 6px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="topline">
+      <span>Stockmaster Morning Brief</span>
+      <span>2026-09-10</span>
+    </div>
+    <h1>美股早报</h1>
+    <p class="standfirst">数据缺口通知 · 2026-09-10 周四 · Futu OpenD 网络中断</p>
+    <div class="meta-strip">
+      <span>北京 <strong>2026-09-10 07:05</strong></span>
+      <span>市场状态 <strong>美东已收盘</strong></span>
+      <span>账户数据 <strong style="color:var(--neg)">不可用</strong></span>
+    </div>
+  </header>
+
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">!</span>
+      <h2>账户数据缺失 · Futu OpenD 网络中断</h2>
+    </div>
+    <div class="alert">
+      <b>今日早报无法生成账户结果 / 持仓明细 / 决策看板 / 风险快照</b>，原因是 Futu OpenD 到 Futu 服务器的行情与交易连接已断开。
+      <br><br>
+      <b>故障详情</b>（北京时间 2026-09-10 07:01-07:04 实测）：
+      <ul style="margin:8px 0;padding-left:22px">
+        <li><code>futu_portfolio.py --json</code> 连续 3 次返回 <code>accinfo: 网络中断 · positions: 网络中断</code></li>
+        <li>OpenD 进程仍在运行（pid 3738），但 <code>qot_logined=false · trd_logined=false</code>，与 Futu 服务器的会话已断</li>
+        <li>公网出口正常（google.com 200 OK · openapi.futunn.com 302 OK），排除本机网络问题</li>
+        <li><b>该故障自昨晚 21:15 晚报 cron 起持续存在</b>，导致昨晚晚报 A 模块账户快照也为空</li>
+      </ul>
+      <b>建议动作</b>（需要您手动操作）：
+      <ol>
+        <li>打开 Futu OpenD GUI（桌面上 FutuOpenD 图标），检查右下角连接状态</li>
+        <li>如显示"未连接"或"网络异常"，点击重新连接 / 重启 OpenD 进程</li>
+        <li>重启后今晚 21:15 晚报 cron 会自动恢复正常</li>
+        <li>如需立即恢复早报，可在 OpenD 恢复后告知 agent 手动重跑</li>
+      </ol>
+      <b>已知最后可用账户快照</b>：2026-09-08 21:15（周二晚晚报）；再上一份完整早报是 2026-09-04（上周五）。
+    </div>
+  </section>
+
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">II</span>
+      <h2>宏观速览（yfinance · 美东 9/9 收盘）</h2>
+    </div>
+    <div class="macro-grid">
+      <div class="macro-cell">
+        <div class="ml">VIX · 恐慌指数</div>
+        <div class="mv">16.46</div>
+        <div class="md pos">▲ +4.71% vs 昨 15.72</div>
+        <div class="mn">温和区间，仍处 &lt;17 观察级以下</div>
+      </div>
+      <div class="macro-cell">
+        <div class="ml">DXY · 美元指数</div>
+        <div class="mv">98.78</div>
+        <div class="md neg">▼ -0.06% vs 昨 98.84</div>
+        <div class="mn">基本持平，未脱离近期窄幅区间</div>
+      </div>
+      <div class="macro-cell">
+        <div class="ml">US10Y · 十年美债</div>
+        <div class="mv">4.84%</div>
+        <div class="md neg">▲ +0.65% vs 昨 4.81%</div>
+        <div class="mn">长端小幅上行，关注是否突破 4.85%</div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-2);margin-top:14px;font-style:italic">QQQ 716.31 (-0.29%) · SPY 762.40 (-0.46%) — 隔夜大盘小幅回落，无重大宏观事件催化。</p>
+  </section>
+
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">W</span>
+      <h2>长期观察名单 · 趋势快照（来自昨日 21:16 evening_data）</h2>
+    </div>
+    <p style="font-size:12px;color:var(--mute);margin:0 0 14px">非持仓，仅供观察，不构成建议。数据时点：2026-09-09 21:16 美东盘后；sma200 数据点不足时显示 —。</p>
+    <table class="watch-table">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th class="num">现价</th>
+          <th class="num">5日%</th>
+          <th class="num">20日%</th>
+          <th class="num">RSI</th>
+          <th class="num">SMA20</th>
+          <th class="num">SMA50</th>
+          <th>趋势</th>
+          <th>行动标签</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>GOOGL</td><td class="num">338.36</td><td class="num">-0.29</td><td class="num">-5.36</td><td class="num">44.0</td><td class="num">342.65</td><td class="num">348.59</td><td><span class="badge bearish">偏空</span></td><td style="font-size:11.5px">不追低</td></tr>
+        <tr><td>AAPL</td><td class="num">316.22</td><td class="num">-0.20</td><td class="num">+2.58</td><td class="num">55.9</td><td class="num">313.54</td><td class="num">315.80</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>MSFT</td><td class="num">493.95</td><td class="num">-2.63</td><td class="num">-2.39</td><td class="num">57.3</td><td class="num">495.10</td><td class="num">446.59</td><td><span class="badge bullish">偏多</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>META</td><td class="num">613.48</td><td class="num">+7.19</td><td class="num">+3.12</td><td class="num">85.5</td><td class="num">577.81</td><td class="num">596.76</td><td><span class="badge volatile">高波动</span></td><td style="font-size:11.5px">RSI 过热等确认</td></tr>
+        <tr><td>PLTR</td><td class="num">170.30</td><td class="num">-8.63</td><td class="num">-2.81</td><td class="num">49.2</td><td class="num">176.67</td><td class="num">151.04</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>AMD</td><td class="num">505.74</td><td class="num">+7.44</td><td class="num">+7.71</td><td class="num">57.1</td><td class="num">477.01</td><td class="num">498.96</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>NVDA</td><td class="num">225.73</td><td class="num">+2.24</td><td class="num">+3.76</td><td class="num">54.2</td><td class="num">220.49</td><td class="num">211.23</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>NFLX</td><td class="num">76.77</td><td class="num">-5.28</td><td class="num">+0.63</td><td class="num">47.3</td><td class="num">79.33</td><td class="num">75.50</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>ORCL</td><td class="num">162.52</td><td class="num">+8.99</td><td class="num">+7.59</td><td class="num">68.8</td><td class="num">148.88</td><td class="num">140.12</td><td><span class="badge bullish">偏多</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>INTC</td><td class="num">104.47</td><td class="num">+16.71</td><td class="num">+7.13</td><td class="num">61.8</td><td class="num">94.30</td><td class="num">100.13</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>AMZN</td><td class="num">256.97</td><td class="num">-1.08</td><td class="num">-7.59</td><td class="num">47.5</td><td class="num">261.14</td><td class="num">254.43</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>WMT</td><td class="num">106.05</td><td class="num">+1.13</td><td class="num">-5.87</td><td class="num">32.6</td><td class="num">108.60</td><td class="num">110.69</td><td><span class="badge bearish">偏空</span></td><td style="font-size:11.5px">RSI 偏低不追低</td></tr>
+        <tr><td>COST</td><td class="num">910.18</td><td class="num">-3.57</td><td class="num">-4.47</td><td class="num">32.8</td><td class="num">945.06</td><td class="num">942.73</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">RSI 偏低等回踩</td></tr>
+        <tr><td>DIS</td><td class="num">105.06</td><td class="num">-2.32</td><td class="num">+1.82</td><td class="num">52.8</td><td class="num">106.68</td><td class="num">101.34</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>BRK-B</td><td class="num">505.83</td><td class="num">+0.36</td><td class="num">-4.46</td><td class="num">54.9</td><td class="num">504.23</td><td class="num">503.29</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>V</td><td class="num">368.64</td><td class="num">-2.83</td><td class="num">+2.03</td><td class="num">54.3</td><td class="num">372.09</td><td class="num">363.84</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+        <tr><td>SOFI</td><td class="num">18.01</td><td class="num">+0.73</td><td class="num">-0.61</td><td class="num">52.1</td><td class="num">18.23</td><td class="num">17.88</td><td><span class="badge neutral">中性</span></td><td style="font-size:11.5px">等回踩</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="colophon">
+    <div class="cl-title">数据口径与免责</div>
+    <p>本报告为降级版：账户 / 持仓 / 期权数据因 Futu OpenD 网络中断不可用，未生成 A / C / D / F 等核心模块。</p>
+    <p>宏观数据来自 yfinance（2026-09-09 美东收盘，存在约 12h 延迟）；watchlist 来自昨日 21:16 evening_data 快照，非实时。</p>
+    <p>本报告不构成投资建议；投资有风险，决策需自负。</p>
+  </footer>
+
+</div>
+</body>
+</html>

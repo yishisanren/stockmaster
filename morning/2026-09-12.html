@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>美股持仓早报 — 2026-09-12</title><style>
+:root{--bg:#F6F8FB;--card:#FFFFFF;--card2:#F8FAFC;--t1:#0F172A;--t2:#334155;--t3:#64748B;--t4:#94A3B8;--pri:#2563EB;--pribg:#EFF6FF;--pribd:#BFDBFE;--pos:#15803D;--posbg:#ECFDF3;--posbd:#BBF7D0;--neg:#B42318;--negbg:#FEF3F2;--negbd:#FECDCA;--warn:#B54708;--warnbg:#FFFAEB;--warnbd:#FEDF89;--bd:#E2E8F0;--bd2:#CBD5E1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--t2);line-height:1.6;font-size:16px;padding:18px 12px}
+.wrap{max-width:1080px;margin:0 auto}
+.report-header{background:var(--card);border:1px solid var(--bd);border-top:4px solid var(--pri);border-radius:18px;padding:22px 26px;margin-bottom:18px;box-shadow:0 8px 24px rgba(15,23,42,.04);display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--pri);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+h1{font-size:25px;color:var(--t1);font-weight:800;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{display:inline-block;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid var(--bd);color:var(--t3);background:var(--card2)}
+.chip.warn{background:var(--warnbg);color:var(--warn);border-color:var(--warnbd)}
+.chip.neg{background:var(--negbg);color:var(--neg);border-color:var(--negbd)}
+.chip.pos{background:var(--posbg);color:var(--pos);border-color:var(--posbd)}
+.chip.pri{background:var(--pribg);color:var(--pri);border-color:var(--pribd)}
+.report-header .meta{text-align:right;color:var(--t3);font-size:13px;flex-shrink:0;white-space:nowrap}
+.report-header .meta b{color:var(--t1);display:block;font-size:15px}
+@media (max-width:480px){.report-header{flex-direction:column}.report-header .meta{text-align:left;white-space:normal}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px 26px;margin-bottom:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.card h2{font-size:18px;color:var(--t1);font-weight:800;margin-bottom:14px;padding-left:12px;border-left:4px solid var(--pri);letter-spacing:-.005em}
+.card h2 .tag{font-size:11px;color:var(--t4);font-weight:500;margin-left:8px;letter-spacing:.05em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card2);border:1px solid var(--bd);border-radius:14px;padding:14px 16px}
+.kpi .lbl{font-size:12px;color:var(--t4);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.kpi .val{font-size:22px;font-weight:800;color:var(--t1);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi .sub{font-size:12px;color:var(--t3);margin-top:3px}
+.pos{color:var(--pos)!important}.neg{color:var(--neg)!important}.neu{color:var(--t3)!important}
+.table-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:12px;margin:10px 0}
+table.t,.card table{width:100%;border-collapse:collapse;font-size:15px;min-width:720px}
+table.t th,.card table th{text-align:left;font-size:13px;color:var(--t3);font-weight:600;padding:10px 14px;background:var(--card2);border-bottom:1px solid var(--bd);letter-spacing:.03em}
+table.t td,.card table td{padding:11px 14px;border-bottom:1px solid var(--bd);color:var(--t2);font-variant-numeric:tabular-nums}
+table.t tr:last-child td,.card table tr:last-child td{border-bottom:none}
+.callout{border:1px solid var(--bd);border-radius:14px;padding:14px 16px;margin:12px 0;font-size:15px}
+.callout.info{background:var(--pribg);border-color:var(--pribd);color:#1E3A8A}
+.callout.warn{background:var(--warnbg);border-color:var(--warnbd);color:#7C2D12}
+.callout.risk{background:var(--negbg);border-color:var(--negbd);color:#7F1D1D}
+.callout.stable{background:var(--posbg);border-color:var(--posbd);color:#14532D}
+.footer{font-size:13px;color:var(--t4);padding:16px 4px;line-height:1.7}
+@media (max-width:760px){.card{padding:16px 16px}.grid{grid-template-columns:1fr 1fr}table.t,.card table{min-width:720px}}
+</style></head><body><div class="wrap">
+<div class="report-header"><div><div class="eyebrow">Stockmaster · Morning Brief</div><h1>美股持仓复盘早报</h1><div class="chips"><span class="chip">2026-09-12 周六 · 盘前</span><span class="chip neg">Futu 数据缺口</span><span class="chip pos">Risk-On 反弹日</span><span class="chip">数据源: yfinance · OpenBB · paper_summary</span></div></div><div class="meta"><b>2026-09-12 07:00 CST</b>数据时点：2026-09-11 美股收盘<br>账户状态：Futu 中断（trd_logined=false）</div></div>
+<div class="card"><h2>A. 账户结果总览 <span class="tag">ACCOUNT OVERVIEW</span></h2>
+<div class="callout risk"><b>⚠️ Futu 实时持仓数据中断（连续第 2 日）</b><br>
+今晨 5 次调用 <code>futu_portfolio.py --json</code> 均返回 <code>accinfo: 网络中断 / positions: 网络中断</code>，OpenD 进程在运行（PID 3738，port 11111 OPEN）但交易会话未登录（<code>trd_logined=false</code>）。昨日早报（9/11）、昨晚晚报（9/11 21:15）均遇到同样问题——这是持续性连接故障，已超过 24 小时未恢复。<br><br>
+<b>影响</b>：本早报的"账户净值 / 当日盈亏 / 累计盈亏 / 持仓明细 / 决策看板 / 组合风险"模块均无法基于真实持仓生成。</div>
+<div class="grid">
+<div class="kpi"><div class="lbl">账户净值</div><div class="val neu">N/A</div><div class="sub">Futu 中断；最近 anchor 9/2: $52,796.28（已 9 天未更新）</div></div>
+<div class="kpi"><div class="lbl">当日盈亏（9/11 美股收盘）</div><div class="val neu">N/A</div><div class="sub">无持仓数据，无法计算</div></div>
+<div class="kpi"><div class="lbl">累计盈亏</div><div class="val neu">N/A</div><div class="sub">无持仓数据，无法计算</div></div>
+<div class="kpi"><div class="lbl">隔夜关键变动</div><div class="val pos">Risk-On</div><div class="sub">QQQ +0.87% / SPY +0.85% / VIX -11.21%</div></div>
+</div>
+<div class="callout warn"><b>建议的人工处置（非交易建议，仅是数据恢复建议）</b><br>在 Futu OpenD GUI 里检查登录态，可能需要重新登录或解锁交易密码。故障已持续超过 24 小时（覆盖 2 个早报 + 1 个晚报周期），建议今日白天优先处理。在数据恢复前，请勿基于本早报做任何加减仓决策。</div>
+</div>
+<div class="card"><h2>B. 宏观速览 <span class="tag">MACRO SNAPSHOT · 2026-09-11 收盘</span></h2>
+<div class="table-wrap"><table class="t"><tr><th>指标</th><th>最新值</th><th>变动</th><th>解读</th></tr>
+<tr><td>VIX</td><td>15.84</td><td class="pos">-11.21%</td><td>波动率大幅回落，避险情绪显著缓和，重回 &lt;16 的"低风险区"</td></tr>
+<tr><td>QQQ</td><td>714.88</td><td class="pos">+0.87%</td><td>收复 SMA50 (710.41)，仍在 SMA20 (715.67) 下方一丝，RSI 51.13</td></tr>
+<tr><td>SPY</td><td>764.29</td><td class="pos">+0.85%</td><td>收复 SMA50 (758.62)，SMA20 (766.88) 仍在上方，RSI 48.64</td></tr>
+<tr><td>10Y 美债</td><td>4.975%</td><td class="neg">+0.63%</td><td>利率仍在缓步上行，成长股估值压制未完全解除</td></tr>
+<tr><td>DXY 美元指数</td><td>99.10</td><td class="neu">+0.01%</td><td>美元基本持平，对新兴市场/中概影响中性</td></tr>
+<tr><td>美债 2s10s</td><td colspan="3" class="neu">OpenBB 收益率曲线本次未返回（None）；前一日（9/10）为 +40bp 正常化区间，无倒挂风险</td></tr>
+</table></div>
+<div class="callout info"><b>周末提示</b>：隔夜是典型的 risk-on 修复组合——股指反弹 + VIX 大幅回落，QQQ/SPY 均收复 SMA50。但 10Y 仍在 4.97% 高位缓步上行，利率端压制尚未解除。今日周六美股休市，下周一（9/14）无 FOMC/CPI/非农排期；关注周末是否有联储官员讲话或地缘新闻。</div>
+</div>
+<div class="card"><h2>C. 持仓涨跌明细 <span class="tag">POSITIONS DETAIL</span></h2>
+<div class="callout risk"><b>⚠️ 本模块无法生成</b><br>Futu 实时持仓数据中断（见 A 模块说明），无股票主表和期权简表数据源。<br><br><b>数据缺口影响</b>：无法展示 ticker / 现价 / 涨跌幅 / 数量 / 成本 / 今日盈亏 / 累计盈亏 / 市值；期权 DTE / ITM-OTM / 距离 strike / 盈亏均无法计算。</div>
+<div class="callout warn"><b>参考：最近一次有效持仓时点</b><br>9/2 21:15 快照账户净值 $52,796.28（9 天前）。自那以后 Futu 数据链持续不稳定，请尽快检查 OpenD 登录态。</div>
+</div>
+<div class="card"><h2>D. 决策看板 <span class="tag">DECISION BOARD · 快速定性 · 非交易建议</span></h2>
+<div class="callout risk"><b>⚠️ 本模块无法生成</b><br>决策看板评分依赖真实持仓（风险贡献 Top 3 + SMA50/200 + RSI + 盈亏比），Futu 数据中断导致无持仓可评分。</div>
+<div class="callout info"><b>说明</b>：即便在数据正常情况下，本模块也仅做快速定性，不构成交易建议。今日因数据缺口整模块跳过，避免给出任何误导性评分。</div>
+</div>
+<div class="card"><h2>E. 隔夜事件与收益归因 <span class="tag">OVERNIGHT ATTRIBUTION</span></h2>
+<div class="callout risk"><b>⚠️ 收益归因无法生成</b><br>无真实持仓今日盈亏数据，无法判断"谁贡献了收益、谁拖累了收益"。</div>
+<h3 style="font-size:15px;color:var(--t1);margin:14px 0 8px">隔夜市场层面已知事实（yfinance + SEC feed）</h3>
+<ul style="margin-left:22px;font-size:15px;line-height:1.85">
+<li><b>指数层面</b>：QQQ +0.87% / SPY +0.85%，VIX 15.84（-11.21%），10Y +0.63% 至 4.975% —— 典型 risk-on 修复组合，VIX 大幅回落同时股指收复 SMA50。</li>
+<li><b>SEC/EDGAR 监控</b>：本期 sec_filing_monitor.companies=[] / sec_report_brief.companies=[]（近 7 日无目标公司文件），结合持仓数据缺失，无个股层面的盘后/SEC 归因可写。</li>
+<li><b>推断（合理推断，非已知事实）</b>：QQQ/SPY 收复 SMA50 且 VIX 回到 16 下方，若你的持仓偏成长股/科技，9/11 单日大概率是浮盈日；具体数字需要 Futu 恢复后核对。</li>
+</ul>
+</div>
+<div class="card"><h2>F. 组合风险快照 <span class="tag">PORTFOLIO RISK SNAPSHOT</span></h2>
+<div class="callout risk"><b>⚠️ 组合风险指标无法计算</b><br>portfolio_risk_attribution.weights=[]，无真实持仓数据源，前三大权重 / 集中度 / 风格暴露 / 期权风险灯号 / 最近到期提醒均无法输出。</div>
+<div class="grid">
+<div class="kpi"><div class="lbl">前三大持仓权重</div><div class="val neu">N/A</div><div class="sub">持仓数据缺失</div></div>
+<div class="kpi"><div class="lbl">集中度等级</div><div class="val neu">N/A</div><div class="sub">无法计算</div></div>
+<div class="kpi"><div class="lbl">风格暴露</div><div class="val neu">N/A</div><div class="sub">无法计算</div></div>
+<div class="kpi"><div class="lbl">期权风险灯号</div><div class="val neu">N/A</div><div class="sub">期权持仓数据缺失</div></div>
+</div>
+</div>
+<div class="card"><h2>📊 模拟组合 vs 真实组合 <span class="tag">PAPER TRADING · 自 2026-05-07 起</span></h2>
+<div class="table-wrap"><table class="t"><tr><th>项目</th><th>数值</th><th>说明</th></tr>
+<tr><td>起始日期</td><td>2026-05-07</td><td>镜像真实账户 t0</td></tr>
+<tr><td>模拟 NAV</td><td>$64,704.99</td><td>paper_trading 影子账户</td></tr>
+<tr><td>真实 NAV</td><td class="neu">N/A</td><td>Futu 中断；最近 anchor 9/2 $52,796.28</td></tr>
+<tr><td>模拟累计 P-L</td><td class="neg">-$4,909.13 (-7.05%)</td><td>自 2026-05-07 起</td></tr>
+<tr><td>真实累计 P-L</td><td class="neu">N/A</td><td>无法对照</td></tr>
+<tr><td>模拟当日 P-L</td><td class="pos">+$47.04</td><td>9/11 美股收盘</td></tr>
+<tr><td>模拟交易笔数</td><td>13</td><td>当前持仓 8 只股票 / 0 期权</td></tr>
+</table></div>
+<div class="callout info"><b>方法学说明</b>：模拟账户仅执行晚报 H 模块「立即执行」指令、次日开盘价模拟成交，不与真实账户手动操作同步，不构成投资建议。今日真实账户 NAV 缺失，对照失效。</div>
+</div>
+<div class="card"><h2>G. 交易行为快照 <span class="tag">SHADOW ACCOUNT · YTD 行为诊断</span></h2>
+<div class="callout risk"><b>⚠️ 交易行为诊断数据本期未生成</b><br>shadow_account_v2.py 因同样的 Futu 网络中断失败（RuntimeError: 网络中断），无法拉取 YTD 历史成交，胜率 / 盈亏比 / 持有天数 / 过度交易灯号 / 处置效应全部无法计算。</div>
+<div class="callout info"><b>说明</b>：本模块只展示行为结果，不给操作建议。Futu 恢复后会重新生成。</div>
+</div>
+<div class="footer">
+<b>数据口径</b>：Futu OpenD 为唯一权威持仓源，今晨 5 次调用均返回网络中断，本早报持仓/盈亏/风险/决策看板/Shadow Account 全部缺失；宏观/指数/技术分析来自 yfinance（2026-09-11 美股收盘），DXY 来自 OpenBB（99.10），美债收益率曲线本次未返回；模拟组合数据来自 paper_trading 影子账户。<br>
+<b>免责声明</b>：投资有风险，分析仅供参考，不构成投资建议。本早报因数据缺失仅提供宏观层面信息，不含任何持仓相关判断。
+</div>
+
+</div></body></html>

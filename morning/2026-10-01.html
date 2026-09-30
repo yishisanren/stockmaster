@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美股早报 · 2026-10-01</title>
+<style>
+:root{
+  --bg:#F6F8FB; --card:#FFFFFF; --card2:#F8FAFC;
+  --txt:#0F172A; --body:#334155; --muted:#64748B; --weak:#94A3B8;
+  --blue:#2563EB; --blue-bg:#EFF6FF; --blue-br:#BFDBFE;
+  --pos:#15803D; --pos-bg:#ECFDF3; --pos-br:#BBF7D0;
+  --neg:#B42318; --neg-bg:#FEF3F2; --neg-br:#FECDCA;
+  --warn:#B54708; --warn-bg:#FFFAEB; --warn-br:#FEDF89;
+  --br:#E2E8F0; --br-strong:#CBD5E1;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto}
+.report-header{background:var(--card);border:1px solid var(--br);border-top:4px solid var(--blue);border-radius:18px;padding:20px 24px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.report-header .eyebrow{font-size:12px;letter-spacing:.12em;color:var(--blue);font-weight:600;margin-bottom:4px}
+.report-header h1{margin:0 0 10px 0;font-size:25px;font-weight:700;color:var(--txt)}
+.report-header .chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--card2);border:1px solid var(--br);font-size:13px;color:var(--body)}
+.chip.warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-br)}
+.chip.neg{background:var(--neg-bg);color:var(--neg);border-color:var(--neg-br)}
+.chip.pos{background:var(--pos-bg);color:var(--pos);border-color:var(--pos-br)}
+.report-header .meta{text-align:right;color:var(--muted);font-size:13px;flex-shrink:0;white-space:nowrap;line-height:1.7}
+.card{background:var(--card);border:1px solid var(--br);border-radius:18px;padding:22px 24px;margin-bottom:20px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.card h2{margin:0 0 14px 0;font-size:18px;font-weight:700;color:var(--txt);display:flex;align-items:center;gap:8px}
+.card h2::before{content:"";display:inline-block;width:4px;height:18px;background:var(--blue);border-radius:2px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:14px}
+.kpi{background:var(--card2);border:1px solid var(--br);border-radius:14px;padding:14px 16px}
+.kpi .lab{font-size:13px;color:var(--muted);margin-bottom:4px}
+.kpi .val{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--txt)}
+.kpi .sub{font-size:12px;color:var(--weak);margin-top:2px}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .neu{color:var(--muted)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid}
+.badge.green{background:var(--pos-bg);color:var(--pos);border-color:var(--pos-br)}
+.badge.red{background:var(--neg-bg);color:var(--neg);border-color:var(--neg-br)}
+.badge.yellow{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-br)}
+.badge.blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-br)}
+.badge.gray{background:var(--card2);color:var(--muted);border-color:var(--br)}
+.callout{border-left:4px solid;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px;line-height:1.6}
+.callout.info{background:var(--blue-bg);border-color:var(--blue);color:var(--body)}
+.callout.warn{background:var(--warn-bg);border-color:var(--warn);color:var(--body)}
+.callout.risk{background:var(--neg-bg);border-color:var(--neg);color:var(--body)}
+.callout.ok{background:var(--pos-bg);border-color:var(--pos);color:var(--body)}
+.table-wrap{overflow-x:auto;border:1px solid var(--br);border-radius:12px}
+table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:760px}
+table.t th{background:var(--card2);color:var(--muted);font-weight:600;font-size:13px;padding:10px 12px;text-align:left;border-bottom:1px solid var(--br);white-space:nowrap}
+table.t td{padding:10px 12px;border-bottom:1px solid var(--br);color:var(--body);font-variant-numeric:tabular-nums;vertical-align:middle}
+table.t tr:last-child td{border-bottom:none}
+table.t td.num{text-align:right;font-variant-numeric:tabular-nums}
+.footer{font-size:13px;color:var(--muted);line-height:1.7;padding:14px 4px;border-top:1px solid var(--br);margin-top:8px}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.mini{background:var(--card2);border:1px solid var(--br);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--body)}
+.mini .k{color:var(--muted);font-size:12px}
+.mini .v{font-weight:600;color:var(--txt);font-size:15px;margin-top:2px}
+.divider{height:1px;background:var(--br);margin:14px 0}
+.disc{font-size:12px;color:var(--weak);font-style:italic;margin-top:6px}
+@media (max-width:760px){
+  body{padding:12px}
+  .report-header{flex-direction:column;padding:16px}
+  .report-header .meta{text-align:left;white-space:normal}
+  .card{padding:16px}
+  .kpi-grid{grid-template-columns:1fr 1fr}
+  table.t{min-width:720px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="report-header">
+  <div>
+    <div class="eyebrow">STOCKMASTER · MORNING BRIEF</div>
+    <h1>美股实盘早报</h1>
+    <div class="chips">
+      <span class="chip">数据源：Futu OpenD</span>
+      <span class="chip">yfinance · OpenBB</span>
+      <span class="chip">SEC EDGAR</span>
+      <span class="chip neg">⚠ 保证金风险 LEVEL5</span>
+    </div>
+  </div>
+  <div class="meta">
+    2026-10-01 周四 · 北京时间 07:01<br>
+    美股 09-30 收盘<br>
+    市场状态：常规盘 · 已收盘
+  </div>
+</div>
+
+<div class="card" id="A">
+  <h2>A. 账户结果总览</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="lab">账户净值 (NAV)</div><div class="val">$58,406.67</div><div class="sub">USD</div></div>
+    <div class="kpi"><div class="lab">当日盈亏</div><div class="val pos">+$574.07</div><div class="sub pos">+0.98%</div></div>
+    <div class="kpi"><div class="lab">累计盈亏</div><div class="val neg">-$1,489.79</div><div class="sub neg">-2.49%</div></div>
+    <div class="kpi"><div class="lab">股票市值</div><div class="val">$110,168</div><div class="sub">9 只 · 多头</div></div>
+    <div class="kpi"><div class="lab">期权市值</div><div class="val">$-808</div><div class="sub">3 张 · 净空头为主</div></div>
+    <div class="kpi"><div class="lab">现金</div><div class="val neg">$-50,869</div><div class="sub">保证金账户正常负值</div></div>
+  </div>
+  <div class="callout info">📌 <strong>隔夜关键变动</strong>：GOOG 贡献 +$509、NVDA +$224、TSLA +$205，三大持仓共振推动当日 +$574（+0.98%）；累计仍 -$1,490（-2.49%），主要由 TSLA（-$3,409）、QCOM（-$670）、ORCL 看涨期权（-$361）拖累。</div>
+  <div class="callout risk">⚠ 有效杠杆 1.90×（gross MV / NAV）。保证金风险等级 LEVEL5，margin_call_margin $43,777。当前购买力 $5,620。</div>
+</div>
+
+<div class="card" id="B">
+  <h2>B. 宏观速览</h2>
+  <div class="mini-grid">
+    <div class="mini"><div class="k">VIX 波动率</div><div class="v">16.34</div><div class="sub">前收 16.04 · 16-18 区间偏平静</div></div>
+    <div class="mini"><div class="k">DXY 美元指数</div><div class="v">101.46</div><div class="sub">09-30 收盘 · 美元温和</div></div>
+    <div class="mini"><div class="k">美债 2s10s</div><div class="v">+0.37%</div><div class="sub">2Y 4.89% / 10Y 5.26% · 曲线正常</div></div>
+    <div class="mini"><div class="k">QQQ / SPY 状态</div><div class="v">QQQ RSI 69.3</div><div class="sub">接近超买 · SPY RSI 54 中性</div></div>
+  </div>
+  <div class="callout info">本周事件：周五 (10-03) 美国 9 月非农就业报告；预期波动放大。其他无 FOMC / CPI。</div>
+</div>
+
+<div class="card" id="C">
+  <h2>C. 持仓涨跌明细</h2>
+  <h3 style="font-size:15px;margin:0 0 8px 0;color:var(--muted)">股票（按市值排序）</h3>
+  <div class="table-wrap"><table class="t">
+    <thead><tr><th>代码</th><th class="num">现价</th><th class="num">今日涨跌</th><th class="num">数量</th><th class="num">成本</th><th class="num">今日盈亏</th><th class="num">累计盈亏</th><th class="num">市值</th></tr></thead>
+    <tbody><tr><td><strong>TSLA</strong> <span style='color:#94A3B8;font-size:12px'>特斯拉</span></td><td class='num'>$354.35</td><td class='num pos'>+0.51%</td><td class='num'>115</td><td class='num'>$384.00</td><td class='num pos'>+$204.87</td><td class='num neg'>-$3,409.33 <span style='font-size:11px;color:#94A3B8'>(-7.7%)</span></td><td class='num'>$40,751</td></tr><tr><td><strong>NVDA</strong> <span style='color:#94A3B8;font-size:12px'>英伟达</span></td><td class='num'>$229.45</td><td class='num pos'>+0.99%</td><td class='num'>100</td><td class='num'>$185.97</td><td class='num pos'>+$223.87</td><td class='num pos'>+$4,348.32 <span style='font-size:11px;color:#94A3B8'>(+23.4%)</span></td><td class='num'>$22,945</td></tr><tr><td><strong>GOOG</strong> <span style='color:#94A3B8;font-size:12px'>谷歌-C</span></td><td class='num'>$345.81</td><td class='num pos'>+2.52%</td><td class='num'>60</td><td class='num'>$337.79</td><td class='num pos'>+$509.40</td><td class='num pos'>+$481.44 <span style='font-size:11px;color:#94A3B8'>(+2.4%)</span></td><td class='num'>$20,749</td></tr><tr><td><strong>QCOM</strong> <span style='color:#94A3B8;font-size:12px'>高通</span></td><td class='num'>$184.15</td><td class='num pos'>+0.03%</td><td class='num'>45</td><td class='num'>$199.05</td><td class='num pos'>+$2.25</td><td class='num neg'>-$670.32 <span style='font-size:11px;color:#94A3B8'>(-7.5%)</span></td><td class='num'>$8,287</td></tr><tr><td><strong>ANET</strong> <span style='color:#94A3B8;font-size:12px'>Arista</span></td><td class='num'>$204.60</td><td class='num pos'>+0.86%</td><td class='num'>30</td><td class='num'>$198.69</td><td class='num pos'>+$52.20</td><td class='num pos'>+$177.32 <span style='font-size:11px;color:#94A3B8'>(+3.0%)</span></td><td class='num'>$6,138</td></tr><tr><td><strong>AMZN</strong> <span style='color:#94A3B8;font-size:12px'>亚马逊</span></td><td class='num'>$249.45</td><td class='num pos'>+1.13%</td><td class='num'>20</td><td class='num'>$258.46</td><td class='num pos'>+$55.60</td><td class='num neg'>-$180.30 <span style='font-size:11px;color:#94A3B8'>(-3.5%)</span></td><td class='num'>$4,989</td></tr><tr><td><strong>RCL</strong> <span style='color:#94A3B8;font-size:12px'>皇家加勒比</span></td><td class='num'>$266.04</td><td class='num pos'>+2.06%</td><td class='num'>10</td><td class='num'>$221.83</td><td class='num pos'>+$53.72</td><td class='num pos'>+$442.12 <span style='font-size:11px;color:#94A3B8'>(+19.9%)</span></td><td class='num'>$2,660</td></tr><tr><td><strong>NOK</strong> <span style='color:#94A3B8;font-size:12px'>诺基亚</span></td><td class='num'>$10.17</td><td class='num neg'>-1.83%</td><td class='num'>200</td><td class='num'>$10.72</td><td class='num neg'>-$38.00</td><td class='num neg'>-$109.44 <span style='font-size:11px;color:#94A3B8'>(-5.1%)</span></td><td class='num'>$2,034</td></tr><tr><td><strong>SPCX</strong> <span style='color:#94A3B8;font-size:12px'>SpaceX</span></td><td class='num'>$150.70</td><td class='num pos'>+0.98%</td><td class='num'>10</td><td class='num'>$151.36</td><td class='num pos'>+$14.62</td><td class='num neg'>-$6.58 <span style='font-size:11px;color:#94A3B8'>(-0.4%)</span></td><td class='num'>$1,507</td></tr></tbody>
+  </table></div>
+  <div class="divider"></div>
+  <h3 style="font-size:15px;margin:0 0 8px 0;color:var(--muted)">期权</h3>
+  <div class="table-wrap"><table class="t">
+    <thead><tr><th>合约</th><th>方向</th><th class="num">行权价</th><th class="num">DTE</th><th class="num">ITM/OTM</th><th class="num">正股价</th><th class="num">期权价</th><th class="num">今日盈亏</th><th class="num">累计盈亏</th></tr></thead>
+    <tbody>
+<tr><td><strong>ASTS261030P60000</strong><br><span style='color:#94A3B8;font-size:12px'>ASTS 60P 2026-10-30</span></td><td><span class='badge red'>SHORT</span></td><td class='num'>$60</td><td class='num'>29天</td><td><span class='badge green'>OTM 1.9%</span></td><td class='num'>$58.86</td><td class='num'>$6.03</td><td class='num neg'>-$51.67</td><td class='num neg'>-$102.50 (-20.5%)</td></tr><tr><td><strong>AAOI261002P100000</strong><br><span style='color:#94A3B8;font-size:12px'>AAOI 100P 2026-10-02</span></td><td><span class='badge red'>SHORT</span></td><td class='num'>$100</td><td class='num'>1天</td><td><span class='badge green'>OTM 0.7%</span></td><td class='num'>$99.26</td><td class='num'>$3.15</td><td class='num neg'>-$2.50</td><td class='num pos'>+$455.00 (+59.1%)</td></tr><tr><td><strong>ORCL270115C250000</strong><br><span style='color:#94A3B8;font-size:12px'>ORCL 250C 2027-01-15</span></td><td><span class='badge blue'>LONG</span></td><td class='num'>$250</td><td class='num'>471天</td><td><span class='badge blue'>深OTM 82%</span></td><td class='num'>$137.30</td><td class='num'>$1.09</td><td class='num pos'>+$2.46</td><td class='num neg'>-$361.00 (-76.8%)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="disc">说明：AAOI 100P 明日 (10-02) 到期，正股 $99.26 距 strike 仅 0.7%，存在被行权风险；ASTS 60P 仍有 29 天。ORCL 250C 深虚值，仓位小（$109）。</div>
+</div>
+
+<div class="card" id="D">
+  <h2>D. 决策看板 <span class="badge blue" style="margin-left:6px">监控优先级 / 快速定性</span></h2>
+  <div style="font-size:13px;color:var(--muted);margin-bottom:10px">按市值前 3 大仓位定性评分（SMA50/200 + RSI + 累计盈亏综合），仅作监控优先级排序，<strong>不构成交易建议</strong>。</div>
+  <div class="mini-grid"><div class='mini'><strong>TSLA</strong> | 评分 <span class='badge yellow'>40/100</span> | 趋势 中性<br><span style='color:#94A3B8;font-size:12px'>RSI 44 | vs SMA50 +2.3% | vs SMA200 -10.0%</span><br><span style='font-size:13px'>今日关键变量: Robotaxi 进展 + Q3 交付数据 + $20B 信贷协议（9-29 8-K）</span></div><div class='mini'><strong>NVDA</strong> | 评分 <span class='badge green'>80/100</span> | 趋势 偏多<br><span style='color:#94A3B8;font-size:12px'>RSI 64 | vs SMA50 +5.0% | vs SMA200 +14.1%</span><br><span style='font-size:13px'>今日关键变量: AI 资本开支周期 + 即将 Q3 财报 + QQQ RSI 超买</span></div><div class='mini'><strong>GOOG</strong> | 评分 <span class='badge yellow'>53/100</span> | 趋势 中性<br><span style='color:#94A3B8;font-size:12px'>RSI 58 | vs SMA50 -0.2% | vs SMA200 +1.1%</span><br><span style='font-size:13px'>今日关键变量: 反垄断后续 + 内部人 9-29 多次 Form 4 减持 + Cloud 增长</span></div></div>
+  <div class="disc">评分参考：80+ 强势 | 60-79 偏多 | 40-59 中性 | 20-39 偏弱 | 0-19 弱势。本看板是轻量定性，不构成交易建议。</div>
+</div>
+
+<div class="card" id="E">
+  <h2>E. 隔夜事件与收益归因</h2>
+  <h3 style="font-size:15px;margin:0 0 8px 0;color:var(--pos)">✓ 收益贡献</h3>
+  <ul style="margin:6px 0 12px 0;padding-left:20px;line-height:1.7;color:var(--body)">
+    <li><strong>GOOG +$509</strong>：昨日 +2.5%，突破 SMA20/50；SEC 9-29 内部人 Form 4 多次（buys=5, sells=36）属常规 RSU 归属+代扣税卖出，未见异常。</li>
+    <li><strong>NVDA +$224</strong>：+0.99%，RSI 63.6 偏强，AI 板块资金面延续。</li>
+    <li><strong>TSLA +$205</strong>：+0.51%；SEC 9-29 8-K 公告 <strong>$20B 高级无抵押信贷协议</strong>，增强流动性缓冲，市场反应偏正面。</li>
+    <li><strong>AMZN +$56 / RCL +$54 / ANET +$52</strong>：均小幅收涨。</li>
+  </ul>
+  <h3 style="font-size:15px;margin:0 0 8px 0;color:var(--neg)">✗ 收益拖累</h3>
+  <ul style="margin:6px 0 12px 0;padding-left:20px;line-height:1.7;color:var(--body)">
+    <li><strong>NOK -$38</strong>：-0.59%，200 股小仓位，影响有限。</li>
+    <li><strong>ASTS 60P SHORT -$52</strong>：正股小跌至 $58.86，期权价升至 $6.03，浮动亏损 -$102。距行权价仅 1.9% OTM。</li>
+  </ul>
+  <h3 style="font-size:15px;margin:0 0 8px 0;color:var(--muted)">SEC / 监管事件（影响语境）</h3>
+  <ul style="margin:6px 0;padding-left:20px;line-height:1.7;color:var(--body)">
+    <li><strong>TSLA 8-K (9-29)</strong>：签订 $20B 高级无抵押信贷 + 终止旧循环信贷，<span class="badge green">低强度 中性偏正</span>，增强财务灵活性。</li>
+    <li><strong>ANET Form 4 (9-29)</strong>：内部人卖出 3 笔共 ~62,622 股 @ $211.40，<span class="badge yellow">中强度 偏空</span>，关注是否扩大。</li>
+    <li><strong>GOOG Form 4 (9-29)</strong>：多名高管 RSU 归属+代扣税卖出（buy C / sell F 配对），<span class="badge gray">中性 例行</span>。</li>
+    <li><strong>ASTS 8-K (9-28)</strong>：Item 5.02 高管变动 + Item 9.01 财务，<span class="badge gray">低强度</span>。</li>
+    <li><strong>QCOM Form 4 (9-25)</strong>：内部人卖出 10,000 股 @ $200，<span class="badge yellow">中强度 偏空</span>。</li>
+  </ul>
+</div>
+
+<div class="card" id="F">
+  <h2>F. 组合风险快照</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="lab">前 3 大权重</div><div class="val">76.7%</div><div class="sub">TSLA 37.0% · NVDA 20.8% · GOOG 18.8%</div></div>
+    <div class="kpi"><div class="lab">集中度等级</div><div class="val neg">高</div><div class="sub">单一 TSLA 超 35%</div></div>
+    <div class="kpi"><div class="lab">风险温度</div><div class="val neg">高</div><div class="sub">主风险源 TSLA</div></div>
+    <div class="kpi"><div class="lab">有效杠杆</div><div class="val neg">1.90×</div><div class="sub">LEVEL5 · 保证金警报</div></div>
+  </div>
+  <div class="mini-grid">
+    <div class="mini"><div class="k">风格暴露</div><div class="v" style="font-size:13px;line-height:1.5">EV 37.0% · 大盘科技 44.2% · AI/半导体 28.4%</div></div>
+    <div class="mini"><div class="k">压力测试：普跌 5%</div><div class="v neg">-$5,502.60</div></div>
+    <div class="mini"><div class="k">压力测试：TSLA+NVDA 跌 8%</div><div class="v neg">-$6,754.84</div></div>
+  </div>
+  <div class="divider"></div>
+  <h3 style="font-size:15px;margin:0 0 8px 0;color:var(--muted)">期权风险灯号</h3>
+  <ul style="margin:6px 0;padding-left:20px;line-height:1.7;color:var(--body)">
+    <li><span class="badge red">🔴 AAOI 100P SHORT</span> · 明日 (10-02) 到期，正股 $99.26 距 strike 仅 0.7%，assignment 风险最高，需密切监控。</li>
+    <li><span class="badge yellow">🟡 ASTS 60P SHORT</span> · 29 天到期，正股 $58.86 距 strike 1.9% OTM，浮亏 -$102（-20.5%）。</li>
+    <li><span class="badge gray">⚪ ORCL 250C LONG</span> · 471 天到期，深 OTM，浮亏 -$361（-76.8%），市值仅 $109。</li>
+  </ul>
+  <div class="callout warn">⚠ 保证金风险 LEVEL5：现金 -$50,869，margin_call_margin $43,777，购买力 $5,620。重仓 + 净空头期权组合在 QQQ RSI 接近超买的环境下存在回撤敏感性。</div>
+</div>
+
+<div class="card" id="G">
+  <h2>G. 交易行为快照 <span class="badge gray" style="margin-left:6px">Shadow Account · YTD</span></h2>
+  <div style="font-size:13px;color:var(--muted);margin-bottom:10px">历史成交行为诊断（非持仓监控），仅作复盘参考，不构成交易建议。</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="lab">胜率</div><div class="val">49.1%</div><div class="sub">161 个回合</div></div>
+    <div class="kpi"><div class="lab">盈亏比</div><div class="val">0.65</div><div class="sub">赢单/亏单均幅</div></div>
+    <div class="kpi"><div class="lab">已实现盈亏 YTD</div><div class="val neg">-$5,402.32</div></div>
+    <div class="kpi"><div class="lab">过度交易灯号</div><div class="val"><span class="badge red">🔴 红</span></div><div class="sub">13.1× 影子预算</div></div>
+  </div>
+  <div class="mini-grid">
+    <div class="mini"><div class="k">盈利单平均持有</div><div class="v">17.9 天</div></div>
+    <div class="mini"><div class="k">亏损单平均持有</div><div class="v">25.1 天</div></div>
+    <div class="mini"><div class="k">处置效应</div><div class="v" style="font-size:13px">持有亏损单更久（处置效应）</div></div>
+  </div>
+  <div class="callout warn">📌 交易频率显著偏高（13.1× 预算）；胜率 49.1% + 盈亏比 0.65 表明小赚大亏结构；处置效应存在但不算极端（亏损单多持 7.2 天）。</div>
+</div>
+
+<div class="card" id="P">
+  <h2>📊 模拟组合 vs 真实组合 <span class="badge blue" style="margin-left:6px">Paper Trading · 自 2026-05-07</span></h2>
+  <div style="font-size:13px;color:var(--muted);margin-bottom:10px">模拟账户严格按晚报 H 模块「立即执行」指令次日开盘价成交；不与真实账户同步，作纪律对照。</div>
+  <div class="table-wrap"><table class="t">
+    <thead><tr><th></th><th class="num">NAV</th><th class="num">累计 PnL</th><th class="num">收益率</th><th class="num">今日 PnL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>模拟组合</strong></td><td class="num">$67,150</td><td class="num neg">-$2,464.02</td><td class="num neg">-3.54%</td><td class="num pos">+$297.57</td></tr>
+      <tr><td><strong>真实组合</strong></td><td class="num">$58,218</td><td class="num neg">-$11,395.93</td><td class="num neg">-16.37%</td><td class="num pos">+$572.97</td></tr>
+      <tr><td><strong>模拟 - 真实</strong></td><td class="num pos">+$8,932</td><td class="num pos">模拟领先 +12.83pp</td><td class="num neu">—</td><td class="num neu">—</td></tr>
+    </tbody>
+  </table></div>
+  <div class="disc">模拟累计 13 笔成交。模拟组合显著跑赢真实（-3.54% vs -16.37%），差距 $8,932，主要由真实账户保证金利息 + TSLA 重仓未减仓导致。</div>
+</div>
+
+<div class="footer">
+  <div><strong>数据口径</strong>：持仓/账户/盈亏 = Futu OpenD 实时（07:01 CST，09-30 美股收盘后）；宏观 = yfinance + OpenBB（联邦储备收益率曲线）；SEC = EDGAR 近 7 日。</div>
+  <div><strong>已知数据缺口</strong>：SPCX（SpaceX 私募股权基金）无 SMA200 数据（仅 76 个点）；未单独拉取盘后期权 Greeks。</div>
+  <div><strong>免责声明</strong>：本报告仅为结果展示与风险快照，不构成任何投资建议。投资有风险，决策需独立判断。</div>
+  <div><strong>方法学说明</strong>：模拟账户仅执行晚报 H 模块「立即执行」指令、次日开盘价模拟成交，用于纪律对照，不构成投资建议。</div>
+</div>
+</div></body></html>

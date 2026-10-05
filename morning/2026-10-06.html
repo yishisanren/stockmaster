@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>美股早报 · 2026-10-06</title>
+<style>
+  :root{
+    --paper:#F6F5F0; --ink:#16140F; --ink-2:#4A463D; --mute:#8B867A;
+    --rule:#D6D0C0; --rule-soft:#E5E1D4; --spot:#1B3A5C; --spot-soft:#5C7894; --spot-pale:#C9D3DE;
+    --pos:#1F6F4F; --neg:#8A2F26; --warn:#9A6420;
+    --serif:"Charter","Iowan Old Style Text","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink);margin:0;padding:0}
+  body{font-family:var(--sans);font-size:14px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .page{max-width:920px;margin:0 auto;padding:36px 40px 56px}
+  .masthead{padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .masthead .topline{display:flex;justify-content:space-between;align-items:baseline;color:var(--mute);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;font-family:var(--sans)}
+  .masthead .topline .vol{color:var(--ink-2)}
+  .masthead h1{font-family:var(--serif);font-weight:700;font-size:46px;letter-spacing:-0.01em;line-height:1;margin:0 0 8px;color:var(--ink)}
+  .masthead .standfirst{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);margin:0;letter-spacing:0.01em}
+  .masthead .meta-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-2);font-family:var(--sans)}
+  .masthead .meta-strip > span{padding-right:18px;margin-right:18px;border-right:1px solid var(--rule)}
+  .masthead .meta-strip > span:last-child{border-right:0;padding-right:0;margin-right:0}
+  .masthead .meta-strip strong{color:var(--ink);font-weight:600}
+  section.mod{padding:36px 0 28px;border-bottom:1px solid var(--rule)}
+  section.mod:last-of-type{border-bottom:0}
+  .kicker{display:flex;align-items:baseline;gap:14px;margin:0 0 22px}
+  .kicker .num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:28px;color:var(--spot);line-height:1;min-width:34px}
+  .kicker h2{font-family:var(--serif);font-weight:700;font-size:22px;margin:0;color:var(--ink);letter-spacing:-0.005em;line-height:1.15}
+  .kicker .source{font-family:var(--sans);font-size:10.5px;color:var(--mute);letter-spacing:0.08em;text-transform:uppercase;margin-left:auto;align-self:center}
+  .hero{display:grid;grid-template-columns:1.05fr 0.95fr;gap:38px;align-items:start;margin-bottom:22px}
+  .hero .heronum{font-family:var(--serif);font-weight:700;font-size:62px;line-height:1;letter-spacing:-0.018em;color:var(--pos);font-variant-numeric:tabular-nums}
+  .hero .heronum.neg{color:var(--neg)}
+  .hero .herolabel{font-family:var(--sans);font-size:11px;color:var(--mute);letter-spacing:0.14em;text-transform:uppercase;margin:4px 0 18px}
+  .hero .recovery-cap{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-top:10px}
+  .hero .recovery-cap b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .hero .narrative{font-family:var(--serif);font-size:16px;line-height:1.65;color:var(--ink-2);margin:0;padding-top:6px}
+  .hero .narrative b{color:var(--ink);font-weight:600}
+  .stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);padding-top:14px;margin-top:10px}
+  .stat-strip .s{padding:0 18px;border-right:1px solid var(--rule)}
+  .stat-strip .s:first-child{padding-left:0}
+  .stat-strip .s:last-child{border-right:0;padding-right:0}
+  .stat-strip .sk{font-size:11px;color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+  .stat-strip .sv{font-family:var(--mono);font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+  .stat-strip .sv.neg{color:var(--neg)}
+  .stat-strip .sv.pos{color:var(--pos)}
+  .stat-strip .ss{font-size:11px;color:var(--mute);margin-top:3px}
+  .macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .macro-cell{padding:0 20px;border-right:1px solid var(--rule)}
+  .macro-cell:first-child{padding-left:0}
+  .macro-cell:last-child{border-right:0;padding-right:0}
+  .macro-cell .ml{font-family:var(--sans);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .macro-cell .spark{display:block;margin-bottom:6px}
+  .macro-cell .mv{font-family:var(--serif);font-weight:700;font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-0.01em}
+  .macro-cell .md{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:3px;font-variant-numeric:tabular-nums}
+  .macro-cell .md.pos{color:var(--pos)}
+  .macro-cell .md.neg{color:var(--neg)}
+  .macro-cell .mn{font-family:var(--sans);font-size:12px;color:var(--mute);margin-top:8px;line-height:1.5}
+  .macro-footer{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--ink-2);margin:22px 0 0;padding-top:14px;border-top:1px dotted var(--rule)}
+  .contrib{margin-bottom:26px}
+  .contrib .chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;font-family:var(--sans);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+  .contrib .scale{font-family:var(--mono);color:var(--ink-2);letter-spacing:0}
+  .bar-row{display:grid;grid-template-columns:78px 1fr 92px;align-items:center;gap:0;padding:5px 0;font-family:var(--sans)}
+  .bar-row .br-tk{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink)}
+  .bar-row .br-track{position:relative;height:14px;background:transparent;margin:0 12px}
+  .bar-row .br-axis{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--rule);transform:translateX(-0.5px)}
+  .bar-row .br-bar{position:absolute;top:1px;height:12px}
+  .bar-row .br-bar.pos{background:var(--pos);left:50%}
+  .bar-row .br-bar.neg{background:var(--neg);right:50%}
+  .bar-row .br-val{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
+  .bar-row .br-val.pos{color:var(--pos)}
+  .bar-row .br-val.neg{color:var(--neg)}
+  .table-section{margin-top:24px}
+  .subhead{font-family:var(--sans);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;font-weight:600}
+  .detail{width:100%;border-collapse:collapse;font-size:12.5px;font-family:var(--sans)}
+  .detail th{text-align:right;font-weight:500;color:var(--mute);font-family:var(--sans);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--rule)}
+  .detail th:first-child{text-align:left}
+  .detail th.t-num{text-align:right}
+  .detail td{padding:9px 10px;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums;color:var(--ink-2);text-align:right}
+  .detail td:first-child{text-align:left;color:var(--ink);font-weight:600}
+  .detail td.num{font-family:var(--mono)}
+  .detail td.pos{color:var(--pos)}
+  .detail td.neg{color:var(--neg)}
+  .detail tr:last-child td{border-bottom:0}
+  .opts{margin-top:26px}
+  .opt-card{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;align-items:center;padding:14px 0;border-top:1px solid var(--rule-soft)}
+  .opt-card:first-of-type{border-top:1px solid var(--rule)}
+  .opt-name{font-family:var(--sans);font-size:13px;color:var(--ink)}
+  .opt-name b{font-weight:600;font-family:var(--mono);letter-spacing:-0.01em}
+  .opt-name .opt-meta{display:block;color:var(--mute);font-size:11px;margin-top:3px;letter-spacing:0.04em}
+  .opt-gauge{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+  .opt-gauge svg{flex-shrink:0}
+  .opt-pnl{text-align:right;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+  .opt-pnl .pnl-today{display:block;color:var(--ink-2);font-size:11.5px}
+  .opt-pnl .pnl-cum{display:block;margin-top:2px}
+  .opt-pnl .pnl-cum.pos{color:var(--pos)}
+  .opt-pnl .pnl-cum.neg{color:var(--neg)}
+  .opt-tag{font-family:var(--sans);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase}
+  .opt-tag.warn{color:var(--warn)}
+  .opt-tag.ok{color:var(--pos)}
+  .gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .gauge{padding:0 22px;border-right:1px solid var(--rule)}
+  .gauge:first-child{padding-left:0}
+  .gauge:last-child{border-right:0;padding-right:0}
+  .gauge .g-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .gauge .g-tk{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-0.005em}
+  .gauge .g-num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+  .gauge .g-num .g-out{font-size:13px;color:var(--mute);font-weight:400;font-family:var(--sans)}
+  .gauge .g-scale{margin:14px 0 6px}
+  .gauge .g-trend{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);margin-bottom:6px}
+  .gauge .g-tech{font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:-0.01em;margin-bottom:8px}
+  .gauge .g-var{font-family:var(--sans);font-size:12px;color:var(--ink-2);line-height:1.5}
+  .gauges-foot{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--mute);margin:22px 0 0;padding-top:12px;border-top:1px dotted var(--rule);line-height:1.55}
+  .attr-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .attr-col h4{font-family:var(--sans);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin:0 0 14px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+  .attr-row{padding:10px 0;border-bottom:1px solid var(--rule-soft)}
+  .attr-row:last-child{border-bottom:0}
+  .attr-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:3px}
+  .attr-tk{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink)}
+  .attr-tk .ts{font-weight:400;color:var(--mute);font-size:11.5px;margin-left:4px;letter-spacing:0.04em}
+  .attr-val{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+  .attr-val.pos{color:var(--pos)}
+  .attr-val.neg{color:var(--neg)}
+  .attr-note{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);line-height:1.5;margin:0}
+  .marginalia{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-2);line-height:1.6;margin:24px 0 0;padding:14px 16px 14px 18px;border-left:2px solid var(--warn);background:transparent}
+  .marginalia b{color:var(--ink);font-weight:600;font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:0.04em}
+  .risk-top{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;margin-bottom:28px}
+  .donut-wrap{position:relative;width:200px;height:200px}
+  .donut-wrap .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .donut-wrap .donut-pct{font-family:var(--serif);font-weight:700;font-size:32px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-0.01em}
+  .donut-wrap .donut-label{font-family:var(--sans);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-top:5px}
+  .donut-wrap .donut-sub{font-family:var(--serif);font-style:italic;font-size:11.5px;color:var(--ink-2);margin-top:6px}
+  .legend{font-family:var(--sans);font-size:13px}
+  .legend .leg-title{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:10px;font-weight:600}
+  .legend .leg-row{display:grid;grid-template-columns:14px 1fr auto auto;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--rule-soft);font-variant-numeric:tabular-nums}
+  .legend .leg-row:last-child{border-bottom:0}
+  .legend .leg-swatch{width:10px;height:10px;align-self:center}
+  .legend .leg-name{font-family:var(--sans);font-weight:600;color:var(--ink)}
+  .legend .leg-pct{font-family:var(--mono);color:var(--ink);font-size:13px}
+  .legend .leg-mv{font-family:var(--mono);color:var(--mute);font-size:11.5px;margin-left:10px}
+  .exposure{margin-top:6px}
+  .exp-row{display:grid;grid-template-columns:96px 1fr 60px;gap:12px;align-items:center;padding:5px 0}
+  .exp-label{font-family:var(--sans);font-size:12.5px;color:var(--ink-2)}
+  .exp-track{position:relative;height:10px;background:var(--rule-soft)}
+  .exp-bar{position:absolute;top:0;left:0;bottom:0;background:var(--spot)}
+  .exp-bar.soft{background:var(--spot-soft)}
+  .exp-val{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right;font-variant-numeric:tabular-nums}
+  .opt-risk{margin-top:6px}
+  .opt-risk-row{display:grid;grid-template-columns:1.3fr 1fr 100px;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--rule-soft)}
+  .opt-risk-row:first-child{border-top:1px solid var(--rule)}
+  .opt-risk-name{font-family:var(--mono);font-size:12.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .opt-risk-name .lbl{display:block;font-family:var(--sans);font-size:10.5px;color:var(--mute);margin-top:3px;letter-spacing:0.05em}
+  .opt-risk-scale{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);display:flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
+  .opt-risk-tag{font-family:var(--sans);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;text-align:right}
+  .opt-risk-tag.warn{color:var(--warn)}
+  .opt-risk-tag.ok{color:var(--pos)}
+  .stress{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px;padding-top:14px;border-top:1px solid var(--rule)}
+  .stress-row{font-family:var(--sans);font-size:13px;color:var(--ink-2);display:flex;justify-content:space-between;align-items:baseline}
+  .stress-row .sl{color:var(--ink-2)}
+  .stress-row .sv{font-family:var(--mono);color:var(--neg);font-variant-numeric:tabular-nums}
+  .risk-callout{font-family:var(--serif);font-style:italic;font-size:13.5px;line-height:1.6;color:var(--ink-2);margin:22px 0 0;padding:14px 0 0;border-top:1px solid var(--rule)}
+  .risk-callout b{color:var(--ink);font-weight:600;font-style:normal;font-family:var(--sans);font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:6px}
+  .aside-sim{margin-top:36px;padding:20px 0 18px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .aside-sim .as-kicker{font-family:var(--sans);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+  .aside-sim .as-kicker b{color:var(--ink);font-weight:600;font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0;text-transform:none;margin-right:8px}
+  .sim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .sim-cell{padding:0 16px;border-right:1px solid var(--rule)}
+  .sim-cell:first-child{padding-left:0}
+  .sim-cell:last-child{border-right:0;padding-right:0}
+  .sim-cell .sk{font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+  .sim-cell .sv{font-family:var(--mono);font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .sim-cell .ss{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:3px;font-variant-numeric:tabular-nums}
+  .sim-cell .ss .pos{color:var(--pos)}
+  .sim-cell .ss .neg{color:var(--neg)}
+  .shadow-block{margin-top:14px;padding:14px 0 4px;border-top:1px dashed var(--rule)}
+  .shadow-block .sh-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;font-family:var(--sans)}
+  .shadow-block .sh-cell{padding:0 14px;border-right:1px solid var(--rule)}
+  .shadow-block .sh-cell:first-child{padding-left:0}
+  .shadow-block .sh-cell:last-child{border-right:0;padding-right:0}
+  .shadow-block .sh-k{font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+  .shadow-block .sh-v{font-family:var(--mono);font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .shadow-block .sh-s{font-size:11px;color:var(--mute);margin-top:2px;font-family:var(--sans)}
+  .shadow-block .sh-note{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--ink-2);margin-top:12px;line-height:1.55}
+  .shadow-block .sh-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-left:6px}
+  .sh-badge.red{background:#F3E4E0;color:#8A2F26}
+  .sh-badge.amber{background:#F1E4C6;color:#9A6420}
+  .sh-badge.green{background:#D9E5DC;color:#1F6F4F}
+  .colophon{margin-top:32px;padding-top:18px;border-top:1px solid var(--rule);font-family:var(--sans);font-size:11px;color:var(--mute);line-height:1.7}
+  .colophon p{margin:0 0 6px}
+  .colophon .cl-title{font-family:var(--sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px;font-weight:600}
+  .delta-arrow{display:inline-block;font-family:var(--sans);font-size:9px;vertical-align:1px;margin-right:2px}
+  @media (max-width: 760px){
+    .page{padding:24px 18px 36px}
+    .masthead h1{font-size:34px}
+    .masthead .standfirst{font-size:15px}
+    .masthead .meta-strip{font-size:11px;gap:6px}
+    .masthead .meta-strip > span{padding-right:10px;margin-right:10px}
+    .kicker h2{font-size:18px}
+    .kicker .num{font-size:22px;min-width:26px}
+    .kicker .source{display:none}
+    .hero{grid-template-columns:1fr;gap:18px}
+    .hero .heronum{font-size:46px}
+    .hero .narrative{font-size:14px}
+    .stat-strip{grid-template-columns:1fr;gap:0;padding-top:8px}
+    .stat-strip .s{padding:10px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .stat-strip .s:last-child{border-bottom:0}
+    .macro-grid{grid-template-columns:1fr;gap:0}
+    .macro-cell{padding:14px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .macro-cell:last-child{border-bottom:0}
+    .bar-row{grid-template-columns:60px 1fr 76px}
+    .bar-row .br-tk{font-size:12px}
+    .bar-row .br-val{font-size:11.5px}
+    .opt-card{grid-template-columns:1fr;gap:8px;padding:12px 0}
+    .opt-pnl{text-align:left}
+    .gauges{grid-template-columns:1fr;gap:0}
+    .gauge{padding:18px 0;border-right:0;border-bottom:1px solid var(--rule-soft)}
+    .gauge:last-child{border-bottom:0}
+    .attr-cols{grid-template-columns:1fr;gap:20px}
+    .risk-top{grid-template-columns:1fr;gap:18px;text-align:center}
+    .donut-wrap{margin:0 auto}
+    .legend{text-align:left}
+    .legend .leg-row{grid-template-columns:14px 1fr auto;gap:8px}
+    .legend .leg-mv{display:none}
+    .opt-risk-row{grid-template-columns:1fr;gap:6px}
+    .opt-risk-tag{text-align:left}
+    .stress{grid-template-columns:1fr;gap:8px}
+    .sim-grid{grid-template-columns:repeat(2,1fr);gap:14px 0}
+    .sim-cell{padding:8px 12px;border-right:1px solid var(--rule)}
+    .sim-cell:nth-child(2n){border-right:0}
+    .shadow-block .sh-row{grid-template-columns:repeat(2,1fr);gap:10px 0}
+    .shadow-block .sh-cell{padding:6px 10px;border-right:1px solid var(--rule)}
+    .shadow-block .sh-cell:nth-child(2n){border-right:0}
+    .detail{font-size:11.5px}
+    .detail th,.detail td{padding:7px 6px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="topline">
+      <span>Stockmaster Morning Brief</span>
+      <span class="vol">VOL. 2026 · NO. 1006</span>
+    </div>
+    <h1>美股早报</h1>
+    <p class="standfirst">隔夜结果 / 归因 / 风险快照, 2026-10-06, 周二</p>
+    <div class="meta-strip">
+      <span>北京 <strong>07:00</strong> / 美东盘后</span>
+      <span>市场状态 <strong>已收盘</strong></span>
+      <span>风险偏好 <strong>偏暖</strong></span>
+      <span>账户风险 <strong>LEVEL5</strong></span>
+    </div>
+  </header>
+
+  <!-- I. 账户结果 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">I</span>
+      <h2>账户结果</h2>
+      <span class="source">Futu OpenAPI · 实时</span>
+    </div>
+
+    <div class="hero">
+      <div>
+        <div class="heronum">+$1,713.52</div>
+        <div class="herolabel">TODAY · 当日盈亏</div>
+        <svg viewBox="0 0 360 28" width="100%" height="28" style="display:block;margin-top:4px" preserveAspectRatio="none">
+          <rect x="0" y="11" width="360" height="6" fill="#E5E1D4"/>
+          <rect x="225" y="9" width="135" height="10" fill="#1F6F4F"/>
+          <line x1="360" y1="6" x2="360" y2="22" stroke="#16140F" stroke-width="1"/>
+          <line x1="0" y1="6" x2="0" y2="22" stroke="#16140F" stroke-width="1"/>
+        </svg>
+        <div class="recovery-cap">
+          昨日累计未实现 <b>+$2,890</b> &nbsp;→&nbsp; 今日 <b>+$4,604</b> &nbsp;·&nbsp; 今日修复 <b>约 37% 净值单日 +2.82%</b>
+        </div>
+      </div>
+
+      <p class="narrative">
+        美股周一(10/5)全线收涨, <b>SPY +0.67%</b>, <b>QQQ +0.88%</b>。账户当日 +$1,713.52 (+2.82%), 主要由 <b>TSLA +$989</b> 与 <b>NVDA +$559</b> 拉动。当前账户处于 <b>LEVEL5 风控预警</b> (Futu 最大等级), 融资余额 -$49,237, 杠杆比约 1.79x; TSLA+NVDA+GOOG 三大持仓占总市值 80.2%, 单边事件冲击即可能触发追加保证金。
+      </p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="s">
+        <div class="sk">账户净值</div>
+        <div class="sv">$62,438.71</div>
+        <div class="ss">USD · Futu 实时</div>
+      </div>
+      <div class="s">
+        <div class="sk">持仓总市值</div>
+        <div class="sv">$111,675.66</div>
+        <div class="ss">含杠杆 · 股票 112,074 + 期权净 -398</div>
+      </div>
+      <div class="s">
+        <div class="sk">累计未实现</div>
+        <div class="sv pos">+$4,603.82</div>
+        <div class="ss">9 只股票 + 2 张期权合计</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- II. 宏观速览 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">II</span>
+      <h2>宏观速览</h2>
+      <span class="source">yfinance · 收盘 · OpenBB · 收益率曲线</span>
+    </div>
+
+    <div class="macro-grid">
+
+      <div class="macro-cell">
+        <div class="ml">VIX · 恐慌指数</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="0,18 16,16 33,17 50,14 66,15 83,12 100,13" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="13" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">15.52</div>
+        <div class="md neg"><span class="delta-arrow">▲</span>+0.21 vs 昨</div>
+        <div class="mn">低风险区间, 但已脱离 13-14 一级止盈观察带; 风险偏好仍偏暖。</div>
+      </div>
+
+      <div class="macro-cell">
+        <div class="ml">DXY · 美元指数</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="0,20 16,19 33,18 50,17 66,16 83,15 100,14" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="14" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">102.10</div>
+        <div class="md pos"><span class="delta-arrow">▲</span>+0.18% vs 开</div>
+        <div class="mn">美元偏强, 对 EM 与高估值成长构成温和压制。</div>
+      </div>
+
+      <div class="macro-cell">
+        <div class="ml">2s10s · 期限利差</div>
+        <svg viewBox="0 0 100 32" width="100%" height="32" class="spark" preserveAspectRatio="none">
+          <polyline points="0,22 16,20 33,18 50,17 66,15 83,13 100,11" fill="none" stroke="#1B3A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="11" r="2" fill="#1B3A5C"/>
+        </svg>
+        <div class="mv">+0.45%</div>
+        <div class="md">2Y 4.83% · 10Y 5.28%</div>
+        <div class="mn">曲线正常化加深, 软着陆定价占优。<br>QQQ 30.8x PE · SPY 距 200 日均线 +7.5%。</div>
+      </div>
+
+    </div>
+
+    <p class="macro-footer">本周无 FOMC / CPI; 财报周未启动, 主要宏观变量为周五(10/9)非农数据。</p>
+  </section>
+
+  <!-- III. 持仓涨跌 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">III</span>
+      <h2>持仓涨跌</h2>
+      <span class="source">Futu · 现价及盈亏</span>
+    </div>
+
+    <div class="contrib">
+      <div class="chart-head">
+        <span>今日盈亏贡献 · 按绝对值排序</span>
+        <span class="scale">单位 USD · 基准 ±$1,000</span>
+      </div>
+
+      <div class="bar-row">
+        <span class="br-tk">TSLA</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:49.5%"></div>
+        </div>
+        <span class="br-val pos">+989.00</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">NVDA</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:28.0%"></div>
+        </div>
+        <span class="br-val pos">+558.90</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">GOOG</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:9.4%"></div>
+        </div>
+        <span class="br-val pos">+187.85</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">QCOM</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar neg" style="width:8.0%"></div>
+        </div>
+        <span class="br-val neg">-160.65</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">SPCX</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:6.4%"></div>
+        </div>
+        <span class="br-val pos">+127.20</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">NOK</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar neg" style="width:3.6%"></div>
+        </div>
+        <span class="br-val neg">-72.06</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">TQQQ</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:3.1%"></div>
+        </div>
+        <span class="br-val pos">+61.89</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">ASTS P</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:2.3%"></div>
+        </div>
+        <span class="br-val pos">+45.24</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">RCL</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar neg" style="width:1.3%"></div>
+        </div>
+        <span class="br-val neg">-25.90</span>
+      </div>
+      <div class="bar-row">
+        <span class="br-tk">AMZN</span>
+        <div class="br-track">
+          <div class="br-axis"></div>
+          <div class="br-bar pos" style="width:0.3%"></div>
+        </div>
+        <span class="br-val pos">+6.81</span>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h4 class="subhead">股票持仓 · 详细数据</h4>
+      <table class="detail">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th class="t-num">现价</th>
+            <th class="t-num">涨跌%</th>
+            <th class="t-num">数量</th>
+            <th class="t-num">成本</th>
+            <th class="t-num">今日盈亏</th>
+            <th class="t-num">累计盈亏</th>
+            <th class="t-num">市值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>TSLA</td><td class="num">379.19</td><td class="num pos">+2.32%</td><td class="num">115</td><td class="num">384.00</td><td class="num pos">+989.00</td><td class="num neg">-553.10</td><td class="num">43,607</td></tr>
+          <tr><td>NVDA</td><td class="num">239.54</td><td class="num pos">+2.39%</td><td class="num">100</td><td class="num">185.72</td><td class="num pos">+558.90</td><td class="num pos">+5,382.35</td><td class="num">23,954</td></tr>
+          <tr><td>GOOG</td><td class="num">343.24</td><td class="num pos">+0.85%</td><td class="num">65</td><td class="num">337.74</td><td class="num pos">+187.85</td><td class="num pos">+357.54</td><td class="num">22,311</td></tr>
+          <tr><td>QCOM</td><td class="num">181.30</td><td class="num neg">-1.93%</td><td class="num">45</td><td class="num">199.05</td><td class="num neg">-160.65</td><td class="num neg">-798.57</td><td class="num">8,159</td></tr>
+          <tr><td>AMZN</td><td class="num">251.86</td><td class="num pos">+0.14%</td><td class="num">20</td><td class="num">258.47</td><td class="num pos">+6.81</td><td class="num neg">-132.09</td><td class="num">5,037</td></tr>
+          <tr><td>RCL</td><td class="num">275.15</td><td class="num neg">-0.93%</td><td class="num">10</td><td class="num">221.83</td><td class="num neg">-25.90</td><td class="num pos">+533.20</td><td class="num">2,752</td></tr>
+          <tr><td>TQQQ</td><td class="num">83.07</td><td class="num pos">+2.55%</td><td class="num">30</td><td class="num">80.58</td><td class="num pos">+61.89</td><td class="num pos">+74.79</td><td class="num">2,492</td></tr>
+          <tr><td>NOK</td><td class="num">10.24</td><td class="num neg">-3.40%</td><td class="num">200</td><td class="num">10.72</td><td class="num neg">-72.06</td><td class="num neg">-95.50</td><td class="num">2,048</td></tr>
+          <tr><td>SPCX</td><td class="num">171.68</td><td class="num pos">+8.00%</td><td class="num">10</td><td class="num">151.36</td><td class="num pos">+127.20</td><td class="num pos">+203.20</td><td class="num">1,717</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="opts">
+      <h4 class="subhead" style="margin-top:24px">期权持仓 · 距离 strike</h4>
+
+      <div class="opt-card">
+        <div class="opt-name">
+          <b>ASTS 261030 $60.00P (SHORT 1)</b>
+          <span class="opt-meta">正股 58.44 / strike 60.00 · DTE 24d</span>
+        </div>
+        <div class="opt-gauge">
+          <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+            <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+            <line x1="70" y1="3" x2="70" y2="13" stroke="#16140F" stroke-width="1"/>
+            <circle cx="62" cy="8" r="3.5" fill="#8A2F26"/>
+          </svg>
+          <span>距 strike <b style="color:#8A2F26">-2.67% (ITM)</b></span>
+        </div>
+        <div class="opt-pnl">
+          <span class="pnl-today">今日 <span style="color:#1F6F4F">+45.24</span></span>
+          <span class="pnl-cum neg">累计 -5.00</span>
+          <span class="opt-tag warn" style="display:block;margin-top:4px">ITM · 高指派风险</span>
+        </div>
+      </div>
+
+      <div class="opt-card">
+        <div class="opt-name">
+          <b>ORCL 270115 $250.00C (LONG 1)</b>
+          <span class="opt-meta">正股 142.48 / strike 250.00 · DTE 466d</span>
+        </div>
+        <div class="opt-gauge">
+          <svg viewBox="0 0 140 16" width="140" height="16" preserveAspectRatio="none">
+            <line x1="0" y1="8" x2="140" y2="8" stroke="#D6D0C0" stroke-width="1"/>
+            <line x1="70" y1="3" x2="70" y2="13" stroke="#16140F" stroke-width="1"/>
+            <circle cx="135" cy="8" r="3.5" fill="#1F6F4F"/>
+          </svg>
+          <span>距 strike <b style="color:#1F6F4F">+75.5% (深虚)</b></span>
+        </div>
+        <div class="opt-pnl">
+          <span class="pnl-today">今日 <span style="color:#8A2F26">-4.76</span></span>
+          <span class="pnl-cum neg">累计 -363.00</span>
+          <span class="opt-tag warn" style="display:block;margin-top:4px">已损 77% · 长期看涨期权</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IV. 决策看板 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">IV</span>
+      <h2>决策看板</h2>
+      <span class="source">监控优先级 · 不构成交易建议</span>
+    </div>
+
+    <div class="gauges">
+
+      <div class="gauge">
+        <div class="g-head">
+          <span class="g-tk">TSLA</span>
+          <span class="g-num">62<span class="g-out"> / 100</span></span>
+        </div>
+        <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+          <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+          <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+          <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+          <line x1="124" y1="10" x2="124" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+          <circle cx="124" cy="18" r="3" fill="#1B3A5C"/>
+        </svg>
+        <div class="g-trend">趋势 · 偏多</div>
+        <div class="g-tech">SMA20 366 (+3.4%) · SMA50 349 (+8.6%) · SMA200 393 (-3.5%) · RSI 63.5</div>
+        <div class="g-var">关键变量: 39% 权重集中, 站稳 SMA20 $366 上方; SMA200 $393 是中期压力/突破位, 若失守 $366 警惕补跌。</div>
+      </div>
+
+      <div class="gauge">
+        <div class="g-head">
+          <span class="g-tk">NVDA</span>
+          <span class="g-num">78<span class="g-out"> / 100</span></span>
+        </div>
+        <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+          <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+          <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+          <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+          <line x1="156" y1="10" x2="156" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+          <circle cx="156" cy="18" r="3" fill="#1B3A5C"/>
+        </svg>
+        <div class="g-trend">趋势 · 偏多 (高 RSI)</div>
+        <div class="g-tech">SMA20 224 (+6.6%) · SMA50 219 (+9.1%) · SMA200 201 (+18.8%) · RSI 84.6</div>
+        <div class="g-var">关键变量: RSI 84.6 已极度超买, 短期回踩风险高; 累计浮盈 +29% 是账户最大利润来源, 占比 21.4%。</div>
+      </div>
+
+      <div class="gauge">
+        <div class="g-head">
+          <span class="g-tk">GOOG</span>
+          <span class="g-num">58<span class="g-out"> / 100</span></span>
+        </div>
+        <svg viewBox="0 0 200 28" width="100%" height="28" class="g-scale" preserveAspectRatio="none">
+          <line x1="0" y1="18" x2="200" y2="18" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="50" y1="14" x2="50" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="100" y1="14" x2="100" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <line x1="150" y1="14" x2="150" y2="22" stroke="#D6D0C0" stroke-width="1"/>
+          <text x="0" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">弱</text>
+          <text x="96" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">中</text>
+          <text x="188" y="8" font-size="8" fill="#8B867A" font-family="-apple-system,sans-serif">强</text>
+          <line x1="116" y1="10" x2="116" y2="26" stroke="#1B3A5C" stroke-width="2"/>
+          <circle cx="116" cy="18" r="3" fill="#1B3A5C"/>
+        </svg>
+        <div class="g-trend">趋势 · 中性偏多</div>
+        <div class="g-tech">SMA20 339.7 (+1.2%) · SMA50 342.3 (+0.5%) · SMA200 337.6 (+1.9%) · RSI 52.1</div>
+        <div class="g-var">关键变量: 价格几乎贴着所有均线, 方向感最弱; 权重 19.9% 属于第三大持仓, 等待宏观/财报催化。</div>
+      </div>
+
+    </div>
+    <p class="gauges-foot">
+      评分基于 SMA50 / SMA200 / RSI / 盈亏比的轻量加权, 仅用于监控优先级排序。本看板不包含加仓, 减仓, 止盈止损建议。
+    </p>
+  </section>
+
+  <!-- V. 隔夜事件与收益归因 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">V</span>
+      <h2>隔夜事件与收益归因</h2>
+      <span class="source">2026-10-05 美东收盘</span>
+    </div>
+
+    <div class="attr-cols">
+
+      <div class="attr-col">
+        <h4>主要贡献</h4>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">TSLA <span class="ts">+2.32% · 38.9% 权重</span></span>
+            <span class="attr-val pos">+989.00</span>
+          </div>
+          <p class="attr-note">10/2 8-K 披露季度数据新闻稿(交付/财报), 9/29 宣布 $20B 高级无担保信贷协议(2026 不打算动用) — 资金面利好叠加Q3交付预期, 站上 SMA20 $366。</p>
+        </div>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">NVDA <span class="ts">+2.39% · 21.4% 权重</span></span>
+            <span class="attr-val pos">+558.90</span>
+          </div>
+          <p class="attr-note">AI 板块继续走强, 远离 SMA200 +18.8%; 但 RSI 已 84.6 超买, 短期估值消化压力上升。</p>
+        </div>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">GOOG <span class="ts">+0.85% · 19.9% 权重</span></span>
+            <span class="attr-val pos">+187.85</span>
+          </div>
+          <p class="attr-note">三巨头中涨幅最弱, 价格仍贴着 SMA20/50; 9月末密集 Form 4 内部人小额出售属例行。</p>
+        </div>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">SPCX <span class="ts">+8.00% · 1.5% 权重</span></span>
+            <span class="attr-val pos">+127.20</span>
+          </div>
+          <p class="attr-note">SpaceX 私募二级份额, 涨幅显著但权重极小, 数据点 79 天不足 200 日均线; 仅供跟踪。</p>
+        </div>
+
+      </div>
+
+      <div class="attr-col">
+        <h4>主要拖累</h4>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">QCOM <span class="ts">-1.93% · 7.3% 权重</span></span>
+            <span class="attr-val neg">-160.65</span>
+          </div>
+          <p class="attr-note">当日最大单一拖累; 股价跌破 SMA20 $185.9, 仍在 SMA50 $171.7 上方; 累计浮亏 -8.9%, 成本 $199.05 待修复。</p>
+        </div>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">NOK <span class="ts">-3.40% · 1.8% 权重</span></span>
+            <span class="attr-val neg">-72.06</span>
+          </div>
+          <p class="attr-note">单日跌幅最大, 跌破 SMA20 $10.45 接近 SMA50 $10.09; 权重小, 影响有限。</p>
+        </div>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">RCL <span class="ts">-0.93% · 2.5% 权重</span></span>
+            <span class="attr-val neg">-25.90</span>
+          </div>
+          <p class="attr-note">回调, 累计仍 +24%; 处于 SMA20 上方但 SMA50/200 下方, 长期死亡交叉未破。</p>
+        </div>
+
+        <div class="attr-row">
+          <div class="attr-line">
+            <span class="attr-tk">ORCL 270115 $250C <span class="ts">-4.76 今</span></span>
+            <span class="attr-val neg">-363.00 累计</span>
+          </div>
+          <p class="attr-note">长期深虚看涨期权已 -77%; 10/1 内部人买入 25,000 股 @139.35 是正面信号, 但权价反应微弱, 剩余 466 天观察期。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="marginalia">
+      <b>编辑注 · LEVEL5 风险</b>
+      当前账户最大风险不是单一持仓涨跌, 而是 LEVEL5 风控预警叠加 80% 集中度。TSLA+NVDA+GOOG 任一单日 -8% 即触发约 $7,200 浮亏 (约 11.5% 净值), 接近 margin_call_margin $38,920 的警戒水位。此早报不构成行动建议, 仅提示需持续关注。
+    </p>
+  </section>
+
+  <!-- VI. 组合风险快照 -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">VI</span>
+      <h2>组合风险快照</h2>
+      <span class="source">基于 Futu 持仓 · 收盘市值</span>
+    </div>
+
+    <div class="risk-top">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 100 100" width="200" height="200">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#E5E1D4" stroke-width="14"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#1B3A5C" stroke-width="14" stroke-dasharray="97.79 251.33" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#5C7894" stroke-width="14" stroke-dasharray="53.71 251.33" stroke-dashoffset="-97.79" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#C9D3DE" stroke-width="14" stroke-dasharray="50.04 251.33" stroke-dashoffset="-151.50" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#D6D0C0" stroke-width="14" stroke-dasharray="49.79 251.33" stroke-dashoffset="-201.54" transform="rotate(-90 50 50)"/>
+        </svg>
+        <div class="donut-center">
+          <div class="donut-pct">80.2%</div>
+          <div class="donut-label">TOP 3 集中度</div>
+          <div class="donut-sub">等级: 高 · 单边事件即可<br>拖动全账 8-12%</div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="leg-title">前三大权重 + 其他</div>
+        <div class="leg-row">
+          <span class="leg-swatch" style="background:#1B3A5C"></span>
+          <span class="leg-name">TSLA</span>
+          <span class="leg-pct">38.91%</span>
+          <span class="leg-mv">$43,607</span>
+        </div>
+        <div class="leg-row">
+          <span class="leg-swatch" style="background:#5C7894"></span>
+          <span class="leg-name">NVDA</span>
+          <span class="leg-pct">21.37%</span>
+          <span class="leg-mv">$23,954</span>
+        </div>
+        <div class="leg-row">
+          <span class="leg-swatch" style="background:#C9D3DE"></span>
+          <span class="leg-name">GOOG</span>
+          <span class="leg-pct">19.91%</span>
+          <span class="leg-mv">$22,311</span>
+        </div>
+        <div class="leg-row">
+          <span class="leg-swatch" style="background:#D6D0C0"></span>
+          <span class="leg-name">其他 6 只 + 2 期权</span>
+          <span class="leg-pct">19.81%</span>
+          <span class="leg-mv">$21,804</span>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">风格暴露 · 占组合市值</h4>
+    <div class="exposure">
+      <div class="exp-row">
+        <span class="exp-label">Mega-cap Tech</span>
+        <div class="exp-track"><div class="exp-bar" style="width:45.78%"></div></div>
+        <span class="exp-val">45.8%</span>
+      </div>
+      <div class="exp-row">
+        <span class="exp-label">EV (TSLA)</span>
+        <div class="exp-track"><div class="exp-bar soft" style="width:38.91%"></div></div>
+        <span class="exp-val">38.9%</span>
+      </div>
+      <div class="exp-row">
+        <span class="exp-label">AI / Semis</span>
+        <div class="exp-track"><div class="exp-bar soft" style="width:28.65%"></div></div>
+        <span class="exp-val">28.7%</span>
+      </div>
+      <div class="exp-row">
+        <span class="exp-label">China ADR</span>
+        <div class="exp-track"><div class="exp-bar soft" style="width:0%"></div></div>
+        <span class="exp-val">0.0%</span>
+      </div>
+    </div>
+
+    <h4 class="subhead" style="margin-top:26px">期权风险灯号</h4>
+    <div class="opt-risk">
+      <div class="opt-risk-row">
+        <div class="opt-risk-name">
+          ASTS 261030 $60P SHORT
+          <span class="lbl">正股 58.44 · 距离 strike -2.67% · DTE 24d</span>
+        </div>
+        <div class="opt-risk-scale">
+          <span>已 ITM · 卖方看跌</span>
+        </div>
+        <span class="opt-risk-tag warn">红 · 高指派</span>
+      </div>
+      <div class="opt-risk-row">
+        <div class="opt-risk-name">
+          ORCL 270115 $250C LONG
+          <span class="lbl">正股 142.48 · 距离 strike +75.5% · DTE 466d</span>
+        </div>
+        <div class="opt-risk-scale">
+          <span>深虚 · 买方看涨</span>
+        </div>
+        <span class="opt-risk-tag warn">黄 · 时间衰减</span>
+      </div>
+    </div>
+
+    <div class="stress">
+      <div class="stress-row">
+        <span class="sl">压力测试: 全组合 -5%</span>
+        <span class="sv">-$5,604</span>
+      </div>
+      <div class="stress-row">
+        <span class="sl">压力测试: TSLA + NVDA 各 -8%</span>
+        <span class="sv">-$7,190</span>
+      </div>
+    </div>
+
+    <p class="risk-callout">
+      <b>主要风险 · 三条</b>
+      1) 集中度极端: TSLA 单一持仓 38.9%, 已有 -1.25% 浮亏, 一旦跌破 SMA20 $366 将放大账户波动。
+      2) LEVEL5 保证金预警: 融资 -$49,237, margin_call $38,920, 有效杠杆约 1.79x, 极端行情下腾挪空间有限。
+      3) ASTS SHORT PUT 已 ITM: 距 10/30 到期还有 24 天, 若正股不能回升至 $60 上方, 可能被迫接货 100 股 ASTS @ $60 (名义 $6,000, 约占净值 9.6%)。
+    </p>
+  </section>
+
+  <!-- VII. 交易行为快照 (Shadow Account) -->
+  <section class="mod">
+    <div class="kicker">
+      <span class="num">VII</span>
+      <h2>交易行为快照</h2>
+      <span class="source">YTD · 行为复盘 · 不构成操作建议</span>
+    </div>
+
+    <div class="shadow-block">
+      <div class="sh-row">
+        <div class="sh-cell">
+          <div class="sh-k">胜率 / 盈亏比</div>
+          <div class="sh-v">49.4% / 0.66</div>
+          <div class="sh-s">盈亏比小于 1 表示赢时赚得比亏时少</div>
+        </div>
+        <div class="sh-cell">
+          <div class="sh-k">已实现 (YTD)</div>
+          <div class="sh-v" style="color:#8A2F26">-$5,213</div>
+          <div class="sh-s">162 回合 · 347 笔成交</div>
+        </div>
+        <div class="sh-cell">
+          <div class="sh-k">过度交易</div>
+          <div class="sh-v">13.7x<span class="sh-badge red">红</span></div>
+          <div class="sh-s">实际笔数 vs 影子预算, 手太勤</div>
+        </div>
+        <div class="sh-cell">
+          <div class="sh-k">持有天数 · 盈利 vs 亏损</div>
+          <div class="sh-v">17.8d / 25.1d</div>
+          <div class="sh-s">亏损单平均多持 7.3 天 (处置效应)</div>
+        </div>
+      </div>
+      <p class="sh-note">
+        交易频率是预算的 13.7 倍, 且存在典型"亏长赢短"的处置效应 — 中线波段(~18d)是甜蜜点, 亏损单被平均多抱 7 天。
+      </p>
+    </div>
+  </section>
+
+  <aside class="aside-sim">
+    <div class="as-kicker"><b>模拟 vs 真实</b> 起始 2026-05-07 · 仅执行晚报「立即执行」指令</div>
+    <div class="sim-grid">
+      <div class="sim-cell">
+        <div class="sk">模拟 NAV</div>
+        <div class="sv">$70,231.65</div>
+        <div class="ss">累计 <span class="pos">+$617.53</span> · +0.89%</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">真实 NAV</div>
+        <div class="sv">$62,477.20</div>
+        <div class="ss">累计 <span class="neg">-$7,136.92</span> · -10.25%</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">差异 (模拟 - 真实)</div>
+        <div class="sv">+$7,754.45</div>
+        <div class="ss">模拟交易笔数 13</div>
+      </div>
+      <div class="sim-cell">
+        <div class="sk">今日 P-L</div>
+        <div class="sv">模拟 <span class="pos">+$787</span></div>
+        <div class="ss">真实 <span class="pos">+$1,722</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="colophon">
+    <div class="cl-title">Colophon · 数据口径与免责</div>
+    <p>账户与持仓以 Futu OpenAPI 为权威 (2026-10-06 07:00 北京时间, 美东 10/5 已收盘); 技术指标与宏观数据采用 yfinance 2026-10-05 收盘 (存在约 12h 延迟); 收益率曲线来自 OpenBB / Federal Reserve 2026-10-02。</p>
+    <p>缺口: SPCX 仅 79 个数据点, 无 SMA200; ORCL 250C 期权为长到期深虚, 仅供观察; ASTS SHORT PUT 已 ITM, 监控 10/30 到期风险; SEC 监控覆盖近 7 天, 未完整阅读全部 filing。</p>
+    <p>本报告仅作个人持仓监控与风险快照, 不构成投资建议; 分析仅供参考, 投资有风险, 决策需自负。</p>
+  </footer>
+
+</div>
+</body>
+</html>
